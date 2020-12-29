@@ -1,9 +1,9 @@
 {
   "background_color": "#ffffff",
-  "theme_color": "#333333",
+  "theme_color": "#155DA1",
   "name": "Hack4Impact UIUC",
   "short_name": "Hack4Impact UIUC",
-  "display": "minimal-ui",
+  "display": "browser",
   "start_url": "/",
   "icons": [
     {
