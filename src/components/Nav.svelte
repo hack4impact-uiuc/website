@@ -67,7 +67,7 @@
 </style>
 
 <nav>
-	<img src="/logo.svg" alt="Hack4Impact logo" />
+	<a rel="prefetch" href="."><img src="/logo.svg" alt="Hack4Impact logo" /></a>
 	<ul>
 		<li>
 			<a
