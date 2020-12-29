@@ -13,24 +13,9 @@
     <link rel="icon" type="image/png" href="/logo-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/logo-apple-touch-icon.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-    <!-- Sapper creates a <script> tag containing `src/client.js`
-	     and anything else it needs to hydrate the app and
-	     initialise the router -->
-    %sapper.scripts%
-
-    <!-- Sapper generates a <style> tag containing critical CSS
-	     for the current page. CSS for the rest of the app is
-	     lazily loaded when it precaches secondary pages -->
-    %sapper.styles%
-
-    <!-- This contains the contents of the <svelte:head> component, if
-	     the current page has one -->
-    %sapper.head%
+    %sapper.scripts% %sapper.styles% %sapper.head%
   </head>
   <body>
-    <!-- The application will be rendered inside this element,
-	     because `src/client.js` references it -->
     <div id="sapper">%sapper.html%</div>
   </body>
 </html>
