@@ -58,6 +58,6 @@ code {
   align-items: center;
 }
 
-button a {
+.button-link {
   text-decoration: none;
 }

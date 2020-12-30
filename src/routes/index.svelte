@@ -58,14 +58,14 @@
 			</p>
 			<div id="banner-button-row">
 				<div class="banner-button">
-					<Button type="primary-white">
-						<a href="projects">See Our Work</a>
-					</Button>
+					<a class="button-link" href="projects">
+						<Button type="primary-white">See Our Work</Button>
+					</a>
 				</div>
 				<div class="banner-button">
-					<Button type="secondary-white">
-						<a href="join">Work With Us</a>
-					</Button>
+					<a class="button-link" href="join">
+						<Button type="secondary-white">Work With Us</Button>
+					</a>
 				</div>
 			</div>
 		</div>
