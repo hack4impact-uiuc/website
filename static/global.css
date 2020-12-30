@@ -43,3 +43,10 @@ code {
     font-size: 16px;
   }
 }
+
+.row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
