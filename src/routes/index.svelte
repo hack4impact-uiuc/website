@@ -3,7 +3,7 @@
 </script>
 
 <style>
-	figure {
+	section {
 		margin: 0;
 		padding: 0;
 	}
@@ -48,7 +48,7 @@
 		content="Uniting students to build well-engineered, user-centric, and impactful products for social change." />
 </svelte:head>
 
-<figure class="row-center">
+<section class="row-center">
 	<div id="banner-left" class="banner column-center">
 		<div id="banner-left-content">
 			<h1>Software For Nonprofits</h1>
@@ -71,4 +71,4 @@
 		</div>
 	</div>
 	<div id="banner-right" class="banner" />
-</figure>
+</section>
