@@ -21,7 +21,7 @@
 	}
 
 	#banner-left-content {
-		padding: 15%;
+		padding-left: max(calc(100% - 600px), 0px);
 		padding-right: 20%;
 	}
 
