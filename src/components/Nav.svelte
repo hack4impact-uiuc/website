@@ -59,15 +59,23 @@
 		left: 0.5em;
 	}
 
-	a {
+	li a {
 		text-decoration: none;
 		padding: 1em 1em;
 		display: block;
 	}
+
+	#logo-link {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 </style>
 
 <nav>
-	<a rel="prefetch" href="."><img src="/logo.svg" alt="Hack4Impact logo" /></a>
+	<a id="logo-link" rel="prefetch" href="."><img
+			src="/logo.svg"
+			alt="Hack4Impact logo" /></a>
 	<ul>
 		<li>
 			<a
