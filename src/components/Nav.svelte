@@ -18,7 +18,7 @@
 	}
 
 	img {
-		height: 3em;
+		height: 2.5em;
 	}
 
 	#navlinks {
@@ -41,7 +41,7 @@
 		padding: 1.5em 1.5em;
 		display: inline-block;
 		position: relative;
-		transition: 200ms;
+		transition: 0.2s;
 	}
 
 	.navlink:not([aria-current])::before {
@@ -50,7 +50,7 @@
 		width: 100%;
 		bottom: 0;
 		left: 0;
-		transition: 200ms;
+		transition: 0.2s;
 		content: "";
 		position: absolute;
 		background-color: #155da1;
@@ -58,12 +58,12 @@
 
 	.navlink:not([aria-current]):hover {
 		color: #155da1;
-		transition: 200ms;
+		transition: 0.2s;
 	}
 
 	.navlink:not([aria-current]):hover::before {
-		transition: 200ms;
 		opacity: 100%;
+		transition: 0.2s;
 	}
 </style>
 

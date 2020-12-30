@@ -1,40 +1,43 @@
 <script>
-	import successkid from "images/successkid.jpg";
+	import Button from "../components/Button.svelte";
 </script>
 
 <style>
-	h1,
-	figure,
-	p {
-		text-align: center;
-		margin: 0 auto;
+	figure {
+		margin: 0;
+		padding: 0;
+	}
+	.banner {
+		height: 80vh;
+	}
+	#banner-left {
+		width: 50%;
+		background-color: #155da1;
+		color: #fff;
+	}
+	#banner-right {
+		width: 50%;
+		background-color: #24426e;
+	}
+
+	#banner-left-content {
+		padding: 15%;
+		padding-right: 20%;
 	}
 
 	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
+		font-size: 56px;
 	}
 
 	p {
-		margin: 1em auto;
+		font-family: Open Sans;
+		opacity: 80%;
+		font-size: 24px;
 	}
 
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+	.banner-button {
+		margin: 0 20px 20px 0;
+		display: inline-block;
 	}
 </style>
 
@@ -45,14 +48,23 @@
 		content="Uniting students to build well-engineered, user-centric, and impactful products for social change." />
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<img alt="Success Kid" src={successkid} />
-	<figcaption>Have fun with Sapper!</figcaption>
+<figure class="row-center">
+	<div id="banner-left" class="banner column-center">
+		<div id="banner-left-content">
+			<h1>Software For Nonprofits</h1>
+			<p>
+				We are a team of UIUC students who create robust software for social
+				good.
+			</p>
+			<div id="banner-button-row">
+				<div class="banner-button">
+					<Button type="primary-white">See Our Work</Button>
+				</div>
+				<div class="banner-button">
+					<Button type="secondary-white">Work With Us</Button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="banner-right" class="banner" />
 </figure>
-
-<p>
-	<strong>Try editing this file (src/routes/index.svelte) to test live
-		reloading.</strong>
-</p>
