@@ -39,20 +39,8 @@
 	}
 
 	[aria-current] {
-		position: relative;
-		display: inline-block;
-		color: #155da1;
-	}
-
-	[aria-current]::after {
-		position: absolute;
-		content: "";
-		width: 100%;
-		height: 4px;
 		background-color: #155da1;
-		display: block;
-		bottom: 0px;
-		left: 0;
+		color: #fff;
 	}
 
 	.navlink {
@@ -71,11 +59,11 @@
 		transition: 300ms;
 		content: "";
 		position: absolute;
-		background-color: #3e87cd;
+		background-color: #155da1;
 	}
 
 	.navlink:not([aria-current]):hover {
-		color: #3e87cd;
+		color: #155da1;
 		transition: 300ms;
 	}
 
