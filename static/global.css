@@ -1,12 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo&family=Open+Sans&display=swap");
 
+:root {
+  --blue: #155da1;
+  --blue-light: #3e87cd;
+  --blue-lighter: #b4d8fa;
+  --blue-dark: #0e4e8a;
+  --blue-darker: #0d3f6e;
+  --dark-text: #031425;
+
+  --header-width: 1440px;
+  --content-width: 1200px;
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --header-width: 2160px;
+    --content-width: 1800px;
+  }
+}
+
 body {
   margin: 0;
   font-family: Open Sans, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: #333;
+  color: var(--dark-text);
 }
 
 h1,
@@ -27,15 +46,6 @@ h1 {
 
 a {
   color: inherit;
-}
-
-code {
-  font-family: menlo, inconsolata, monospace;
-  font-size: calc(1em - 2px);
-  color: #555;
-  background-color: #f0f0f0;
-  padding: 0.2em 0.4em;
-  border-radius: 2px;
 }
 
 @media (min-width: 400px) {

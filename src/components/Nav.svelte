@@ -7,13 +7,15 @@
 		font-weight: 300;
 
 		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
-		position: sticky;
+		position: fixed;
+		background-color: #fff;
+		width: 100vw;
 		z-index: 99;
 	}
 
 	#nav-contents {
 		width: 100%;
-		max-width: 1440px;
+		max-width: var(--header-width);
 		justify-content: space-between;
 	}
 
@@ -32,7 +34,7 @@
 	}
 
 	[aria-current] {
-		background-color: #155da1;
+		background-color: var(--blue);
 		color: #fff;
 	}
 
@@ -53,11 +55,11 @@
 		transition: 0.2s;
 		content: "";
 		position: absolute;
-		background-color: #155da1;
+		background-color: var(--blue);
 	}
 
 	.navlink:not([aria-current]):hover {
-		color: #155da1;
+		color: var(--blue);
 		transition: 0.2s;
 	}
 

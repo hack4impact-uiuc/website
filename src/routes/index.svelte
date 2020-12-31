@@ -8,20 +8,20 @@
 		padding: 0;
 	}
 	.banner {
-		height: 80vh;
+		height: 720px;
 	}
 	#banner-left {
 		width: 50%;
-		background-color: #155da1;
+		background-color: var(--blue);
 		color: #fff;
 	}
 	#banner-right {
 		width: 50%;
-		background-color: #24426e;
+		background-color: var(--blue-darker);
 	}
 
 	#banner-left-content {
-		padding-left: max(calc(100% - 600px), 0px);
+		padding-left: max(calc(100% - calc(var(--content-width) / 2)), 50px);
 		padding-right: 20%;
 	}
 

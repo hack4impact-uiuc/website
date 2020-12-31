@@ -24,21 +24,21 @@
   }
 
   .button-primary {
-    border-color: #155da1;
-    background-color: #155da1;
+    border-color: var(--blue);
+    background-color: var(--blue);
     color: #fff;
   }
 
   .button-primary-white {
     border-color: #fff;
     background-color: #fff;
-    color: #155da1;
+    color: var(--blue);
   }
 
   .button-secondary {
-    border-color: #155da1;
+    border-color: var(--blue);
     background-color: transparent;
-    color: #155da1;
+    color: var(--blue);
   }
 
   .button-secondary-white {
