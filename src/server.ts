@@ -6,24 +6,14 @@ import * as sapper from "@sapper/server";
 
 dotenv.config();
 
-const {
-  PORT,
-  NODE_ENV,
-  CONTENTFUL_SPACE_ID,
-  CONTENTFUL_DELIVERY_KEY,
-} = process.env;
+const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
 polka() // You can also use Express
   .use(
     compression({ threshold: 0 }),
     sirv("static", { dev }),
-    sapper.middleware({
-      session: () => ({
-        SPACE: CONTENTFUL_SPACE_ID,
-        TOKEN: CONTENTFUL_DELIVERY_KEY,
-      }),
-    })
+    sapper.middleware()
   )
   .listen(PORT, (err) => {
     if (err) console.log("error", err);

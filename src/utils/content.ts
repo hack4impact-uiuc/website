@@ -1,9 +1,9 @@
-export default async function genRequest(
-  fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>,
-  query: string,
-  SPACE: string,
-  TOKEN: string
-): Promise<any> {
+import fetch from "node-fetch";
+
+export default async function genRequest(query: string): Promise<any> {
+  const TOKEN = process.env.CONTENTFUL_DELIVERY_KEY;
+  const SPACE = process.env.CONTENTFUL_SPACE_ID;
+
   const res = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${SPACE}`,
     {

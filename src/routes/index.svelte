@@ -1,25 +1,10 @@
 <script context="module" lang="ts">
-	import genRequest from "../utils/content";
+	export async function preload() {
+		const res = await this.fetch("featured.json");
 
-	export async function preload(_, session) {
-		const { SPACE, TOKEN } = session;
+		const projects = await res.json();
 
-		const res = await genRequest(
-			this.fetch,
-			`
-			{
-				uiucProjectCollection {
-					items {
-						name
-					}
-				}
-			}
-		`,
-			SPACE,
-			TOKEN
-		);
-
-		return { projects: res.uiucProjectCollection.items };
+		return { projects };
 	}
 </script>
 
