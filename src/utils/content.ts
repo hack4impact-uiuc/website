@@ -1,6 +1,17 @@
 import fetch from "node-fetch";
 
-export default async function genRequest(query: string): Promise<any> {
+export type Response =
+  | {
+      success: true;
+      result: any;
+    }
+  | { success: false; status: number };
+
+export interface Project {
+  name: string;
+}
+
+export default async function genRequest(query: string): Promise<Response> {
   const TOKEN = process.env.CONTENTFUL_DELIVERY_KEY;
   const SPACE = process.env.CONTENTFUL_SPACE_ID;
 
@@ -16,9 +27,13 @@ export default async function genRequest(query: string): Promise<any> {
     }
   );
 
-  const json = await res.json();
+  if (res.status === 200) {
+    const json = await res.json();
 
-  return json.data;
+    return { success: true as const, result: json.data };
+  } else {
+    return { success: false as const, status: res.status };
+  }
 }
 
 fetch;

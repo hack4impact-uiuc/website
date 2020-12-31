@@ -1,18 +1,16 @@
 <script context="module" lang="ts">
+	import type { Project } from "../utils/content";
+
 	export async function preload() {
 		const res = await this.fetch("featured.json");
 
-		const projects = await res.json();
+		const projects: Project[] = await res.json();
 
 		return { projects };
 	}
 </script>
 
 <script lang="ts">
-	interface Project {
-		name: string;
-	}
-
 	import Button from "../components/Button.svelte";
 	export let projects: Project[];
 </script>
