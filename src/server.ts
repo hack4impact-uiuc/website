@@ -4,9 +4,7 @@ import compression from "compression";
 import dotenv from "dotenv";
 import * as sapper from "@sapper/server";
 
-if (process.env.NODE_ENV === "development") {
-  dotenv.config();
-}
+dotenv.config();
 
 const {
   PORT,

@@ -1,10 +1,10 @@
-<script context="module">
+<script context="module" lang="ts">
 	import genRequest from "../utils/content";
 
 	export async function preload(_, session) {
 		const { SPACE, TOKEN } = session;
 
-		const projects = await genRequest(
+		const res = await genRequest(
 			this.fetch,
 			`
 			{
@@ -19,12 +19,17 @@
 			TOKEN
 		);
 
-		console.log(projects);
+		return { projects: res.uiucProjectCollection.items };
 	}
 </script>
 
-<script>
+<script lang="ts">
+	interface Project {
+		name: string;
+	}
+
 	import Button from "../components/Button.svelte";
+	export let projects: Project[];
 </script>
 
 <style>
@@ -97,3 +102,6 @@
 	</div>
 	<div id="banner-right" class="banner" />
 </section>
+{#each projects as project}
+	<h2>{project.name}</h2>
+{/each}
