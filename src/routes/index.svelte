@@ -1,3 +1,28 @@
+<script context="module">
+	import genRequest from "../utils/content";
+
+	export async function preload(_, session) {
+		const { SPACE, TOKEN } = session;
+
+		const projects = await genRequest(
+			this.fetch,
+			`
+			{
+				uiucProjectCollection {
+					items {
+						name
+					}
+				}
+			}
+		`,
+			SPACE,
+			TOKEN
+		);
+
+		console.log(projects);
+	}
+</script>
+
 <script>
 	import Button from "../components/Button.svelte";
 </script>
