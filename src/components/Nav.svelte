@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { startsWith } from "*.gif";
+
 	export let segment: string;
 </script>
 
@@ -83,17 +85,17 @@
 			<a
 				class="navlink"
 				rel="prefetch"
-				aria-current={segment === 'about' ? 'page' : undefined}
+				aria-current={segment && segment.startsWith('about') ? 'page' : undefined}
 				href="about"><h2>About Us</h2></a>
 			<a
 				class="navlink"
 				rel="prefetch"
-				aria-current={segment === 'projects' ? 'page' : undefined}
+				aria-current={segment && segment.startsWith('projects') ? 'page' : undefined}
 				href="projects"><h2>Projects</h2></a>
 			<a
 				class="navlink"
 				rel="prefetch"
-				aria-current={segment === 'join' ? 'page' : undefined}
+				aria-current={segment && segment.startsWith('join') ? 'page' : undefined}
 				href="join"><h2>Work With Us</h2></a>
 		</div>
 	</div>
