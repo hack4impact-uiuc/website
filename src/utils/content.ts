@@ -1,39 +1,22 @@
-import fetch from "node-fetch";
-
-export type Response =
-  | {
-      success: true;
-      result: any;
-    }
-  | { success: false; status: number };
+import { createClient, ContentfulClientApi } from "contentful";
 
 export interface Project {
   name: string;
 }
 
-export default async function genRequest(query: string): Promise<Response> {
-  const TOKEN = process.env.CONTENTFUL_DELIVERY_KEY;
-  const SPACE = process.env.CONTENTFUL_SPACE_ID;
+export class ContentWrapper {
+  client: ContentfulClientApi;
 
-  const res = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${SPACE}`,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify({ query }),
-    }
-  );
+  constructor(space: string, accessToken: string) {
+    this.client = createClient({
+      space,
+      accessToken,
+    });
+  }
 
-  if (res.status === 200) {
-    const json = await res.json();
-
-    return { success: true as const, result: json.data };
-  } else {
-    return { success: false as const, status: res.status };
+  async get<T>(entity: string, options: any = {}): Promise<T[]> {
+    return this.client
+      .getEntries({ content_type: entity, ...options })
+      .then((entries) => entries.items.map((entry) => entry.fields as T));
   }
 }
-
-fetch;

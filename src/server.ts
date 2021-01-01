@@ -3,11 +3,25 @@ import polka from "polka";
 import compression from "compression";
 import dotenv from "dotenv";
 import * as sapper from "@sapper/server";
+import { ContentWrapper } from "./utils/content";
+import "regenerator-runtime/runtime.js";
 
 dotenv.config();
 
-const { PORT, NODE_ENV } = process.env;
+const {
+  PORT,
+  NODE_ENV,
+  CONTENTFUL_DELIVERY_KEY,
+  CONTENTFUL_SPACE_ID,
+} = process.env;
 const dev = NODE_ENV === "development";
+
+const contentWrapper = new ContentWrapper(
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_DELIVERY_KEY
+);
+
+export { contentWrapper };
 
 polka() // You can also use Express
   .use(
