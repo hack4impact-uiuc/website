@@ -1,11 +1,11 @@
-name: ci
+name: CI
 
 on: push
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: check
+    name: Check
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check formatting
+      - name: Run svelte-check
         run: npm run validate
 
   build:
     runs-on: ubuntu-latest
-    name: build
+    name: Build
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
