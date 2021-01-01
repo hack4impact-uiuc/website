@@ -20,6 +20,8 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "@contentful/rich-text-types": "^14.1.2",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
