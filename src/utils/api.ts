@@ -3,7 +3,6 @@ import {
   ContentfulClientApi,
   Entry,
   ContentType,
-  Field,
 } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 

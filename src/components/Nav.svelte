@@ -7,10 +7,10 @@
 		font-weight: 300;
 
 		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
-		position: fixed;
+		position: sticky;
+		top: 0;
 		background-color: #fff;
 		width: 100vw;
-		z-index: 99;
 	}
 
 	#nav-contents {
