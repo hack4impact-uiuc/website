@@ -57,18 +57,18 @@
   }
 
   .arrow {
-    padding-right: 2em
+    padding-right: 2.2em
   }
 
   .arrow::after {
     content: "\2192";
-    padding: 0 0.5em 0;
+    padding: 0 0.3em 0 0.5em;
     transition: padding var(--animation);
 
   }
 
   .arrow:hover::after {
-    padding: 0 0 0 1em;
+    padding: 0 0 0 0.8em;
   }
 </style>
 

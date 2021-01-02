@@ -40,7 +40,7 @@
   }
 
   .featured-project:hover > span::after {
-    padding-left: 1em;
+    padding-left: 0.8em;
   }
 </style>
 
