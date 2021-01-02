@@ -12,6 +12,8 @@
 
 <script lang="ts">
 	import Button from "../components/Button.svelte";
+	import Section from "../components/Section.svelte";
+
 	export let projects: Project[];
 </script>
 
@@ -85,6 +87,10 @@
 	</div>
 	<div id="banner-right" class="banner" />
 </section>
-{#each projects as project}
-	<h2>{project.name}</h2>
-{/each}
+<Section>
+	<div style="background-color: #ccc">
+		{#each projects as project}
+			<h2>{project.name}</h2>
+		{/each}
+	</div>
+</Section>
