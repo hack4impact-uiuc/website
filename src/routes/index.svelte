@@ -54,6 +54,10 @@
 		margin: 0 20px 20px 0;
 		display: inline-block;
 	}
+
+	.featured-project {
+		color: #fff;
+	}
 </style>
 
 <svelte:head>
@@ -87,9 +91,15 @@
 	</div>
 	<div id="banner-right" class="banner" />
 </section>
-<Section>
+<Section id="featured-projects">
+	<div
+		class="featured-project"
+		style="background-color: {projects[0].accentColor}">
+		<h2>{projects[0].name}</h2>
+		<p>{projects[0].summary}</p>
+	</div>
 	<div style="background-color: #ccc">
-		{#each projects as project}
+		{#each projects.slice(1) as project}
 			<h2>{project.name}</h2>
 		{/each}
 	</div>
