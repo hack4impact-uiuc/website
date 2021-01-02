@@ -36,7 +36,7 @@
   .featured-project > span::after {
     content: "\2192";
     padding-left: 0.5em;
-    transition: padding 0.2s;
+    transition: padding var(--animation);
   }
 
   .featured-project:hover > span::after {

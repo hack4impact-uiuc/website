@@ -63,8 +63,8 @@
   .arrow::after {
     content: "\2192";
     padding: 0 0.5em 0;
-    transition: padding 0.2s;
-    
+    transition: padding var(--animation);
+
   }
 
   .arrow:hover::after {
