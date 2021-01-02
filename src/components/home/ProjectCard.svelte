@@ -1,6 +1,7 @@
 <script lang="ts">
   import Button from "../Button.svelte";
   import type { Project } from "../../utils/schema";
+  import Banner from "./Banner.svelte";
 
   export let project: Project;
 </script>
@@ -20,6 +21,11 @@
     height: 100px;
   }
 
+  img {
+    height: 50px;
+    margin-bottom: 10px;
+  }
+
   .project-card {
     padding: 16px;
   }
@@ -27,6 +33,7 @@
 
 <a href="projects/{project.slug}" rel="prefetch">
   <div class="project-card">
+    <img src={project.nonprofitLogo.src} alt={project.nonprofitLogo.alt} />
     <h4>{project.name}</h4>
     <p>{project.summary}</p>
     <Button type="secondary-custom" arrow textColor={project.accentColor}>
