@@ -29,8 +29,8 @@
   <div class="project-card">
     <h4>{project.name}</h4>
     <p>{project.summary}</p>
-    <Button type="secondary-custom" textColor={project.accentColor}>
-      Learn More →
+    <Button type="secondary-custom" arrow textColor={project.accentColor}>
+      Learn More
     </Button>
   </div>
 </a>
