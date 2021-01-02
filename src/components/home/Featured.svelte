@@ -32,6 +32,16 @@
     padding: 20px;
     margin-bottom: 20px;
   }
+
+  .featured-project > span::after {
+    content: "\2192";
+    padding-left: 0.5em;
+    transition: padding 0.2s;
+  }
+
+  .featured-project:hover > span::after {
+    padding-left: 1em;
+  }
 </style>
 
 <Section id="featured-projects">
@@ -43,7 +53,7 @@
         style="background-color: {projects[0].accentColor}">
         <h4>{projects[0].name}</h4>
         <h2>{projects[0].summary}</h2>
-        <span>Learn More →</span>
+        <span>Learn More</span>
       </div>
     </a>
     <div class="row-center">
