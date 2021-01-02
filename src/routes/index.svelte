@@ -1,4 +1,6 @@
 <script context="module" lang="ts">
+	import Banner from "../components/home/Banner.svelte";
+	import Featured from "../components/home/Featured.svelte";
 	import type { Project } from "../utils/schema";
 
 	export async function preload() {
@@ -11,9 +13,6 @@
 </script>
 
 <script lang="ts">
-	import Banner from "../components/home/Banner.svelte";
-	import Featured from "../components/home/Featured.svelte";
-
 	export let projects: Project[];
 </script>
 
