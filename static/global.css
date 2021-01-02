@@ -6,7 +6,7 @@
   --blue-lighter: #b4d8fa;
   --blue-dark: #0e4e8a;
   --blue-darker: #0d3f6e;
-  --dark-text: #031425;
+  --text-dark: #031425;
 
   --header-width: 1440px;
   --content-width: 1200px;
@@ -25,7 +25,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--dark-text);
+  color: var(--text-dark);
 }
 
 h1,

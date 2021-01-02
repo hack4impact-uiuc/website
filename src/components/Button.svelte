@@ -9,7 +9,7 @@
 
   // backgroundColor and textColor props only applied on custom button types
   export let backgroundColor: string = "#fff";
-  export let textColor: string = "var(--dark-text)";
+  export let textColor: string = "var(--text-dark)";
 </script>
 
 <style>
@@ -56,6 +56,6 @@
 
 <button
   class="button-{type}"
-  style={type.endsWith('custom') ? `background-color: ${backgroundColor}; color: ${textColor}; border-color: ${type.startsWith('primary') ? backgroundColor : textColor}` : undefined}>
+  style={type.endsWith('custom') ? `background-color: ${type.startsWith('primary') ? backgroundColor : 'transparent'}; color: ${textColor}; border-color: ${type.startsWith('primary') ? backgroundColor : textColor}` : undefined}>
   <slot />
 </button>
