@@ -1,9 +1,5 @@
 import { createClient, ContentfulClientApi } from "contentful";
 
-export interface Project {
-  name: string;
-}
-
 export class ContentWrapper {
   client: ContentfulClientApi;
 

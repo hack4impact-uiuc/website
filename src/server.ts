@@ -3,7 +3,7 @@ import polka from "polka";
 import compression from "compression";
 import dotenv from "dotenv";
 import * as sapper from "@sapper/server";
-import { ContentWrapper } from "./utils/content";
+import { ContentWrapper } from "./utils/api";
 import "regenerator-runtime/runtime.js";
 
 dotenv.config();

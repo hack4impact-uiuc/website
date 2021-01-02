@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-	import type { Project } from "../utils/content";
+	import type { Project } from "../utils/schema";
 
 	export async function preload() {
 		const res = await this.fetch("featured.json");
