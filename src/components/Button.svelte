@@ -2,8 +2,13 @@
   export let type:
     | "primary"
     | "primary-white"
+    | "primary-custom"
     | "secondary"
-    | "secondary-white";
+    | "secondary-white"
+    | "secondary-custom";
+
+  export let backgroundColor: string = "#fff";
+  export let textColor: string = "var(--dark-text)";
 </script>
 
 <style>
@@ -48,6 +53,8 @@
   }
 </style>
 
-<button class={`button-${type}`}>
+<button
+  class="button-{type}"
+  style={type.endsWith('custom') ? `background-color: ${backgroundColor}; color: ${textColor}; border-color: ${type.startsWith('primary') ? backgroundColor : textColor}` : ''}>
   <slot />
 </button>

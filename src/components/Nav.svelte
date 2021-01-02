@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { startsWith } from "*.gif";
-
 	export let segment: string;
 </script>
 
