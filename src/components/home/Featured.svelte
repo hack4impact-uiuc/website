@@ -37,13 +37,15 @@
 <Section id="featured-projects">
   <div class="featured-projects-container">
     <h1>Featured Work</h1>
-    <div
-      class="featured-project"
-      style="background-color: {projects[0].accentColor}">
-      <h4>{projects[0].name}</h4>
-      <h2>{projects[0].summary}</h2>
-      <a href="projects/{projects[0].slug}" rel="prefetch">Learn More →</a>
-    </div>
+    <a href="projects/{projects[0].slug}" rel="prefetch">
+      <div
+        class="featured-project"
+        style="background-color: {projects[0].accentColor}">
+        <h4>{projects[0].name}</h4>
+        <h2>{projects[0].summary}</h2>
+        <span>Learn More →</span>
+      </div>
+    </a>
     <div class="row-center">
       {#each projects.slice(1) as project}
         <ProjectCard {project} />

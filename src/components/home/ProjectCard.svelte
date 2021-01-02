@@ -6,6 +6,10 @@
 </script>
 
 <style>
+  a {
+    text-decoration: none;
+    width: 30%;
+  }
   h4,
   p {
     font-size: 20px;
@@ -18,16 +22,15 @@
 
   .project-card {
     padding: 16px;
-    width: 30%;
   }
 </style>
 
-<div class="project-card">
-  <h4>{project.name}</h4>
-  <p>{project.summary}</p>
-  <a href="projects/{project.slug}" rel="prefetch">
+<a href="projects/{project.slug}" rel="prefetch">
+  <div class="project-card">
+    <h4>{project.name}</h4>
+    <p>{project.summary}</p>
     <Button type="secondary-custom" textColor={project.accentColor}>
       Learn More →
     </Button>
-  </a>
-</div>
+  </div>
+</a>
