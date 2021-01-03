@@ -20,7 +20,7 @@
 	<title>Hack4Impact UIUC</title>
 	<meta
 		name="description"
-		content="Uniting students to build well-engineered, user-centric, and impactful products for social change." />
+		content="Uniting students to build well-engineered and impactful products for social change." />
 </svelte:head>
 <Banner />
 <Featured {projects} />

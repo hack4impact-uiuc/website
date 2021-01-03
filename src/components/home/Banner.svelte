@@ -23,7 +23,8 @@
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <h1>Software For Nonprofits</h1>
   <p>
-    We are a team of UIUC students who create robust software for social good.
+    Uniting students to build well-engineered and impactful products for social
+    change.
   </p>
   <div id="banner-button-row">
     <div class="banner-button">
