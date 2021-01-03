@@ -1,9 +1,10 @@
 // @ts-nocheck
 
+// Adapted from https://stackoverflow.com/a/13542669
 export const pSBC = (
   p: number,
   c0: string,
-  c1?: boolean,
+  c1?: string,
   l?: boolean
 ): string => {
   let r,
@@ -13,7 +14,6 @@ export const pSBC = (
     f,
     t,
     h,
-    i = parseInt,
     m = Math.round,
     a = typeof c1 == "string";
   if (
@@ -74,13 +74,15 @@ export const pSBC = (
 
 const pSBCr = (d) => {
   let n = d.length,
-    x = {};
+    x = {},
+    i = parseInt;
+
   if (n > 9) {
     ([r, g, b, a] = d = d.split(",")), (n = d.length);
     if (n < 3 || n > 4) return null;
     (x.r = i(r[3] == "a" ? r.slice(5) : r.slice(4))),
-      (x.g = parseInt(g)),
-      (x.b = parseInt(b)),
+      (x.g = i(g)),
+      (x.b = i(b)),
       (x.a = a ? parseFloat(a) : -1);
   } else {
     if (n == 8 || n == 6 || n < 4) return null;
@@ -94,7 +96,7 @@ const pSBCr = (d) => {
         d[3] +
         d[3] +
         (n > 4 ? d[4] + d[4] : "");
-    d = parseInt(d.slice(1), 16);
+    d = i(d.slice(1), 16);
     if (n == 9 || n == 5)
       (x.r = (d >> 24) & 255),
         (x.g = (d >> 16) & 255),
