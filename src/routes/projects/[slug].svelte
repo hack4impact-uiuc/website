@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-  import DoubleBanner from "../../components/DoubleBanner.svelte";
-  import { pSBC } from "../../utils/color";
+  import ProjectBanner from "../../components/projects/ProjectBanner.svelte";
+  import Section from "../../components/Section.svelte";
   import type { Project } from "../../utils/schema";
 
   export async function preload({ params }) {
@@ -17,15 +17,32 @@
 </script>
 
 <style>
+  :global(h1) {
+    font-size: 56px;
+  }
+
+  :global(h2) {
+    font-size: 32px;
+  }
+
+  :global(p) {
+    font-size: 20px;
+    opacity: 80%;
+  }
+
+  .nonprofit-container {
+    padding: 40px 0;
+  }
 </style>
 
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
 </svelte:head>
 
-<DoubleBanner
-  leftColor={project.accentColor}
-  rightColor={pSBC(-0.2, project.accentColor)}>
-  <h1>{project.name}</h1>
-  <h2>{project.summary}</h2>
-</DoubleBanner>
+<ProjectBanner {project} />
+<Section color="var(--gray-lighter)">
+  <div class="nonprofit-container">
+    <h2>Our Partner</h2>
+    <p>{project.nonprofitDescription}</p>
+  </div>
+</Section>
