@@ -33,7 +33,7 @@
 <a href="projects/{project.slug}" rel="prefetch">
   <div class="project-card">
     <img
-      src="{project.nonprofitLogo.src}?h=50"
+      src="{project.nonprofitLogo.src}?h=100"
       alt={project.nonprofitLogo.alt} />
     <h4>{project.name}</h4>
     <p>{project.summary}</p>
