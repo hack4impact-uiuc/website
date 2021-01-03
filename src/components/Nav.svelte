@@ -10,7 +10,7 @@
 		position: sticky;
 		top: 0;
 		background-color: #fff;
-		width: 100vw;
+		width: 100%;
 	}
 
 	#nav-contents {

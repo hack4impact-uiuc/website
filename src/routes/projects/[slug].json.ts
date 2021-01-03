@@ -7,7 +7,6 @@ export async function get(req: Request, res: Response): Promise<void> {
   });
 
   if (projects.length > 0) {
-
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(projects[0]));
   } else {

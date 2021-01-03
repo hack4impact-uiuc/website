@@ -1,17 +1,14 @@
 <script context="module" lang="ts">
-  import Section from "../../components/Section.svelte";
+  import DoubleBanner from "../../components/DoubleBanner.svelte";
+  import { pSBC } from "../../utils/color";
   import type { Project } from "../../utils/schema";
 
   export async function preload({ params }) {
     const { slug } = params;
     const res = await this.fetch(`projects/${slug}.json`);
 
-    if (res.ok) {
-      const project: Project = await res.json();
-      return { project };
-    } else {
-      this.error(res.status, res.statusText);
-    }
+    const project: Project = await res.json();
+    return { project };
   }
 </script>
 
@@ -22,7 +19,13 @@
 <style>
 </style>
 
-<Section color={project.accentColor}>
+<svelte:head>
+  <title>{project.name} | Hack4Impact UIUC</title>
+</svelte:head>
+
+<DoubleBanner
+  leftColor={project.accentColor}
+  rightColor={pSBC(-0.2, project.accentColor)}>
   <h1>{project.name}</h1>
   <h2>{project.summary}</h2>
-</Section>
+</DoubleBanner>
