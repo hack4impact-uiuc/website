@@ -1,6 +1,7 @@
 <script lang="ts">
   import DoubleBanner from "../../components/DoubleBanner.svelte";
   import { pSBC } from "../../utils/color";
+  import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";
   export let project: Project;
 </script>
@@ -21,7 +22,7 @@
   leftColor={project.accentColor}
   rightColor={pSBC(-0.2, project.accentColor)}>
   <img
-    src="{project.nonprofitLogo.src}?h=100"
+    src={setImageHeight(project.nonprofitLogo.src, 100)}
     alt={project.nonprofitLogo.alt} />
   <h1>{project.name}</h1>
   <h2>{project.summary}</h2>

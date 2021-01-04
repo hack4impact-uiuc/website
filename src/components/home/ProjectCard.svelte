@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "../Button.svelte";
+  import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";
 
   export let project: Project;
@@ -33,7 +34,7 @@
 <a href="projects/{project.slug}" rel="prefetch">
   <div class="project-card">
     <img
-      src="{project.nonprofitLogo.src}?h=100"
+      src={setImageHeight(project.nonprofitLogo.src, 100)}
       alt={project.nonprofitLogo.alt} />
     <h4>{project.name}</h4>
     <p>{project.summary}</p>

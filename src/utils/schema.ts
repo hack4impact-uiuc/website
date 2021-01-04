@@ -29,3 +29,12 @@ export interface Project {
   softwareDevelopers: Member[];
   featured: boolean;
 }
+
+// avoids unnecessary resizing of SVGs
+export function setImageHeight(src: string, height: number): string {
+  if (src.endsWith(".svg")) {
+    return src;
+  }
+
+  return `${src}?h=${height}`;
+}
