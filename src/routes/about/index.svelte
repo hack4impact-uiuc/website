@@ -36,13 +36,13 @@
 	}
 
 	#about-intro-left {
-		width: 40%;
-		padding-right: 4vw;
+		width: 50%;
+		padding-right: 30px;
 	}
 
 	#about-intro-right {
-		width: 60%;
-		padding-left: 4vw;
+		width: 50%;
+		padding-left: 30px;
 	}
 
 	#team-photo {
