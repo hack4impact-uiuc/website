@@ -30,6 +30,10 @@ export interface Project {
   featured: boolean;
 }
 
+export interface Info {
+  chapterPicture: Image;
+}
+
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
   if (src.endsWith(".svg")) {
