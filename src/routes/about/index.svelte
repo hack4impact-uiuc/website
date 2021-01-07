@@ -30,23 +30,24 @@
 	}
 
 	.about-intro {
-		padding: 40px 0;
+		padding: 60px 0;
 		display: flex;
 		flex-direction: row;
 	}
 
 	#about-intro-left {
 		width: 40%;
-		padding: 5%;
+		padding-right: 4vw;
 	}
 
 	#about-intro-right {
 		width: 60%;
-		padding: 5%;
+		padding-left: 4vw;
 	}
 
 	#team-photo {
 		width: 100%;
+		border-radius: 4px;
 	}
 </style>
 
@@ -77,7 +78,7 @@
 			</p>
 		</div>
 		<div id="about-intro-right">
-			<img id="team-photo" src={setImageHeight(team.src, 720)} alt={team.alt} />
+			<img id="team-photo" src={setImageHeight(team.src, 900)} alt={team.alt} />
 		</div>
 	</div>
 </Section>
