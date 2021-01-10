@@ -6,7 +6,7 @@
 	export async function preload() {
 		const res = await this.fetch("featured.json");
 
-		const projects: Project[] = await res.json();
+		const projects: Project[] = (await res.json()).slice(0, 4);
 
 		return { projects };
 	}

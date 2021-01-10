@@ -5,6 +5,7 @@ import {
   ContentType,
 } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
 
 export class ContentWrapper {
   client: ContentfulClientApi;

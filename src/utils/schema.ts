@@ -22,7 +22,7 @@ export interface Project {
   nonprofitUrl: string;
   nonprofitLogo: Image;
   accentColor: string;
-  // fullDescription: richText??
+  fullDescription: string;
   productManager: Member[];
   techLead: Member[];
   productDesigner: Member[];

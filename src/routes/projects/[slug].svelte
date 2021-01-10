@@ -28,10 +28,7 @@
   :global(p) {
     font-size: 20px;
     opacity: 80%;
-  }
-
-  .nonprofit-container {
-    padding: 40px 0;
+    margin-top: 0;
   }
 </style>
 
@@ -40,9 +37,10 @@
 </svelte:head>
 
 <ProjectBanner {project} />
-<Section color="var(--gray-lighter)">
-  <div class="nonprofit-container">
-    <h2>Our Partner</h2>
-    <p>{project.nonprofitDescription}</p>
-  </div>
+<Section color="var(--gray-lighter)" padding="40px">
+  <h2>Our Partner</h2>
+  <p>{project.nonprofitDescription}</p>
+</Section>
+<Section padding="40px">
+  {@html project.fullDescription}
 </Section>

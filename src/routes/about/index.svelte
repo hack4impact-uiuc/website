@@ -30,7 +30,6 @@
 	}
 
 	.about-intro {
-		padding: 60px 0;
 		display: flex;
 		flex-direction: row;
 	}
@@ -55,7 +54,7 @@
 	<title>About Us | Hack4Impact UIUC</title>
 </svelte:head>
 
-<Section>
+<Section padding="60px">
 	<div class="about-intro">
 		<div id="about-intro-left">
 			<h1>About Us</h1>

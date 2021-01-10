@@ -1,6 +1,7 @@
 <script lang="ts">
   export let color: string = "#fff";
   export let id: string | undefined = undefined;
+  export let padding: string = "0";
 </script>
 
 <style>
@@ -15,7 +16,7 @@
 </style>
 
 <section {id} class="row-center" style="background-color: {color}">
-  <div class="section-content">
+  <div class="section-content" style="padding: {padding}">
     <slot />
   </div>
 </section>
