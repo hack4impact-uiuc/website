@@ -31,15 +31,15 @@
   }
 </style>
 
-<a href="projects/{project.slug}" rel="prefetch">
-  <div class="project-card">
-    <img
-      src={setImageHeight(project.nonprofitLogo.src, 100)}
-      alt={project.nonprofitLogo.alt} />
-    <h4>{project.name}</h4>
-    <p>{project.summary}</p>
+<div class="project-card">
+  <img
+    src={setImageHeight(project.nonprofitLogo.src, 100)}
+    alt={project.nonprofitLogo.alt} />
+  <h4>{project.name}</h4>
+  <p>{project.summary}</p>
+  <a href="projects/{project.slug}" rel="prefetch">
     <Button type="secondary-custom" arrow textColor={project.accentColor}>
       Learn More
     </Button>
-  </div>
-</a>
+  </a>
+</div>

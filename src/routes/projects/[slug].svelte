@@ -28,7 +28,6 @@
   :global(p) {
     font-size: 20px;
     opacity: 80%;
-    margin-top: 0;
   }
 </style>
 
