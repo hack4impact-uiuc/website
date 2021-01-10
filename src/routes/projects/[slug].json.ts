@@ -2,7 +2,7 @@ import type { Response, Request } from "express";
 import { contentWrapper } from "../../server";
 
 export async function get(req: Request, res: Response): Promise<void> {
-  const projects = await contentWrapper.get("uiucProject", {
+  const projects = await contentWrapper.get("project", {
     "fields.slug": req.params.slug,
   });
 

@@ -2,7 +2,7 @@ import type { Response, Request } from "express";
 import { contentWrapper } from "../server";
 
 export async function get(_: Request, res: Response): Promise<void> {
-  const projects = await contentWrapper.get("uiucProject");
+  const projects = await contentWrapper.get("project");
 
   for (let i = projects.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
