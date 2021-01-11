@@ -9,7 +9,6 @@
 <style>
   a {
     text-decoration: none;
-    width: 30%;
   }
   h4,
   p {
@@ -27,6 +26,7 @@
   }
 
   .project-card {
+    width: 30%;
     padding: 16px;
   }
 </style>

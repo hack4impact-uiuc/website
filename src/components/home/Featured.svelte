@@ -1,6 +1,6 @@
 <script lang="ts">
   import Section from "../Section.svelte";
-  import ProjectCard from "./ProjectCard.svelte";
+  import ProjectCard from "../projects/ProjectCard.svelte";
   import type { Project } from "../../utils/schema";
 
   export let projects: Project[];
