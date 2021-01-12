@@ -60,7 +60,7 @@ async function serialize<T>(entry: Entry<T>, schema: ContentType): Promise<T> {
   return res;
 }
 
-async function transformLink(link: any, type: string) {
+async function transformLink(link: any, type: string | undefined) {
   switch (type) {
     case "Asset":
       return { src: link.fields.file.url, alt: link.fields.title };
@@ -68,5 +68,8 @@ async function transformLink(link: any, type: string) {
     case "Entry":
       const schema = await this.client.getContentType(link.sys.contentType);
       return await serialize(link, schema);
+
+    case undefined:
+      return link;
   }
 }
