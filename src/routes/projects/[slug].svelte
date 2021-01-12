@@ -1,5 +1,7 @@
 <script context="module" lang="ts">
-  import ProjectBanner from "../../components/projects/ProjectBanner.svelte";
+  import DoubleBanner from "../../components/DoubleBanner.svelte";
+  import { pSBC } from "../../utils/color";
+  import { setImageHeight } from "../../utils/schema";
   import Section from "../../components/Section.svelte";
   import type { Project } from "../../utils/schema";
 
@@ -17,17 +19,27 @@
 </script>
 
 <style>
-  :global(h1) {
+  h1 {
     font-size: 56px;
   }
 
-  :global(h2) {
+  h2 {
     font-size: 32px;
   }
 
-  :global(p) {
+  p {
     font-size: 20px;
     opacity: 80%;
+  }
+
+  #project-summary {
+    opacity: 80%;
+  }
+
+  #nonprofit-logo {
+    height: 60px;
+    margin-bottom: 20px;
+    background-color: #fff;
   }
 </style>
 
@@ -35,7 +47,16 @@
   <title>{project.name} | Hack4Impact UIUC</title>
 </svelte:head>
 
-<ProjectBanner {project} />
+<DoubleBanner
+  leftColor={project.accentColor}
+  rightColor={pSBC(-0.2, project.accentColor)}>
+  <img
+    id="nonprofit-logo"
+    src={setImageHeight(project.nonprofitLogo.src, 100)}
+    alt={project.nonprofitLogo.alt} />
+  <h1>{project.name}</h1>
+  <h2 id="project-summary">{project.summary}</h2>
+</DoubleBanner>
 <Section color="var(--gray-lighter)" padding="40px">
   <h2>Our Partner</h2>
   <p>{project.nonprofitDescription}</p>

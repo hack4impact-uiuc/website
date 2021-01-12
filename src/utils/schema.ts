@@ -42,3 +42,16 @@ export function setImageHeight(src: string, height: number): string {
 
   return `${src}?h=${height}`;
 }
+
+export interface Semester {
+  season: string;
+  year: number;
+}
+
+export function parseSemester(semester: string): Semester {
+  const [season, yearString] = semester.split(" ");
+
+  const year = parseInt(yearString);
+
+  return { season, year };
+}
