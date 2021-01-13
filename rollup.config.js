@@ -38,6 +38,7 @@ export default {
           dev,
           hydratable: true,
         },
+        emitCss: false,
       }),
       url({
         sourceDir: path.resolve(__dirname, "src/node_modules/images"),
