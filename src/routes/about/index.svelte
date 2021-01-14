@@ -20,7 +20,7 @@
   <title>About Us | Hack4Impact UIUC</title>
 </svelte:head>
 
-<Section padding="60px">
+<Section id="intro" padding="60px">
   <div class="about-intro">
     <div id="about-intro-left">
       <h1>About Us</h1>
@@ -47,7 +47,7 @@
     </div>
   </div>
 </Section>
-<Section color="var(--gray-lighter" padding="40px">
+<Section id="values" color="var(--gray-lighter" padding="40px">
   <h2>Our Values</h2>
   <div id="values">
     <Value>

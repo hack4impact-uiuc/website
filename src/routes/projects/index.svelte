@@ -47,17 +47,6 @@
   export let semesters: string[];
 </script>
 
-<style>
-  .semester-section {
-    margin: 40px 0;
-  }
-
-  .semester-projects {
-    display: flex;
-    flex-wrap: wrap;
-  }
-</style>
-
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
 </svelte:head>
@@ -75,3 +64,14 @@
     </div>
   {/each}
 </Section>
+
+<style>
+  .semester-section {
+    margin: 40px 0;
+  }
+
+  .semester-projects {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
