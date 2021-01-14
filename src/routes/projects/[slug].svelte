@@ -1,8 +1,9 @@
 <script context="module" lang="ts">
   import DoubleBanner from "../../components/DoubleBanner.svelte";
+  import Member from "../../components/projects/Member.svelte";
+  import Section from "../../components/Section.svelte";
   import { pSBC } from "../../utils/color";
   import { setImageHeight } from "../../utils/schema";
-  import Section from "../../components/Section.svelte";
   import type { Project } from "../../utils/schema";
 
   export async function preload({ params }) {
@@ -48,6 +49,25 @@
 <Section id="project-description" longForm padding="40px">
   {@html project.fullDescription}
 </Section>
+<Section id="team" longForm padding="40px" color={project.accentColor}>
+  <div id="team-content">
+    <h2>Meet The Team</h2>
+    <div class="flex-wrap">
+      {#each project.productManager as member}
+        <Member {member} role="Product Manager" />
+      {/each}
+      {#each project.techLead as member}
+        <Member {member} role="Tech Lead" />
+      {/each}
+      {#each project.productDesigner as member}
+        <Member {member} role="Product Designer" />
+      {/each}
+      {#each project.softwareDevelopers as member}
+        <Member {member} role="Software Developer" />
+      {/each}
+    </div>
+  </div>
+</Section>
 
 <style>
   h1 {
@@ -71,5 +91,9 @@
     height: 60px;
     margin-bottom: 20px;
     background-color: #fff;
+  }
+
+  #team-content {
+    color: #fff;
   }
 </style>

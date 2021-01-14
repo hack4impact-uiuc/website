@@ -56,7 +56,7 @@
   {#each semesters as semester}
     <div id={semester} class="semester-section">
       <h2>{semester}</h2>
-      <div class="semester-projects">
+      <div class="flex-wrap">
         {#each projectMap[semester] as project}
           <ProjectCard {project} />
         {/each}
@@ -68,10 +68,5 @@
 <style>
   .semester-section {
     margin: 40px 0;
-  }
-
-  .semester-projects {
-    display: flex;
-    flex-wrap: wrap;
   }
 </style>
