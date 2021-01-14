@@ -1,6 +1,4 @@
 <script lang="ts">
-  // export let src: string;
-  // export let alt: string;
   export let leftColor: string = "#fff";
   export let rightColor: string = "#fff";
 </script>

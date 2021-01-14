@@ -36,11 +36,11 @@
     <h2 id="project-summary">{project.summary}</h2></span
   >
 </DoubleBanner>
-<Section color="var(--gray-lighter)" padding="40px">
+<Section longForm color="var(--gray-lighter)" padding="40px">
   <h2>Our Partner</h2>
   <p>{project.nonprofitDescription}</p>
 </Section>
-<Section padding="40px">
+<Section longForm padding="40px">
   {@html project.fullDescription}
 </Section>
 
