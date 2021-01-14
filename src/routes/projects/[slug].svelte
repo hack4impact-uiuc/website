@@ -18,6 +18,32 @@
   export let project: Project;
 </script>
 
+<svelte:head>
+  <title>{project.name} | Hack4Impact UIUC</title>
+</svelte:head>
+
+<DoubleBanner
+  leftColor={project.accentColor}
+  rightColor={pSBC(-0.2, project.accentColor)}
+>
+  <span slot="left"
+    ><img
+      id="nonprofit-logo"
+      src={setImageHeight(project.nonprofitLogo.src, 100)}
+      alt={project.nonprofitLogo.alt}
+    />
+    <h1>{project.name}</h1>
+    <h2 id="project-summary">{project.summary}</h2></span
+  >
+</DoubleBanner>
+<Section color="var(--gray-lighter)" padding="40px">
+  <h2>Our Partner</h2>
+  <p>{project.nonprofitDescription}</p>
+</Section>
+<Section padding="40px">
+  {@html project.fullDescription}
+</Section>
+
 <style>
   h1 {
     font-size: 56px;
@@ -42,25 +68,3 @@
     background-color: #fff;
   }
 </style>
-
-<svelte:head>
-  <title>{project.name} | Hack4Impact UIUC</title>
-</svelte:head>
-
-<DoubleBanner
-  leftColor={project.accentColor}
-  rightColor={pSBC(-0.2, project.accentColor)}>
-  <img
-    id="nonprofit-logo"
-    src={setImageHeight(project.nonprofitLogo.src, 100)}
-    alt={project.nonprofitLogo.alt} />
-  <h1>{project.name}</h1>
-  <h2 id="project-summary">{project.summary}</h2>
-</DoubleBanner>
-<Section color="var(--gray-lighter)" padding="40px">
-  <h2>Our Partner</h2>
-  <p>{project.nonprofitDescription}</p>
-</Section>
-<Section padding="40px">
-  {@html project.fullDescription}
-</Section>

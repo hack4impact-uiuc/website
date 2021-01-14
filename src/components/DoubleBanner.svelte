@@ -5,6 +5,21 @@
   export let rightColor: string = "#fff";
 </script>
 
+<section class="row-center">
+  <div
+    id="banner-left"
+    class="banner column-center"
+    style="background-color: {leftColor}"
+  >
+    <div id="banner-left-content">
+      <slot name="left" />
+    </div>
+  </div>
+  <div id="banner-right" class="banner" style="background-color: {rightColor}">
+    <slot name="right" />
+  </div>
+</section>
+
 <style>
   section {
     margin: 0;
@@ -37,18 +52,3 @@
     box-sizing: border-box;
   }
 </style>
-
-<section class="row-center">
-  <div
-    id="banner-left"
-    class="banner column-center"
-    style="background-color: {leftColor}">
-    <div id="banner-left-content">
-      <slot />
-    </div>
-  </div>
-  <div
-    id="banner-right"
-    class="banner"
-    style="background-color: {rightColor}" />
-</section>
