@@ -5,7 +5,6 @@ import {
   ContentType,
 } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
 
 export class ContentWrapper {
   client: ContentfulClientApi;
@@ -66,7 +65,9 @@ export class ContentWrapper {
   async transformLink(link: any, type: string | undefined) {
     switch (type) {
       case "Asset":
-        return { src: link.fields.file.url, alt: link.fields.title };
+        return link.src !== undefined // why do I need to do this?
+          ? link
+          : { src: link.fields.file.url, alt: link.fields.title };
 
       case "Entry":
         const schema = await this.client.getContentType(

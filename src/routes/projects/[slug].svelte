@@ -53,18 +53,23 @@
   <div id="team-content">
     <h2>Meet The Team</h2>
     <div class="flex-wrap">
-      {#each project.productManager as member}
-        <Member {member} role="Product Manager" />
-      {/each}
-      {#each project.techLead as member}
-        <Member {member} role="Tech Lead" />
-      {/each}
-      {#each project.productDesigner as member}
-        <Member {member} role="Product Designer" />
-      {/each}
-      {#each project.softwareDevelopers as member}
-        <Member {member} role="Software Developer" />
-      {/each}
+      {#if project.productManager}
+        {#each project.productManager as member}
+          <Member {member} role="Product Manager" />
+        {/each}{/if}
+      {#if project.techLead}
+        {#each project.techLead as member}
+          <Member {member} role="Tech Lead" />
+        {/each}{/if}
+      {#if project.productDesigner}
+        {#each project.productDesigner as member}
+          <Member {member} role="Product Designer" />
+        {/each}{/if}
+      {#if project.softwareDevelopers}
+        {#each project.softwareDevelopers as member}
+          <Member {member} role="Software Developer" />
+        {/each}
+      {/if}
     </div>
   </div>
 </Section>
