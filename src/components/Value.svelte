@@ -17,7 +17,6 @@
   }
 
   p {
-    font-size: 20px;
     opacity: 80%;
   }
 

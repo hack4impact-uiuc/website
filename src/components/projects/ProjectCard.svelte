@@ -27,10 +27,6 @@
   a {
     text-decoration: none;
   }
-  h4,
-  p {
-    font-size: 20px;
-  }
 
   p {
     opacity: 80%;

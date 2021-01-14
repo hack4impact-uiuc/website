@@ -75,16 +75,7 @@
 </Section>
 
 <style>
-  h1 {
-    font-size: 56px;
-  }
-
-  h2 {
-    font-size: 32px;
-  }
-
   p {
-    font-size: 20px;
     opacity: 80%;
   }
 
