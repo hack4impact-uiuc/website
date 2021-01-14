@@ -40,6 +40,8 @@
   img {
     max-height: 50px;
     max-width: 80%;
+    object-position: left;
+    object-fit: contain;
   }
 
   .image-container {
