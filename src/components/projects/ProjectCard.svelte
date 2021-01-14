@@ -6,6 +6,23 @@
   export let project: Project;
 </script>
 
+<div class="project-card">
+  <div class="image-container">
+    <img
+      src={setImageHeight(project.nonprofitLogo.src, 100)}
+      alt={project.nonprofitLogo.alt}
+    />
+  </div>
+
+  <h4>{project.name}</h4>
+  <p>{project.summary}</p>
+  <a href="projects/{project.slug}" rel="prefetch">
+    <Button type="secondary-custom" arrow textColor={project.accentColor}>
+      Learn More
+    </Button>
+  </a>
+</div>
+
 <style>
   a {
     text-decoration: none;
@@ -21,8 +38,13 @@
   }
 
   img {
-    height: 50px;
-    margin-bottom: 10px;
+    max-height: 50px;
+    max-width: 80%;
+  }
+
+  .image-container {
+    height: 60px;
+    width: 100%;
   }
 
   .project-card {
@@ -30,16 +52,3 @@
     padding: 16px;
   }
 </style>
-
-<div class="project-card">
-  <img
-    src={setImageHeight(project.nonprofitLogo.src, 100)}
-    alt={project.nonprofitLogo.alt} />
-  <h4>{project.name}</h4>
-  <p>{project.summary}</p>
-  <a href="projects/{project.slug}" rel="prefetch">
-    <Button type="secondary-custom" arrow textColor={project.accentColor}>
-      Learn More
-    </Button>
-  </a>
-</div>
