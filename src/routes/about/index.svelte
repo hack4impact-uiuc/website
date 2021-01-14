@@ -13,6 +13,8 @@
 </script>
 
 <script lang="ts">
+  import Button from "../../components/Button.svelte";
+
   export let team: Image;
 </script>
 
@@ -93,9 +95,24 @@
     </Value>
   </div>
 </Section>
+<Section id="work" color="var(--blue)" padding="40px">
+  <div id="work-content">
+    <h2>How We Work</h2>
+    <p>
+      Hack4Impact believes in technology’s huge potential to empower activists
+      and humanitarians to create lasting and impactful social change. We work
+      to foster the wider adoption of software as a tool for social good.
+    </p>
+    <a class="button-link" href="about/work" rel="prefetch"
+      ><Button type="primary-white">Learn More</Button></a
+    >
+  </div>
+</Section>
 
-<a href="about/work" rel="prefetch">How We Work</a>
-<a href="about/team" rel="prefetch">Meet the Team</a>
+<Section id="team" padding="40px">
+  <h2>Meet The Team</h2>
+  <a href="about/team" rel="prefetch">Meet the Team</a>
+</Section>
 
 <style>
   h1 {
@@ -133,5 +150,9 @@
 
   #values {
     padding: 20px 0;
+  }
+
+  #work-content {
+    color: #fff;
   }
 </style>
