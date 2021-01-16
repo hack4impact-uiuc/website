@@ -6,12 +6,25 @@ export interface Image {
 export interface Member {
   name: string;
   picture: Image;
-  role: string;
+  role: Role;
   linkedin: string;
   active: boolean;
   graduationYear: number;
 }
 
+type Role =
+  | "Co-Founder"
+  | "Co-Director"
+  | "Community Director"
+  | "External Director"
+  | "Tech Director"
+  | "Product Manager"
+  | "Tech Lead"
+  | "Academy Lead"
+  | "Product Research Lead"
+  | "Product Designer"
+  | "Software Developer"
+  | "Academy Member";
 export interface Project {
   name: string;
   subname: string;
