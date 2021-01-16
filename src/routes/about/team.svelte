@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import Button from "../../components/Button.svelte";
   import Member from "../../components/Member.svelte";
   import Section from "../../components/Section.svelte";
   import type { Member as MemberType } from "../../utils/schema";
@@ -36,25 +37,54 @@
 <script lang="ts">
   export let active: MemberType[];
   export let alumni: MemberType[];
+
+  let showAllAlumni: boolean = false;
+
+  function toggleAlumni(): void {
+    showAllAlumni = true;
+    console.log("here");
+  }
 </script>
 
 <svelte:head>
   <title>The Team | Hack4Impact UIUC</title>
 </svelte:head>
 
-<Section padding="40px">
-  <h1>The Team</h1>
+<Section>
+  <h1 id="title">The Team</h1>
+</Section>
+
+<Section id="current" padding="30px">
   <section id="current">
     <h2>Current Members</h2>
-    <div class="flex-wrap">
+    <div class="flex-wrap members">
       {#each active as member}<Member {member} />{/each}
     </div>
   </section>
+</Section>
 
+<Section id="alumni" padding="30px">
   <section id="alumni">
     <h2>Alumni</h2>
-    <div class="flex-wrap">
-      {#each alumni as member}<Member {member} />{/each}
+    <div class="flex-wrap members">
+      {#each showAllAlumni ? alumni : alumni.slice(0, 12) as member}<Member
+          {member}
+        />{/each}
     </div>
+    {#if !showAllAlumni && alumni.length > 12}
+      <div id="show-all" class="row-center">
+        <Button type="secondary" onClick={toggleAlumni}>Show All</Button>
+      </div>
+    {/if}
   </section>
 </Section>
+
+<style>
+  #title {
+    margin-top: 40px;
+  }
+
+  #show-all {
+    margin-top: 40px;
+  }
+</style>

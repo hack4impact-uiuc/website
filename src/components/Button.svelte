@@ -10,10 +10,25 @@
   // backgroundColor and textColor props only applied on custom button types
   export let backgroundColor: string = "#fff";
   export let textColor: string = "var(--text-dark)";
-  
+
   // append hover-animated arrow
   export let arrow: boolean | undefined = false;
+
+  export let onClick: () => void | undefined = undefined;
 </script>
+
+<button
+  class="button-{type}{arrow ? ' arrow' : ''}"
+  on:click={onClick}
+  style={type.endsWith("custom")
+    ? `background-color: ${
+        type.startsWith("primary") ? backgroundColor : "transparent"
+      }; color: ${textColor}; border-color: ${
+        type.startsWith("primary") ? backgroundColor : textColor
+      }`
+    : undefined}>
+  <slot />
+</button>
 
 <style>
   button {
@@ -57,23 +72,16 @@
   }
 
   .arrow {
-    padding-right: 2.2em
+    padding-right: 2.2em;
   }
 
   .arrow::after {
     content: "\2192";
     padding: 0 0.3em 0 0.5em;
     transition: padding var(--animation);
-
   }
 
   .arrow:hover::after {
     padding: 0 0 0 0.8em;
   }
 </style>
-
-<button
-  class="button-{type}{arrow ? ' arrow' : ''}"
-  style={type.endsWith('custom') ? `background-color: ${type.startsWith('primary') ? backgroundColor : 'transparent'}; color: ${textColor}; border-color: ${type.startsWith('primary') ? backgroundColor : textColor}` : undefined}>
-  <slot />
-</button>
