@@ -1,11 +1,12 @@
 <script context="module" lang="ts">
+  import Member from "../../components/Member.svelte";
   import Section from "../../components/Section.svelte";
-  import type { Member } from "../../utils/schema";
+  import type { Member as MemberType } from "../../utils/schema";
 
   export async function preload() {
     const res = await this.fetch(`server/members.json`);
 
-    const members: Member[] = await res.json();
+    const members: MemberType[] = await res.json();
 
     const roles = [
       "Co-Founder",
@@ -33,8 +34,8 @@
 </script>
 
 <script lang="ts">
-  export let active: Member[];
-  export let alumni: Member[];
+  export let active: MemberType[];
+  export let alumni: MemberType[];
 </script>
 
 <svelte:head>
@@ -43,8 +44,17 @@
 
 <Section padding="40px">
   <h1>The Team</h1>
-  <h2>Current Members</h2>
-  {#each active as member}<p>{member.name}</p>{/each}
-  <h2>Alumni</h2>
-  {#each alumni as member}<p>{member.name}</p>{/each}
+  <section id="current">
+    <h2>Current Members</h2>
+    <div class="flex-wrap">
+      {#each active as member}<Member {member} />{/each}
+    </div>
+  </section>
+
+  <section id="alumni">
+    <h2>Alumni</h2>
+    <div class="flex-wrap">
+      {#each alumni as member}<Member {member} />{/each}
+    </div>
+  </section>
 </Section>
