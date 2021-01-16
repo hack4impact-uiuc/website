@@ -7,7 +7,7 @@
   import type { Project } from "../utils/schema";
 
   export async function preload() {
-    const res = await this.fetch("featured.json");
+    const res = await this.fetch("server/featured.json");
 
     const projects: Project[] = (await res.json()).slice(0, 4);
 

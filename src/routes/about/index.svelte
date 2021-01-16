@@ -5,7 +5,7 @@
   import type { Image, Info } from "../../utils/schema";
 
   export async function preload() {
-    const res = await this.fetch("info.json");
+    const res = await this.fetch("server/info.json");
     const info: Info = await res.json();
 
     return { team: info.chapterPicture };

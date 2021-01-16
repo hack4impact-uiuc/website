@@ -11,7 +11,7 @@
   }
 
   export async function preload() {
-    const res = await this.fetch(`projects.json`);
+    const res = await this.fetch(`server/projects.json`);
 
     const projects: Project[] = await res.json();
 

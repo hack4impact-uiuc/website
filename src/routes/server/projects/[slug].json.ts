@@ -1,5 +1,5 @@
 import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
+import { contentWrapper } from "../../../server";
 
 export async function get(req: Request, res: Response): Promise<void> {
   const projects = await contentWrapper.get("project", {

@@ -8,7 +8,7 @@
 
   export async function preload({ params }) {
     const { slug } = params;
-    const res = await this.fetch(`projects/${slug}.json`);
+    const res = await this.fetch(`server/projects/${slug}.json`);
 
     const project: Project = await res.json();
     return { project };
