@@ -24,8 +24,7 @@
   }
 
   .member {
-    width: 20%;
-    margin: 20px 2.5%;
+    margin: 20px 0;
     justify-content: left;
   }
 </style>

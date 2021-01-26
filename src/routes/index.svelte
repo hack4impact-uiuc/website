@@ -52,7 +52,7 @@
   <div id="featured-section">
     <h1>Featured Work</h1>
     {#if projects.length > 0}<FeaturedBanner project={projects[0]} />{/if}
-    <div class="row-center">
+    <div class="project-grid">
       {#each projects.slice(1) as project}
         <ProjectCard {project} />
       {/each}
@@ -78,5 +78,10 @@
   #featured-section h1 {
     font-size: 32px;
     margin-bottom: 20px;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 </style>

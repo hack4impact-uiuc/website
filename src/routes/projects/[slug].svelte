@@ -52,7 +52,7 @@
 <Section id="team" longForm padding="40px" color={project.accentColor}>
   <div id="team-content">
     <h2>Meet The Team</h2>
-    <div class="flex-wrap">
+    <div class="team-grid">
       {#if project.productManager}
         {#each project.productManager as member}
           <Member {member} role="Product Manager" />
@@ -91,5 +91,10 @@
 
   #team-content {
     color: #fff;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 </style>

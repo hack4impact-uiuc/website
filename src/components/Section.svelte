@@ -8,7 +8,7 @@
 <section {id} class="row-center" style="background-color: {color}">
   <div
     class="section-content{longForm ? ' long-form' : ''}"
-    style="padding: {padding}"
+    style="padding: {padding} 0"
   >
     <slot />
   </div>

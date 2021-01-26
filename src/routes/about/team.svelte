@@ -57,7 +57,7 @@
 <Section id="current" padding="30px">
   <section id="current">
     <h2>Current Members</h2>
-    <div class="flex-wrap members">
+    <div class="member-grid">
       {#each active as member}<Member {member} />{/each}
     </div>
   </section>
@@ -66,7 +66,7 @@
 <Section id="alumni" padding="30px">
   <section id="alumni">
     <h2>Alumni</h2>
-    <div class="flex-wrap members">
+    <div class="member-grid">
       {#each showAllAlumni ? alumni : alumni.slice(0, 12) as member}<Member
           {member}
         />{/each}
@@ -86,5 +86,10 @@
 
   #show-all {
     margin-top: 40px;
+  }
+
+  .member-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 </style>

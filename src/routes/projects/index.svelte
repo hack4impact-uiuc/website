@@ -83,7 +83,7 @@
       {#if projectMap[semester].featured !== undefined}<FeaturedBanner
           project={projectMap[semester].featured}
         />{/if}
-      <div class="flex-wrap">
+      <div class="project-grid">
         {#each projectMap[semester].projects as project}
           <ProjectCard {project} />
         {/each}
@@ -95,5 +95,10 @@
 <style>
   .semester-section {
     margin: 40px 0;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 </style>
