@@ -23,9 +23,9 @@
         --gray-lighter: #ebeef2;
         --text-dark: #031425;
 
-        --header-width: 1440px;
-        --content-width: 1200px;
-        --long-form-width: 900px;
+        --header-width: min(1440px, 90vw);
+        --content-width: min(1200px, 80vw);
+        --long-form-width: min(900px, 70vw);
 
         --animation: 0.2s ease;
       }
@@ -48,9 +48,9 @@
 
       @media (min-width: 2560px) {
         :root {
-          --header-width: 2160px;
-          --content-width: 1800px;
-          --long-form-width: 1200px;
+          --header-width: min(2160px, 90vw);
+          --content-width: min(1800px, 80vw);
+          --long-form-width: min(1200px, 70vw);
         }
       }
 

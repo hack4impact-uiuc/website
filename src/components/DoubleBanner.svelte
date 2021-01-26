@@ -44,7 +44,7 @@
   }
 
   #banner-left-content {
-    padding-left: max(calc(100% - calc(var(--content-width) / 2)), 50px);
+    padding-left: calc(100% - calc(var(--content-width) / 2));
     padding-right: 20%;
     width: 100%;
     box-sizing: border-box;
