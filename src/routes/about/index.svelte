@@ -49,7 +49,7 @@
     </div>
   </div>
 </Section>
-<Section id="values" color="var(--gray-lighter" padding="40px">
+<Section id="values" color="var(--gray-lighter)" padding="40px">
   <h2>Our Values</h2>
   <div id="values">
     <Value>
