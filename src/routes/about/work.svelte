@@ -1,4 +1,5 @@
 <script lang="ts" context="module">
+  import Button from "../../components/Button.svelte";
   import RoleCard from "../../components/RoleCard.svelte";
   import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
@@ -107,6 +108,39 @@
     </RoleCard>
   </div>
 </Section>
+<Section padding="40px" id="academy">
+  <h2>Academy</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
+    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua.
+  </p>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+  <div id="divider" />
+</Section>
+<Section padding="40px" id="faq" color="var(--gray-lighter)">
+  <h2>Frequently Asked Questions</h2>
+</Section>
+<Section padding="40px" id="join" color="var(--blue)" longForm>
+  <div id="join-container">
+    <div>
+      <h2>Join Us</h2>
+      <p>Lorem Ipsum.</p>
+    </div>
+    <div class="row-center">
+      <a href="join/students" rel="prefetch">
+        <Button type="primary-white">Apply</Button>
+      </a>
+      <a href="about/team" rel="prefetch">
+        <Button type="secondary-white">Meet the Team</Button>
+      </a>
+    </div>
+  </div>
+</Section>
 
 <style>
   #timeline-steps {
@@ -118,5 +152,27 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 40px;
     row-gap: 40px;
+  }
+
+  #divider {
+    width: 100%;
+    height: 60px;
+    background-color: var(--gray-light);
+  }
+
+  #join-container {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #join-container p {
+    opacity: 80%;
+    margin: 0;
+  }
+
+  #join-container a {
+    margin: 0 10px;
   }
 </style>

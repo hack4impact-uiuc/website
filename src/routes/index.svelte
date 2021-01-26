@@ -35,16 +35,12 @@
       social change.
     </p>
     <div id="banner-button-row">
-      <div class="banner-button">
-        <a class="button-link" href="projects">
-          <Button type="primary-white">See Our Work</Button>
-        </a>
-      </div>
-      <div class="banner-button">
-        <a class="button-link" href="join">
-          <Button type="secondary-white">Work With Us</Button>
-        </a>
-      </div>
+      <a class="button-link" href="projects">
+        <Button type="primary-white">See Our Work</Button>
+      </a>
+      <a class="button-link" href="join">
+        <Button type="secondary-white">Work With Us</Button>
+      </a>
     </div></span
   >
 </DoubleBanner>
@@ -70,9 +66,9 @@
     font-size: 24px;
   }
 
-  .banner-button {
+  a {
     margin: 0 20px 20px 0;
-    display: inline-block;
+    /* display: inline-block; */
   }
 
   #featured-section h1 {

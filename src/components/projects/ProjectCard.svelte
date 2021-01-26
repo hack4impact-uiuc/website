@@ -46,7 +46,6 @@
   }
 
   .project-card {
-    /* width: 30%; */
     padding: 16px;
   }
 </style>
