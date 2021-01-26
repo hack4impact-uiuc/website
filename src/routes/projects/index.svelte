@@ -100,5 +100,7 @@
   .project-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 50px;
+    row-gap: 50px;
   }
 </style>

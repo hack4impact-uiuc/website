@@ -24,7 +24,6 @@
   }
 
   .member {
-    margin: 20px 0;
     justify-content: left;
   }
 </style>

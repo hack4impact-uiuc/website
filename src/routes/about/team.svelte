@@ -91,5 +91,7 @@
   .member-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 60px;
+    row-gap: 30px;
   }
 </style>
