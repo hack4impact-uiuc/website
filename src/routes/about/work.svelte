@@ -1,8 +1,21 @@
 <script lang="ts" context="module">
+  import Accordion from "../../components/Accordion.svelte";
   import Button from "../../components/Button.svelte";
   import RoleCard from "../../components/RoleCard.svelte";
   import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
+  import type { FAQ } from "../../utils/schema";
+
+  export async function preload() {
+    const res = await this.fetch(`server/work-faq.json`);
+    const faqs: FAQ[] = await res.json();
+
+    return { faqs };
+  }
+</script>
+
+<script lang="ts">
+  export let faqs: FAQ[];
 </script>
 
 <svelte:head>
@@ -124,6 +137,12 @@
 </Section>
 <Section padding="40px" id="faq" color="var(--gray-lighter)">
   <h2>Frequently Asked Questions</h2>
+  {#each faqs as faq}
+    <Accordion>
+      <span slot="title">{faq.question}</span>
+      <span slot="contents">{faq.answer}</span>
+    </Accordion>
+  {/each}
 </Section>
 <Section padding="40px" id="join" color="var(--blue)" longForm>
   <div id="join-container">

@@ -47,6 +47,17 @@ export interface Info {
   chapterPicture: Image;
 }
 
+export interface Semester {
+  season: string;
+  year: number;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+  category: string;
+}
+
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
   if (src.endsWith(".svg")) {
@@ -54,11 +65,6 @@ export function setImageHeight(src: string, height: number): string {
   }
 
   return `${src}?h=${height}`;
-}
-
-export interface Semester {
-  season: string;
-  year: number;
 }
 
 export function parseSemester(semester: string): Semester {
