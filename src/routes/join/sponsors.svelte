@@ -1,5 +1,6 @@
 <script lang="ts">
   import Section from '../../components/Section.svelte';
+  import Info from '../../components/Info.svelte';
 </script>
 
 <script lang="ts" context="module">
@@ -37,6 +38,12 @@
       {/each}
     </div>
   </div>
+  <Info 
+    title="Check Out Our Work"
+    content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    to="/projects"
+    linkText="Learn More" 
+  />
 </Section>
 
 <style>
