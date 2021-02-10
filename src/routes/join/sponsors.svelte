@@ -1,6 +1,7 @@
 <script lang="ts">
   import Section from '../../components/Section.svelte';
   import Info from '../../components/Info.svelte';
+  import Testimonial from '../../components/Testimonial.svelte';
 </script>
 
 <script lang="ts" context="module">
@@ -43,6 +44,15 @@
     content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     to="/projects"
     linkText="Learn More" 
+  />
+</Section>
+
+<Section color="var(--gray-lighter)">
+  <Testimonial
+    quote="“Hack4Impact believes in technology’s huge potential to empower activists and humanitarians to create lasting and impactful social change. We work to foster the wider adoption of software as a tool for social good.”"
+    name="Point of Contact Name"
+    desc="Position, Non-Profit"
+    imageSrc="https://picsum.photos/400"
   />
 </Section>
 
