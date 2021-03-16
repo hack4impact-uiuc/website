@@ -14,7 +14,7 @@
     </div>
   </div>
   <div id="banner-right" class="banner" style="background-color: {rightColor}">
-    <slot name="right" />
+    <div id="banner-right-content"><slot name="right" /></div>
   </div>
 </section>
 
@@ -47,6 +47,14 @@
     padding-left: calc(100% - calc(var(--content-width) / 2));
     padding-right: 20%;
     width: 100%;
+    /* height: 100%; */
+    box-sizing: border-box;
+  }
+  #banner-right-content {
+    padding-right: calc(100% - calc(var(--content-width) / 2));
+    padding-left: 20%;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
   }
 </style>
