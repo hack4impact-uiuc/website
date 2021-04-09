@@ -71,7 +71,6 @@
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
-  let y: number;
   let currentSemester: number = 0;
 
   const setSemester = (newSection: number) => currentSemester = newSection
@@ -81,8 +80,6 @@
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
 </svelte:head>
-
-<svelte:window bind:scrollY={y}/>
 
 <Section padding="60px">
   <h1>Projects</h1>
