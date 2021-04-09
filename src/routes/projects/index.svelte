@@ -71,15 +71,18 @@
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
-  let currentSemester = 0;
+  let y: number;
+  let currentSemester: number = 0;
 
-  const setSemester = (newSection) => currentSemester = newSection
-  const idFromSemester = (semester) => semester.split(' ').join('-').toLowerCase()
+  const setSemester = (newSection: number) => currentSemester = newSection
+  const idFromSemester = (semester: string) => semester.split(' ').join('-').toLowerCase()
 </script>
 
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
 </svelte:head>
+
+<svelte:window bind:scrollY={y}/>
 
 <Section padding="60px">
   <h1>Projects</h1>
@@ -90,7 +93,7 @@
           <li>
             <a 
               href={`projects/#${idFromSemester(semester)}`}
-              on:click={() => setSemester(idx)}
+              on:click={() => {setSemester(idx)}}
               class:active={currentSemester === idx}>
               {semester}
             </a>
@@ -101,9 +104,9 @@
     <article>
       {#each semesters as semester, idx}
         <section
-          id={idFromSemester(semester)}
           class="semester-section"
         >
+          <span class="scroll-anchor" id={idFromSemester(semester)} />
           <h2>{semester}</h2>
           {#if projectMap[semester].featured !== undefined}<FeaturedBanner
               project={projectMap[semester].featured}
@@ -123,6 +126,12 @@
 <style>
   .semester-section {
     margin: 40px 0;
+    position: relative;
+  }
+
+  .semester-section .scroll-anchor {
+    position: absolute;
+    top: -87px;
   }
 
   .semester-section:first-child {
