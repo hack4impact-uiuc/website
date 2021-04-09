@@ -11,6 +11,7 @@
     const res = await this.fetch(`server/projects/${slug}.json`);
 
     const project: Project = await res.json();
+
     return { project };
   }
 </script>
@@ -97,5 +98,10 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 40px;
+  }
+
+  img {
+    max-width: 80%;
+    max-height: 600px;
   }
 </style>
