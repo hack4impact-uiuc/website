@@ -64,7 +64,7 @@ export class ContentWrapper {
                     } = node.data.target.fields;
                     return `
                       <div class="column-center long-form-embed">
-                          <img src=${file.url}?w=1200 alt=${title} " \>
+                          <img src="${file.url}?w=1200" alt="${title}" \>
                           ${
                             description !== undefined
                               ? `<span>${description}<\span>`
