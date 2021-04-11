@@ -43,6 +43,13 @@
       </a>
     </div></span
   >
+  <span slot="right" id="graphic-container" class="column-center">
+    <img
+      src="graphic.svg"
+      alt="Graphic of two people with programming-based visuals."
+      id="graphic"
+    />
+  </span>
 </DoubleBanner>
 <Section id="featured-projects" padding="30px">
   <div id="featured-section">
@@ -80,5 +87,14 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     column-gap: 50px;
+  }
+
+  #graphic-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  #graphic {
+    height: 90%;
   }
 </style>
