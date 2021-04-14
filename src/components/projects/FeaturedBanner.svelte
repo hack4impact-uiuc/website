@@ -30,7 +30,7 @@
 
   .featured-project {
     color: #fff;
-    padding: 20px;
+    padding: 40px 20px;
     margin: 20px 0;
   }
 
