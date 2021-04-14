@@ -163,7 +163,7 @@
     margin-right: 45px;
     position: sticky;
     align-self: start;
-    top: 20vh;
+    top: 15vh;
   }
 
   @media only screen and (max-width: 1000px) {

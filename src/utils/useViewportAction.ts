@@ -12,14 +12,16 @@ function ensureIntersectionObserver() {
   });
 }
 
-export default function viewport(element) {
-  ensureIntersectionObserver();
+export default function viewport(element: HTMLSpanElement) {
+  if (element) {
+    ensureIntersectionObserver();
 
-  intersectionObserver.observe(element);
+    intersectionObserver.observe(element);
 
-  return {
-    destroy() {
-      intersectionObserver.unobserve(element);
-    },
-  };
+    return {
+      destroy() {
+        intersectionObserver.unobserve(element);
+      },
+    };
+  }
 }
