@@ -34,6 +34,7 @@
         >
         {#each semesters.slice(0, 3) as semester}<a
             href="/projects#{semester}"
+            sapper:noscroll
             sapper:prefetch>{semester}</a
           >{/each}
       </div>
