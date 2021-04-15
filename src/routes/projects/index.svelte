@@ -2,67 +2,16 @@
   import Section from "../../components/Section.svelte";
   import FeaturedBanner from "../../components/projects/FeaturedBanner.svelte";
   import ProjectCard from "../../components/projects/ProjectCard.svelte";
-  import { parseSemester } from "../../utils/schema";
+  import { generateProjectsInfo } from "../../utils/projects";
+  import type { SemesterProjects } from "../../utils/projects";
   import type { Project } from "../../utils/schema";
-
-  interface SemesterProjects {
-    featured?: Project;
-    projects: Project[];
-  }
 
   export async function preload() {
     const res = await this.fetch(`server/projects.json`);
 
     const projects: Project[] = await res.json();
 
-    const projectArrayMap: Record<string, Project[]> = {};
-    const projectMap: Record<string, SemesterProjects> = {};
-    const semesters: string[] = [];
-
-    projects.forEach((project) =>
-      project.semester.forEach((semester) => {
-        if (projectArrayMap[semester] !== undefined) {
-          projectArrayMap[semester].push(project);
-        } else {
-          projectArrayMap[semester] = [project];
-          semesters.push(semester);
-        }
-      })
-    );
-
-    semesters.forEach((semester) => {
-      const projects = projectArrayMap[semester];
-      const featuredProjects = projects.filter((project) => project.featured);
-
-      const featured: Project | undefined =
-        featuredProjects.length > 0
-          ? featuredProjects[
-              Math.floor(Math.random() * featuredProjects.length)
-            ]
-          : undefined;
-
-      projectMap[semester] = {
-        featured,
-        projects: projects.filter((project) => project !== featured),
-      };
-    });
-
-    semesters.sort((a, b) => {
-      const semA = parseSemester(a);
-      const semB = parseSemester(b);
-
-      if (semA.year === semB.year) {
-        if (semA.season === semB.season) {
-          return 0;
-        }
-
-        return semB.season < semA.season ? 1 : -1;
-      }
-
-      return semB.year - semA.year;
-    });
-
-    return { projectMap, semesters };
+    return generateProjectsInfo(projects);
   }
 </script>
 
