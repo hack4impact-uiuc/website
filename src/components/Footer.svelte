@@ -2,12 +2,15 @@
   export let semesters: string[];
 </script>
 
-<footer>
-  <div id="footer-contents" class="row-center">
-    <div>
-      <a class="row-center" rel="prefetch" href="."
-        ><img src="/logo.svg" alt="Hack4Impact logo" /></a
-      >
+<footer class="row-center">
+  <div id="footer-contents">
+    <div id="inquiries">
+      <div id="logo-container">
+        <a rel="prefetch" href="."
+          ><img src="/logo.svg" alt="Hack4Impact logo" /></a
+        >
+      </div>
+
       For all inquiries of partnership or sponsorship, please contact us at
       <a class="blue-text" href="mailto:uiuc@hack4impact.org"
         >uiuc@hack4impact.org</a
@@ -57,11 +60,23 @@
 
   #footer-contents {
     width: 100%;
-    max-width: var(--header-width);
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #inquiries {
+    width: 360px;
+  }
+
+  #logo-container {
+    width: 100%;
   }
 
   img {
     height: 2.5em;
+    margin-bottom: 20px;
   }
 
   a {
