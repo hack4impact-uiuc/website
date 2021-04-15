@@ -168,10 +168,10 @@
       <p>Lorem Ipsum.</p>
     </div>
     <div class="row-center">
-      <a href="join/students" rel="prefetch">
+      <a href="join/students" sapper:prefetch>
         <Button type="primary-white">Apply</Button>
       </a>
-      <a href="about/team" rel="prefetch">
+      <a href="about/team" sapper:prefetch>
         <Button type="secondary-white">Meet the Team</Button>
       </a>
     </div>

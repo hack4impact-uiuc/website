@@ -6,7 +6,7 @@
   <div id="footer-contents">
     <div id="inquiries">
       <div id="logo-container">
-        <a rel="prefetch" href="."
+        <a sapper:prefetch href="."
           ><img src="/logo.svg" alt="Hack4Impact logo" /></a
         >
       </div>
