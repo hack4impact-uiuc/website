@@ -36,47 +36,51 @@
     <Value>
       <span slot="name">Product Research (3-4 Months)</span>
       <span slot="description"
-        >Hack4Impact exists for both nonprofits and students. We connect student
-        software developers with nonprofits and other socially responsible
-        businesses to develop powerful new tools for social change. This enables
-        nonprofits to further their mission and better engage their clients.</span
+        >Product Research aims to deepen our impact in the communities that our
+        work serves by pushing the boundaries of our products’ quality and
+        fostering a community for intentional product thinking and exploration.
+        Our team sources and scopes compelling and impactful projects for the
+        following semester in a timely manner, while also gaining insight into
+        the product experience without needing to be a full-time PM.</span
       >
     </Value>
     <Value>
       <span slot="name">Development</span>
       <span slot="description"
-        >Hack4Impact exists for both nonprofits and students. We connect student
-        software developers with nonprofits and other socially responsible
-        businesses to develop powerful new tools for social change. This enables
-        nonprofits to further their mission and better engage their clients.</span
+        >Development starts in the first few weeks of the semester, with
+        developers/designers either creating a new product from scratch or
+        working off an existing codebase in order to add features or further
+        refine it to meet our nonprofit partners' goals and feedback.</span
       >
     </Value>
     <Value>
       <span slot="name">MVP & Feedback</span>
       <span slot="description"
-        >Hack4Impact exists for both nonprofits and students. We connect student
-        software developers with nonprofits and other socially responsible
-        businesses to develop powerful new tools for social change. This enables
-        nonprofits to further their mission and better engage their clients.</span
+        >Teams present their mid-semester Minimum Viable Products (MVPs)
+        internally to the rest of the chapter, where they are able to receive
+        feedback from their peers on the problem the team is tackling as well as
+        the way in which they aim to solve it.</span
       >
     </Value>
     <Value>
-      <span slot="name">Development</span>
+      <span slot="name">Product Showcase</span>
       <span slot="description"
-        >Hack4Impact exists for both nonprofits and students. We connect student
-        software developers with nonprofits and other socially responsible
-        businesses to develop powerful new tools for social change. This enables
-        nonprofits to further their mission and better engage their clients.</span
+        >Development continues after MVP with more challenging or lower-priority
+        features, as well as iterating on feedback from MVP itself. At the end
+        of the semester, teams present at Product Showcase, where their finished
+        deliverables are shown to the rest of the organization as well as to a
+        public audience.</span
       >
     </Value>
     <Value>
       <span slot="name">Hand-Off</span>
       <span slot="description"
-        >Hack4Impact exists for both nonprofits and students. We connect student
-        software developers with nonprofits and other socially responsible
-        businesses to develop powerful new tools for social change. This enables
-        nonprofits to further their mission and better engage their clients.</span
-      >
+        >Soon after Product Showcase, teams will hand off their work to their
+        nonprofit partner. For some projects, work will resume in a future
+        semester, in which case this initial handoff may focus on generating
+        feedback from our partners as well as potentially serving as an initial
+        pilot.
+      </span>
     </Value>
   </div>
 </Section>
