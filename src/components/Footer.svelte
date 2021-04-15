@@ -45,7 +45,7 @@
         <a class="blue-text link-section-header" href="/join">Work With Us</a>
         <a href="/join/nonprofits" sapper:prefetch>Nonprofits</a>
         <a href="/join/students" sapper:prefetch>Students</a>
-        <a href="/join/sponsors" sapper:prefetch>Students</a>
+        <a href="/join/sponsors" sapper:prefetch>Sponsors</a>
       </div>
     </div>
   </div>
