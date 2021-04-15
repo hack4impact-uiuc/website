@@ -17,36 +17,44 @@
       >
     </div>
     <div class="links">
-      <div class="link-section">
-        <span class="blue-text link-section-header">Connect With Us</span>
-        <a href="https://www.facebook.com/h4iuiuc">Facebook</a>
-        <a href="https://github.com/hack4impact-uiuc">GitHub</a>
+      <ul>
+        <li class="blue-text link-section-header">Connect With Us</li>
+        <li><a href="https://www.facebook.com/h4iuiuc">Facebook</a></li>
+        <li><a href="https://github.com/hack4impact-uiuc">GitHub</a></li>
 
-        <a href="https://www.instagram.com/hack4impactuiuc/">Instagram</a>
-      </div>
-      <div class="link-section">
-        <a class="blue-text link-section-header" href="/about">About Us</a>
-        <a href="/about/work" sapper:prefetch>How We Work</a>
-        <a href="/about/team" sapper:prefetch>Meet The Team</a>
-      </div>
-      <div class="link-section">
-        <a
-          class="blue-text link-section-header"
-          href="/projects"
-          sapper:prefetch>Projects</a
-        >
-        {#each semesters.slice(0, 3) as semester}<a
-            href="/projects#{semester}"
-            sapper:noscroll
-            sapper:prefetch>{semester}</a
-          >{/each}
-      </div>
-      <div class="link-section">
-        <a class="blue-text link-section-header" href="/join">Work With Us</a>
-        <a href="/join/nonprofits" sapper:prefetch>Nonprofits</a>
-        <a href="/join/students" sapper:prefetch>Students</a>
-        <a href="/join/sponsors" sapper:prefetch>Sponsors</a>
-      </div>
+        <li>
+          <a href="https://www.instagram.com/hack4impactuiuc/">Instagram</a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a class="blue-text link-section-header" href="/about">About Us</a>
+        </li>
+        <li><a href="/about/work" sapper:prefetch>How We Work</a></li>
+        <li><a href="/about/team" sapper:prefetch>Meet The Team</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a
+            class="blue-text link-section-header"
+            href="/projects"
+            sapper:prefetch>Projects</a
+          >
+        </li>
+        {#each semesters.slice(0, 3) as semester}<li>
+            <a href="/projects#{semester}" sapper:noscroll sapper:prefetch
+              >{semester}</a
+            >
+          </li>{/each}
+      </ul>
+      <ul>
+        <li>
+          <a class="blue-text link-section-header" href="/join">Work With Us</a>
+        </li>
+        <li><a href="/join/nonprofits" sapper:prefetch>Nonprofits</a></li>
+        <li><a href="/join/students" sapper:prefetch>Students</a></li>
+        <li><a href="/join/sponsors" sapper:prefetch>Sponsors</a></li>
+      </ul>
     </div>
   </div>
 </footer>
@@ -98,14 +106,15 @@
     justify-content: space-evenly;
   }
 
-  .link-section {
-    display: flex;
-    flex-direction: column;
+  ul {
+    /* display: flex;
+    flex-direction: column; */
     width: 160px;
+    list-style-type: none;
   }
 
-  .link-section a {
-    margin-top: 10px;
+  li {
+    margin-bottom: 10px;
   }
 
   .link-section-header {
