@@ -173,8 +173,17 @@
       left: 0;
       padding: 1.5em 0;
       background-color: #fff;
-      border-bottom: 1px solid var(--gray-light);
       z-index: 1;
+    }
+
+    aside::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: calc((100vw - var(--content-width)) / -2);
+      height: 2px;
+      background: var(--gray-light);
+      width: 100vw;
     }
 
     article {
