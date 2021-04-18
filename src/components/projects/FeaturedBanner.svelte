@@ -4,7 +4,7 @@
   export let project: Project;
 </script>
 
-<a href="projects/{project.slug}" rel="prefetch">
+<a href="projects/{project.slug}" sapper:prefetch>
   <div class="featured-project" style="background-color: {project.accentColor}">
     <h4>{project.name}</h4>
     <h2>{project.summary}</h2>

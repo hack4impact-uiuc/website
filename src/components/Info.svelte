@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from './Button.svelte'
+  import Button from "./Button.svelte";
 
   // title, content, and route (for button)
   export let title: string;
@@ -13,7 +13,7 @@
   <p>
     {content}
   </p>
-  <a href={to} rel="prefetch">
+  <a href={to} sapper:prefetch>
     <Button
       type="secondary-custom"
       backgroundColor="var(--blue-darker)"

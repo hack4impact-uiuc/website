@@ -103,7 +103,7 @@
       and humanitarians to create lasting and impactful social change. We work
       to foster the wider adoption of software as a tool for social good.
     </p>
-    <a class="button-link" href="about/work" rel="prefetch"
+    <a class="button-link" href="about/work" sapper:prefetch
       ><Button type="primary-white">Learn More</Button></a
     >
   </div>
@@ -111,7 +111,7 @@
 
 <Section id="team" padding="40px">
   <h2>Meet The Team</h2>
-  <a href="about/team" rel="prefetch">Meet the Team</a>
+  <a href="about/team" sapper:prefetch>Meet the Team</a>
 </Section>
 
 <style>
