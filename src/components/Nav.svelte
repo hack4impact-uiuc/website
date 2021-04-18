@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { stores } from '@sapper/app';
-
   export let segment: string;
+  let oldSegment;
 
   let showMobileMenu = false;
-  const { page } = stores();
 
-  page.subscribe(() => {
-    showMobileMenu = false;
-  })
+  $: {
+    if (segment !== oldSegment) {
+      showMobileMenu = false;
+    }
+  }
 </script>
 
 <nav class="row-center">
