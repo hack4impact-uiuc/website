@@ -1,5 +1,14 @@
 <script lang="ts">
   export let segment: string;
+  let oldSegment;
+
+  let showMobileMenu = false;
+
+  $: {
+    if (segment !== oldSegment) {
+      showMobileMenu = false;
+    }
+  }
 </script>
 
 <nav class="row-center">
@@ -7,7 +16,8 @@
     <a class="row-center" sapper:prefetch href="."
       ><img src="/logo.svg" alt="Hack4Impact logo" /></a
     >
-    <div class="row-center" id="navlinks">
+    <button on:click={() => showMobileMenu = !showMobileMenu} class="hide-on-desktop">{showMobileMenu ? '×' : '≡'}</button>
+    <div class="row-center" class:closedOnMobile={!showMobileMenu} id="navlinks">
       <a
         class="navlink"
         sapper:prefetch
@@ -45,7 +55,6 @@
 <style>
   nav {
     font-weight: 300;
-
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.12);
     position: sticky;
     top: 0;
@@ -107,5 +116,56 @@
   .navlink:not([aria-current]):hover::before {
     opacity: 100%;
     transition: 0.2s;
+  }
+
+  .hide-on-desktop {
+    display: none;
+  }
+
+  button.hide-on-desktop {
+    background: none;
+    border: none;
+    font-size: 24px;
+    transform: scaleX(1.1);
+  }
+
+  @media only screen and (max-width: 792px) {
+    
+    /* utility */
+
+    .hide-on-desktop {
+      display: block;
+    }
+
+    .closedOnMobile {
+      display: none;
+    }
+
+    /* modified */
+
+    nav {
+      height: 4em;
+    }
+    #navlinks {
+      position: fixed;
+      flex-direction: column;
+      align-items: stretch;
+      top: 4em;
+      background-color: white;
+      width: 100%;
+      left: 0;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .navlink {
+      display: block;
+    }
+
+    .navlink:not([aria-current])::before {
+      opacity: 100%;
+      height: 1px;
+      background-color: var(--gray-lighter);
+    }
+
   }
 </style>
