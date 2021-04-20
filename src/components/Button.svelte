@@ -33,6 +33,7 @@
 <style>
   button {
     border-radius: 4px;
+    box-sizing: border-box;
     cursor: pointer;
     opacity: 100%;
     transition: 0.2s;
