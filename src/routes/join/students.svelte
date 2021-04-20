@@ -2,6 +2,8 @@
   import Section from '../../components/Section.svelte';
   import Value from "../../components/Value.svelte";
   import Accordion from '../../components/Accordion.svelte';
+  import Button from '../../components/Button.svelte';
+  import Row from '../../components/Row.svelte';
 
   import type { FAQ } from "../../utils/schema";
 </script>
@@ -93,6 +95,21 @@
   {/each}
 </Section>
 
+<Section padding="60px" color="var(--blue)">
+  <div class="cta-wrapper">
+  <Row>
+    <div class="light-text cta">
+      <h2>Get Involved</h2>
+      <p>Join Hack4Impact.</p>
+    </div>
+    <div class="button-wrapper">
+      <Button type="primary-white">Apply</Button>
+      <Button type="secondary-white">How We Work</Button>
+    </div>
+  </Row>
+</div>
+</Section>
+
 <style>
   p {
     opacity: 80%;
@@ -110,5 +127,41 @@
   
   #process-steps {
     margin-top: 41px;
+  }
+
+  .light-text {
+    color: #fff;
+  }
+
+  .cta-wrapper {
+    padding: 0 85px;
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta > h2 {
+    margin: 0;
+  }
+
+  .cta > p {
+    margin-bottom: 0;
+  }
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .button-wrapper :global(*) {
+    width: 12em;
+  }
+
+  .button-wrapper :global(*) + :global(*) {
+    margin-left: 18px;
   }
 </style>
