@@ -1,6 +1,6 @@
 <script lang="ts">
   export let segment: string;
-  let oldSegment;
+  let oldSegment: string;
 
   let showMobileMenu = false;
 
