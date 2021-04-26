@@ -4,7 +4,7 @@
 </script>
 
 
-<article class={(reverse ?? false) ? 'reverse' : ''} style="--row-gap: {gap ?? 0}px">
+<article class:reverse={reverse} style="--row-gap: {gap === undefined ? 0 : gap}px">
     <slot />
 </article>
 
