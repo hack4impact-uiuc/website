@@ -4,7 +4,7 @@
 </script>
 
 
-<article class:reverse={reverse} style="--row-gap: {gap ?? 0}px">
+<article class:reversed={!!reverse} style="--row-gap: {gap ? gap : 0}px">
     <slot />
 </article>
 
@@ -13,7 +13,7 @@
         display: flex;
     } 
 
-    article.reverse {
+    article.reversed {
         flex-direction: row-reverse;
     }
 
