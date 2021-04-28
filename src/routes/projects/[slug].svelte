@@ -2,6 +2,7 @@
   import DoubleBanner from "../../components/DoubleBanner.svelte";
   import Member from "../../components/projects/Member.svelte";
   import Section from "../../components/Section.svelte";
+  import Testimonial from "../../components/Testimonial.svelte";
   import { pSBC } from "../../utils/color";
   import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";
@@ -47,9 +48,21 @@
   <h2>Our Partner</h2>
   <p>{project.nonprofitDescription}</p>
 </Section>
+
 <Section id="project-description" longForm padding="40px">
   {@html project.fullDescription}
 </Section>
+{#if project.testimonial !== undefined && project.testimonialSourceName !== undefined && project.testimonialSourceDescription !== undefined}
+  <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)"
+    ><div class="column-center">
+      <Testimonial
+        quote={project.testimonial}
+        name={project.testimonialSourceName}
+        desc={project.testimonialSourceDescription}
+      />
+    </div></Section
+  >
+{/if}
 <Section id="team" longForm padding="40px" color={project.accentColor}>
   <div id="team-content">
     <h2>Meet The Team</h2>

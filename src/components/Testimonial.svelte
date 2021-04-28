@@ -1,23 +1,33 @@
 <script lang="ts">
   // title, content, and route (for button)
   export let quote: string;
-  export let imageSrc: string;
+  export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
 </script>
 
 <div class="wrap">
   <div class="testimonial">
-    <div class="left">
-      <p>{quote}</p>
-      <caption>
-        {name}<br />
-        <span class="desc">{desc}</span>
-      </caption>
-    </div>
-    <div class="right">
-      <img src={imageSrc} alt={name + "'s photo"} />
-    </div>
+    {#if imageSrc !== undefined}
+      <div class="left">
+        <p>{quote}</p>
+        <caption>
+          {name}<br />
+          <span class="desc">{desc}</span>
+        </caption>
+      </div>
+      <div class="right">
+        <img src={imageSrc} alt={name + "'s photo"} />
+      </div>
+    {:else}
+      <div class="center">
+        <p>{quote}</p>
+        <caption>
+          {name}<br />
+          <span class="desc">{desc}</span>
+        </caption>
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -39,24 +49,28 @@
 
   .left {
     flex: 4;
-    display: block;
-    box-sizing: border-box;
     padding-right: 50px;
   }
 
-  .left > p {
+  .left,
+  .center {
+    display: block;
+    box-sizing: border-box;
+  }
+
+  p {
     text-align: justify;
     text-justify: newspaper;
     font-size: 23px;
   }
 
-  .left > caption {
+  caption {
     text-align: right;
     font-size: 20px;
     display: block;
   }
 
-  .left > caption > span.desc {
+  caption > span.desc {
     font-size: 16px;
   }
 
