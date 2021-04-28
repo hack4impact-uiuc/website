@@ -25,6 +25,7 @@ type Role =
   | "Product Designer"
   | "Software Developer"
   | "Academy Member";
+
 export interface Project {
   name: string;
   subname: string;
@@ -41,6 +42,9 @@ export interface Project {
   productDesigner: Member[];
   softwareDevelopers: Member[];
   featured: boolean;
+  testimonial?: string;
+  testimonialSourceName: string;
+  testimonialSourceDescription: string;
 }
 
 export interface Info {
