@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-  import Section from '../../components/Section.svelte';
+  import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
-  import Accordion from '../../components/Accordion.svelte';
-  import Button from '../../components/Button.svelte';
-  import Row from '../../components/Row.svelte';
+  import Accordion from "../../components/Accordion.svelte";
+  import Button from "../../components/Button.svelte";
+  import Row from "../../components/Row.svelte";
 
   import type { FAQ } from "../../utils/schema";
 </script>
@@ -17,7 +17,9 @@
 
   let applicationSteps: ApplicationStep[] = Array(6)
     .fill(Object())
-    .map(() => ({date: new Date(), content: "lorem ipsum"} as ApplicationStep));
+    .map(
+      () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
+    );
 
   interface Position {
     name: string;
@@ -25,23 +27,28 @@
     link: string;
   }
 
-  let positions: Position[] = [{
-    name: "Software Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-    link: "#"
-  },
-  {
-    name: "Product Designer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-    link: "#"
-  },
-  {
-    name: "Tech Director",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-    link: "#"
-  }]
+  let positions: Position[] = [
+    {
+      name: "Software Developer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
+      link: "#",
+    },
+    {
+      name: "Product Designer",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
+      link: "#",
+    },
+    {
+      name: "Tech Director",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
+      link: "#",
+    },
+  ];
 
-  let faqs: FAQ[] = Array(6).fill({question: "Question", answer: "Lorem"});
+  let faqs: FAQ[] = Array(6).fill({ question: "Question", answer: "Lorem" });
 </script>
 
 <svelte:head>
@@ -52,18 +59,20 @@
   <h1>Students</h1>
   <h2>We Believe In Using Tech For Good</h2>
   <p>
-    Students are a core part of what makes Hack4Impact. Joining Hack4Impact is the perfect way to give back while developing new skills and making long-lasting friendships.
+    Students are a core part of what makes Hack4Impact. Joining Hack4Impact is
+    the perfect way to give back while developing new skills and making
+    long-lasting friendships.
   </p>
 </Section>
 
-<Section color="var(--blue)" padding="60px" >
+<Section color="var(--blue)" padding="60px">
   <span class="light-text wrap">
     <h2>Open Positions</h2>
     {#each positions as position}
-    <Accordion theme="light">
-      <span slot="title">{position.name}</span>
-      <span slot="contents">{position.description}</span>
-    </Accordion>
+      <Accordion theme="light">
+        <span slot="title">{position.name}</span>
+        <span slot="contents">{position.description}</span>
+      </Accordion>
     {/each}
   </span>
 </Section>
@@ -72,15 +81,17 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step, idx}
-    <Value>
-      <span slot="name">{step.name ?? `Step ${idx + 1}`}</span>
-      <span slot="description"
-        >We evaluate the trade offs of our decisions, choose a direction to
-        head, and crush our goals. Whether it be personal or professional
-        growth, we avoid mindless movement and instead purposefully act. We work
-        with intention.
-      </span>
-    </Value>
+      <Value>
+        <span slot="name"
+          >{step.name !== undefined ? step.name : `Step ${idx + 1}`}</span
+        >
+        <span slot="description"
+          >We evaluate the trade offs of our decisions, choose a direction to
+          head, and crush our goals. Whether it be personal or professional
+          growth, we avoid mindless movement and instead purposefully act. We
+          work with intention.
+        </span>
+      </Value>
     {/each}
   </div>
 </Section>
@@ -97,17 +108,17 @@
 
 <Section padding="60px" color="var(--blue)">
   <div class="cta-wrapper">
-  <Row>
-    <div class="light-text cta">
-      <h2>Get Involved</h2>
-      <p>Join Hack4Impact.</p>
-    </div>
-    <div class="button-wrapper">
-      <Button type="primary-white">Apply</Button>
-      <Button type="secondary-white">How We Work</Button>
-    </div>
-  </Row>
-</div>
+    <Row>
+      <div class="light-text cta">
+        <h2>Get Involved</h2>
+        <p>Join Hack4Impact.</p>
+      </div>
+      <div class="button-wrapper">
+        <Button type="primary-white">Apply</Button>
+        <Button type="secondary-white">How We Work</Button>
+      </div>
+    </Row>
+  </div>
 </Section>
 
 <style>
@@ -124,7 +135,7 @@
     display: block;
     margin: 0 auto;
   }
-  
+
   #process-steps {
     margin-top: 41px;
   }

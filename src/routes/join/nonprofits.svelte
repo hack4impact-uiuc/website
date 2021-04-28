@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-  import Section from '../../components/Section.svelte';
+  import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
-  import Testimonial from '../../components/Testimonial.svelte';
-  import Accordion from '../../components/Accordion.svelte';
-  import Row from '../../components/Row.svelte';
-  import Button from '../../components/Button.svelte';
+  import Testimonial from "../../components/Testimonial.svelte";
+  import Accordion from "../../components/Accordion.svelte";
+  import Row from "../../components/Row.svelte";
+  import Button from "../../components/Button.svelte";
 
   import type { FAQ } from "../../utils/schema";
 </script>
@@ -18,9 +18,11 @@
 
   let applicationSteps: ApplicationStep[] = Array(6)
     .fill(Object())
-    .map(() => ({date: new Date(), content: "lorem ipsum"} as ApplicationStep));
+    .map(
+      () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
+    );
 
-  let faqs: FAQ[] = Array(6).fill({question: "Question", answer: "Lorem"});
+  let faqs: FAQ[] = Array(6).fill({ question: "Question", answer: "Lorem" });
 </script>
 
 <svelte:head>
@@ -33,15 +35,24 @@
   <Row gap={58}>
     <div>
       <h3>Web & Mobile Applications</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
     </div>
     <div>
       <h3>Web & Mobile Applications</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
     </div>
     <div>
       <h3>Web & Mobile Applications</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
     </div>
   </Row>
 </Section>
@@ -59,11 +70,15 @@
   <Row gap={84}>
     <div>
       <h2>How We Work</h2>
-      <p>Hack4Impact believes in technology’s huge potential to empower activists and humanitarians to create lasting and impactful social change. We work to foster the wider adoption of software as a tool for social good.</p>
+      <p>
+        Hack4Impact believes in technology’s huge potential to empower activists
+        and humanitarians to create lasting and impactful social change. We work
+        to foster the wider adoption of software as a tool for social good.
+      </p>
       <Button type="primary">Learn More</Button>
     </div>
     <figure>
-      <img src="https://picsum.photos/630/320" alt="">
+      <img src="https://picsum.photos/630/320" alt="" />
     </figure>
   </Row>
 </Section>
@@ -72,15 +87,17 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step, idx}
-    <Value>
-      <span slot="name">{step.name ?? `Step ${idx + 1}`}</span>
-      <span slot="description"
-        >We evaluate the trade offs of our decisions, choose a direction to
-        head, and crush our goals. Whether it be personal or professional
-        growth, we avoid mindless movement and instead purposefully act. We work
-        with intention.
-      </span>
-    </Value>
+      <Value>
+        <span slot="name"
+          >{step.name !== undefined ? step.name : `Step ${idx + 1}`}</span
+        >
+        <span slot="description"
+          >We evaluate the trade offs of our decisions, choose a direction to
+          head, and crush our goals. Whether it be personal or professional
+          growth, we avoid mindless movement and instead purposefully act. We
+          work with intention.
+        </span>
+      </Value>
     {/each}
   </div>
 </Section>
@@ -97,17 +114,17 @@
 
 <Section padding="60px" color="var(--blue)">
   <div class="cta-wrapper">
-  <Row>
-    <div class="light-text cta">
-      <h2>Get Involved</h2>
-      <p>Join Hack4Impact.</p>
-    </div>
-    <div class="button-wrapper">
-      <Button type="primary-white">Apply</Button>
-      <Button type="secondary-white">How We Work</Button>
-    </div>
-  </Row>
-</div>
+    <Row>
+      <div class="light-text cta">
+        <h2>Get Involved</h2>
+        <p>Join Hack4Impact.</p>
+      </div>
+      <div class="button-wrapper">
+        <Button type="primary-white">Apply</Button>
+        <Button type="secondary-white">How We Work</Button>
+      </div>
+    </Row>
+  </div>
 </Section>
 
 <style>
