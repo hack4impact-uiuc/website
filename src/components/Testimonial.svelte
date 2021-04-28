@@ -1,7 +1,7 @@
 <script lang="ts">
   // title, content, and route (for button)
   export let quote: string;
-  export let imageSrc: string;
+  export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
 </script>
@@ -15,9 +15,11 @@
         <span class="desc">{desc}</span>
       </caption>
     </div>
-    <div class="right">
-      <img src={imageSrc} alt={name + "'s photo"} />
-    </div>
+    {#if imageSrc !== undefined}
+      <div class="right">
+        <img src={imageSrc} alt={name + "'s photo"} />
+      </div>
+    {/if}
   </div>
 </div>
 
