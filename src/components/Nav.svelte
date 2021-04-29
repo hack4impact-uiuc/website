@@ -1,6 +1,6 @@
 <script lang="ts">
   export let segment: string;
-  let oldSegment;
+  let oldSegment: string;
 
   let showMobileMenu = false;
 
@@ -16,8 +16,15 @@
     <a class="row-center" sapper:prefetch href="."
       ><img src="/logo.svg" alt="Hack4Impact logo" /></a
     >
-    <button on:click={() => showMobileMenu = !showMobileMenu} class="hide-on-desktop">{showMobileMenu ? '×' : '≡'}</button>
-    <div class="row-center" class:closedOnMobile={!showMobileMenu} id="navlinks">
+    <button
+      on:click={() => (showMobileMenu = !showMobileMenu)}
+      class="hide-on-desktop">{showMobileMenu ? "×" : "≡"}</button
+    >
+    <div
+      class="row-center"
+      class:closedOnMobile={!showMobileMenu}
+      id="navlinks"
+    >
       <a
         class="navlink"
         sapper:prefetch
@@ -40,14 +47,38 @@
           : undefined}
         href="projects"><h2>Projects</h2></a
       >
-      <a
-        class="navlink"
-        sapper:prefetch
+      <span
+        class="navlink dropdown"
+        tabindex="0"
         aria-current={segment && segment.startsWith("join")
           ? "page"
           : undefined}
-        href="join"><h2>Work With Us</h2></a
       >
+        <h2>Work With Us <span id="caret">&#9660;</span></h2>
+        <div class="dropdown-contents">
+          <a
+            sapper:prefetch
+            aria-current={segment && segment.startsWith("join/nonprofits")
+              ? "page"
+              : undefined}
+            href="join/nonprofits">Nonprofits</a
+          >
+          <a
+            sapper:prefetch
+            aria-current={segment && segment.startsWith("join/sponsors")
+              ? "page"
+              : undefined}
+            href="join/sponsors">Sponsors</a
+          >
+          <a
+            sapper:prefetch
+            aria-current={segment && segment.startsWith("join/students")
+              ? "page"
+              : undefined}
+            href="join/students">Students</a
+          >
+        </div>
+      </span>
     </div>
   </div>
 </nav>
@@ -122,6 +153,46 @@
     display: none;
   }
 
+  .dropdown > h2 {
+    user-select: none;
+  }
+
+  .dropdown .dropdown-contents {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    top: 4em;
+    z-index: -1;
+    left: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .dropdown:focus .dropdown-contents,
+  .dropdown:focus-within .dropdown-contents,
+  .dropdown:hover .dropdown-contents {
+    visibility: visible;
+  }
+
+  .dropdown-contents a {
+    display: block;
+    text-align: center;
+    padding: 1em 0;
+    text-decoration: none;
+    transition: color 0.2s;
+    color: var(--text-dark);
+  }
+
+  .dropdown-contents a:hover {
+    color: var(--blue);
+  }
+
+  #caret {
+    display: inline-block;
+    transform: scaleY(0.6);
+    margin-left: 0.15em;
+  }
+
   button.hide-on-desktop {
     background: none;
     border: none;
@@ -130,7 +201,6 @@
   }
 
   @media only screen and (max-width: 792px) {
-    
     /* utility */
 
     .hide-on-desktop {
@@ -167,5 +237,17 @@
       background-color: var(--gray-lighter);
     }
 
+    .dropdown .dropdown-contents {
+      visibility: visible;
+    }
+
+    .dropdown-contents a {
+      text-align: left;
+      padding: 1.5em 1.5em;
+    }
+
+    #caret {
+      display: none;
+    }
   }
 </style>

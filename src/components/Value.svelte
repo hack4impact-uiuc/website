@@ -31,4 +31,8 @@
   .value {
     margin: 20px 0;
   }
+
+  .value > span:first-child {
+    align-self: flex-start;
+  }
 </style>

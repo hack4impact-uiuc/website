@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+  export let theme: "light" | "dark" | undefined = undefined;
+
   let open: boolean = false;
 
   function toggle() {
@@ -10,7 +12,7 @@
   }
 </script>
 
-<button class="accordion" on:click={toggle}>
+<button class="accordion" on:click={toggle} class:light={theme === "light"}>
   <h3>{open ? "−" : "+"} <slot name="title" /></h3>
 </button>
 {#if open}
@@ -39,5 +41,13 @@
   h3 {
     color: var(--blue-darker);
     margin: 0;
+  }
+
+  button.light > h3 {
+    color: var(--gray-lighter);
+  }
+
+  .accordion.light {
+    border-color: var(--gray-lighter);
   }
 </style>
