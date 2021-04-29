@@ -61,7 +61,7 @@
             aria-current={segment && segment.startsWith("join/nonprofits")
               ? "page"
               : undefined}
-            href="join/nonprofits">Non-Profits</a
+            href="join/nonprofits">Nonprofits</a
           >
           <a
             sapper:prefetch

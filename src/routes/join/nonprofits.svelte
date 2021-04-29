@@ -26,11 +26,11 @@
 </script>
 
 <svelte:head>
-  <title>Non-Profits | Hack4Impact UIUC</title>
+  <title>Nonprofits | Hack4Impact UIUC</title>
 </svelte:head>
 
 <Section padding="60px">
-  <h1>Non-Profits</h1>
+  <h1>Nonprofits</h1>
   <h2>Our Services</h2>
   <Row gap={58}>
     <div>
@@ -61,7 +61,7 @@
   <Testimonial
     quote="“Hack4Impact believes in technology’s huge potential to empower activists and humanitarians to create lasting and impactful social change. We work to foster the wider adoption of software as a tool for social good.”"
     name="Point of Contact Name"
-    desc="Position, Non-Profit"
+    desc="Position, Nonprofit"
     imageSrc="https://picsum.photos/400"
   />
 </Section>
