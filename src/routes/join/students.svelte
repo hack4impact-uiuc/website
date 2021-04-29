@@ -6,6 +6,13 @@
   import Row from "../../components/Row.svelte";
 
   import type { FAQ } from "../../utils/schema";
+
+  export async function preload() {
+    const res = await this.fetch(`server/apply-faq.json`);
+    const faqs: FAQ[] = await res.json();
+
+    return { faqs };
+  }
 </script>
 
 <script lang="ts">
@@ -48,7 +55,7 @@
     },
   ];
 
-  let faqs: FAQ[] = Array(6).fill({ question: "Question", answer: "Lorem" });
+  export let faqs: FAQ[];
 </script>
 
 <svelte:head>
