@@ -81,6 +81,7 @@
 
   .right > img {
     width: 100%;
+    min-height: 290px;
     border-radius: 50%;
   }
 </style>

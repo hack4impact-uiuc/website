@@ -141,6 +141,7 @@
 
   figure > img {
     width: 100%;
+    min-height: 320px;
     border-radius: 4px;
   }
 
