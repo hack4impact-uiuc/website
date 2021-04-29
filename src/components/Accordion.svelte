@@ -29,7 +29,7 @@
     background-color: transparent;
     border: none;
     outline: none;
-    border-bottom: 1px solid var(--blue-darker);
+    border-bottom: 1px solid var(--blue);
     text-align: left;
     padding: 20px 0;
   }
@@ -39,7 +39,7 @@
   }
 
   h3 {
-    color: var(--blue-darker);
+    color: var(--blue);
     margin: 0;
   }
 
