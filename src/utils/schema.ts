@@ -6,13 +6,13 @@ export interface Image {
 export interface Member {
   name: string;
   picture: Image;
-  role: Role;
+  role: RoleName;
   linkedin: string;
   active: boolean;
   graduationYear: number;
 }
 
-type Role =
+type RoleName =
   | "Co-Founder"
   | "Co-Director"
   | "Community Director"
@@ -60,6 +60,12 @@ export interface FAQ {
   question: string;
   answer: string;
   category: string;
+}
+
+export interface Role {
+  name: RoleName;
+  description: string;
+  open: boolean;
 }
 
 // avoids unnecessary resizing of SVGs
