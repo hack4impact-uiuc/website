@@ -160,7 +160,7 @@
   .dropdown .dropdown-contents {
     visibility: hidden;
     position: absolute;
-    width: min(100vw, 100%);
+    width: 100%;
     background-color: #fff;
     top: 4em;
     z-index: -1;
@@ -239,6 +239,11 @@
 
     .dropdown .dropdown-contents {
       visibility: visible;
+    }
+
+    .dropdown-contents a {
+      text-align: left;
+      padding: 1.5em 1.5em;
     }
 
     #caret {
