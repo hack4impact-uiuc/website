@@ -7,6 +7,13 @@
   import Button from "../../components/Button.svelte";
 
   import type { FAQ } from "../../utils/schema";
+
+  export async function preload() {
+    const res = await this.fetch(`server/work-faq.json`);
+    const faqs: FAQ[] = await res.json();
+
+    return { faqs };
+  }
 </script>
 
 <script lang="ts">
@@ -22,7 +29,7 @@
       () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
     );
 
-  let faqs: FAQ[] = Array(6).fill({ question: "Question", answer: "Lorem" });
+  export let faqs: FAQ[];
 </script>
 
 <svelte:head>
