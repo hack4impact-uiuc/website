@@ -141,14 +141,17 @@
 <Section padding="40px" id="academy">
   <h2>Academy</h2>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
+    Academy is our program for training less technically-experienced members
+    (typically freshmen) to become full-fledged Software Developers the
+    following semester.
   </p>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua.
+    In the first half of the semester, Academy Members go through a rigorous web
+    development bootcamp consisting of lessons and take-home assignments that
+    will familiarize them with the tech stack we commonly use for our nonprofit
+    projects. After that, the Academy team dedicates the second half of the
+    semester to building a full-stack web application of the team's choosing
+    using the lessons learned earlier in the semester.
   </p>
   <div id="divider" />
 </Section>
