@@ -5,13 +5,19 @@
   import Button from "../../components/Button.svelte";
   import Row from "../../components/Row.svelte";
 
-  import type { FAQ } from "../../utils/schema";
+  import type { FAQ, Role } from "../../utils/schema";
 
   export async function preload() {
-    const res = await this.fetch(`server/apply-faq.json`);
-    const faqs: FAQ[] = await res.json();
+    const [faqs, openRoles] = await Promise.all([
+      this.fetch("server/apply-faq.json").then((res) => res.json()) as Promise<
+        FAQ[]
+      >,
+      this.fetch("server/open-roles.json").then((res) => res.json()) as Promise<
+        Role[]
+      >,
+    ]);
 
-    return { faqs };
+    return { faqs, openRoles };
   }
 </script>
 
@@ -28,34 +34,8 @@
       () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
     );
 
-  interface Position {
-    name: string;
-    description: string;
-    link: string;
-  }
-
-  let positions: Position[] = [
-    {
-      name: "Software Developer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-      link: "#",
-    },
-    {
-      name: "Product Designer",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-      link: "#",
-    },
-    {
-      name: "Tech Director",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam cum adipisci cumque quo consequatur minus deleniti atque voluptate eligendi fuga repudiandae, eum consequuntur quisquam quidem iste ipsam. In, corporis qui.",
-      link: "#",
-    },
-  ];
-
   export let faqs: FAQ[];
+  export let openRoles: Role[];
 </script>
 
 <svelte:head>
@@ -72,13 +52,13 @@
   </p>
 </Section>
 
-<Section color="var(--blue)" padding="60px">
+<Section id="open-positions" color="var(--blue)" padding="60px">
   <span class="light-text wrap">
     <h2>Open Positions</h2>
-    {#each positions as position}
+    {#each openRoles as openRole}
       <Accordion theme="light">
-        <span slot="title">{position.name}</span>
-        <span slot="contents">{position.description}</span>
+        <span slot="title">{openRole.name}</span>
+        <span slot="contents">{@html openRole.description}</span>
       </Accordion>
     {/each}
   </span>
@@ -145,6 +125,10 @@
 
   #process-steps {
     margin-top: 41px;
+  }
+
+  :global(#open-positions p) {
+    font-size: 16px;
   }
 
   .light-text {
