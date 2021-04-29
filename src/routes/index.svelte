@@ -34,15 +34,10 @@
       Uniting students to build well-engineered and impactful products for
       social change.
     </p>
-    <div id="banner-button-row">
-      <a class="button-link" href="projects">
-        <Button type="primary-white">See Our Work</Button>
-      </a>
-      <a class="button-link" href="join">
-        <Button type="secondary-white">Work With Us</Button>
-      </a>
-    </div></span
-  >
+    <a class="button-link" href="projects">
+      <Button type="primary-white">See Our Work</Button>
+    </a>
+  </span>
   <span slot="right" id="graphic-container" class="column-center">
     <img
       src="graphic.svg"

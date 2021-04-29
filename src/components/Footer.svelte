@@ -49,7 +49,7 @@
       </ul>
       <ul>
         <li>
-          <a class="blue-text link-section-header" href="/join">Work With Us</a>
+          <span class="blue-text link-section-header">Work With Us</span>
         </li>
         <li><a href="/join/nonprofits" sapper:prefetch>Nonprofits</a></li>
         <li><a href="/join/students" sapper:prefetch>Students</a></li>
