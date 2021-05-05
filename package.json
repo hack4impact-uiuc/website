@@ -1,6 +1,6 @@
 {
   "name": "hack4impact-uiuc",
-  "description": "Hack4Impact UIUC's chapter webiste.",
+  "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
