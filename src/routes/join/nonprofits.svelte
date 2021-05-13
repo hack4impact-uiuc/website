@@ -74,7 +74,7 @@
 </Section>
 
 <Section padding="83px">
-  <Row gap={84}>
+  <Row gap={84} reverseOnMobile>
     <div>
       <h2>How We Work</h2>
       <p>
@@ -146,9 +146,12 @@
     margin-top: 41px;
   }
 
+  figure {
+    text-align: center;
+  }
+
   figure > img {
     width: 100%;
-    min-height: 320px;
     border-radius: 4px;
   }
 

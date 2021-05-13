@@ -31,6 +31,7 @@
   p {
     opacity: 80%;
     height: 100px;
+    font-size: 0.8rem;
   }
 
   img {

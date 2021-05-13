@@ -61,7 +61,7 @@
   p {
     text-align: justify;
     text-justify: newspaper;
-    font-size: 23px;
+    font-size: 1.2rem;
   }
 
   caption {
@@ -77,6 +77,7 @@
   .right {
     flex: 3;
     max-width: 290px;
+    aspect-ratio: 1;
   }
 
   .right > img {

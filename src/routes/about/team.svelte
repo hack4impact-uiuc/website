@@ -89,9 +89,28 @@
   }
 
   .member-grid {
+    --columns: 4;
+
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
     column-gap: 60px;
     row-gap: 30px;
+  }
+
+  @media screen and (max-width: 1145px) {
+    .member-grid {
+      --columns: 3;
+    }
+  }
+  @media screen and (max-width: 875px) {
+    .member-grid {
+      --columns: 2;
+    }
+  }
+
+  @media screen and (max-width: 590px) {
+    .member-grid {
+      --columns: 1;
+    }
   }
 </style>
