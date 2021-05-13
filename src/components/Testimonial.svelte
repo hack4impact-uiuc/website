@@ -66,12 +66,12 @@
 
   caption {
     text-align: right;
-    font-size: 20px;
+    font-size: 1rem;
     display: block;
   }
 
   caption > span.desc {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 
   .right {

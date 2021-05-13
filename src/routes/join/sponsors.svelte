@@ -200,7 +200,7 @@
   }
 
   .stat > div > .val {
-    font-size: 48px;
+    font-size: 2.4rem;
     line-height: 1;
   }
 
@@ -217,18 +217,18 @@
   }
 
   .sponsor-perks h3 {
-    font-size: 32px;
+    font-size: 1.6rem;
     margin-bottom: 0;
   }
 
   .sponsor-perks h4 {
-    font-size: 24px;
+    font-size: 1.2rem;
   }
 
   .sponsor-perks ul {
     padding-left: 0;
     list-style: none;
-    font-size: 20px;
+    font-size: 1rem;
     line-height: 2;
   }
 

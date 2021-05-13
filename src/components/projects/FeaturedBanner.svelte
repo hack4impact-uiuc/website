@@ -14,7 +14,7 @@
 
 <style>
   h2 {
-    font-size: 32px;
+    font-size: 1.6rem;
     margin-bottom: 20px;
   }
 
@@ -25,7 +25,7 @@
 
   a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   .featured-project {

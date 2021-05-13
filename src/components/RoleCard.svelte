@@ -17,6 +17,6 @@
 
   p,
   b {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 </style>

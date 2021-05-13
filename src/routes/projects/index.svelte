@@ -1,8 +1,8 @@
-<script context="module" lang="ts">  
+<script context="module" lang="ts">
   import Section from "../../components/Section.svelte";
   import FeaturedBanner from "../../components/projects/FeaturedBanner.svelte";
   import ProjectCard from "../../components/projects/ProjectCard.svelte";
-  import viewport from '../../utils/useViewportAction';
+  import viewport from "../../utils/useViewportAction";
   import { generateProjectsInfo } from "../../utils/projects";
   import type { SemesterProjects } from "../../utils/projects";
   import type { Project } from "../../utils/schema";
@@ -22,8 +22,9 @@
 
   let currentSemester: number = 0;
 
-  const setSemester = (newSection: number) => currentSemester = newSection
-  const idFromSemester = (semester: string) => semester.split(' ').join('-').toLowerCase()
+  const setSemester = (newSection: number) => (currentSemester = newSection);
+  const idFromSemester = (semester: string) =>
+    semester.split(" ").join("-").toLowerCase();
 </script>
 
 <svelte:head>
@@ -37,10 +38,13 @@
       <ul>
         {#each semesters as semester, idx}
           <li>
-            <a 
+            <a
               href={`projects/#${idFromSemester(semester)}`}
-              on:click={() => {setSemester(idx)}}
-              class:active={currentSemester === idx}>
+              on:click={() => {
+                setSemester(idx);
+              }}
+              class:active={currentSemester === idx}
+            >
               {semester}
             </a>
           </li>
@@ -49,9 +53,7 @@
     </aside>
     <article>
       {#each semesters as semester, idx}
-        <section
-          class="semester-section"
-        >
+        <section class="semester-section">
           <span class="scroll-anchor" id={idFromSemester(semester)} />
           <h2>{semester}</h2>
           {#if projectMap[semester].featured !== undefined}<FeaturedBanner
@@ -65,7 +67,7 @@
           </div>
         </section>
       {/each}
-      </article>
+    </article>
   </div>
 </Section>
 
@@ -126,7 +128,7 @@
     }
 
     aside::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: calc((100vw - var(--content-width)) / -2);
@@ -139,7 +141,6 @@
       margin-top: 2em;
     }
   }
-
 
   aside ul {
     list-style: none;
@@ -155,11 +156,10 @@
     aside ul {
       padding-left: calc(2em + 6px);
     }
-
   }
   aside ul li {
     position: relative;
-    font-size: 20px;
+    font-size: 1rem;
     margin: 0 0 11px;
   }
 
@@ -172,7 +172,6 @@
     aside ul li + li {
       margin-left: 1em;
     }
-
   }
 
   aside ul li > a {
@@ -185,10 +184,9 @@
 
   @media only screen and (min-width: 1001px) {
     aside ul li > a.active::before {
-      content: '—';
+      content: "—";
       position: absolute;
       left: calc((1.4em + 6px) * -1);
     }
-
   }
 </style>

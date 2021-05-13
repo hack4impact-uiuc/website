@@ -13,7 +13,7 @@
 <style>
   h3 {
     color: var(--blue-darker);
-    font-size: 24px;
+    font-size: 1.2rem;
   }
 
   p {

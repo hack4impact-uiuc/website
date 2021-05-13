@@ -128,7 +128,7 @@
   }
 
   :global(#open-positions p) {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 
   .light-text {

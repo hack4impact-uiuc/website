@@ -110,7 +110,7 @@
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 0.8rem;
     margin: 0;
   }
 
@@ -196,7 +196,7 @@
   button.hide-on-desktop {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 1.2rem;
     transform: scaleX(1.1);
   }
 

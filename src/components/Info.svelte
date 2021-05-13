@@ -35,10 +35,10 @@
   }
 
   h4 {
-    font-size: 20px;
+    font-size: 1rem;
   }
 
   p {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 </style>

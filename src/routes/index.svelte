@@ -65,7 +65,7 @@
 
   #banner-mission {
     opacity: 80%;
-    font-size: 24px;
+    font-size: 1.2rem;
   }
 
   a {
@@ -74,7 +74,7 @@
   }
 
   #featured-section h1 {
-    font-size: 32px;
+    font-size: 1.6rem;
     margin-bottom: 20px;
   }
 
