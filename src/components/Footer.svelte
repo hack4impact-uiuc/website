@@ -17,44 +17,48 @@
       >
     </div>
     <div class="links">
-      <ul>
-        <li class="blue-text link-section-header">Connect With Us</li>
-        <li><a href="https://www.facebook.com/h4iuiuc">Facebook</a></li>
-        <li><a href="https://github.com/hack4impact-uiuc">GitHub</a></li>
+      <span>
+        <ul>
+          <li class="blue-text link-section-header">Connect With Us</li>
+          <li><a href="https://www.facebook.com/h4iuiuc">Facebook</a></li>
+          <li><a href="https://github.com/hack4impact-uiuc">GitHub</a></li>
 
-        <li>
-          <a href="https://www.instagram.com/hack4impactuiuc/">Instagram</a>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a class="blue-text link-section-header" href="/about">About Us</a>
-        </li>
-        <li><a href="/about/work" sapper:prefetch>How We Work</a></li>
-        <li><a href="/about/team" sapper:prefetch>Meet The Team</a></li>
-      </ul>
-      <ul>
-        <li>
-          <a
-            class="blue-text link-section-header"
-            href="/projects"
-            sapper:prefetch>Projects</a
-          >
-        </li>
-        {#each semesters.slice(0, 3) as semester}<li>
-            <a href="/projects#{semester}" sapper:noscroll sapper:prefetch
-              >{semester}</a
+          <li>
+            <a href="https://www.instagram.com/hack4impactuiuc/">Instagram</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a class="blue-text link-section-header" href="/about">About Us</a>
+          </li>
+          <li><a href="/about/work" sapper:prefetch>How We Work</a></li>
+          <li><a href="/about/team" sapper:prefetch>Meet The Team</a></li>
+        </ul>
+      </span>
+      <span>
+        <ul>
+          <li>
+            <a
+              class="blue-text link-section-header"
+              href="/projects"
+              sapper:prefetch>Projects</a
             >
-          </li>{/each}
-      </ul>
-      <ul>
-        <li>
-          <span class="blue-text link-section-header">Work With Us</span>
-        </li>
-        <li><a href="/join/nonprofits" sapper:prefetch>Nonprofits</a></li>
-        <li><a href="/join/students" sapper:prefetch>Students</a></li>
-        <li><a href="/join/sponsors" sapper:prefetch>Sponsors</a></li>
-      </ul>
+          </li>
+          {#each semesters.slice(0, 3) as semester}<li>
+              <a href="/projects#{semester}" sapper:noscroll sapper:prefetch
+                >{semester}</a
+              >
+            </li>{/each}
+        </ul>
+        <ul>
+          <li>
+            <span class="blue-text link-section-header">Work With Us</span>
+          </li>
+          <li><a href="/join/nonprofits" sapper:prefetch>Nonprofits</a></li>
+          <li><a href="/join/students" sapper:prefetch>Students</a></li>
+          <li><a href="/join/sponsors" sapper:prefetch>Sponsors</a></li>
+        </ul>
+      </span>
     </div>
   </div>
 </footer>
@@ -104,13 +108,20 @@
     flex-direction: row;
     align-items: baseline;
     justify-content: space-evenly;
+    width: 100%;
   }
 
   ul {
-    /* display: flex;
-    flex-direction: column; */
-    width: 160px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     list-style-type: none;
+  }
+
+  .links > span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
 
   li {
@@ -119,5 +130,30 @@
 
   .link-section-header {
     font-family: Chivo;
+  }
+
+  @media (max-width: 1005px) {
+    #footer-contents {
+      flex-direction: column;
+    }
+
+    .links {
+      padding-top: 1.5em;
+      flex-direction: column;
+    }
+
+    .links ul:nth-child(2n + 1) {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 270px) {
+    .links > span {
+      flex-direction: column;
+    }
+
+    .links ul {
+      padding-left: 0;
+    }
   }
 </style>
