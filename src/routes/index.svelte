@@ -89,6 +89,11 @@
     height: 100%;
   }
 
+  #graphic-container img {
+    margin-left: -5%;
+    width: calc(var(--content-width) / 2);
+  }
+
   #graphic {
     height: 90%;
   }
