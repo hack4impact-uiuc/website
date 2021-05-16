@@ -112,7 +112,7 @@
       <span slot="number">1</span>
     </RoleCard>
     <RoleCard>
-      <span slot="role">Tech Leads</span>
+      <span slot="role">Tech Lead</span>
       <span slot="description"
         >Tech Leads take technical ownership of the product, and are responsible
         for architecting the software each team develops to meet their
