@@ -75,7 +75,6 @@
   }
 
   .right {
-    flex: 3;
     max-width: 290px;
     aspect-ratio: 1;
     border-radius: 50%;
