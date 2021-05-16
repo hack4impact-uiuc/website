@@ -78,11 +78,13 @@
     flex: 3;
     max-width: 290px;
     aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--gray-light);
   }
 
   .right > img {
     width: 100%;
     min-height: 290px;
-    border-radius: 50%;
   }
 </style>
