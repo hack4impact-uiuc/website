@@ -127,10 +127,6 @@
     margin-top: 41px;
   }
 
-  :global(#open-positions p) {
-    font-size: 0.8rem;
-  }
-
   .light-text {
     color: #fff;
   }
