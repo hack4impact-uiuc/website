@@ -87,10 +87,23 @@
   }
 
   .project-grid {
+    --columns: 3;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 50px;
-    row-gap: 50px;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    column-gap: 0.9rem;
+    row-gap: 0.9rem;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .project-grid {
+      --columns: 2;
+    }
+  }
+
+  @media only screen and (max-width: 545px) {
+    .project-grid {
+      --columns: 1;
+    }
   }
 
   .col-wrapper {
@@ -125,6 +138,8 @@
       padding: 1.5em 0;
       background-color: #fff;
       z-index: 1;
+
+      width: 50vw;
     }
 
     aside::before {

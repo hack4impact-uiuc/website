@@ -134,6 +134,21 @@
     padding-left: 30px;
   }
 
+  @media only screen and (max-width: 1045px) {
+    .about-intro {
+      flex-direction: column;
+    }
+    #about-intro-left {
+      width: 100%;
+      padding-right: 0;
+    }
+
+    #about-intro-right {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+
   #team-photo {
     width: 100%;
     border-radius: 4px;
