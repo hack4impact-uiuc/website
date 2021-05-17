@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Row from "./Row.svelte";
+
   // title, content, and route (for button)
   export let quote: string;
   export let imageSrc: string | undefined = undefined;
@@ -9,16 +11,18 @@
 <div class="wrap">
   <div class="testimonial">
     {#if imageSrc !== undefined}
-      <div class="left">
-        <p>{quote}</p>
-        <caption>
-          {name}<br />
-          <span class="desc">{desc}</span>
-        </caption>
-      </div>
-      <div class="right">
-        <img src={imageSrc} alt={name + "'s photo"} />
-      </div>
+      <Row>
+        <div class="left">
+          <p>{quote}</p>
+          <caption>
+            {name}<br />
+            <span class="desc">{desc}</span>
+          </caption>
+        </div>
+        <div class="right">
+          <img src={imageSrc} alt={name + "'s photo"} />
+        </div>
+      </Row>
     {:else}
       <div class="center">
         <p>{quote}</p>
@@ -75,15 +79,21 @@
   }
 
   .right {
+    flex: auto !important;
     max-width: 290px;
-    aspect-ratio: 1;
-    border-radius: 50%;
     overflow: hidden;
-    background-color: var(--gray-light);
   }
 
   .right > img {
     width: 100%;
     min-height: 290px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+    .right {
+      display: none;
+    }
   }
 </style>
