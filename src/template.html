@@ -147,6 +147,25 @@
         max-width: 80%;
         max-height: 600px;
       }
+
+      .project-grid {
+        --columns: 3;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+        grip-gap: 0.9rem;
+      }
+
+      @media only screen and (max-width: 1100px) {
+        .project-grid {
+          --columns: 2;
+        }
+      }
+
+      @media only screen and (max-width: 545px) {
+        .project-grid {
+          --columns: 1;
+        }
+      }
     </style>
     %sapper.scripts% %sapper.styles% %sapper.head%
   </head>

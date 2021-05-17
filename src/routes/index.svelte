@@ -78,12 +78,6 @@
     margin-bottom: 20px;
   }
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 50px;
-  }
-
   #graphic-container {
     width: 100%;
     height: 100%;

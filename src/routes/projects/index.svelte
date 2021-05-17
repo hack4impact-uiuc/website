@@ -86,26 +86,6 @@
     margin-top: 0;
   }
 
-  .project-grid {
-    --columns: 3;
-    display: grid;
-    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-    column-gap: 0.9rem;
-    row-gap: 0.9rem;
-  }
-
-  @media only screen and (max-width: 1100px) {
-    .project-grid {
-      --columns: 2;
-    }
-  }
-
-  @media only screen and (max-width: 545px) {
-    .project-grid {
-      --columns: 1;
-    }
-  }
-
   .col-wrapper {
     position: relative;
     overflow: visible;
