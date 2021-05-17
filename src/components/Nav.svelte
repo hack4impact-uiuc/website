@@ -9,6 +9,8 @@
       showMobileMenu = false;
     }
   }
+
+  const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
 </script>
 
 <nav class="row-center">
@@ -54,29 +56,19 @@
           ? "page"
           : undefined}
       >
-        <h2>Work With Us <span id="caret">&#9660;</span></h2>
+        <h2>Work With Us<span id="caret"> &#9660;</span></h2>
         <div class="dropdown-contents">
-          <a
-            sapper:prefetch
-            aria-current={segment && segment.startsWith("join/nonprofits")
-              ? "page"
-              : undefined}
-            href="join/nonprofits">Nonprofits</a
-          >
-          <a
-            sapper:prefetch
-            aria-current={segment && segment.startsWith("join/sponsors")
-              ? "page"
-              : undefined}
-            href="join/sponsors">Sponsors</a
-          >
-          <a
-            sapper:prefetch
-            aria-current={segment && segment.startsWith("join/students")
-              ? "page"
-              : undefined}
-            href="join/students">Students</a
-          >
+          {#each dropdownRoutes as route}
+            <a
+              sapper:prefetch
+              on:click={() => (showMobileMenu = false)}
+              aria-current={segment &&
+              segment.startsWith(`join/${route.toLowerCase()}`)
+                ? "page"
+                : undefined}
+              href={`join/${route.toLowerCase()}`}>{route}</a
+            >
+          {/each}
         </div>
       </span>
     </div>
@@ -231,6 +223,14 @@
       display: block;
     }
 
+    .navlink:last-child {
+      padding: 0;
+    }
+
+    .navlink:last-child > h2 {
+      padding: 1em 1.12em 0.25em;
+    }
+
     .navlink:not([aria-current])::before,
     .dropdown-contents a::before {
       opacity: 100%;
@@ -251,6 +251,7 @@
       visibility: visible;
       position: relative;
       box-shadow: none;
+      z-index: 6;
       top: 0;
     }
 
@@ -258,9 +259,14 @@
       padding-bottom: 0;
     }
 
+    [aria-current].dropdown {
+      background-color: #fff;
+      color: var(--gray);
+    }
+
     .dropdown-contents a {
       text-align: left;
-      padding: 1em 0;
+      padding: 1em;
       font-size: 16px;
       position: relative;
     }
