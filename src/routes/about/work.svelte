@@ -4,6 +4,7 @@
   import RoleCard from "../../components/RoleCard.svelte";
   import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
+  import Row from "../../components/Row.svelte";
   import type { FAQ } from "../../utils/schema";
 
   export async function preload() {
@@ -164,20 +165,23 @@
     </Accordion>
   {/each}
 </Section>
-<Section padding="40px" id="join" color="var(--blue)" longForm>
-  <div id="join-container">
-    <div>
-      <h2>Join Us</h2>
-      <p>Lorem Ipsum.</p>
-    </div>
-    <div class="row-center">
-      <a href="join/students" sapper:prefetch>
-        <Button type="primary-white">Apply</Button>
-      </a>
-      <a href="about/team" sapper:prefetch>
-        <Button type="secondary-white">Meet the Team</Button>
-      </a>
-    </div>
+
+<Section padding="40px" id="join" color="var(--blue)">
+  <div class="cta-wrapper">
+    <Row>
+      <div class="cta">
+        <h2>Join Us</h2>
+        <p>Lorem Ipsum.</p>
+      </div>
+      <div class="button-wrapper">
+        <a href="join/students" sapper:prefetch>
+          <Button type="primary-white">Apply</Button>
+        </a>
+        <a href="about/team" sapper:prefetch>
+          <Button type="secondary-white">Meet the Team</Button>
+        </a>
+      </div>
+    </Row>
   </div>
 </Section>
 
@@ -187,31 +191,24 @@
   }
 
   #roles {
+    --columns: 2;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    margin-top: 40px;
     column-gap: 40px;
     row-gap: 40px;
+  }
+
+  @media only screen and (max-width: 690px) {
+    #roles {
+      --columns: 1;
+      row-gap: 20px;
+    }
   }
 
   #divider {
     width: 100%;
     height: 60px;
     background-color: var(--gray-light);
-  }
-
-  #join-container {
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  #join-container p {
-    opacity: 80%;
-    margin: 0;
-  }
-
-  #join-container a {
-    margin: 0 10px;
   }
 </style>

@@ -113,16 +113,15 @@
   @media only screen and (max-width: 1000px) {
     aside {
       margin: 0;
-      top: calc(67px);
+      top: 70px;
       left: 0;
-      padding: 1.5em 0;
       background-color: #fff;
-      z-index: 1;
+      z-index: 4;
 
-      width: 50vw;
+      width: 80vw;
     }
 
-    aside::before {
+    aside ul::before {
       content: "";
       position: absolute;
       bottom: 0;
@@ -140,15 +139,18 @@
   aside ul {
     list-style: none;
     padding-left: 0;
-    margin: 0;
+    padding: 1.5em 0;
+    margin: 0 0 0 -10vw;
 
-    width: 100%;
+    width: 100vw;
     overflow-x: auto;
     white-space: nowrap;
   }
 
   @media only screen and (min-width: 1001px) {
     aside ul {
+      width: 100%;
+      margin: 0;
       padding-left: calc(2em + 6px);
     }
   }
@@ -163,21 +165,32 @@
       display: inline-block;
       margin: 0;
     }
-
     aside ul li + li {
       margin-left: 1em;
+    }
+
+    aside ul li:first-child {
+      margin-left: 10vw;
+    }
+    aside ul li:last-child {
+      padding-right: 2em;
     }
   }
 
   aside ul li > a {
     text-decoration: none;
+    opacity: 0.6;
   }
 
   aside ul li > a.active {
     font-weight: 600;
+    opacity: 1;
   }
 
   @media only screen and (min-width: 1001px) {
+    aside ul li > a {
+      opacity: 1;
+    }
     aside ul li > a.active::before {
       content: "—";
       position: absolute;

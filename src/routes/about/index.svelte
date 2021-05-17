@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
   import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
+  import Row from "../../components/Row.svelte";
   import { setImageHeight } from "../../utils/schema";
   import type { Image, Info } from "../../utils/schema";
 
@@ -109,9 +110,23 @@
   </div>
 </Section>
 
-<Section id="team" padding="40px">
-  <h2>Meet The Team</h2>
-  <a href="about/team" sapper:prefetch>Meet the Team</a>
+<Section id="team" padding="83px">
+  <Row gap={84} reverse>
+    <div>
+      <h2>Meet The Team</h2>
+      <p>
+        Hack4Impact believes in technology’s huge potential to empower activists
+        and humanitarians to create lasting and impactful social change. We work
+        to foster the wider adoption of software as a tool for social good.
+      </p>
+      <a href="about/team" sapper:prefetch
+        ><Button type="primary">Meet The Team</Button></a
+      >
+    </div>
+    <figure>
+      <img src="https://picsum.photos/630/320" alt="" />
+    </figure>
+  </Row>
 </Section>
 
 <style>
@@ -160,5 +175,14 @@
 
   #work-content {
     color: #fff;
+  }
+
+  figure {
+    text-align: center;
+  }
+
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
   }
 </style>

@@ -33,25 +33,30 @@
     margin-left: var(--row-gap);
   }
 
+  article.reversed > :global(*) + :global(*) {
+    margin: 0 var(--row-gap) 0 0;
+  }
+
   @media screen and (max-width: 800px) {
     article {
       flex-direction: column;
     }
 
-    article.mobileReversed {
+    article.mobileReversed,
+    article.reversed {
       flex-direction: column-reverse;
     }
 
     article > :global(*) {
-      margin-right: 0;
-      margin-left: 0;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
     }
 
     article > :global(*):not(:last-child) {
       margin-top: calc(var(--row-gap) / 2);
     }
 
-    article:not(.mobileReversed) > :global(*) {
+    article:not(.mobileReversed):not(.reversed) > :global(*) {
       margin-bottom: 0;
       margin-top: calc(var(--row-gap) / 2);
     }

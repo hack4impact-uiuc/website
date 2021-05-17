@@ -28,14 +28,15 @@
 
   p {
     opacity: 80%;
-    height: 100px;
+    height: 5em;
     font-size: 0.8rem;
   }
 
   img {
-    height: 50px;
+    height: 40px;
+    max-width: 150px;
     width: 80%;
-    object-position: left bottom;
+    object-position: left center;
     object-fit: contain;
   }
 

@@ -13,7 +13,7 @@
     {#if imageSrc !== undefined}
       <Row>
         <div class="left">
-          <p>{quote}</p>
+          <blockquote>{quote}</blockquote>
           <caption>
             {name}<br />
             <span class="desc">{desc}</span>
@@ -25,7 +25,7 @@
       </Row>
     {:else}
       <div class="center">
-        <p>{quote}</p>
+        <blockquote>{quote}</blockquote>
         <caption>
           {name}<br />
           <span class="desc">{desc}</span>
@@ -51,6 +51,10 @@
     align-items: center;
   }
 
+  .testimonial > :global(*) {
+    align-items: center;
+  }
+
   .left {
     flex: 4;
     padding-right: 50px;
@@ -62,11 +66,17 @@
     box-sizing: border-box;
   }
 
-  p {
+  blockquote {
+    padding: 0;
+    margin: 0;
     text-align: justify;
     text-justify: newspaper;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
+  /* blockquote::before,
+  blockquote::after {
+    content: '"';
+  } */
 
   caption {
     text-align: right;
@@ -80,13 +90,12 @@
 
   .right {
     flex: auto !important;
-    max-width: 290px;
+    max-width: 12rem;
     overflow: hidden;
   }
 
   .right > img {
-    width: 100%;
-    min-height: 290px;
+    height: 12rem;
     aspect-ratio: 1;
     border-radius: 50%;
   }
@@ -94,6 +103,18 @@
   @media screen and (max-width: 900px) {
     .right {
       display: none;
+    }
+
+    .left {
+      padding: 0;
+    }
+
+    .testimonial {
+      width: 100%;
+    }
+
+    .wrap {
+      padding: 40px 0;
     }
   }
 </style>

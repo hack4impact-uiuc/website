@@ -110,7 +110,7 @@
   }
 
   h2 {
-    font-size: 0.8rem;
+    font-size: 16px;
     margin: 0;
   }
 
@@ -196,7 +196,7 @@
   button.hide-on-desktop {
     background: none;
     border: none;
-    font-size: 1.2rem;
+    font-size: 24px;
     transform: scaleX(1.1);
   }
 
@@ -214,13 +214,13 @@
     /* modified */
 
     nav {
-      height: 4em;
+      height: 70px;
     }
     #navlinks {
       position: fixed;
       flex-direction: column;
       align-items: stretch;
-      top: 4em;
+      top: 70px;
       background-color: white;
       width: 100%;
       left: 0;
@@ -231,19 +231,45 @@
       display: block;
     }
 
-    .navlink:not([aria-current])::before {
+    .navlink:not([aria-current])::before,
+    .dropdown-contents a::before {
       opacity: 100%;
       height: 1px;
       background-color: var(--gray-lighter);
     }
 
+    .dropdown-contents a::before {
+      width: 100vw;
+      bottom: 0;
+      left: -1em;
+      transition: 0.2s;
+      content: "";
+      position: absolute;
+    }
+
     .dropdown .dropdown-contents {
       visibility: visible;
+      position: relative;
+      box-shadow: none;
+      top: 0;
+    }
+
+    .dropdown {
+      padding-bottom: 0;
     }
 
     .dropdown-contents a {
       text-align: left;
-      padding: 1.5em 1.5em;
+      padding: 1em 0;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .navlink.dropdown > h2,
+    .navlink.dropdown > h2:focus,
+    .navlink.dropdown > h2:hover {
+      color: var(--gray-light);
+      font-weight: 300;
     }
 
     #caret {

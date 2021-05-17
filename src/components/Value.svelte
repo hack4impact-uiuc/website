@@ -29,10 +29,21 @@
   }
 
   .value {
-    margin: 20px 0;
+    margin: 1rem 0;
   }
 
   .value > span:first-child {
     align-self: flex-start;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .value {
+      flex-direction: column;
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 1rem;
+    }
   }
 </style>

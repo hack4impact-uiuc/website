@@ -152,7 +152,8 @@
         --columns: 3;
         display: grid;
         grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-        grip-gap: 0.9rem;
+        row-gap: 0.9rem;
+        column-gap: 0.9rem;
       }
 
       @media only screen and (max-width: 1100px) {
@@ -164,6 +165,66 @@
       @media only screen and (max-width: 545px) {
         .project-grid {
           --columns: 1;
+        }
+      }
+
+      .cta-wrapper {
+        padding: 0 85px;
+      }
+
+      .cta {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+      }
+
+      @media only screen and (max-width: 850px) {
+        .cta {
+          flex-direction: column;
+          text-align: center;
+          align-items: center !important;
+        }
+
+        .cta-wrapper {
+          padding: 0;
+        }
+      }
+
+      .cta > h2 {
+        margin: 0;
+      }
+
+      .cta > p {
+        margin-bottom: 0;
+      }
+
+      .cta-wrapper .button-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+
+      .cta-wrapper .button-wrapper button {
+        min-width: 12em;
+      }
+
+      .cta-wrapper .button-wrapper * + * {
+        margin-left: 18px;
+      }
+
+      @media only screen and (max-width: 850px) {
+        .cta-wrapper .button-wrapper {
+          flex-direction: column;
+        }
+
+        .cta-wrapper .button-wrapper * {
+          margin-left: 0;
+          margin-top: 18px;
+        }
+
+        .cta-wrapper .button-wrapper * + * {
+          margin-top: 9px;
         }
       }
     </style>
