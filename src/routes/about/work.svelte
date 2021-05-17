@@ -97,7 +97,7 @@
         developers don't only program though; they also participate in many user
         experience and product decisions.
       </span>
-      <span slot="number">4-5</span>
+      <span slot="number">3-5</span>
     </RoleCard>
     <RoleCard>
       <span slot="role">Product Designers</span>
