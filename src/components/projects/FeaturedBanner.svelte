@@ -45,6 +45,9 @@
     padding: 2rem 25% 2rem 1rem;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .meta > * {
