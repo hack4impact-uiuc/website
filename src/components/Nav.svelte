@@ -71,8 +71,7 @@
             <a
               sapper:prefetch
               on:click={() => (showMobileMenu = false)}
-              aria-current={segment &&
-              path?.includes(`join/${route.toLowerCase()}`)
+              aria-current={path && path.includes(`join/${route.toLowerCase()}`)
                 ? "page"
                 : undefined}
               href={`join/${route.toLowerCase()}`}>{route}</a
