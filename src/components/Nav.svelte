@@ -1,17 +1,26 @@
 <script lang="ts">
+  import { stores } from "@sapper/app";
+  const { page } = stores();
+
   export let segment: string;
   let oldSegment: string;
 
   let showMobileMenu = false;
 
   $: {
-    if (segment !== oldSegment) {
+    if (segment !== oldSegment || !path.startsWith(segment)) {
       showMobileMenu = false;
     }
   }
 
+  let path = undefined;
+  $: path = $page.path;
+
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
+  let windowWidth;
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
@@ -51,7 +60,7 @@
       >
       <span
         class="navlink dropdown"
-        tabindex="0"
+        tabindex={windowWidth > 792 ? 0 : -1}
         aria-current={segment && segment.startsWith("join")
           ? "page"
           : undefined}
@@ -63,7 +72,7 @@
               sapper:prefetch
               on:click={() => (showMobileMenu = false)}
               aria-current={segment &&
-              segment.startsWith(`join/${route.toLowerCase()}`)
+              path?.includes(`join/${route.toLowerCase()}`)
                 ? "page"
                 : undefined}
               href={`join/${route.toLowerCase()}`}>{route}</a
@@ -154,9 +163,10 @@
     position: absolute;
     width: 100%;
     background-color: #fff;
-    top: 4em;
+    top: 3.9em;
     z-index: -1;
     left: 0;
+    padding-top: 6px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
   }
 
@@ -175,8 +185,12 @@
     color: var(--text-dark);
   }
 
-  .dropdown-contents a:hover {
+  .dropdown-contents a:not([aria-current]):hover {
     color: var(--blue);
+  }
+
+  .dropdown-contents a[aria-current] {
+    color: #fff;
   }
 
   #caret {
@@ -188,8 +202,10 @@
   button.hide-on-desktop {
     background: none;
     border: none;
-    font-size: 24px;
     transform: scaleX(1.1);
+    color: var(--gray-light);
+    font-size: 24px;
+    transform: scaleX(1.1) scale(1.3);
   }
 
   @media only screen and (max-width: 792px) {
