@@ -20,12 +20,16 @@
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
+  let windowWidth;
+
   let currentSemester: number = 0;
 
   const setSemester = (newSection: number) => (currentSemester = newSection);
   const idFromSemester = (semester: string) =>
     semester.split(" ").join("-").toLowerCase();
 </script>
+
+<svelte:window bind:innerWidth={windowWidth} />
 
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
@@ -34,7 +38,7 @@
 <Section padding="60px">
   <h1>Projects</h1>
   <div class="col-wrapper">
-    <aside>
+    <aside style={windowWidth ? `--window-width: ${windowWidth}px` : ""}>
       <ul>
         {#each semesters as semester, idx}
           <li>
@@ -101,9 +105,16 @@
       grid-template-columns: 1fr;
       grid-template-rows: 1fr, 1fr;
     }
+
+    .semester-section .scroll-anchor {
+      top: -135px;
+    }
   }
 
   aside {
+    /* CSS var to swap with JavaScript  */
+    --window-width: 100vw;
+
     margin-right: 45px;
     position: sticky;
     align-self: start;
@@ -113,22 +124,22 @@
   @media only screen and (max-width: 1000px) {
     aside {
       margin: 0;
-      top: 70px;
+      top: 4.25em;
       left: 0;
       background-color: #fff;
       z-index: 4;
 
-      width: 80vw;
+      height: calc(60px + 0.25em);
     }
 
-    aside ul::before {
+    aside::before {
       content: "";
       position: absolute;
       bottom: 0;
-      left: calc((100vw - var(--content-width)) / -2);
+      left: calc(calc(var(--window-width) - var(--content-width)) / 2 * -1);
       height: 2px;
       background: var(--gray-light);
-      width: 100vw;
+      width: var(--window-width);
     }
 
     article {
@@ -136,19 +147,28 @@
     }
   }
 
+  @media only screen and (max-width: 792px) {
+    aside {
+      top: 70px;
+    }
+  }
+
   aside ul {
     list-style: none;
-    padding-left: 0;
-    padding: 1.5em 0;
-    margin: 0 0 0 -10vw;
+    padding: 1.5em calc(var(--window-width) / 10 * -1) 1.5em 0;
+    margin: 0 0 0
+      calc(calc(var(--window-width) - var(--content-width)) / 2 * -1);
 
-    width: 100vw;
+    width: var(--window-width);
     overflow-x: auto;
     white-space: nowrap;
+    position: absolute;
+    bottom: 0;
   }
 
   @media only screen and (min-width: 1001px) {
     aside ul {
+      position: relative;
       width: 100%;
       margin: 0;
       padding-left: calc(2em + 6px);
@@ -170,7 +190,7 @@
     }
 
     aside ul li:first-child {
-      margin-left: 10vw;
+      margin-left: calc(var(--window-width) * 0.1);
     }
     aside ul li:last-child {
       padding-right: 2em;
