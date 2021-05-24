@@ -6,7 +6,7 @@
   let showMobileMenu = false;
 
   $: {
-    if (segment !== oldSegment || !path.startsWith(segment)) {
+    if (segment !== oldSegment || (path && !path.startsWith(segment))) {
       showMobileMenu = false;
     }
   }
