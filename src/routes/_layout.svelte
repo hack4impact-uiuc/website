@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import { stores } from "@sapper/app";
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   import { generateProjectsInfo } from "../utils/projects";
@@ -14,7 +15,6 @@
 </script>
 
 <script lang="ts">
-  import { stores } from "@sapper/app";
   const { page } = stores();
 
   export let segment: string;
