@@ -12,7 +12,7 @@
         <img src={imageSrc} alt={project.name} />
       </figure>
     {/if}
-    <div class="meta">
+    <div class="meta" class:masked={imageSrc !== undefined}>
       <h4>{project.name}</h4>
       <h2>{project.summary}</h2>
       <span>Learn More</span>
@@ -81,8 +81,11 @@
 
   @media only screen and (max-width: 1350px) {
     .meta {
-      background: rgba(0, 0, 0, 0.3);
       padding-right: 1rem;
+    }
+
+    .meta.masked {
+      background: rgba(0, 0, 0, 0.3);
     }
   }
 
