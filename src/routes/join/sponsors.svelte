@@ -145,12 +145,6 @@
   p {
     opacity: 80%;
   }
-
-  .sponsor-intro {
-    display: flex;
-    flex-direction: row;
-  }
-
   .light-text {
     color: #fff;
   }

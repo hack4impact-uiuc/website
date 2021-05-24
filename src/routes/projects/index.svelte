@@ -20,7 +20,7 @@
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
-  let windowWidth;
+  let windowWidth: number | undefined;
 
   let currentSemester: number = 0;
 

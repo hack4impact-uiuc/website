@@ -14,11 +14,16 @@
 </script>
 
 <script lang="ts">
+  import { stores } from "@sapper/app";
+  const { page } = stores();
+
   export let segment: string;
   export let semesters: string[] = [];
+
+  $: path = $page.path;
 </script>
 
-<Nav {segment} />
+<Nav {segment} {path} />
 
 <main>
   <slot />

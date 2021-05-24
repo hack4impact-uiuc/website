@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { stores } from "@sapper/app";
-  const { page } = stores();
-
+  export let path: string | undefined;
   export let segment: string;
   let oldSegment: string;
 
@@ -13,11 +11,8 @@
     }
   }
 
-  let path = undefined;
-  $: path = $page.path;
-
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
-  let windowWidth;
+  let windowWidth: number | undefined;
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
