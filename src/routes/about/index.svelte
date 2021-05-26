@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import Button from "../../components/Button.svelte";
   import Section from "../../components/Section.svelte";
   import Value from "../../components/Value.svelte";
   import Row from "../../components/Row.svelte";
@@ -14,8 +15,6 @@
 </script>
 
 <script lang="ts">
-  import Button from "../../components/Button.svelte";
-
   export let team: Image;
 </script>
 

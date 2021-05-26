@@ -50,6 +50,7 @@ export interface Project {
 
 export interface Info {
   chapterPicture: Image;
+  whereWeWork: Image;
 }
 
 export interface Semester {

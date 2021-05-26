@@ -4,8 +4,16 @@
   import Testimonial from "../../components/Testimonial.svelte";
   import Accordion from "../../components/Accordion.svelte";
   import Row from "../../components/Row.svelte";
+  import type { FAQ, Image, Info as SiteInfo } from "../../utils/schema";
 
-  import type { FAQ } from "../../utils/schema";
+  export async function preload() {
+    const res = await this.fetch("server/info.json");
+    const info: SiteInfo = await res.json();
+
+    const { whereWeWork } = info;
+
+    return { whereWeWork };
+  }
 </script>
 
 <script lang="ts">
@@ -53,6 +61,7 @@
   ];
 
   let faqs: FAQ[] = [];
+  export let whereWeWork: Image;
 </script>
 
 <svelte:head>
@@ -129,6 +138,7 @@
 
 <Section padding="60px">
   <h2>Where We Work</h2>
+  <img id="where-we-work" src={whereWeWork.src} alt={whereWeWork.alt} />
 </Section>
 
 <Section padding="40px" id="faq" color="var(--gray-lighter)">
