@@ -3,6 +3,7 @@
   import Info from "../../components/Info.svelte";
   import Testimonial from "../../components/Testimonial.svelte";
   import Accordion from "../../components/Accordion.svelte";
+  import Row from "../../components/Row.svelte";
 
   import type { FAQ } from "../../utils/schema";
 </script>
@@ -60,7 +61,7 @@
 
 <Section padding="60px">
   <h1>Sponsors</h1>
-  <div class="sponsor-intro">
+  <Row gap={30}>
     <div id="sponsor-intro-left">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore fugit
@@ -80,7 +81,7 @@
         </div>
       {/each}
     </div>
-  </div>
+  </Row>
   <Info
     title="Check Out Our Work"
     content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -99,9 +100,9 @@
 </Section>
 
 <Section color="var(--blue)" padding="60px">
-  <span class="light-text wrap">
+  <span class="light-text wrap sponsor-perks">
     <h2>Sponsorship Tiers</h2>
-    <div class="sponsor-perks">
+    <Row>
       {#each tiers as tier}
         <div class="tier">
           <h3>{tier.name} Sponsor</h3>
@@ -122,7 +123,7 @@
           </ul>
         </div>
       {/each}
-    </div>
+    </Row>
   </span>
 </Section>
 
@@ -135,7 +136,7 @@
   {#each faqs as faq}
     <Accordion>
       <span slot="title">{faq.question}</span>
-      <span slot="contents">{faq.answer}</span>
+      <p slot="contents">{faq.answer}</p>
     </Accordion>
   {/each}
 </Section>
@@ -144,12 +145,6 @@
   p {
     opacity: 80%;
   }
-
-  .sponsor-intro {
-    display: flex;
-    flex-direction: row;
-  }
-
   .light-text {
     color: #fff;
   }
@@ -160,14 +155,7 @@
     margin: 0 auto;
   }
 
-  #sponsor-intro-left {
-    width: 50%;
-    padding-right: 30px;
-  }
-
   #sponsor-intro-right {
-    width: 50%;
-    padding-left: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
@@ -200,35 +188,27 @@
   }
 
   .stat > div > .val {
-    font-size: 48px;
+    font-size: 2rem;
     line-height: 1;
   }
-
-  .sponsor-perks {
-    margin: 70px auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
   .sponsor-perks .tier {
     display: block;
-    margin: 0 100px;
   }
 
-  .sponsor-perks h3 {
-    font-size: 32px;
+  .sponsor-perks .tier h3 {
+    margin-top: 1rem;
+    font-size: 1.6rem;
     margin-bottom: 0;
   }
 
   .sponsor-perks h4 {
-    font-size: 24px;
+    font-size: 1.2rem;
   }
 
   .sponsor-perks ul {
     padding-left: 0;
     list-style: none;
-    font-size: 20px;
+    font-size: 1rem;
     line-height: 2;
   }
 

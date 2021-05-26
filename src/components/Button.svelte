@@ -26,7 +26,8 @@
       }; color: ${textColor}; border-color: ${
         type.startsWith("primary") ? backgroundColor : textColor
       }`
-    : undefined}>
+    : undefined}
+>
   <slot />
 </button>
 
@@ -38,7 +39,7 @@
     opacity: 100%;
     transition: 0.2s;
     border: solid 2px;
-    font-size: 14px;
+    font-size: 0.7rem;
     font-family: Open Sans;
     padding: 1em 2.5em;
   }

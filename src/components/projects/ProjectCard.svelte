@@ -7,12 +7,10 @@
 </script>
 
 <div class="project-card">
-  <div class="image-container">
-    <img
-      src={setImageHeight(project.nonprofitLogo.src, 100)}
-      alt={project.nonprofitLogo.alt}
-    />
-  </div>
+  <img
+    src={setImageHeight(project.nonprofitLogo.src, 100)}
+    alt={project.nonprofitLogo.alt}
+  />
 
   <h4>{project.name}</h4>
   <p>{project.summary}</p>
@@ -30,22 +28,19 @@
 
   p {
     opacity: 80%;
-    height: 100px;
+    height: 5em;
+    font-size: 0.8rem;
   }
 
   img {
-    max-height: 50px;
-    max-width: 80%;
-    object-position: left;
+    height: 40px;
+    max-width: 150px;
+    width: 80%;
+    object-position: left center;
     object-fit: contain;
   }
 
-  .image-container {
-    height: 60px;
-    width: 100%;
-  }
-
   .project-card {
-    padding: 16px;
+    padding: 0.8rem;
   }
 </style>

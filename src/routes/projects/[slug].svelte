@@ -108,13 +108,27 @@
   }
 
   .team-grid {
+    --columns: 4;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 40px;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  @media only screen and (max-width: 650px) {
+    .team-grid {
+      --columns: 2;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    .team-grid {
+      --columns: 1;
+    }
   }
 
   img {
     max-width: 80%;
+    object-fit: contain;
     max-height: 600px;
   }
 </style>

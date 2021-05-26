@@ -3,29 +3,29 @@ name: CI
 on: push
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    name: Check
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+  # check:
+  #   runs-on: ubuntu-latest
+  #   name: Check
+  #   steps:
+  #     - name: Check out repository
+  #       uses: actions/checkout@v2
 
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
+  #     - name: Set up Node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: client/node_modules
-          key: check-cache
+  #     - name: Cache dependencies
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: client/node_modules
+  #         key: ci-check-cache
 
-      - name: Install dependencies
-        run: npm install
+  #     - name: Install dependencies
+  #       run: npm install
 
-      - name: Run svelte-check
-        run: npm run validate
+  #     - name: Run svelte-check
+  #       run: npm run validate
 
   build:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: client/node_modules
-          key: check-cache
+          key: ci-build-cache
 
       - name: Install dependencies
         run: npm install
