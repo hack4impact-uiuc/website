@@ -31,6 +31,7 @@ export interface Project {
   subname: string;
   semester: string[];
   slug: string;
+  headerImage?: Image;
   summary: string;
   nonprofitDescription: string; // TODO: is this html?
   nonprofitUrl: string;
