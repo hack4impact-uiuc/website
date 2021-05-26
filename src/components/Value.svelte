@@ -1,9 +1,16 @@
 <script lang="ts">
-  // export let icon: string;
+  export let icon: string | undefined;
+  export let iconAlt: string | undefined;
 </script>
 
 <div class="value row-center">
-  <span><div id="icon-placeholder" /></span>
+  <span
+    ><div id="icon-container">
+      {#if icon !== undefined}
+        <img src={icon} alt={iconAlt} />
+      {/if}
+    </div>
+  </span>
   <span>
     <h3><slot name="name" /></h3>
     <p><slot name="description" /></p>
@@ -20,12 +27,19 @@
     opacity: 80%;
   }
 
-  #icon-placeholder {
+  #icon-container {
     width: 100px;
     height: 100px;
     border-radius: 100%;
     background-color: var(--blue-darker);
     margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  img {
+    height: 50px;
   }
 
   .value {
