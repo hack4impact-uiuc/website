@@ -65,7 +65,7 @@
 
   #banner-mission {
     opacity: 80%;
-    font-size: 24px;
+    font-size: 1.2rem;
   }
 
   a {
@@ -74,19 +74,18 @@
   }
 
   #featured-section h1 {
-    font-size: 32px;
+    font-size: 1.6rem;
     margin-bottom: 20px;
-  }
-
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 50px;
   }
 
   #graphic-container {
     width: 100%;
     height: 100%;
+  }
+
+  #graphic-container img {
+    margin-left: -5%;
+    width: calc(var(--content-width) / 2);
   }
 
   #graphic {

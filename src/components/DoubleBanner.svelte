@@ -57,4 +57,20 @@
     height: 100%;
     box-sizing: border-box;
   }
+
+  @media (max-width: 960px) {
+    #banner-left,
+    #banner-right {
+      width: 100%;
+    }
+
+    #banner-right {
+      display: none;
+    }
+
+    #banner-left-content {
+      padding: 0 10%;
+      margin: 0 auto;
+    }
+  }
 </style>

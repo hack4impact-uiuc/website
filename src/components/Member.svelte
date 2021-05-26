@@ -23,6 +23,10 @@
     margin-right: 5%;
   }
 
+  h4 {
+    margin-bottom: 0;
+  }
+
   .member {
     justify-content: left;
   }

@@ -8,6 +8,7 @@
   div {
     background-color: var(--gray-lighter);
     padding: 20px;
+    border-radius: 4px;
   }
 
   h4,
@@ -17,6 +18,6 @@
 
   p,
   b {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 </style>

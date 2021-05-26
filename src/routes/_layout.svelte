@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import { stores } from "@sapper/app";
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   import { generateProjectsInfo } from "../utils/projects";
@@ -9,16 +10,22 @@
 
     const projects: Project[] = await res.json();
     const { semesters } = generateProjectsInfo(projects);
+
     return { semesters };
   }
 </script>
 
 <script lang="ts">
+  const { page } = stores();
+
   export let segment: string;
   export let semesters: string[] = [];
+
+  let path = "";
+  $: path = $page.path;
 </script>
 
-<Nav {segment} />
+<Nav {segment} {path} />
 
 <main>
   <slot />

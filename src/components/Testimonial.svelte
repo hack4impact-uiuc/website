@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Row from "./Row.svelte";
+
   // title, content, and route (for button)
   export let quote: string;
   export let imageSrc: string | undefined = undefined;
@@ -9,19 +11,21 @@
 <div class="wrap">
   <div class="testimonial">
     {#if imageSrc !== undefined}
-      <div class="left">
-        <p>{quote}</p>
-        <caption>
-          {name}<br />
-          <span class="desc">{desc}</span>
-        </caption>
-      </div>
-      <div class="right">
-        <img src={imageSrc} alt={name + "'s photo"} />
-      </div>
+      <Row>
+        <div class="left">
+          <blockquote>{quote}</blockquote>
+          <caption>
+            {name}<br />
+            <span class="desc">{desc}</span>
+          </caption>
+        </div>
+        <div class="right">
+          <img src={imageSrc} alt={name + "'s photo"} />
+        </div>
+      </Row>
     {:else}
       <div class="center">
-        <p>{quote}</p>
+        <blockquote>{quote}</blockquote>
         <caption>
           {name}<br />
           <span class="desc">{desc}</span>
@@ -47,6 +51,10 @@
     align-items: center;
   }
 
+  .testimonial > :global(*) {
+    align-items: center;
+  }
+
   .left {
     flex: 4;
     padding-right: 50px;
@@ -58,30 +66,55 @@
     box-sizing: border-box;
   }
 
-  p {
+  blockquote {
+    padding: 0;
+    margin: 0;
     text-align: justify;
     text-justify: newspaper;
-    font-size: 23px;
+    font-size: 1rem;
   }
+  /* blockquote::before,
+  blockquote::after {
+    content: '"';
+  } */
 
   caption {
     text-align: right;
-    font-size: 20px;
+    font-size: 1rem;
     display: block;
   }
 
   caption > span.desc {
-    font-size: 16px;
+    font-size: 0.8rem;
   }
 
   .right {
-    flex: 3;
-    max-width: 290px;
+    flex: auto !important;
+    max-width: 12rem;
+    overflow: hidden;
   }
 
   .right > img {
-    width: 100%;
-    min-height: 290px;
+    height: 12rem;
+    aspect-ratio: 1;
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+    .right {
+      display: none;
+    }
+
+    .left {
+      padding: 0;
+    }
+
+    .testimonial {
+      width: 100%;
+    }
+
+    .wrap {
+      padding: 40px 0;
+    }
   }
 </style>
