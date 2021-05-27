@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import Button from "../../components/Button.svelte";
   import Section from "../../components/Section.svelte";
-  import Value from "../../components/Value.svelte";
+  import Step from "../../components/Step.svelte";
   import Row from "../../components/Row.svelte";
   import { setImageHeight } from "../../utils/schema";
   import type { Image, Info } from "../../utils/schema";
@@ -52,7 +52,7 @@
 <Section id="values" color="var(--gray-lighter)" padding="40px">
   <h2>Our Values</h2>
   <div id="values">
-    <Value icon="/lightbulb.svg" iconAlt="Lightbulb icon">
+    <Step icon="/lightbulb.svg" iconAlt="Lightbulb icon">
       <span slot="name">Intentionality</span>
       <span slot="description"
         >We evaluate the trade offs of our decisions, choose a direction to
@@ -63,8 +63,8 @@
         users. We carefully assess the concerns of our users, stakeholders, and
         clients, to develop a custom solution that fits our precise constraints.</span
       >
-    </Value>
-    <Value icon="/question-mark.svg" iconAlt="Question mark icon">
+    </Step>
+    <Step icon="/question-mark.svg" iconAlt="Question mark icon">
       <span slot="name">Curiosity</span>
       <span slot="description"
         >We are eager to learn about technology, ourselves, and the world around
@@ -78,8 +78,8 @@
         deliver the best solution to our clients, even if the solution isn’t
         built by Hack4Impact.</span
       >
-    </Value>
-    <Value icon="/heart.svg" iconAlt="Heart icon">
+    </Step>
+    <Step icon="/heart.svg" iconAlt="Heart icon">
       <span slot="name">Empathy</span>
       <span slot="description"
         >We look to understand perspectives, situations, and needs, and
@@ -92,7 +92,7 @@
         our development process. We’re able to settle difficult debates by
         agreeing and executing on what’s best for our client.</span
       >
-    </Value>
+    </Step>
   </div>
 </Section>
 <Section id="work" color="var(--blue)" padding="40px">

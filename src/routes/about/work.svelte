@@ -3,7 +3,7 @@
   import Button from "../../components/Button.svelte";
   import RoleCard from "../../components/RoleCard.svelte";
   import Section from "../../components/Section.svelte";
-  import Value from "../../components/Value.svelte";
+  import Step from "../../components/Step.svelte";
   import Row from "../../components/Row.svelte";
   import type { FAQ } from "../../utils/schema";
 
@@ -34,7 +34,7 @@
 <Section color="var(--gray-lighter)" id="timeline" padding="40px">
   <h2>Project Timeline</h2>
   <div id="timeline-steps">
-    <Value icon="/magnifying-glass.svg" iconAlt="Magnifying glass icon">
+    <Step icon="/magnifying-glass.svg" iconAlt="Magnifying glass icon">
       <span slot="name">Product Research (3-4 Months)</span>
       <span slot="description"
         >Product Research aims to deepen our impact in the communities that our
@@ -44,8 +44,8 @@
         following semester in a timely manner, while also gaining insight into
         the product experience without needing to be a full-time PM.</span
       >
-    </Value>
-    <Value icon="/code.svg" iconAlt="Code icon">
+    </Step>
+    <Step icon="/code.svg" iconAlt="Code icon">
       <span slot="name">Development</span>
       <span slot="description"
         >Development starts in the first few weeks of the semester, with
@@ -53,8 +53,8 @@
         working off an existing codebase in order to add features or further
         refine it to meet our nonprofit partners' goals and feedback.</span
       >
-    </Value>
-    <Value icon="/feedback.svg" iconAlt="Feedback icon">
+    </Step>
+    <Step icon="/feedback.svg" iconAlt="Feedback icon">
       <span slot="name">MVP & Feedback</span>
       <span slot="description"
         >Teams present their mid-semester Minimum Viable Products (MVPs)
@@ -62,8 +62,8 @@
         feedback from their peers on the problem the team is tackling as well as
         the way in which they aim to solve it.</span
       >
-    </Value>
-    <Value icon="/presentation.svg" iconAlt="Presentation icon">
+    </Step>
+    <Step icon="/presentation.svg" iconAlt="Presentation icon">
       <span slot="name">Product Showcase</span>
       <span slot="description"
         >Development continues after MVP with more challenging or lower-priority
@@ -72,8 +72,8 @@
         deliverables are shown to the rest of the organization as well as to a
         public audience.</span
       >
-    </Value>
-    <Value icon="/handshake.svg" iconAlt="Handshake icon">
+    </Step>
+    <Step icon="/handshake.svg" iconAlt="Handshake icon">
       <span slot="name">Hand-Off</span>
       <span slot="description"
         >Soon after Product Showcase, teams will hand off their work to their
@@ -82,7 +82,7 @@
         feedback from our partners as well as potentially serving as an initial
         pilot.
       </span>
-    </Value>
+    </Step>
   </div>
 </Section>
 <Section id="teams" padding="40px">

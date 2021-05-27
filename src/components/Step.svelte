@@ -3,7 +3,7 @@
   export let iconAlt: string | undefined;
 </script>
 
-<div class="value row-center">
+<div class="step row-center">
   <span
     ><div id="icon-container">
       {#if icon !== undefined}
@@ -42,16 +42,16 @@
     height: 50px;
   }
 
-  .value {
+  .step {
     margin: 1rem 0;
   }
 
-  .value > span:first-child {
+  .step > span:first-child {
     align-self: flex-start;
   }
 
   @media only screen and (max-width: 600px) {
-    .value {
+    .step {
       flex-direction: column;
       margin-top: 0;
     }

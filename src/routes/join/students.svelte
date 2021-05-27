@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import Section from "../../components/Section.svelte";
-  import Value from "../../components/Value.svelte";
+  import Step from "../../components/Step.svelte";
   import Accordion from "../../components/Accordion.svelte";
   import Button from "../../components/Button.svelte";
   import Row from "../../components/Row.svelte";
@@ -68,7 +68,7 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step, idx}
-      <Value>
+      <Step>
         <span slot="name"
           >{step.name !== undefined ? step.name : `Step ${idx + 1}`}</span
         >
@@ -78,7 +78,7 @@
           growth, we avoid mindless movement and instead purposefully act. We
           work with intention.
         </span>
-      </Value>
+      </Step>
     {/each}
   </div>
 </Section>
