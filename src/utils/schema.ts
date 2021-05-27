@@ -70,6 +70,13 @@ export interface Role {
   open: boolean;
 }
 
+export interface ApplicationStep {
+  name: string;
+  date: string;
+  description: string;
+  icon: "Calendar" | "Form" | "Interview";
+}
+
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
   if (src.endsWith(".svg")) {
