@@ -9,13 +9,13 @@
 
   export async function preload() {
     const [faqs, openRoles, applicationSteps] = await Promise.all([
-      this.fetch("server/apply-faq.json").then((res) => res.json()) as Promise<
-        FAQ[]
-      >,
-      this.fetch("server/open-roles.json").then((res) => res.json()) as Promise<
-        Role[]
-      >,
-      this.fetch("server/application-steps.json").then((res) =>
+      this.fetch("server/apply-faq.json").then((res: Response) =>
+        res.json()
+      ) as Promise<FAQ[]>,
+      this.fetch("server/open-roles.json").then((res: Response) =>
+        res.json()
+      ) as Promise<Role[]>,
+      this.fetch("server/application-steps.json").then((res: Response) =>
         res.json()
       ) as Promise<ApplicationStep>,
     ]);
@@ -65,7 +65,7 @@
 <Section id="process" color="var(--gray-lighter)" padding="40px">
   <h2>Application Process</h2>
   <div id="process-steps">
-    {#each applicationSteps as step, idx}
+    {#each applicationSteps as step}
       <Step icon={iconMap[step.icon]} iconAlt={step.name}>
         <span slot="name">{step.name}</span>
         <span slot="date">{step.date}</span>
