@@ -13,6 +13,7 @@
   </span>
   <span>
     <h3><slot name="name" /></h3>
+    <h4><slot name="date" /></h4>
     <p><slot name="description" /></p>
   </span>
 </div>

@@ -5,37 +5,35 @@
   import Button from "../../components/Button.svelte";
   import Row from "../../components/Row.svelte";
 
-  import type { FAQ, Role } from "../../utils/schema";
+  import type { ApplicationStep, FAQ, Role } from "../../utils/schema";
 
   export async function preload() {
-    const [faqs, openRoles] = await Promise.all([
+    const [faqs, openRoles, applicationSteps] = await Promise.all([
       this.fetch("server/apply-faq.json").then((res) => res.json()) as Promise<
         FAQ[]
       >,
       this.fetch("server/open-roles.json").then((res) => res.json()) as Promise<
         Role[]
       >,
+      this.fetch("server/application-steps.json").then((res) =>
+        res.json()
+      ) as Promise<ApplicationStep>,
     ]);
 
-    return { faqs, openRoles };
+    return { faqs, openRoles, applicationSteps };
   }
 </script>
 
 <script lang="ts">
-  interface ApplicationStep {
-    date: Date;
-    content: string;
-    name?: string;
-  }
-
-  let applicationSteps: ApplicationStep[] = Array(6)
-    .fill(Object())
-    .map(
-      () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
-    );
-
   export let faqs: FAQ[];
   export let openRoles: Role[];
+  export let applicationSteps: ApplicationStep[];
+
+  const iconMap = {
+    Calendar: "/icons/calendar.svg",
+    Form: "/icons/contract.svg",
+    Interview: "/icons/interview.svg",
+  };
 </script>
 
 <svelte:head>
@@ -68,16 +66,10 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step, idx}
-      <Step>
-        <span slot="name"
-          >{step.name !== undefined ? step.name : `Step ${idx + 1}`}</span
-        >
-        <span slot="description"
-          >We evaluate the trade offs of our decisions, choose a direction to
-          head, and crush our goals. Whether it be personal or professional
-          growth, we avoid mindless movement and instead purposefully act. We
-          work with intention.
-        </span>
+      <Step icon={iconMap[step.icon]} iconAlt={step.name}>
+        <span slot="name">{step.name}</span>
+        <span slot="date">{step.date}</span>
+        <span slot="description">{step.description}</span>
       </Step>
     {/each}
   </div>
@@ -124,7 +116,7 @@
   }
 
   #process-steps {
-    margin-top: 41px;
+    margin-top: 40px;
   }
 
   .light-text {
