@@ -34,7 +34,7 @@
 <Section color="var(--gray-lighter)" id="timeline" padding="40px">
   <h2>Project Timeline</h2>
   <div id="timeline-steps">
-    <Step icon="/magnifying-glass.svg" iconAlt="Magnifying glass icon">
+    <Step icon="/icons/magnifying-glass.svg" iconAlt="Magnifying glass icon">
       <span slot="name">Product Research (3-4 Months)</span>
       <span slot="description"
         >Product Research aims to deepen our impact in the communities that our
@@ -45,7 +45,7 @@
         the product experience without needing to be a full-time PM.</span
       >
     </Step>
-    <Step icon="/code.svg" iconAlt="Code icon">
+    <Step icon="/icons/code.svg" iconAlt="Code icon">
       <span slot="name">Development</span>
       <span slot="description"
         >Development starts in the first few weeks of the semester, with
@@ -54,7 +54,7 @@
         refine it to meet our nonprofit partners' goals and feedback.</span
       >
     </Step>
-    <Step icon="/feedback.svg" iconAlt="Feedback icon">
+    <Step icon="/icons/feedback.svg" iconAlt="Feedback icon">
       <span slot="name">MVP & Feedback</span>
       <span slot="description"
         >Teams present their mid-semester Minimum Viable Products (MVPs)
@@ -63,7 +63,7 @@
         the way in which they aim to solve it.</span
       >
     </Step>
-    <Step icon="/presentation.svg" iconAlt="Presentation icon">
+    <Step icon="/icons/presentation.svg" iconAlt="Presentation icon">
       <span slot="name">Product Showcase</span>
       <span slot="description"
         >Development continues after MVP with more challenging or lower-priority
@@ -73,7 +73,7 @@
         public audience.</span
       >
     </Step>
-    <Step icon="/handshake.svg" iconAlt="Handshake icon">
+    <Step icon="/icons/handshake.svg" iconAlt="Handshake icon">
       <span slot="name">Hand-Off</span>
       <span slot="description"
         >Soon after Product Showcase, teams will hand off their work to their

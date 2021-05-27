@@ -52,7 +52,7 @@
 <Section id="values" color="var(--gray-lighter)" padding="40px">
   <h2>Our Values</h2>
   <div id="values">
-    <Step icon="/lightbulb.svg" iconAlt="Lightbulb icon">
+    <Step icon="/icons/lightbulb.svg" iconAlt="Lightbulb icon">
       <span slot="name">Intentionality</span>
       <span slot="description"
         >We evaluate the trade offs of our decisions, choose a direction to
@@ -64,7 +64,7 @@
         clients, to develop a custom solution that fits our precise constraints.</span
       >
     </Step>
-    <Step icon="/question-mark.svg" iconAlt="Question mark icon">
+    <Step icon="/icons/question-mark.svg" iconAlt="Question mark icon">
       <span slot="name">Curiosity</span>
       <span slot="description"
         >We are eager to learn about technology, ourselves, and the world around
@@ -79,7 +79,7 @@
         built by Hack4Impact.</span
       >
     </Step>
-    <Step icon="/heart.svg" iconAlt="Heart icon">
+    <Step icon="/icons/heart.svg" iconAlt="Heart icon">
       <span slot="name">Empathy</span>
       <span slot="description"
         >We look to understand perspectives, situations, and needs, and
