@@ -45,6 +45,7 @@
 
   .step {
     margin: 1rem 0;
+    justify-content: left;
   }
 
   .step > span:first-child {
