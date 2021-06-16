@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { semesterToId } from "../utils/schema";
+
   export let semesters: string[];
 </script>
 
@@ -45,8 +47,10 @@
             >
           </li>
           {#each semesters.slice(0, 3) as semester}<li>
-              <a href="/projects#{semester}" sapper:noscroll sapper:prefetch
-                >{semester}</a
+              <a
+                href="/projects/#{semesterToId(semester)}"
+                sapper:noscroll
+                sapper:prefetch>{semester}</a
               >
             </li>{/each}
         </ul>

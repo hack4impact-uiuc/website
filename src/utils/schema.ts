@@ -93,3 +93,7 @@ export function parseSemester(semester: string): Semester {
 
   return { season, year };
 }
+
+export function semesterToId(semester: string): string {
+  return semester.split(" ").join("-").toLowerCase();
+}

@@ -2,6 +2,7 @@
   import Section from "../../components/Section.svelte";
   import FeaturedBanner from "../../components/projects/FeaturedBanner.svelte";
   import ProjectCard from "../../components/projects/ProjectCard.svelte";
+  import { semesterToId } from "../../utils/schema";
   import viewport from "../../utils/useViewportAction";
   import { generateProjectsInfo } from "../../utils/projects";
   import type { SemesterProjects } from "../../utils/projects";
@@ -25,8 +26,6 @@
   let currentSemester: number = 0;
 
   const setSemester = (newSection: number) => (currentSemester = newSection);
-  const idFromSemester = (semester: string) =>
-    semester.split(" ").join("-").toLowerCase();
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -43,7 +42,7 @@
         {#each semesters as semester, idx}
           <li>
             <a
-              href={`projects/#${idFromSemester(semester)}`}
+              href={`projects/#${semesterToId(semester)}`}
               on:click={() => {
                 setSemester(idx);
               }}
@@ -58,7 +57,7 @@
     <article>
       {#each semesters as semester, idx}
         <section class="semester-section">
-          <span class="scroll-anchor" id={idFromSemester(semester)} />
+          <span class="scroll-anchor" id={semesterToId(semester)} />
           <h2>{semester}</h2>
           {#if projectMap[semester].featured !== undefined}<FeaturedBanner
               project={projectMap[semester].featured}
