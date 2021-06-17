@@ -5,7 +5,7 @@ import {
   ContentType,
 } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 export class ContentWrapper {
   client: ContentfulClientApi;
@@ -57,11 +57,8 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                    const {
-                      file,
-                      title,
-                      description,
-                    } = node.data.target.fields;
+                    const { file, title, description } =
+                      node.data.target.fields;
                     return `
                       <div class="column-center long-form-embed">
                           <img src="${file.url}?w=1200" alt="${title}" \>
@@ -72,6 +69,25 @@ export class ContentWrapper {
                           }
                       </div>
                     `;
+                  },
+                  [INLINES.HYPERLINK]: (node) => {
+                    if (node.data.uri.includes("youtube.com/embed")) {
+                      return `<div class="iframe-container row-center">
+                        <div class="iframe-box">
+                          <iframe
+                            title="Demo"
+                            src=${node.data.uri}
+                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                            frameBorder="0"
+                            allowFullScreen
+                          ></iframe>
+                        </div>
+                      </div>`;
+                    } else {
+                      return `<a href=${node.data.uri}>${documentToHtmlString(
+                        node
+                      )}</a>`;
+                    }
                   },
                 },
               });
