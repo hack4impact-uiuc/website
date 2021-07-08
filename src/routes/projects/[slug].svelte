@@ -24,6 +24,31 @@
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
   <meta name="description" content={project.summary} />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:url"
+    content="https://h4iuiuc.netlify.app/projects/{project.slug}"
+  />
+  <meta property="og:title" content={project.name} />
+  <meta property="og:description" content={project.summary} />
+  {#if project.headerImage !== undefined}
+    <meta property="og:image" content={project.headerImage.src} />
+    <meta name="twitter:image" content={project.headerImage.src} />
+  {/if}
+
+  <meta
+    name="twitter:card"
+    content={project.headerImage !== undefined
+      ? "summary_large_image"
+      : "summary"}
+  />
+  <meta name="twitter:domain" value="https://h4iuiuc.netlify.app" />
+  <meta
+    name="twitter:url"
+    value="https://h4iuiuc.netlify.app/projects/{project.slug}"
+  />
+  <meta name="twitter:title" value={project.name} />
+  <meta name="twitter:description" value={project.summary} />
 </svelte:head>
 
 <DoubleBanner
@@ -39,6 +64,16 @@
     <h1>{project.name}</h1>
     <h2 id="project-summary">{project.summary}</h2></span
   >
+  <span slot="right">
+    {#if project.headerImage !== undefined}
+      <div id="header-container" class="column-center">
+        <img
+          src={setImageHeight(project.headerImage.src, 600)}
+          alt={project.headerImage.alt}
+        />
+      </div>
+    {/if}
+  </span>
 </DoubleBanner>
 <Section
   id="nonprofit-description"
@@ -90,6 +125,14 @@
 </Section>
 
 <style>
+  #header-container {
+    height: 100%;
+  }
+
+  #header-container img {
+    width: 100%;
+  }
+
   p {
     opacity: 80%;
   }
@@ -127,7 +170,7 @@
     }
   }
 
-  img {
+  :global(#project-description img) {
     max-width: 80%;
     object-fit: contain;
     max-height: 600px;
