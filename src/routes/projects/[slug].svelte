@@ -23,6 +23,7 @@
 
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
+  <meta name="description" content={project.summary} />
 </svelte:head>
 
 <DoubleBanner
