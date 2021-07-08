@@ -8,12 +8,8 @@ import "regenerator-runtime/runtime.js";
 
 dotenv.config();
 
-const {
-  PORT,
-  NODE_ENV,
-  CONTENTFUL_DELIVERY_KEY,
-  CONTENTFUL_SPACE_ID,
-} = process.env;
+const { PORT, NODE_ENV, CONTENTFUL_DELIVERY_KEY, CONTENTFUL_SPACE_ID } =
+  process.env;
 const dev = NODE_ENV === "development";
 
 const contentWrapper = new ContentWrapper(
