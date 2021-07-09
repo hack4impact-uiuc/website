@@ -39,7 +39,7 @@
 <Section padding="60px">
   <h1>Nonprofits</h1>
   <h2>Our Services</h2>
-  <Row gap={58}>
+  <Row gap="{58}">
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
@@ -74,7 +74,7 @@
 </Section>
 
 <Section padding="83px">
-  <Row gap={84} reverseOnMobile>
+  <Row gap="{84}" reverseOnMobile>
     <div>
       <h2>How We Work</h2>
       <p>
@@ -95,11 +95,11 @@
   <div id="process-steps">
     {#each applicationSteps as step, idx}
       <Step>
-        <span slot="name"
-          >{step.name !== undefined ? step.name : `Step ${idx + 1}`}</span
-        >
-        <span slot="description"
-          >We evaluate the trade offs of our decisions, choose a direction to
+        <span slot="name">
+          {step.name !== undefined ? step.name : `Step ${idx + 1}`}
+        </span>
+        <span slot="description">
+          We evaluate the trade offs of our decisions, choose a direction to
           head, and crush our goals. Whether it be personal or professional
           growth, we avoid mindless movement and instead purposefully act. We
           work with intention.

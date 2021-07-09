@@ -66,7 +66,7 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step}
-      <Step icon={iconMap[step.icon]} iconAlt={step.name}>
+      <Step icon="{iconMap[step.icon]}" iconAlt="{step.name}">
         <span slot="name">{step.name}</span>
         <span slot="date">{step.date}</span>
         <span slot="description">{step.description}</span>

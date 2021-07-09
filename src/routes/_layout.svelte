@@ -25,10 +25,10 @@
   $: path = $page.path;
 </script>
 
-<Nav {segment} {path} />
+<Nav segment="{segment}" path="{path}" />
 
 <main>
   <slot />
 </main>
 
-<Footer {semesters} />
+<Footer semesters="{semesters}" />

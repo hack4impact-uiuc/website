@@ -70,7 +70,7 @@
 
 <Section padding="60px">
   <h1>Sponsors</h1>
-  <Row gap={30}>
+  <Row gap="{30}">
     <div id="sponsor-intro-left">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore fugit
@@ -118,7 +118,7 @@
           <h4>{tier.price}$/semester</h4>
           <ul>
             {#each allPerks as perk}
-              <li class={tier.perks.includes(perk) ? "" : "disabled"}>
+              <li class="{tier.perks.includes(perk) ? '' : 'disabled'}">
                 <span class="status">
                   {#if tier.perks.includes(perk)}
                     &checkmark;
@@ -138,7 +138,7 @@
 
 <Section padding="60px">
   <h2>Where We Work</h2>
-  <img id="where-we-work" src={whereWeWork.src} alt={whereWeWork.alt} />
+  <img id="where-we-work" src="{whereWeWork.src}" alt="{whereWeWork.alt}" />
 </Section>
 
 <Section padding="40px" id="faq" color="var(--gray-lighter)">

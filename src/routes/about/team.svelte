@@ -58,7 +58,7 @@
   <section id="current">
     <h2>Current Members</h2>
     <div class="member-grid">
-      {#each active as member}<Member {member} />{/each}
+      {#each active as member}<Member member="{member}" />{/each}
     </div>
   </section>
 </Section>
@@ -67,13 +67,13 @@
   <section id="alumni">
     <h2>Alumni</h2>
     <div class="member-grid">
-      {#each showAllAlumni ? alumni : alumni.slice(0, 12) as member}<Member
-          {member}
-        />{/each}
+      {#each showAllAlumni ? alumni : alumni.slice(0, 12) as member}
+        <Member member="{member}" />
+      {/each}
     </div>
     {#if !showAllAlumni && alumni.length > 12}
       <div id="show-all" class="row-center">
-        <Button type="secondary" onClick={toggleAlumni}>Show All</Button>
+        <Button type="secondary" onClick="{toggleAlumni}">Show All</Button>
       </div>
     {/if}
   </section>

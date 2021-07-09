@@ -28,7 +28,7 @@
   const setSemester = (newSection: number) => (currentSemester = newSection);
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} />
+<svelte:window bind:innerWidth="{windowWidth}" />
 
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
@@ -37,16 +37,16 @@
 <Section padding="60px">
   <h1>Projects</h1>
   <div class="col-wrapper">
-    <aside style={windowWidth ? `--window-width: ${windowWidth}px` : ""}>
+    <aside style="{windowWidth ? `--window-width: ${windowWidth}px` : ''}">
       <ul>
         {#each semesters as semester, idx}
           <li>
             <a
-              href={`projects/#${semesterToId(semester)}`}
-              on:click={() => {
+              href="{`projects/#${semesterToId(semester)}`}"
+              on:click="{() => {
                 setSemester(idx);
-              }}
-              class:active={currentSemester === idx}
+              }}"
+              class:active="{currentSemester === idx}"
             >
               {semester}
             </a>
@@ -57,15 +57,15 @@
     <article>
       {#each semesters as semester, idx}
         <section class="semester-section">
-          <span class="scroll-anchor" id={semesterToId(semester)} />
+          <span class="scroll-anchor" id="{semesterToId(semester)}"></span>
           <h2>{semester}</h2>
-          {#if projectMap[semester].featured !== undefined}<FeaturedBanner
-              project={projectMap[semester].featured}
-            />{/if}
-          <span use:viewport on:enterViewport={() => setSemester(idx)} />
+          {#if projectMap[semester].featured !== undefined}
+            <FeaturedBanner project="{projectMap[semester].featured}" />
+          {/if}
+          <span use:viewport on:enterViewport="{() => setSemester(idx)}"></span>
           <div class="project-grid">
             {#each projectMap[semester].projects as project}
-              <ProjectCard {project} />
+              <ProjectCard project="{project}" />
             {/each}
           </div>
         </section>

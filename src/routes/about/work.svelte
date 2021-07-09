@@ -36,8 +36,8 @@
   <div id="timeline-steps">
     <Step icon="/icons/magnifying-glass.svg" iconAlt="Magnifying glass icon">
       <span slot="name">Product Research (3-4 Months)</span>
-      <span slot="description"
-        >Product Research aims to deepen our impact in the communities that our
+      <span slot="description">
+        Product Research aims to deepen our impact in the communities that our
         work serves by pushing the boundaries of our products’ quality and
         fostering a community for intentional product thinking and exploration.
         Our team sources and scopes compelling and impactful projects for the
@@ -47,36 +47,36 @@
     </Step>
     <Step icon="/icons/code.svg" iconAlt="Code icon">
       <span slot="name">Development</span>
-      <span slot="description"
-        >Development starts in the first few weeks of the semester, with
+      <span slot="description">
+        Development starts in the first few weeks of the semester, with
         developers/designers either creating a new product from scratch or
         working off an existing codebase in order to add features or further
-        refine it to meet our nonprofit partners' goals and feedback.</span
-      >
+        refine it to meet our nonprofit partners' goals and feedback.
+      </span>
     </Step>
     <Step icon="/icons/feedback.svg" iconAlt="Feedback icon">
       <span slot="name">MVP & Feedback</span>
-      <span slot="description"
-        >Teams present their mid-semester Minimum Viable Products (MVPs)
+      <span slot="description">
+        Teams present their mid-semester Minimum Viable Products (MVPs)
         internally to the rest of the chapter, where they are able to receive
         feedback from their peers on the problem the team is tackling as well as
-        the way in which they aim to solve it.</span
-      >
+        the way in which they aim to solve it.
+      </span>
     </Step>
     <Step icon="/icons/presentation.svg" iconAlt="Presentation icon">
       <span slot="name">Product Showcase</span>
-      <span slot="description"
-        >Development continues after MVP with more challenging or lower-priority
+      <span slot="description">
+        Development continues after MVP with more challenging or lower-priority
         features, as well as iterating on feedback from MVP itself. At the end
         of the semester, teams present at Product Showcase, where their finished
         deliverables are shown to the rest of the organization as well as to a
-        public audience.</span
-      >
+        public audience.
+      </span>
     </Step>
     <Step icon="/icons/handshake.svg" iconAlt="Handshake icon">
       <span slot="name">Hand-Off</span>
-      <span slot="description"
-        >Soon after Product Showcase, teams will hand off their work to their
+      <span slot="description">
+        Soon after Product Showcase, teams will hand off their work to their
         nonprofit partner. For some projects, work will resume in a future
         semester, in which case this initial handoff may focus on generating
         feedback from our partners as well as potentially serving as an initial
@@ -90,8 +90,8 @@
   <div id="roles">
     <RoleCard>
       <span slot="role">Software Developers</span>
-      <span slot="description"
-        >Software developers constitute the majority of a Hack4Impact team and
+      <span slot="description">
+        Software developers constitute the majority of a Hack4Impact team and
         code together to make the product come to life. We commonly utilize the
         MERN stack (MongoDB, Express, React, Node), though we have also created
         some mobile and data science applications in past projects. Software
@@ -102,8 +102,8 @@
     </RoleCard>
     <RoleCard>
       <span slot="role">Product Designers</span>
-      <span slot="description"
-        >Designers collaborate in cross functional teams to design the product
+      <span slot="description">
+        Designers collaborate in cross functional teams to design the product
         from ideation to creating wireframes, mock ups, and user interface
         designs with a core emphasis on user experience for the final product.
         They are responsible from the holistic design of the product down to the
@@ -114,27 +114,27 @@
     </RoleCard>
     <RoleCard>
       <span slot="role">Tech Lead</span>
-      <span slot="description"
-        >Tech Leads take technical ownership of the product, and are responsible
+      <span slot="description">
+        Tech Leads take technical ownership of the product, and are responsible
         for architecting the software each team develops to meet their
         nonprofit's needs as well as setting technical standards, delegating
         work, setting guidelines, and mentoring developers in the tech stack
         used by their project. Tech Leads work most closely with Software
         Developers, and along with Product Managers are responsible for leading
-        our project teams.</span
-      >
+        our project teams.
+      </span>
       <span slot="number">1</span>
     </RoleCard>
     <RoleCard>
       <span slot="role">Product Manager</span>
-      <span slot="description"
-        >Product Managers act as the bridge between our project teams and our
+      <span slot="description">
+        Product Managers act as the bridge between our project teams and our
         nonprofit partners, helping distill the needs of our partners into
         actionable solutions that the other members can execute on. Product
         Managers oftentimes find themselves handling a variety of
         responsibilities, as it is ultimately their role as a co-lead to ensure
-        that an impactful product is delivered in a timely manner.</span
-      >
+        that an impactful product is delivered in a timely manner.
+      </span>
       <span slot="number">1</span>
     </RoleCard>
   </div>
@@ -154,7 +154,7 @@
     semester to building a full-stack web application of the team's choosing
     using the lessons learned earlier in the semester.
   </p>
-  <div id="divider" />
+  <div id="divider"></div>
 </Section>
 <Section padding="40px" id="faq" color="var(--gray-lighter)">
   <h2>Frequently Asked Questions</h2>

@@ -28,8 +28,8 @@
 </svelte:head>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
-  <span slot="left"
-    ><h1>Software For Nonprofits</h1>
+  <span slot="left">
+    <h1>Software For Nonprofits</h1>
     <p id="banner-mission">
       Uniting students to build well-engineered and impactful products for
       social change.
@@ -49,10 +49,10 @@
 <Section id="featured-projects" padding="30px">
   <div id="featured-section">
     <h1>Featured Work</h1>
-    {#if projects.length > 0}<FeaturedBanner project={projects[0]} />{/if}
+    {#if projects.length > 0}<FeaturedBanner project="{projects[0]}" />{/if}
     <div class="project-grid">
       {#each projects.slice(1) as project}
-        <ProjectCard {project} />
+        <ProjectCard project="{project}" />
       {/each}
     </div>
   </div>

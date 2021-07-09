@@ -45,7 +45,11 @@
       </p>
     </div>
     <div id="about-intro-right">
-      <img id="team-photo" src={setImageHeight(team.src, 900)} alt={team.alt} />
+      <img
+        id="team-photo"
+        src="{setImageHeight(team.src, 900)}"
+        alt="{team.alt}"
+      />
     </div>
   </div>
 </Section>
@@ -110,7 +114,7 @@
 </Section>
 
 <Section id="team" padding="83px">
-  <Row gap={84} reverse>
+  <Row gap="{84}" reverse>
     <div>
       <h2>Meet The Team</h2>
       <p>
