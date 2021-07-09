@@ -1,18 +1,18 @@
 <script lang="ts">
+  import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";
 
   export let project: Project;
-  export let imageSrc: string;
 </script>
 
 <a href="projects/{project.slug}" sapper:prefetch>
   <div class="featured-project" style="background-color: {project.accentColor}">
-    {#if imageSrc !== undefined}
+    {#if project.headerImage !== undefined}
       <figure>
-        <img src={imageSrc} alt={project.name} />
+        <img src="{project.headerImage.src}" alt="{project.name}" />
       </figure>
     {/if}
-    <div class="meta" class:masked={imageSrc !== undefined}>
+    <div class="meta" class:masked="{project.headerImage !== undefined}">
       <h4>{project.name}</h4>
       <h2>{project.summary}</h2>
       <span>Learn More</span>
@@ -77,6 +77,7 @@
     height: 13rem;
     overflow: hidden;
     box-sizing: border-box;
+    width: 100%;
   }
 
   @media only screen and (max-width: 1350px) {
