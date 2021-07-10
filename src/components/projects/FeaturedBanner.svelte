@@ -62,6 +62,7 @@
     right: 0;
     top: 0;
     height: 100%;
+    max-width: 25%;
   }
 
   figure img {
@@ -80,6 +81,12 @@
     width: 100%;
   }
 
+  @media only screen and (min-width: 1500px) {
+    h2 {
+      font-size: calc(0.9 * 1.6rem);
+    }
+  }
+
   @media only screen and (max-width: 1350px) {
     .meta {
       padding-right: 1rem;
@@ -87,6 +94,10 @@
 
     .meta.masked {
       background: rgba(0, 0, 0, 0.3);
+    }
+
+    figure {
+      max-width: 100%;
     }
   }
 
