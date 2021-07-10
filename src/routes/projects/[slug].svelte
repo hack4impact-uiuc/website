@@ -175,4 +175,12 @@
     object-fit: contain;
     max-height: 600px;
   }
+
+  :global(#project-description h1) {
+    font-size: 1.6rem;
+  }
+
+  :global(#project-description h2) {
+    font-size: 1.2rem;
+  }
 </style>
