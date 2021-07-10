@@ -95,6 +95,10 @@
     .meta.masked {
       background: rgba(0, 0, 0, 0.3);
     }
+
+    figure {
+      max-width: 100%;
+    }
   }
 
   @media only screen and (max-width: 1105px) {
