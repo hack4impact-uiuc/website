@@ -62,6 +62,7 @@
     right: 0;
     top: 0;
     height: 100%;
+    max-width: 25%;
   }
 
   figure img {
@@ -78,6 +79,12 @@
     overflow: hidden;
     box-sizing: border-box;
     width: 100%;
+  }
+
+  @media only screen and (min-width: 1500px) {
+    h2 {
+      font-size: calc(0.9 * 1.6rem);
+    }
   }
 
   @media only screen and (max-width: 1350px) {
