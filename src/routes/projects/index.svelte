@@ -25,7 +25,13 @@
 
   let currentSemester: number = 0;
 
-  const setSemester = (newSection: number) => (currentSemester = newSection);
+  const setSemester = (newSection: number) => {
+    currentSemester = newSection;
+    const currentSemesterDOM = document.getElementById(
+      `semester-${newSection}`
+    );
+    currentSemesterDOM.scrollIntoView();
+  };
 </script>
 
 <svelte:window bind:innerWidth="{windowWidth}" />
@@ -40,7 +46,7 @@
     <aside style="{windowWidth ? `--window-width: ${windowWidth}px` : ''}">
       <ul>
         {#each semesters as semester, idx}
-          <li>
+          <li id="{`semester-${idx}`}">
             <a
               href="{`projects/#${semesterToId(semester)}`}"
               on:click="{() => {
