@@ -26,6 +26,9 @@
   let currentSemester: number = 0;
 
   const setSemester = (newSection: number) => {
+    // get scroll direction for offset
+    const isAscending = currentSemester - newSection < 0;
+
     // set active semester
     currentSemester = newSection;
 
@@ -36,7 +39,8 @@
     const semesterListDOM = document.getElementById("semester-list");
 
     if (currentSemesterDOM && semesterListDOM) {
-      semesterListDOM.scrollLeft = currentSemesterDOM.offsetLeft - 10;
+      semesterListDOM.scrollLeft =
+        currentSemesterDOM.offsetLeft - (isAscending ? 20 : 10);
     }
   };
 </script>
