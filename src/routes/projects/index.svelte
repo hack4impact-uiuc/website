@@ -26,11 +26,18 @@
   let currentSemester: number = 0;
 
   const setSemester = (newSection: number) => {
+    // set active semester
     currentSemester = newSection;
+
+    // make active semester link visible
     const currentSemesterDOM = document.getElementById(
       `semester-${newSection}`
     );
-    currentSemesterDOM.scrollIntoView();
+    const semesterListDOM = document.getElementById("semester-list");
+
+    if (currentSemesterDOM && semesterListDOM) {
+      semesterListDOM.scrollLeft = currentSemesterDOM.offsetLeft - 10;
+    }
   };
 </script>
 
@@ -44,7 +51,7 @@
   <h1>Projects</h1>
   <div class="col-wrapper">
     <aside style="{windowWidth ? `--window-width: ${windowWidth}px` : ''}">
-      <ul>
+      <ul id="semester-list">
         {#each semesters as semester, idx}
           <li id="{`semester-${idx}`}">
             <a
@@ -169,6 +176,7 @@
     white-space: nowrap;
     position: absolute;
     bottom: 0;
+    scroll-behavior: smooth;
   }
 
   @media only screen and (min-width: 1001px) {
