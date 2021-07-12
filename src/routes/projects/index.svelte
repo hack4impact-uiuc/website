@@ -25,7 +25,24 @@
 
   let currentSemester: number = 0;
 
-  const setSemester = (newSection: number) => (currentSemester = newSection);
+  const setSemester = (newSection: number) => {
+    // get scroll direction for offset
+    const isAscending = currentSemester - newSection < 0;
+
+    // set active semester
+    currentSemester = newSection;
+
+    // make active semester link visible
+    const currentSemesterDOM = document.getElementById(
+      `semester-${newSection}`
+    );
+    const semesterListDOM = document.getElementById("semester-list");
+
+    if (currentSemesterDOM && semesterListDOM) {
+      semesterListDOM.scrollLeft =
+        currentSemesterDOM.offsetLeft - (isAscending ? 20 : 10);
+    }
+  };
 </script>
 
 <svelte:window bind:innerWidth="{windowWidth}" />
@@ -38,9 +55,9 @@
   <h1>Projects</h1>
   <div class="col-wrapper">
     <aside style="{windowWidth ? `--window-width: ${windowWidth}px` : ''}">
-      <ul>
+      <ul id="semester-list">
         {#each semesters as semester, idx}
-          <li>
+          <li id="{`semester-${idx}`}">
             <a
               href="{`projects/#${semesterToId(semester)}`}"
               on:click="{() => {
@@ -163,6 +180,7 @@
     white-space: nowrap;
     position: absolute;
     bottom: 0;
+    scroll-behavior: smooth;
   }
 
   @media only screen and (min-width: 1001px) {
