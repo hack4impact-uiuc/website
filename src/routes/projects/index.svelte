@@ -25,14 +25,14 @@
 
   onMount(() => {
     const {
-      location: { hash },
+      location: { hash: url },
     } = window;
-    const id = hash.split("#").pop();
+    const sectionId = url.split("#").pop();
 
-    if (id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView(true);
+    if (sectionId) {
+      const sectionDOM = document.getElementById(sectionId);
+      if (sectionDOM) {
+        sectionDOM.scrollIntoView(true);
       }
     }
   });
