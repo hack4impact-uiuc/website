@@ -6,8 +6,10 @@
 
   export async function preload() {
     const [members, info] = await Promise.all([
-      this.fetch("server/members.json").then((res) => res.json()),
-      this.fetch("server/info.json").then((res) => res.json()),
+      this.fetch("server/members.json").then(
+        (res) => res.json() as MemberType[]
+      ),
+      this.fetch("server/info.json").then((res) => res.json() as Info),
     ]);
 
     const roles = [
