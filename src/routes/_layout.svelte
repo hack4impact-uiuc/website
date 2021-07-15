@@ -25,6 +25,11 @@
   $: path = $page.path;
 </script>
 
+<svelte:head>
+  <meta property="og:type" content="website" />
+  <meta name="twitter:domain" value="https://h4iuiuc.netlify.app" />
+</svelte:head>
+
 <Nav segment="{segment}" path="{path}" />
 
 <main>

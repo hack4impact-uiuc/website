@@ -2,12 +2,13 @@
   import Button from "../../components/Button.svelte";
   import Member from "../../components/Member.svelte";
   import Section from "../../components/Section.svelte";
-  import type { Member as MemberType } from "../../utils/schema";
+  import type { Image, Info, Member as MemberType } from "../../utils/schema";
 
   export async function preload() {
-    const res = await this.fetch(`server/members.json`);
-
-    const members: MemberType[] = await res.json();
+    const [members, info] = await Promise.all([
+      this.fetch("server/members.json").then((res) => res.json()),
+      this.fetch("server/info.json").then((res) => res.json()),
+    ]);
 
     const roles = [
       "Co-Founder",
@@ -30,6 +31,7 @@
     return {
       active: members.filter((member) => member.active),
       alumni: members.filter((member) => !member.active),
+      team: info.chapterPicture,
     };
   }
 </script>
@@ -37,6 +39,7 @@
 <script lang="ts">
   export let active: MemberType[];
   export let alumni: MemberType[];
+  export let team: Image;
 
   let showAllAlumni: boolean = false;
 
@@ -48,6 +51,25 @@
 
 <svelte:head>
   <title>The Team | Hack4Impact UIUC</title>
+  <meta
+    name="description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta property="og:url" content="https://h4iuiuc.netlify.app/about/team" />
+  <meta property="og:title" content="The Team | Hack4Impact UIUC" />
+  <meta
+    property="og:description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="og:image" content="{team.src}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" value="https://h4iuiuc.netlify.app/about/team" />
+  <meta name="twitter:title" value="The Team | Hack4Impact UIUC" />
+  <meta
+    name="twitter:description"
+    value="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="twitter:image" content="{team.src}" />
 </svelte:head>
 
 <Section>

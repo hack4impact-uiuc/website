@@ -24,7 +24,6 @@
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
   <meta name="description" content="{project.summary}" />
-  <meta property="og:type" content="website" />
   <meta
     property="og:url"
     content="https://h4iuiuc.netlify.app/projects/{project.slug}"
@@ -42,7 +41,6 @@
       ? 'summary_large_image'
       : 'summary'}"
   />
-  <meta name="twitter:domain" value="https://h4iuiuc.netlify.app" />
   <meta
     name="twitter:url"
     value="https://h4iuiuc.netlify.app/projects/{project.slug}"
