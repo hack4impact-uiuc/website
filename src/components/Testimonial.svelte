@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Button from "./Button.svelte";
   import Row from "./Row.svelte";
 
   // title, content, and route (for button)
@@ -6,6 +7,7 @@
   export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
+  export let meetTheTeam: boolean = false;
 </script>
 
 <div class="wrap">
@@ -18,9 +20,14 @@
             {name}<br />
             <span class="desc">{desc}</span>
           </caption>
+          {#if meetTheTeam}
+            <a href="about/team" sapper:prefetch>
+              <Button type="primary">Meet The Team</Button>
+            </a>
+          {/if}
         </div>
         <div class="right">
-          <img src={imageSrc} alt={name + "'s photo"} />
+          <img src="{imageSrc}" alt="{name + "'s photo"}" />
         </div>
       </Row>
     {:else}

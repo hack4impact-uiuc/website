@@ -122,9 +122,9 @@
         and humanitarians to create lasting and impactful social change. We work
         to foster the wider adoption of software as a tool for social good.
       </p>
-      <a href="about/team" sapper:prefetch
-        ><Button type="primary">Meet The Team</Button></a
-      >
+      <a href="about/team" sapper:prefetch>
+        <Button type="primary">Meet The Team</Button>
+      </a>
     </div>
     <figure>
       <img src="https://picsum.photos/630/320" alt="" />
