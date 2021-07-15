@@ -18,8 +18,24 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from "svelte";
+
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
+
+  onMount(() => {
+    const {
+      location: { hash },
+    } = window;
+    const id = hash.split("#").pop();
+
+    if (id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView(true);
+      }
+    }
+  });
 
   let windowWidth: number | undefined;
 
