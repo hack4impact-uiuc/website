@@ -4,12 +4,13 @@
   import Section from "../../components/Section.svelte";
   import type { Image, Info, Member as MemberType } from "../../utils/schema";
 
-  export async function preload() {
+  /* @type {import('@sveltejs/kit').Load} */
+  export async function load({ fetch }) {
     const [members, info] = await Promise.all([
-      this.fetch("server/members.json").then(
-        (res) => res.json() as MemberType[]
+      fetch("server/members.json").then(
+        (res) => res.json() as Promise<MemberType[]>
       ),
-      this.fetch("server/info.json").then((res) => res.json() as Info),
+      fetch("server/info.json").then((res) => res.json() as Promise<Info>),
     ]);
 
     const roles = [
@@ -31,9 +32,11 @@
     members.sort((a, b) => roles.indexOf(a.role) - roles.indexOf(b.role));
 
     return {
-      active: members.filter((member) => member.active),
-      alumni: members.filter((member) => !member.active),
-      team: info.chapterPicture,
+      props: {
+        active: members.filter((member) => member.active),
+        alumni: members.filter((member) => !member.active),
+        team: info.chapterPicture,
+      },
     };
   }
 </script>
@@ -47,7 +50,6 @@
 
   function toggleAlumni(): void {
     showAllAlumni = true;
-    console.log("here");
   }
 </script>
 

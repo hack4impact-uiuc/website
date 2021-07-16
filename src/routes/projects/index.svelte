@@ -8,12 +8,12 @@
   import type { SemesterProjects } from "../../utils/projects";
   import type { Project } from "../../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch(`server/projects.json`);
+  export async function load({ fetch }) {
+    const res = await fetch("server/projects.json");
 
     const projects: Project[] = await res.json();
 
-    return generateProjectsInfo(projects);
+    return { props: generateProjectsInfo(projects) };
   }
 </script>
 

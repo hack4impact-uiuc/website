@@ -6,12 +6,12 @@
   import Section from "../components/Section.svelte";
   import type { Project } from "../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch("server/featured.json");
+  export async function load({ fetch }) {
+    const res = await fetch("server/featured.json");
 
     const projects: Project[] = (await res.json()).slice(0, 4);
 
-    return { projects };
+    return { props: { projects } };
   }
 </script>
 

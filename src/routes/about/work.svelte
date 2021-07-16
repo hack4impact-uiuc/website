@@ -7,11 +7,11 @@
   import Row from "../../components/Row.svelte";
   import type { FAQ } from "../../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch(`server/work-faq.json`);
+  export async function load({ fetch }) {
+    const res = await fetch(`server/work-faq.json`);
     const faqs: FAQ[] = await res.json();
 
-    return { faqs };
+    return { props: { faqs } };
   }
 </script>
 
@@ -191,10 +191,10 @@
         <p>Lorem Ipsum.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sapper:prefetch>
+        <a href="join/students" sveltekit:prefetch>
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/team" sapper:prefetch>
+        <a href="about/team" sveltekit:prefetch>
           <Button type="secondary-white">Meet the Team</Button>
         </a>
       </div>

@@ -1,9 +1,9 @@
-import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
+import { contentWrapper } from "../../hooks";
 
-export async function get(_: Request, res: Response): Promise<void> {
+export async function get(): Promise<any> {
   const [info] = await contentWrapper.get("info");
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(info));
+  return {
+    body: info,
+  };
 }

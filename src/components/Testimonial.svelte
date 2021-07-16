@@ -21,7 +21,7 @@
             <span class="desc">{desc}</span>
           </caption>
           {#if meetTheTeam}
-            <a href="about/team" sapper:prefetch>
+            <a href="about/team" sveltekit:prefetch>
               <Button type="primary">Meet The Team</Button>
             </a>
           {/if}

@@ -7,10 +7,10 @@
   import { setImageHeight } from "../../utils/schema";
   import type { Image, Info, Member } from "../../utils/schema";
 
-  export async function preload() {
+  export async function load({ fetch }) {
     const [info, members] = await Promise.all([
-      this.fetch("server/info.json").then((res) => res.json() as Info),
-      this.fetch("server/members.json").then((res) => res.json() as Member),
+      fetch("server/info.json").then((res) => res.json() as Promise<Info>),
+      fetch("server/members.json").then((res) => res.json() as Promise<Member>),
     ]);
 
     const testimonialMembers = members.filter(
@@ -18,11 +18,13 @@
     );
 
     return {
-      team: info.chapterPicture,
-      testimonialMember:
-        testimonialMembers[
-          Math.floor(Math.random() * testimonialMembers.length)
-        ],
+      props: {
+        team: info.chapterPicture,
+        testimonialMember:
+          testimonialMembers[
+            Math.floor(Math.random() * testimonialMembers.length)
+          ],
+      },
     };
   }
 </script>
@@ -140,7 +142,7 @@
       and humanitarians to create lasting and impactful social change. We work
       to foster the wider adoption of software as a tool for social good.
     </p>
-    <a class="button-link" href="about/work" sapper:prefetch
+    <a class="button-link" href="about/work" sveltekit:prefetch
       ><Button type="primary-white">Learn More</Button></a
     >
   </div>

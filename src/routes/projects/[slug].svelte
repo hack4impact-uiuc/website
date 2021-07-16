@@ -7,13 +7,13 @@
   import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";
 
-  export async function preload({ params }) {
+  export async function load({ params, fetch }) {
     const { slug } = params;
-    const res = await this.fetch(`server/projects/${slug}.json`);
+    const res = await fetch(`server/projects/${slug}.json`);
 
     const project: Project = await res.json();
 
-    return { project };
+    return { props: { project } };
   }
 </script>
 

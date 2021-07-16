@@ -1,13 +1,13 @@
-import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
+import { contentWrapper } from "../../hooks";
 import type { FAQ } from "../../utils/schema";
 
-export async function get(_: Request, res: Response): Promise<void> {
+export async function get(): Promise<any> {
   const faqs: FAQ[] = await contentWrapper.get("faq", {
     order: "fields.order",
     "fields.category": "Apply",
   });
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(faqs));
+  return {
+    body: faqs,
+  };
 }

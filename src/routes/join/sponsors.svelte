@@ -6,13 +6,13 @@
   import Row from "../../components/Row.svelte";
   import type { FAQ, Image, Info as SiteInfo } from "../../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch("server/info.json");
+  export async function load({ fetch }) {
+    const res = await fetch("server/info.json");
     const info: SiteInfo = await res.json();
 
     const { whereWeWork } = info;
 
-    return { whereWeWork };
+    return { props: { whereWeWork } };
   }
 </script>
 

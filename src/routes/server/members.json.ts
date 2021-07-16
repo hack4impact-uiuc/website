@@ -1,12 +1,12 @@
-import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
-import type { Project } from "../../utils/schema";
+import { contentWrapper } from "../../hooks";
+import type { Member } from "../../utils/schema";
 
-export async function get(_: Request, res: Response): Promise<void> {
-  const projects: Project[] = await contentWrapper.get("member", {
+export async function get(): Promise<any> {
+  const members: Member[] = await contentWrapper.get("member", {
     order: "fields.name",
   });
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(projects));
+  return {
+    body: members,
+  };
 }

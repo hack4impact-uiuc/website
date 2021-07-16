@@ -7,20 +7,20 @@
 
   import type { ApplicationStep, FAQ, Role } from "../../utils/schema";
 
-  export async function preload() {
+  export async function load({ fetch }) {
     const [faqs, openRoles, applicationSteps] = await Promise.all([
-      this.fetch("server/apply-faq.json").then((res: Response) =>
+      fetch("server/apply-faq.json").then((res: Response) =>
         res.json()
       ) as Promise<FAQ[]>,
-      this.fetch("server/open-roles.json").then((res: Response) =>
+      fetch("server/open-roles.json").then((res: Response) =>
         res.json()
       ) as Promise<Role[]>,
-      this.fetch("server/application-steps.json").then((res: Response) =>
+      fetch("server/application-steps.json").then((res: Response) =>
         res.json()
       ) as Promise<ApplicationStep>,
     ]);
 
-    return { faqs, openRoles, applicationSteps };
+    return { props: { faqs, openRoles, applicationSteps } };
   }
 </script>
 
@@ -110,10 +110,10 @@
         <p>Join Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sapper:prefetch>
+        <a href="join/students" sveltekit:prefetch>
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/work" sapper:prefetch>
+        <a href="about/work" sveltekit:prefetch>
           <Button type="secondary-white">How We Work</Button>
         </a>
       </div>
