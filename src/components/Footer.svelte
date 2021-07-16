@@ -8,7 +8,7 @@
   <div id="footer-contents">
     <div id="inquiries">
       <div id="logo-container">
-        <a sveltekit:prefetch href="."
+        <a sveltekit:prefetch href="/"
           ><img src="/logo.svg" alt="Hack4Impact logo" /></a
         >
       </div>

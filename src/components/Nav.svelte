@@ -18,13 +18,15 @@
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
-    <a class="row-center" sveltekit:prefetch href="."
-      ><img src="/logo.svg" alt="Hack4Impact logo" /></a
-    >
+    <a class="row-center" sveltekit:prefetch href="/">
+      <img src="/logo.svg" alt="Hack4Impact logo" />
+    </a>
     <button
       on:click="{() => (showMobileMenu = !showMobileMenu)}"
-      class="hide-on-desktop">{showMobileMenu ? "×" : "≡"}</button
+      class="hide-on-desktop"
     >
+      {showMobileMenu ? "×" : "≡"}
+    </button>
     <div
       class="row-center"
       class:closedOnMobile="{!showMobileMenu}"
@@ -34,7 +36,7 @@
         class="navlink"
         sveltekit:prefetch
         aria-current="{path === '/' ? 'page' : undefined}"
-        href="."><h2>Home</h2></a
+        href="/"><h2>Home</h2></a
       >
       <a
         class="navlink"
@@ -65,8 +67,10 @@
               path.includes(`join/${route.toLowerCase()}`)
                 ? 'page'
                 : undefined}"
-              href="{`/join/${route.toLowerCase()}`}">{route}</a
+              href="{`/join/${route.toLowerCase()}`}"
             >
+              {route}
+            </a>
           {/each}
         </div>
       </span>
