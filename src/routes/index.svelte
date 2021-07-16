@@ -41,7 +41,7 @@
   <span slot="right" id="graphic-container" class="column-center">
     <img
       src="graphic.svg"
-      alt="Graphic of two people with programming-based visuals."
+      alt="Graphic of two people with programming based visuals."
       id="graphic"
     />
   </span>
