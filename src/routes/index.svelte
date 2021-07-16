@@ -39,7 +39,7 @@
         <Button type="primary-white">See Our Work</Button>
       </a>
       <a class="button-link" href="join">
-        <Button type="secondary-white">Work With Us</Button>
+        <Button type="secondary-white">Work Wi th Us</Button>
       </a>
     </div></span
   >
