@@ -4,7 +4,7 @@
   import { generateProjectsInfo } from "../utils/projects";
   import type { Project } from "../utils/schema";
 
-  export async function load({ page, fetch, session, context }) {
+  export async function load({ page, fetch }) {
     const res = await fetch("../server/projects.json");
 
     const projects: Project[] = await res.json();

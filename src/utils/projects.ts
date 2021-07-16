@@ -20,6 +20,7 @@ function shuffleArray<T>(array: T[]): void {
 
 export function generateProjectsInfo(projects: Project[]): ProjectsInfo {
   // loop until valid configuration (no project is featured more than once) is generated
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     shuffleArray(projects);
 

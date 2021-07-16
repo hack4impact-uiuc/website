@@ -9,7 +9,10 @@
   <div class="featured-project" style="background-color: {project.accentColor}">
     {#if project.headerImage !== undefined}
       <figure>
-        <img src="{project.headerImage.src}" alt="{project.name}" />
+        <img
+          src="{setImageHeight(project.headerImage.src, 600)}"
+          alt="{project.name}"
+        />
       </figure>
     {/if}
     <div class="meta" class:masked="{project.headerImage !== undefined}">

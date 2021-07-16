@@ -7,7 +7,7 @@
   export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
-  export let meetTheTeam: boolean = false;
+  export let meetTheTeam = false;
 </script>
 
 <div class="wrap">

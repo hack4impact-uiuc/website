@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
   import Button from "../../components/Button.svelte";
-  import Row from "../../components/Row.svelte";
   import Section from "../../components/Section.svelte";
   import Step from "../../components/Step.svelte";
   import Testimonial from "../../components/Testimonial.svelte";

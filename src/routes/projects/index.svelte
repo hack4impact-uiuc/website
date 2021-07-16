@@ -39,7 +39,7 @@
 
   let windowWidth: number | undefined;
 
-  let currentSemester: number = 0;
+  let currentSemester = 0;
 
   const setSemester = (newSection: number) => {
     // get scroll direction for offset

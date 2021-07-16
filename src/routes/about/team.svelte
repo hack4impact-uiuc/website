@@ -46,7 +46,7 @@
   export let alumni: MemberType[];
   export let team: Image;
 
-  let showAllAlumni: boolean = false;
+  let showAllAlumni = false;
 
   function toggleAlumni(): void {
     showAllAlumni = true;

@@ -8,8 +8,8 @@
     | "secondary-custom";
 
   // backgroundColor and textColor props only applied on custom button types
-  export let backgroundColor: string = "#fff";
-  export let textColor: string = "var(--text-dark)";
+  export let backgroundColor = "#fff";
+  export let textColor = "var(--text-dark)";
 
   // append hover-animated arrow
   export let arrow: boolean | undefined = false;

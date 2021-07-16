@@ -5,7 +5,7 @@
 <script lang="ts">
   export let theme: "light" | "dark" | undefined = undefined;
 
-  let open: boolean = false;
+  let open = false;
 
   function toggle() {
     open = !open;

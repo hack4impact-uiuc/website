@@ -103,7 +103,7 @@ export class ContentWrapper {
     return res;
   }
 
-  async transformLink(link: any, type: string | undefined) {
+  async transformLink(link: any, type: string | undefined): any {
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?
@@ -111,10 +111,10 @@ export class ContentWrapper {
           : { src: `https://${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
-        const schema = await this.client.getContentType(
-          link.sys.contentType.sys.id
+        return await this.serialize(
+          link,
+          await this.client.getContentType(link.sys.contentType.sys.id)
         );
-        return await this.serialize(link, schema);
 
       case undefined:
         return link;

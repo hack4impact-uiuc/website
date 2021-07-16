@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let color: string = "#fff";
+  export let color = "#fff";
   export let id: string | undefined = undefined;
-  export let padding: string = "0";
-  export let longForm: boolean = false;
+  export let padding = "0";
+  export let longForm = false;
 </script>
 
 <section id="{id}" class="row-center" style="background-color: {color}">

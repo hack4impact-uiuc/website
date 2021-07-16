@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let reverse: boolean = false;
-  export let reverseOnMobile: boolean = false;
+  export let reverse = false;
+  export let reverseOnMobile = false;
   export let gap: number | undefined = undefined;
 </script>
 
