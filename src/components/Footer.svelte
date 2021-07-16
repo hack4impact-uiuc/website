@@ -22,11 +22,11 @@
       <span>
         <ul>
           <li class="blue-text link-section-header">Connect With Us</li>
-          <li><a href="https://www.facebook.com/h4iuiuc">Facebook</a></li>
-          <li><a href="https://github.com/hack4impact-uiuc">GitHub</a></li>
+          <li><a href="https://www.facebook.com/h4iuiuc" rel="external">Facebook</a></li>
+          <li><a href="https://github.com/hack4impact-uiuc" rel="external">GitHub</a></li>
 
           <li>
-            <a href="https://www.instagram.com/hack4impactuiuc/">Instagram</a>
+            <a href="https://www.instagram.com/hack4impactuiuc/" rel="external">Instagram</a>
           </li>
         </ul>
         <ul>

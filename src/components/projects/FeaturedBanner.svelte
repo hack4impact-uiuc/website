@@ -5,7 +5,7 @@
   export let project: Project;
 </script>
 
-<a href="projects/{project.slug}" sveltekit:prefetch>
+<a href="/projects/{project.slug}" sveltekit:prefetch>
   <div class="featured-project" style="background-color: {project.accentColor}">
     {#if project.headerImage !== undefined}
       <figure>

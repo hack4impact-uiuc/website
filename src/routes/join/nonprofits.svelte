@@ -150,10 +150,10 @@
         <p>Join Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sveltekit:prefetch>
+        <a href="/join/students" sveltekit:prefetch>
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/work" sveltekit:prefetch>
+        <a href="/about/work" sveltekit:prefetch>
           <Button type="secondary-white">How We Work</Button>
         </a>
       </div>

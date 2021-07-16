@@ -92,7 +92,7 @@
         {#each semesters as semester, idx}
           <li id="{`semester-${idx}`}">
             <a
-              href="{`projects/#${semesterToId(semester)}`}"
+              href="{`/projects/#${semesterToId(semester)}`}"
               on:click="{() => {
                 setSemester(idx);
               }}"

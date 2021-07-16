@@ -43,7 +43,7 @@
         aria-current="{path && path.startsWith('/about')
           ? 'page'
           : undefined}"
-        href="about"><h2>About Us</h2></a
+        href="/about"><h2>About Us</h2></a
       >
       <a
         class="navlink"
@@ -51,7 +51,7 @@
         aria-current="{path && path.startsWith('/projects')
           ? 'page'
           : undefined}"
-        href="projects"><h2>Projects</h2></a
+        href="/projects"><h2>Projects</h2></a
       >
       <span
         class="navlink dropdown"
@@ -70,7 +70,7 @@
               path.includes(`join/${route.toLowerCase()}`)
                 ? 'page'
                 : undefined}"
-              href="{`join/${route.toLowerCase()}`}">{route}</a
+              href="{`/join/${route.toLowerCase()}`}">{route}</a
             >
           {/each}
         </div>

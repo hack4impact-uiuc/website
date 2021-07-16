@@ -191,10 +191,10 @@
         <p>Lorem Ipsum.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sveltekit:prefetch>
+        <a href="/join/students" sveltekit:prefetch>
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/team" sveltekit:prefetch>
+        <a href="/about/team" sveltekit:prefetch>
           <Button type="secondary-white">Meet the Team</Button>
         </a>
       </div>

@@ -34,7 +34,7 @@
       Uniting students to build well-engineered and impactful products for
       social change.
     </p>
-    <a class="button-link" href="projects">
+    <a class="button-link" href="/projects">
       <Button type="primary-white">See Our Work</Button>
     </a>
   </span>

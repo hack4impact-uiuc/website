@@ -1,9 +1,5 @@
-import {
-  createClient,
-  ContentfulClientApi,
-  Entry,
-  ContentType,
-} from "contentful";
+import contentful from "contentful";
+import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
@@ -11,7 +7,7 @@ export class ContentWrapper {
   client: ContentfulClientApi;
 
   constructor(space: string, accessToken: string) {
-    this.client = createClient({
+    this.client = contentful.createClient({
       space,
       accessToken,
     });
@@ -57,14 +53,11 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                    const {
-                      file,
-                      title,
-                      description,
-                    } = node.data.target.fields;
+                    const { file, title, description } =
+                      node.data.target.fields;
                     return `
                       <div class="column-center long-form-embed">
-                          <img src="${file.url}?w=1200" alt="${title}" \>
+                          <img src="https:${file.url}?w=1200" alt="${title}" \>
                           ${
                             description !== undefined
                               ? `<span>${description}<\span>`
@@ -107,7 +100,7 @@ export class ContentWrapper {
       case "Asset":
         return link.src !== undefined // why do I need to do this?
           ? link
-          : { src: link.fields.file.url, alt: link.fields.title };
+          : { src: `https://${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
         const schema = await this.client.getContentType(
