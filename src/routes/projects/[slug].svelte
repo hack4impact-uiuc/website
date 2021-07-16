@@ -27,7 +27,7 @@
   <meta name="description" content="{project.summary}" />
   <meta
     property="og:url"
-    content="https://h4iuiuc.netlify.app/projects/{project.slug}"
+    content="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
   <meta property="og:title" content="{project.name}" />
   <meta property="og:description" content="{project.summary}" />
@@ -44,7 +44,7 @@
   />
   <meta
     name="twitter:url"
-    value="https://h4iuiuc.netlify.app/projects/{project.slug}"
+    value="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
   <meta name="twitter:title" value="{project.name}" />
   <meta name="twitter:description" value="{project.summary}" />

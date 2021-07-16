@@ -70,14 +70,17 @@
     name="description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta property="og:url" content="https://h4iuiuc.netlify.app/join/sponsors" />
+  <meta
+    property="og:url"
+    content="https://uiuc.hack4impact.org/join/sponsors"
+  />
   <meta property="og:title" content="Sponsors | Hack4Impact UIUC" />
   <meta
     property="og:description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:url" value="https://h4iuiuc.netlify.app/join/sponsors" />
+  <meta name="twitter:url" value="https://uiuc.hack4impact.org/join/sponsors" />
   <meta name="twitter:title" value="Sponsors | Hack4Impact UIUC" />
   <meta
     name="twitter:description"

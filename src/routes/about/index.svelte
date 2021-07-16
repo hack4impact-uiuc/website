@@ -39,7 +39,7 @@
     name="description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta property="og:url" content="https://h4iuiuc.netlify.app/about" />
+  <meta property="og:url" content="https://uiuc.hack4impact.org/about" />
   <meta property="og:title" content="About Us | Hack4Impact UIUC" />
   <meta
     property="og:description"
@@ -47,7 +47,7 @@
   />
   <meta name="og:image" content="{team.src}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" value="https://h4iuiuc.netlify.app/about" />
+  <meta name="twitter:url" value="https://uiuc.hack4impact.org/about" />
   <meta name="twitter:title" value="About Us | Hack4Impact UIUC" />
   <meta
     name="twitter:description"

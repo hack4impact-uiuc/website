@@ -40,7 +40,7 @@
   />
   <meta
     property="og:url"
-    content="https://h4iuiuc.netlify.app/join/nonprofits"
+    content="https://uiuc.hack4impact.org/join/nonprofits"
   />
   <meta property="og:title" content="Nonprofits | Hack4Impact UIUC" />
   <meta
@@ -50,7 +50,7 @@
   <meta name="twitter:card" content="summary" />
   <meta
     name="twitter:url"
-    value="https://h4iuiuc.netlify.app/join/nonprofits"
+    value="https://uiuc.hack4impact.org/join/nonprofits"
   />
   <meta name="twitter:title" value="Nonprofits | Hack4Impact UIUC" />
   <meta
