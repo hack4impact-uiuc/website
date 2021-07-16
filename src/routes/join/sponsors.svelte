@@ -7,7 +7,7 @@
   import type { FAQ, Image, Info as SiteInfo } from "../../utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("server/info.json");
+    const res = await fetch("../server/info.json");
     const info: SiteInfo = await res.json();
 
     const { whereWeWork } = info;
