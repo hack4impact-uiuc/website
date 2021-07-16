@@ -18,7 +18,6 @@
 </script>
 
 <script lang="ts">
-
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
