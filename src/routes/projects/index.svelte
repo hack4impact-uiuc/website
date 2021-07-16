@@ -94,11 +94,7 @@
           {#if projectMap[semester].featured !== undefined}
             <FeaturedBanner project="{projectMap[semester].featured}" />
           {/if}
-          <span
-            use:viewport
-            on:enterViewport="{() => 
-              setSemester(idx)
-            }"></span>
+          <span use:viewport on:enterViewport="{() => setSemester(idx)}"></span>
           <div class="project-grid">
             {#each projectMap[semester].projects as project}
               <ProjectCard project="{project}" />
