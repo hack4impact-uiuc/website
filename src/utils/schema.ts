@@ -10,6 +10,7 @@ export interface Member {
   linkedin: string;
   active: boolean;
   graduationYear: number;
+  testimonial?: string;
 }
 
 type RoleName =
