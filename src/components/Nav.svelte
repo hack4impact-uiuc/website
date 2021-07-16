@@ -1,75 +1,71 @@
 <script lang="ts">
   export let path: string | undefined;
-  export let segment: string;
-  let oldSegment: string;
+  // let oldSegment: string;
 
   let showMobileMenu = false;
 
-  $: {
-    if (segment !== oldSegment || (path && !path.startsWith(segment))) {
-      showMobileMenu = false;
-    }
-  }
+  // $: {
+  //   if (segment !== oldSegment || (path && !path.startsWith(segment))) {
+  //     showMobileMenu = false;
+  //   }
+  // }
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
   let windowWidth: number | undefined;
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} />
+<svelte:window bind:innerWidth="{windowWidth}" />
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
-    <a class="row-center" sapper:prefetch href="."
+    <a class="row-center" sveltekit:prefetch href="."
       ><img src="/logo.svg" alt="Hack4Impact logo" /></a
     >
     <button
-      on:click={() => (showMobileMenu = !showMobileMenu)}
+      on:click="{() => (showMobileMenu = !showMobileMenu)}"
       class="hide-on-desktop">{showMobileMenu ? "×" : "≡"}</button
     >
     <div
       class="row-center"
-      class:closedOnMobile={!showMobileMenu}
+      class:closedOnMobile="{!showMobileMenu}"
       id="navlinks"
     >
       <a
         class="navlink"
-        sapper:prefetch
-        aria-current={segment === undefined ? "page" : undefined}
+        sveltekit:prefetch
+        aria-current="{path === '/' ? 'page' : undefined}"
         href="."><h2>Home</h2></a
       >
       <a
         class="navlink"
-        sapper:prefetch
-        aria-current={segment && segment.startsWith("about")
-          ? "page"
-          : undefined}
-        href="about"><h2>About Us</h2></a
+        sveltekit:prefetch
+        aria-current="{path && path.startsWith('/about') ? 'page' : undefined}"
+        href="/about"><h2>About Us</h2></a
       >
       <a
         class="navlink"
-        sapper:prefetch
-        aria-current={segment && segment.startsWith("projects")
-          ? "page"
-          : undefined}
-        href="projects"><h2>Projects</h2></a
+        sveltekit:prefetch
+        aria-current="{path && path.startsWith('/projects')
+          ? 'page'
+          : undefined}"
+        href="/projects"><h2>Projects</h2></a
       >
       <span
         class="navlink dropdown"
-        tabindex={windowWidth > 792 ? 0 : -1}
-        aria-current={segment && segment.startsWith("join")
-          ? "page"
-          : undefined}
+        tabindex="{windowWidth > 792 ? 0 : -1}"
+        aria-current="{path && path.startsWith('/join') ? 'page' : undefined}"
       >
         <h2>Work With Us<span id="caret"> &#9660;</span></h2>
         <div class="dropdown-contents">
           {#each dropdownRoutes as route}
             <a
-              sapper:prefetch
-              on:click={() => (showMobileMenu = false)}
-              aria-current={path && path.includes(`join/${route.toLowerCase()}`)
-                ? "page"
-                : undefined}
-              href={`join/${route.toLowerCase()}`}>{route}</a
+              sveltekit:prefetch
+              on:click="{() => (showMobileMenu = false)}"
+              aria-current="{path &&
+              path.includes(`join/${route.toLowerCase()}`)
+                ? 'page'
+                : undefined}"
+              href="{`/join/${route.toLowerCase()}`}">{route}</a
             >
           {/each}
         </div>

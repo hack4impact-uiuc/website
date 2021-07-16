@@ -1,8 +1,7 @@
-import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
+import { contentWrapper } from "../../hooks";
 import type { ApplicationStep } from "../../utils/schema";
 
-export async function get(_: Request, res: Response): Promise<void> {
+export async function get(): Promise<any> {
   const applicationSteps: ApplicationStep[] = await contentWrapper.get(
     "applicationStep",
     {
@@ -10,6 +9,7 @@ export async function get(_: Request, res: Response): Promise<void> {
     }
   );
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(applicationSteps));
+  return {
+    body: applicationSteps,
+  };
 }

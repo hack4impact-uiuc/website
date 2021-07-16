@@ -1,28 +1,23 @@
 <script context="module" lang="ts">
-  import { stores } from "@sapper/app";
   import Nav from "../components/Nav.svelte";
   import Footer from "../components/Footer.svelte";
   import { generateProjectsInfo } from "../utils/projects";
   import type { Project } from "../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch(`server/projects.json`);
+  export async function load({ page, fetch }) {
+    const res = await fetch("/server/projects.json");
 
     const projects: Project[] = await res.json();
     const { semesters } = generateProjectsInfo(projects);
 
-    return { semesters };
+    return { props: { semesters, path: page.path } };
   }
 </script>
 
 <script lang="ts">
-  const { page } = stores();
-
-  export let segment: string;
   export let semesters: string[] = [];
 
-  let path = "";
-  $: path = $page.path;
+  export let path: string;
 </script>
 
 <svelte:head>
@@ -30,7 +25,7 @@
   <meta name="twitter:domain" value="https://h4iuiuc.netlify.app" />
 </svelte:head>
 
-<Nav segment="{segment}" path="{path}" />
+<Nav path="{path}" />
 
 <main>
   <slot />

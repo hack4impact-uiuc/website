@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let color: string = "#fff";
+  export let color = "#fff";
   export let id: string | undefined = undefined;
-  export let padding: string = "0";
-  export let longForm: boolean = false;
+  export let padding = "0";
+  export let longForm = false;
 </script>
 
-<section {id} class="row-center" style="background-color: {color}">
+<section id="{id}" class="row-center" style="background-color: {color}">
   <div
     class="section-content{longForm ? ' long-form' : ''}"
     style="padding: {padding} 0"

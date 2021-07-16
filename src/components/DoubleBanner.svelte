@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let leftColor: string = "#fff";
-  export let rightColor: string = "#fff";
+  export let leftColor = "#fff";
+  export let rightColor = "#fff";
 </script>
 
 <section class="row-center">

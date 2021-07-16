@@ -1,13 +1,13 @@
 <script lang="ts">
-  export let icon: string | undefined;
-  export let iconAlt: string | undefined;
+  export let icon: string | undefined = undefined;
+  export let iconAlt: string | undefined = undefined;
 </script>
 
 <div class="step row-center">
   <span
     ><div id="icon-container">
       {#if icon !== undefined}
-        <img src={icon} alt={iconAlt} />
+        <img src="{icon}" alt="{iconAlt}" />
       {/if}
     </div>
   </span>

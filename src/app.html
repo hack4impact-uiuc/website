@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="theme-color" content="#155DA1" />
 
-    %sapper.base%
-
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
     <link rel="icon" type="image/png" href="/logo-16.png" sizes="16x16" />
     <link rel="icon" type="image/png" href="/logo-32.png" sizes="32x32" />
@@ -50,7 +48,7 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url("fonts/chivo.woff2") format("woff2");
+        src: url("/fonts/chivo.woff2") format("woff2");
       }
 
       @font-face {
@@ -58,7 +56,7 @@
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url("fonts/open-sans.woff2") format("woff2");
+        src: url("/fonts/open-sans.woff2") format("woff2");
       }
 
       @media (min-width: 2560px) {
@@ -247,9 +245,9 @@
         }
       }
     </style>
-    %sapper.scripts% %sapper.styles% %sapper.head%
+    %svelte.head%
   </head>
   <body>
-    <div id="sapper">%sapper.html%</div>
+    <div id="svelte">%svelte.body%</div>
   </body>
 </html>

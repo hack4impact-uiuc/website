@@ -1,9 +1,6 @@
-import {
-  createClient,
-  ContentfulClientApi,
-  Entry,
-  ContentType,
-} from "contentful";
+import contentful from "contentful"; // !IMPORTANT: build version
+// import { createClient } from "contentful"; // !IMPORTANT: dev version
+import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
@@ -11,10 +8,17 @@ export class ContentWrapper {
   client: ContentfulClientApi;
 
   constructor(space: string, accessToken: string) {
-    this.client = createClient({
+    // !IMPORTANT: build version
+    this.client = contentful.createClient({
       space,
       accessToken,
     });
+
+    // // !IMPORTANT: dev version
+    // this.client = createClient({
+    //   space,
+    //   accessToken,
+    // });
   }
 
   async get<T>(entity: string, options: any = {}): Promise<T[]> {
@@ -48,7 +52,7 @@ export class ContentWrapper {
               break;
             case "Array":
               res[id] = await Promise.all(
-                res[id].map((link) =>
+                res[id].map((link: any) =>
                   this.transformLink(link, field.items.linkType)
                 )
               );
@@ -57,14 +61,17 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                    const { file, title, description } =
-                      node.data.target.fields;
+                    const {
+                      file,
+                      title,
+                      description,
+                    } = node.data.target.fields;
                     return `
                       <div class="column-center long-form-embed">
-                          <img src="${file.url}?w=1200" alt="${title}" \>
+                          <img src="https:${file.url}?w=1200" alt="${title}" \\>
                           ${
                             description !== undefined
-                              ? `<span>${description}<\span>`
+                              ? `<span>${description}<\\span>`
                               : ""
                           }
                       </div>
@@ -85,7 +92,7 @@ export class ContentWrapper {
                       </div>`;
                     } else {
                       return `<a href=${node.data.uri}>${documentToHtmlString(
-                        node
+                        node as any
                       )}</a>`;
                     }
                   },
@@ -99,18 +106,18 @@ export class ContentWrapper {
     return res;
   }
 
-  async transformLink(link: any, type: string | undefined) {
+  async transformLink(link: any, type: string | undefined): Promise<any> {
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?
           ? link
-          : { src: link.fields.file.url, alt: link.fields.title };
+          : { src: `https://${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
-        const schema = await this.client.getContentType(
-          link.sys.contentType.sys.id
+        return await this.serialize(
+          link,
+          await this.client.getContentType(link.sys.contentType.sys.id)
         );
-        return await this.serialize(link, schema);
 
       case undefined:
         return link;

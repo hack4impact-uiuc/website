@@ -7,7 +7,7 @@
   export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
-  export let meetTheTeam: boolean = false;
+  export let meetTheTeam = false;
 </script>
 
 <div class="wrap">
@@ -21,7 +21,7 @@
             <span class="desc">{desc}</span>
           </caption>
           {#if meetTheTeam}
-            <a href="about/team" sapper:prefetch>
+            <a href="/about/team" sveltekit:prefetch>
               <Button type="primary">Meet The Team</Button>
             </a>
           {/if}

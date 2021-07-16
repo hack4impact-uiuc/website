@@ -1,12 +1,12 @@
 <script lang="ts">
-  export let reverse: boolean = false;
-  export let reverseOnMobile: boolean = false;
+  export let reverse = false;
+  export let reverseOnMobile = false;
   export let gap: number | undefined = undefined;
 </script>
 
 <article
-  class:reversed={!!reverse}
-  class:mobileReversed={!!reverseOnMobile}
+  class:reversed="{!!reverse}"
+  class:mobileReversed="{!!reverseOnMobile}"
   style="--row-gap: {gap ? gap : 0}px"
 >
   <slot />

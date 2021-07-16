@@ -8,8 +8,8 @@
     | "secondary-custom";
 
   // backgroundColor and textColor props only applied on custom button types
-  export let backgroundColor: string = "#fff";
-  export let textColor: string = "var(--text-dark)";
+  export let backgroundColor = "#fff";
+  export let textColor = "var(--text-dark)";
 
   // append hover-animated arrow
   export let arrow: boolean | undefined = false;
@@ -19,14 +19,14 @@
 
 <button
   class="button-{type}{arrow ? ' arrow' : ''}"
-  on:click={onClick}
-  style={type.endsWith("custom")
+  on:click="{onClick}"
+  style="{type.endsWith('custom')
     ? `background-color: ${
-        type.startsWith("primary") ? backgroundColor : "transparent"
+        type.startsWith('primary') ? backgroundColor : 'transparent'
       }; color: ${textColor}; border-color: ${
-        type.startsWith("primary") ? backgroundColor : textColor
+        type.startsWith('primary') ? backgroundColor : textColor
       }`
-    : undefined}
+    : undefined}"
 >
   <slot />
 </button>

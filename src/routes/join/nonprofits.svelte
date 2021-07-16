@@ -8,11 +8,11 @@
 
   import type { FAQ } from "../../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch(`server/work-faq.json`);
+  export async function load({ fetch }) {
+    const res = await fetch(`/server/work-faq.json`);
     const faqs: FAQ[] = await res.json();
 
-    return { faqs };
+    return { props: { faqs } };
   }
 </script>
 
@@ -150,10 +150,10 @@
         <p>Join Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sapper:prefetch>
+        <a href="/join/students" sveltekit:prefetch>
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/work" sapper:prefetch>
+        <a href="/about/work" sveltekit:prefetch>
           <Button type="secondary-white">How We Work</Button>
         </a>
       </div>

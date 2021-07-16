@@ -8,12 +8,12 @@
   import type { SemesterProjects } from "../../utils/projects";
   import type { Project } from "../../utils/schema";
 
-  export async function preload() {
-    const res = await this.fetch(`server/projects.json`);
+  export async function load({ fetch }) {
+    const res = await fetch("/server/projects.json");
 
     const projects: Project[] = await res.json();
 
-    return generateProjectsInfo(projects);
+    return { props: generateProjectsInfo(projects) };
   }
 </script>
 
@@ -39,7 +39,7 @@
 
   let windowWidth: number | undefined;
 
-  let currentSemester: number = 0;
+  let currentSemester = 0;
 
   const setSemester = (newSection: number) => {
     // get scroll direction for offset
@@ -92,7 +92,7 @@
         {#each semesters as semester, idx}
           <li id="{`semester-${idx}`}">
             <a
-              href="{`projects/#${semesterToId(semester)}`}"
+              href="{`/projects/#${semesterToId(semester)}`}"
               on:click="{() => {
                 setSemester(idx);
               }}"

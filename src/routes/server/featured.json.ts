@@ -1,8 +1,7 @@
-import type { Response, Request } from "express";
-import { contentWrapper } from "../../server";
+import { contentWrapper } from "../../hooks";
 import type { Project } from "../../utils/schema";
 
-export async function get(_: Request, res: Response): Promise<void> {
+export async function get(): Promise<any> {
   const projects: Project[] = await contentWrapper.get("project", {
     "fields.featured": true,
   });
@@ -21,6 +20,7 @@ export async function get(_: Request, res: Response): Promise<void> {
     [projects[i], projects[j]] = [projects[j], projects[i]];
   }
 
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(projects));
+  return {
+    body: projects,
+  };
 }

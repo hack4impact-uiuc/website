@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @ts-nocheck
 
 // Adapted from https://stackoverflow.com/a/13542669

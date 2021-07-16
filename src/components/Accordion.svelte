@@ -5,18 +5,18 @@
 <script lang="ts">
   export let theme: "light" | "dark" | undefined = undefined;
 
-  let open: boolean = false;
+  let open = false;
 
   function toggle() {
     open = !open;
   }
 </script>
 
-<button class="accordion" on:click={toggle} class:light={theme === "light"}>
+<button class="accordion" on:click="{toggle}" class:light="{theme === 'light'}">
   <h3>{open ? "−" : "+"} <slot name="title" /></h3>
 </button>
 {#if open}
-  <div class="panel" transition:slide={{ duration: 150 }}>
+  <div class="panel" transition:slide="{{ duration: 150 }}">
     <slot name="contents" />
   </div>
 {/if}

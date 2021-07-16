@@ -4,13 +4,12 @@
   import Section from "../../components/Section.svelte";
   import type { Image, Info, Member as MemberType } from "../../utils/schema";
 
-  export async function preload() {
-    const [members, info] = await Promise.all([
-      this.fetch("server/members.json").then(
-        (res) => res.json() as MemberType[]
-      ),
-      this.fetch("server/info.json").then((res) => res.json() as Info),
-    ]);
+  /* @type {import('@sveltejs/kit').Load} */
+  export async function load({ fetch }) {
+    const [members, info] = (await Promise.all([
+      fetch("/server/members.json").then((res: Response) => res.json()),
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ])) as [MemberType[], Info];
 
     const roles = [
       "Co-Founder",
@@ -31,9 +30,11 @@
     members.sort((a, b) => roles.indexOf(a.role) - roles.indexOf(b.role));
 
     return {
-      active: members.filter((member) => member.active),
-      alumni: members.filter((member) => !member.active),
-      team: info.chapterPicture,
+      props: {
+        active: members.filter((member) => member.active),
+        alumni: members.filter((member) => !member.active),
+        team: info.chapterPicture,
+      },
     };
   }
 </script>
@@ -43,11 +44,10 @@
   export let alumni: MemberType[];
   export let team: Image;
 
-  let showAllAlumni: boolean = false;
+  let showAllAlumni = false;
 
   function toggleAlumni(): void {
     showAllAlumni = true;
-    console.log("here");
   }
 </script>
 

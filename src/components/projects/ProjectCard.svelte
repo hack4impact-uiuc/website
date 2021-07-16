@@ -8,14 +8,14 @@
 
 <div class="project-card">
   <img
-    src={setImageHeight(project.nonprofitLogo.src, 100)}
-    alt={project.nonprofitLogo.alt}
+    src="{setImageHeight(project.nonprofitLogo.src, 100)}"
+    alt="{project.nonprofitLogo.alt}"
   />
 
   <h4>{project.name}</h4>
   <p>{project.summary}</p>
-  <a href="projects/{project.slug}" sapper:prefetch>
-    <Button type="secondary-custom" arrow textColor={project.accentColor}>
+  <a href="/projects/{project.slug}" sveltekit:prefetch>
+    <Button type="secondary-custom" arrow textColor="{project.accentColor}">
       Learn More
     </Button>
   </a>

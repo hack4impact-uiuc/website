@@ -1,28 +1,29 @@
 <script context="module" lang="ts">
   import Button from "../../components/Button.svelte";
-  import Row from "../../components/Row.svelte";
   import Section from "../../components/Section.svelte";
   import Step from "../../components/Step.svelte";
   import Testimonial from "../../components/Testimonial.svelte";
   import { setImageHeight } from "../../utils/schema";
   import type { Image, Info, Member } from "../../utils/schema";
 
-  export async function preload() {
+  export async function load({ fetch }) {
     const [info, members] = await Promise.all([
-      this.fetch("server/info.json").then((res) => res.json() as Info),
-      this.fetch("server/members.json").then((res) => res.json() as Member),
-    ]);
+      fetch("/server/info.json").then((res: Response) => res.json()),
+      fetch("/server/members.json").then((res: Response) => res.json()),
+    ] as [Info, Member[]]);
 
     const testimonialMembers = members.filter(
       (member) => member.testimonial !== undefined
     );
 
     return {
-      team: info.chapterPicture,
-      testimonialMember:
-        testimonialMembers[
-          Math.floor(Math.random() * testimonialMembers.length)
-        ],
+      props: {
+        team: info.chapterPicture,
+        testimonialMember:
+          testimonialMembers[
+            Math.floor(Math.random() * testimonialMembers.length)
+          ],
+      },
     };
   }
 </script>
@@ -140,7 +141,7 @@
       and humanitarians to create lasting and impactful social change. We work
       to foster the wider adoption of software as a tool for social good.
     </p>
-    <a class="button-link" href="about/work" sapper:prefetch
+    <a class="button-link" href="/about/work" sveltekit:prefetch
       ><Button type="primary-white">Learn More</Button></a
     >
   </div>
