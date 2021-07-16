@@ -96,9 +96,9 @@
           {/if}
           <span
             use:viewport
-            on:enterViewport="{() => {
-              setSemester(idx);
-            }}"></span>
+            on:enterViewport="{() => 
+              setSemester(idx)
+            }"></span>
           <div class="project-grid">
             {#each projectMap[semester].projects as project}
               <ProjectCard project="{project}" />
