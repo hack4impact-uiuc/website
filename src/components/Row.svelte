@@ -5,8 +5,8 @@
 </script>
 
 <article
-  class:reversed={!!reverse}
-  class:mobileReversed={!!reverseOnMobile}
+  class:reversed="{!!reverse}"
+  class:mobileReversed="{!!reverseOnMobile}"
   style="--row-gap: {gap ? gap : 0}px"
 >
   <slot />

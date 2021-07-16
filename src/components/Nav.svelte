@@ -4,7 +4,6 @@
 
   let showMobileMenu = false;
 
-
   // $: {
   //   if (segment !== oldSegment || (path && !path.startsWith(segment))) {
   //     showMobileMenu = false;
@@ -34,15 +33,13 @@
       <a
         class="navlink"
         sveltekit:prefetch
-        aria-current="{path ==="/" ? 'page' : undefined}"
+        aria-current="{path === '/' ? 'page' : undefined}"
         href="."><h2>Home</h2></a
       >
       <a
         class="navlink"
         sveltekit:prefetch
-        aria-current="{path && path.startsWith('/about')
-          ? 'page'
-          : undefined}"
+        aria-current="{path && path.startsWith('/about') ? 'page' : undefined}"
         href="/about"><h2>About Us</h2></a
       >
       <a
@@ -56,9 +53,7 @@
       <span
         class="navlink dropdown"
         tabindex="{windowWidth > 792 ? 0 : -1}"
-        aria-current="{path && path.startsWith('/join')
-          ? 'page'
-          : undefined}"
+        aria-current="{path && path.startsWith('/join') ? 'page' : undefined}"
       >
         <h2>Work With Us<span id="caret"> &#9660;</span></h2>
         <div class="dropdown-contents">

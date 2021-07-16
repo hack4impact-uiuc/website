@@ -61,8 +61,11 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
-                    const { file, title, description } =
-                      node.data.target.fields;
+                    const {
+                      file,
+                      title,
+                      description,
+                    } = node.data.target.fields;
                     return `
                       <div class="column-center long-form-embed">
                           <img src="https:${file.url}?w=1200" alt="${title}" \>

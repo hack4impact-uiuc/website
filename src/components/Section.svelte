@@ -5,7 +5,7 @@
   export let longForm: boolean = false;
 </script>
 
-<section {id} class="row-center" style="background-color: {color}">
+<section id="{id}" class="row-center" style="background-color: {color}">
   <div
     class="section-content{longForm ? ' long-form' : ''}"
     style="padding: {padding} 0"

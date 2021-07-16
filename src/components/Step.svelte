@@ -7,7 +7,7 @@
   <span
     ><div id="icon-container">
       {#if icon !== undefined}
-        <img src={icon} alt={iconAlt} />
+        <img src="{icon}" alt="{iconAlt}" />
       {/if}
     </div>
   </span>

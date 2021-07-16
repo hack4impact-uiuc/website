@@ -10,7 +10,9 @@
   export async function load({ fetch }) {
     const [info, members] = await Promise.all([
       fetch("../server/info.json").then((res) => res.json() as Promise<Info>),
-      fetch("../server/members.json").then((res) => res.json() as Promise<Member>),
+      fetch("../server/members.json").then(
+        (res) => res.json() as Promise<Member>
+      ),
     ]);
 
     const testimonialMembers = members.filter(
