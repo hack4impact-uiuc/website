@@ -31,7 +31,7 @@
   <span slot="left"
     ><h1>Software For Nonprofits</h1>
     <p id="banner-mission">
-      Uniting students to build well-engineered and impactful products for
+      Uniting students to build well-engineered and  impactful products for
       social change.
     </p>
     <div id="banner-button-row">
