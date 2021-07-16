@@ -3,13 +3,15 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
     "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --write --plugin-search-dir=. ."
+    "dev": "svelte-kit dev",
+    "format": "prettier --write --plugin-search-dir=. .",
+    "format:check": "prettier --check --plugin-search-dir=. .",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint  --fix --ignore-path .gitignore .",
+    "preview": "svelte-kit preview"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
@@ -21,7 +23,6 @@
     "contentful": "^8.1.7",
     "dotenv": "^10.0.0",
     "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.0",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
