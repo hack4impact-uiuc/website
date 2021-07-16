@@ -3,15 +3,17 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "build": "svelte-kit build",
+    "build": "svelte-kit build && npm run minify",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "svelte-kit dev",
     "format": "prettier --write --plugin-search-dir=. .",
     "format:check": "prettier --check --plugin-search-dir=. .",
+    "minify": "html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css --minify-js --collapse-boolean-attributes --input-dir build --output-dir build --file-ext html",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "preview": "svelte-kit preview"
+    "preview": "svelte-kit preview",
+    "serve": "serve -s build"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
@@ -24,13 +26,18 @@
     "dotenv": "^10.0.0",
     "eslint": "^7.22.0",
     "eslint-plugin-svelte3": "^3.2.0",
+    "html-minifier": "^4.0.0",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
+    "serve": "^12.0.0",
     "svelte": "^3.34.0",
     "svelte-check": "^2.0.0",
     "svelte-preprocess": "^4.0.0",
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "html-minifier-terser": "^5.1.1"
+  }
 }
