@@ -110,10 +110,10 @@
         <p>Join Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sapper:prefetch>
+        <a href="join/students" >
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/work" sapper:prefetch>
+        <a href="about/work" >
           <Button type="secondary-white">How We Work</Button>
         </a>
       </div>

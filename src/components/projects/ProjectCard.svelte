@@ -14,7 +14,7 @@
 
   <h4>{project.name}</h4>
   <p>{project.summary}</p>
-  <a href="projects/{project.slug}" sapper:prefetch>
+  <a href="projects/{project.slug}" >
     <Button type="secondary-custom" arrow textColor={project.accentColor}>
       Learn More
     </Button>

@@ -19,7 +19,7 @@
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
-    <a class="row-center" sapper:prefetch href="."
+    <a class="row-center"  href="."
       ><img src="/logo.svg" alt="Hack4Impact logo" /></a
     >
     <button
@@ -33,13 +33,13 @@
     >
       <a
         class="navlink"
-        sapper:prefetch
+        
         aria-current={segment === undefined ? "page" : undefined}
         href="."><h2>Home</h2></a
       >
       <a
         class="navlink"
-        sapper:prefetch
+        
         aria-current={segment && segment.startsWith("about")
           ? "page"
           : undefined}
@@ -47,7 +47,7 @@
       >
       <a
         class="navlink"
-        sapper:prefetch
+        
         aria-current={segment && segment.startsWith("projects")
           ? "page"
           : undefined}
@@ -64,7 +64,7 @@
         <div class="dropdown-contents">
           {#each dropdownRoutes as route}
             <a
-              sapper:prefetch
+              
               on:click={() => (showMobileMenu = false)}
               aria-current={path && path.includes(`join/${route.toLowerCase()}`)
                 ? "page"

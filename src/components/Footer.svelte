@@ -8,7 +8,7 @@
   <div id="footer-contents">
     <div id="inquiries">
       <div id="logo-container">
-        <a sapper:prefetch href="."
+        <a  href="."
           ><img src="/logo.svg" alt="Hack4Impact logo" /></a
         >
       </div>
@@ -33,8 +33,8 @@
           <li>
             <a class="blue-text link-section-header" href="/about">About Us</a>
           </li>
-          <li><a href="/about/work" sapper:prefetch>How We Work</a></li>
-          <li><a href="/about/team" sapper:prefetch>Meet The Team</a></li>
+          <li><a href="/about/work" >How We Work</a></li>
+          <li><a href="/about/team" >Meet The Team</a></li>
         </ul>
       </span>
       <span>
@@ -43,24 +43,24 @@
             <a
               class="blue-text link-section-header"
               href="/projects"
-              sapper:prefetch>Projects</a
+              >Projects</a
             >
           </li>
-          {#each semesters.slice(0, 3) as semester}<li>
-              <a
-                href="/projects/#{semesterToId(semester)}"
-                sapper:noscroll
-                sapper:prefetch>{semester}</a
-              >
-            </li>{/each}
+          {#each semesters.slice(0, 3) as semester}
+            <li>
+              <a href="/projects/#{semesterToId(semester)}" >
+                {semester}
+              </a>
+            </li>
+          {/each}
         </ul>
         <ul>
           <li>
             <span class="blue-text link-section-header">Work With Us</span>
           </li>
-          <li><a href="/join/nonprofits" sapper:prefetch>Nonprofits</a></li>
-          <li><a href="/join/students" sapper:prefetch>Students</a></li>
-          <li><a href="/join/sponsors" sapper:prefetch>Sponsors</a></li>
+          <li><a href="/join/nonprofits" >Nonprofits</a></li>
+          <li><a href="/join/students" >Students</a></li>
+          <li><a href="/join/sponsors" >Sponsors</a></li>
         </ul>
       </span>
     </div>

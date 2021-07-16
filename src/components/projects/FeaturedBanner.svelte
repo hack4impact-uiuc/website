@@ -5,7 +5,7 @@
   export let project: Project;
 </script>
 
-<a href="projects/{project.slug}" sapper:prefetch>
+<a href="projects/{project.slug}" >
   <div class="featured-project" style="background-color: {project.accentColor}">
     {#if project.headerImage !== undefined}
       <figure>

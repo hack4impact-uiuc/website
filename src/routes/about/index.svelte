@@ -140,7 +140,7 @@
       and humanitarians to create lasting and impactful social change. We work
       to foster the wider adoption of software as a tool for social good.
     </p>
-    <a class="button-link" href="about/work" sapper:prefetch
+    <a class="button-link" href="about/work" 
       ><Button type="primary-white">Learn More</Button></a
     >
   </div>

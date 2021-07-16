@@ -191,10 +191,10 @@
         <p>Lorem Ipsum.</p>
       </div>
       <div class="button-wrapper">
-        <a href="join/students" sapper:prefetch>
+        <a href="join/students" >
           <Button type="primary-white">Apply</Button>
         </a>
-        <a href="about/team" sapper:prefetch>
+        <a href="about/team" >
           <Button type="secondary-white">Meet the Team</Button>
         </a>
       </div>
