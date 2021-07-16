@@ -1,4 +1,5 @@
-import contentful from "contentful";
+import contentful from "contentful"; // !IMPORTANT: build version
+// import { createClient } from "contentful"; // !IMPORTANT: dev version
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
@@ -7,10 +8,17 @@ export class ContentWrapper {
   client: ContentfulClientApi;
 
   constructor(space: string, accessToken: string) {
+    // !IMPORTANT: build version
     this.client = contentful.createClient({
       space,
       accessToken,
     });
+
+    // // !IMPORTANT: dev version
+    // this.client = createClient({
+    //   space,
+    //   accessToken,
+    // });
   }
 
   async get<T>(entity: string, options: any = {}): Promise<T[]> {
