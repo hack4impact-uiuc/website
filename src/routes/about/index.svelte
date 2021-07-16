@@ -20,6 +20,25 @@
 
 <svelte:head>
   <title>About Us | Hack4Impact UIUC</title>
+  <meta
+    name="description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta property="og:url" content="https://h4iuiuc.netlify.app/about" />
+  <meta property="og:title" content="About Us | Hack4Impact UIUC" />
+  <meta
+    property="og:description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="og:image" content="{team.src}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" value="https://h4iuiuc.netlify.app/about" />
+  <meta name="twitter:title" value="About Us | Hack4Impact UIUC" />
+  <meta
+    name="twitter:description"
+    value="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="twitter:image" content="{team.src}" />
 </svelte:head>
 
 <Section id="intro" padding="60px">
