@@ -9,7 +9,7 @@
   import type { Project } from "../../utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("server/projects.json");
+    const res = await fetch("/server/projects.json");
 
     const projects: Project[] = await res.json();
 

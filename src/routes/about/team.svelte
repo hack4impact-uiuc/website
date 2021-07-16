@@ -7,8 +7,8 @@
   /* @type {import('@sveltejs/kit').Load} */
   export async function load({ fetch }) {
     const [members, info] = (await Promise.all([
-      fetch("../server/members.json").then((res: Response) => res.json()),
-      fetch("../server/info.json").then((res: Response) => res.json()),
+      fetch("/server/members.json").then((res: Response) => res.json()),
+      fetch("/server/info.json").then((res: Response) => res.json()),
     ])) as [MemberType[], Info];
 
     const roles = [

@@ -9,13 +9,13 @@
 
   export async function load({ fetch }) {
     const [faqs, openRoles, applicationSteps] = await Promise.all([
-      fetch("../server/apply-faq.json").then((res: Response) =>
+      fetch("/server/apply-faq.json").then((res: Response) =>
         res.json()
       ) as Promise<FAQ[]>,
-      fetch("../server/open-roles.json").then((res: Response) =>
+      fetch("/server/open-roles.json").then((res: Response) =>
         res.json()
       ) as Promise<Role[]>,
-      fetch("../server/application-steps.json").then((res: Response) =>
+      fetch("/server/application-steps.json").then((res: Response) =>
         res.json()
       ) as Promise<ApplicationStep>,
     ]);

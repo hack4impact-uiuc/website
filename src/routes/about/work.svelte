@@ -8,7 +8,7 @@
   import type { FAQ } from "../../utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch(`../server/work-faq.json`);
+    const res = await fetch(`/server/work-faq.json`);
     const faqs: FAQ[] = await res.json();
 
     return { props: { faqs } };
