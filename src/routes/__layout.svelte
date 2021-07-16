@@ -15,7 +15,6 @@
 </script>
 
 <script lang="ts">
-  export let segment: string;
   export let semesters: string[] = [];
 
   export let path: string;
@@ -26,7 +25,7 @@
   <meta name="twitter:domain" value="https://h4iuiuc.netlify.app" />
 </svelte:head>
 
-<Nav segment="{segment}" path="{path}" />
+<Nav path="{path}" />
 
 <main>
   <slot />

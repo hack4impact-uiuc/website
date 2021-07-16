@@ -52,7 +52,7 @@ export class ContentWrapper {
               break;
             case "Array":
               res[id] = await Promise.all(
-                res[id].map((link) =>
+                res[id].map((link: any) =>
                   this.transformLink(link, field.items.linkType)
                 )
               );
@@ -89,7 +89,7 @@ export class ContentWrapper {
                       </div>`;
                     } else {
                       return `<a href=${node.data.uri}>${documentToHtmlString(
-                        node
+                        node as any
                       )}</a>`;
                     }
                   },
@@ -103,7 +103,7 @@ export class ContentWrapper {
     return res;
   }
 
-  async transformLink(link: any, type: string | undefined): any {
+  async transformLink(link: any, type: string | undefined): Promise<any> {
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?

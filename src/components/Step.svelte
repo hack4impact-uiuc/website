@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let icon: string | undefined;
-  export let iconAlt: string | undefined;
+  export let icon: string | undefined = undefined;
+  export let iconAlt: string | undefined = undefined;
 </script>
 
 <div class="step row-center">
