@@ -8,40 +8,45 @@
   <div id="footer-contents">
     <div id="inquiries">
       <div id="logo-container">
-        <a sveltekit:prefetch href="/"
-          ><img src="/logo.svg" alt="Hack4Impact logo" /></a
-        >
+        <a sveltekit:prefetch href="/">
+          <img src="/logo.svg" alt="Hack4Impact logo" />
+        </a>
       </div>
 
       For all inquiries of partnership or sponsorship, please contact us at
-      <a class="blue-text" href="mailto:uiuc@hack4impact.org"
-        >uiuc@hack4impact.org</a
-      >
+      <a class="blue-text" href="mailto:uiuc@hack4impact.org">
+        uiuc@hack4impact.org
+      </a>
     </div>
     <div class="links">
       <span>
         <ul>
           <li class="blue-text link-section-header">Connect With Us</li>
           <li>
-            <a href="https://www.facebook.com/h4iuiuc" rel="external"
-              >Facebook</a
-            >
+            <a href="https://www.facebook.com/h4iuiuc" rel="external">
+              Facebook
+            </a>
           </li>
           <li>
-            <a href="https://github.com/hack4impact-uiuc" rel="external"
-              >GitHub</a
-            >
+            <a href="https://github.com/hack4impact-uiuc" rel="external">
+              GitHub
+            </a>
           </li>
-
           <li>
-            <a href="https://www.instagram.com/hack4impactuiuc/" rel="external"
-              >Instagram</a
-            >
+            <a href="https://www.instagram.com/hack4impactuiuc/" rel="external">
+              Instagram
+            </a>
           </li>
         </ul>
         <ul>
           <li>
-            <a class="blue-text link-section-header" href="/about">About Us</a>
+            <a
+              class="blue-text link-section-header"
+              href="/about"
+              sveltekit:prefetch
+            >
+              About Us
+            </a>
           </li>
           <li><a href="/about/work" sveltekit:prefetch>How We Work</a></li>
           <li><a href="/about/team" sveltekit:prefetch>Meet The Team</a></li>
@@ -56,13 +61,13 @@
               sveltekit:prefetch>Projects</a
             >
           </li>
-          {#each semesters.slice(0, 3) as semester}<li>
-              <a
-                href="/projects/#{semesterToId(semester)}"
-                sveltekit:noscroll
-                sveltekit:prefetch>{semester}</a
-              >
-            </li>{/each}
+          {#each semesters.slice(0, 3) as semester}
+            <li>
+              <a href="/projects#{semesterToId(semester)}" sveltekit:prefetch>
+                {semester}
+              </a>
+            </li>
+          {/each}
         </ul>
         <ul>
           <li>

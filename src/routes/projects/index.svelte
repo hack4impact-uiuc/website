@@ -18,24 +18,9 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from "svelte";
 
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
-
-  onMount(() => {
-    const {
-      location: { hash: url },
-    } = window;
-    const sectionId = url.split("#").pop();
-
-    if (sectionId) {
-      const sectionDOM = document.getElementById(sectionId);
-      if (sectionDOM) {
-        sectionDOM.scrollIntoView(true);
-      }
-    }
-  });
 
   let windowWidth: number | undefined;
 
@@ -92,7 +77,7 @@
         {#each semesters as semester, idx}
           <li id="{`semester-${idx}`}">
             <a
-              href="{`/projects/#${semesterToId(semester)}`}"
+              href="{`/projects#${semesterToId(semester)}`}"
               on:click="{() => {
                 setSemester(idx);
               }}"
@@ -112,7 +97,11 @@
           {#if projectMap[semester].featured !== undefined}
             <FeaturedBanner project="{projectMap[semester].featured}" />
           {/if}
-          <span use:viewport on:enterViewport="{() => setSemester(idx)}"></span>
+          <span
+            use:viewport
+            on:enterViewport="{() => {
+              setSemester(idx);
+            }}"></span>
           <div class="project-grid">
             {#each projectMap[semester].projects as project}
               <ProjectCard project="{project}" />
