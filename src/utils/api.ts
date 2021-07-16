@@ -1,27 +1,35 @@
-import contentful from "contentful"; // !IMPORTANT: build version
-// import { createClient } from "contentful"; // !IMPORTANT: dev version
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 export class ContentWrapper {
-  client: ContentfulClientApi;
+  client: ContentfulClientApi | undefined;
+  space: string;
+  accessToken: string;
 
   constructor(space: string, accessToken: string) {
-    // !IMPORTANT: build version
-    this.client = contentful.createClient({
-      space,
-      accessToken,
-    });
+    this.space = space;
+    this.accessToken = accessToken;
+  }
 
-    // // !IMPORTANT: dev version
-    // this.client = createClient({
-    //   space,
-    //   accessToken,
-    // });
+  async build() {
+    const contentful = await import("contentful");
+    const createClient =
+      process.env.NODE_ENV === "production"
+        ? contentful.default.createClient
+        : contentful.createClient;
+
+    this.client = createClient({
+      space: this.space,
+      accessToken: this.accessToken,
+    });
   }
 
   async get<T>(entity: string, options: any = {}): Promise<T[]> {
+    if (this.client === undefined) {
+      await this.build();
+    }
+
     const [entries, schema] = await Promise.all([
       this.client.getEntries({
         content_type: entity,

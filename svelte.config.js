@@ -11,11 +11,14 @@ const config = {
     // hydrate the <div id="svelte"> element in src/app.html
     target: "#svelte",
     adapter: adapter(),
-    vite: () => ({
-      optimizeDeps: {
-        include: ["contentful"],
-      },
-    }),
+    vite: () =>
+      process.env.NODE_ENV === "production"
+        ? {
+            optimizeDeps: {
+              include: ["contentful"],
+            },
+          }
+        : {},
   },
 };
 
