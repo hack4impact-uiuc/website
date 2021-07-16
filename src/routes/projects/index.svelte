@@ -77,9 +77,7 @@
           <li id="{`semester-${idx}`}">
             <a
               href="{`/projects#${semesterToId(semester)}`}"
-              on:click="{() => {
-                setSemester(idx);
-              }}"
+              on:click="{() => setSemester(idx)}"
               class:active="{currentSemester === idx}"
             >
               {semester}
