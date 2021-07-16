@@ -9,8 +9,8 @@
     "dev": "svelte-kit dev",
     "format": "prettier --write --plugin-search-dir=. .",
     "format:check": "prettier --check --plugin-search-dir=. .",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint  --fix --ignore-path .gitignore .",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
