@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-  import Accordion from "../../components/Accordion.svelte";
-  import Button from "../../components/Button.svelte";
-  import RoleCard from "../../components/RoleCard.svelte";
-  import Section from "../../components/Section.svelte";
-  import Step from "../../components/Step.svelte";
-  import Row from "../../components/Row.svelte";
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import RoleCard from "$lib/components/RoleCard.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import Row from "$lib/components/Row.svelte";
   import type { FAQ } from "../../utils/schema";
 
   export async function load({ fetch }) {

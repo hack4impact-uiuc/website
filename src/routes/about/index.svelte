@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
-  import Button from "../../components/Button.svelte";
-  import Section from "../../components/Section.svelte";
-  import Step from "../../components/Step.svelte";
-  import Testimonial from "../../components/Testimonial.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
   import { setImageHeight } from "../../utils/schema";
   import type { Image, Info, Member } from "../../utils/schema";
 

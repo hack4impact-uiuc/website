@@ -1,6 +1,6 @@
 <script context="module">
-  import Button from "../components/Button.svelte";
-  import Section from "../components/Section.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Section from "$lib/components/Section.svelte";
 </script>
 
 <svelte:head>
@@ -11,11 +11,9 @@
   />
 </svelte:head>
 
-<Section  id="page-not-found" padding="40px">
+<Section id="page-not-found" padding="40px">
   <h1>Page not found.</h1>
   <a href="/" sveltekit:prefetch>
     <Button type="primary">Return to home</Button>
   </a>
 </Section>
-
-

@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
-  import DoubleBanner from "../../components/DoubleBanner.svelte";
-  import Member from "../../components/projects/Member.svelte";
-  import Section from "../../components/Section.svelte";
-  import Testimonial from "../../components/Testimonial.svelte";
+  import DoubleBanner from "$lib/components/DoubleBanner.svelte";
+  import Member from "$lib/components/projects/Member.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
   import { pSBC } from "../../utils/color";
   import { setImageHeight } from "../../utils/schema";
   import type { Project } from "../../utils/schema";

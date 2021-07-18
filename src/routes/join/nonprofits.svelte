@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-  import Section from "../../components/Section.svelte";
-  import Step from "../../components/Step.svelte";
-  import Testimonial from "../../components/Testimonial.svelte";
-  import Accordion from "../../components/Accordion.svelte";
-  import Row from "../../components/Row.svelte";
-  import Button from "../../components/Button.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Row from "$lib/components/Row.svelte";
+  import Button from "$lib/components/Button.svelte";
 
   import type { FAQ } from "../../utils/schema";
 

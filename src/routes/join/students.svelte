@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-  import Section from "../../components/Section.svelte";
-  import Step from "../../components/Step.svelte";
-  import Accordion from "../../components/Accordion.svelte";
-  import Button from "../../components/Button.svelte";
-  import Row from "../../components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Row from "$lib/components/Row.svelte";
 
   import type { ApplicationStep, FAQ, Role } from "../../utils/schema";
 

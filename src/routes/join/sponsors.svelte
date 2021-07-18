@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-  import Section from "../../components/Section.svelte";
-  import Info from "../../components/Info.svelte";
-  import Testimonial from "../../components/Testimonial.svelte";
-  import Accordion from "../../components/Accordion.svelte";
-  import Row from "../../components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Info from "$lib/components/Info.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Row from "$lib/components/Row.svelte";
   import type { FAQ, Image, Info as SiteInfo } from "../../utils/schema";
 
   export async function load({ fetch }) {

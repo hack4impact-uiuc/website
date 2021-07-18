@@ -1,9 +1,9 @@
 <script context="module" lang="ts">
-  import Button from "../components/Button.svelte";
-  import DoubleBanner from "../components/DoubleBanner.svelte";
-  import FeaturedBanner from "../components/projects/FeaturedBanner.svelte";
-  import ProjectCard from "../components/projects/ProjectCard.svelte";
-  import Section from "../components/Section.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import DoubleBanner from "$lib/components/DoubleBanner.svelte";
+  import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
+  import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
+  import Section from "$lib/components/Section.svelte";
   import type { Project } from "../utils/schema";
 
   export async function load({ fetch }) {

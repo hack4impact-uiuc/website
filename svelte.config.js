@@ -17,6 +17,10 @@ const config = {
             },
           }
         : {},
+    files: {
+      lib: "src"
+    }
+    
   },
 };
 

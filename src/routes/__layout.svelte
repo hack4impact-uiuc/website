@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
-  import Nav from "../components/Nav.svelte";
-  import Footer from "../components/Footer.svelte";
+  import Nav from "$lib/components/Nav.svelte";
+  import Footer from "$lib/components/Footer.svelte";
   import { generateProjectsInfo } from "../utils/projects";
   import type { Project } from "../utils/schema";
 

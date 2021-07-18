@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
-  import Section from "../../components/Section.svelte";
-  import FeaturedBanner from "../../components/projects/FeaturedBanner.svelte";
-  import ProjectCard from "../../components/projects/ProjectCard.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
+  import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import { semesterToId } from "../../utils/schema";
   import viewport from "../../utils/useViewportAction";
   import { generateProjectsInfo } from "../../utils/projects";
