@@ -14,7 +14,7 @@
     "lint:fix": "eslint --fix src",
     "prebuild": "rm -rf build",
     "preview": "svelte-kit preview",
-    "strip-data": "sed -i '/svelte-data/d' build/*.html && sed -i '/svelte-data/d' build/**/*.html"
+    "strip-data": "sed -i '/svelte-data/d' build/**/*.html"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
