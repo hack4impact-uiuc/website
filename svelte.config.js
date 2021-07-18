@@ -8,7 +8,9 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      fallback: "404.html",
+    }),
     vite: () =>
       process.env.NODE_ENV === "production"
         ? {
@@ -18,9 +20,8 @@ const config = {
           }
         : {},
     files: {
-      lib: "src"
-    }
-    
+      lib: "src",
+    },
   },
 };
 
