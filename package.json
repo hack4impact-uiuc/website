@@ -3,7 +3,7 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "build": "svelte-kit build && npm run minify",
+    "build": "svelte-kit build && npm run strip-data && npm run minify",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "svelte-kit dev",
@@ -13,7 +13,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "preview": "svelte-kit preview",
-    "serve": "serve -s build"
+    "strip-data": "sed -i '/svelte-data/d' build/**/*.html"
   },
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
@@ -29,7 +29,6 @@
     "html-minifier": "^4.0.0",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "serve": "^12.0.0",
     "svelte": "^3.34.0",
     "svelte-check": "^2.0.0",
     "svelte-preprocess": "^4.0.0",

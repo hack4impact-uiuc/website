@@ -55,4 +55,4 @@ CONTENTFUL_SPACE_ID="your Contentful space ID"
 
 `npm run build` - use `adapter-static` to export all pages as static HTML to the `build` directory
 
-`npm run preview` or `npm run serve` (recommended) - view the built website (requires `npm run build` to have been run prior)
+`npm run preview` - view the built website (requires `npm run build` to have been run prior)
