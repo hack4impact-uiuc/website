@@ -74,6 +74,7 @@
     {/if}
   </span>
 </DoubleBanner>
+
 <Section
   id="nonprofit-description"
   longForm
@@ -87,6 +88,7 @@
 <Section id="project-description" longForm padding="40px">
   {@html project.fullDescription}
 </Section>
+
 {#if project.testimonial !== undefined && project.testimonialSourceName !== undefined && project.testimonialSourceDescription !== undefined}
   <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)">
     <div class="column-center">
@@ -98,6 +100,7 @@
     </div>
   </Section>
 {/if}
+
 <Section id="team" longForm padding="40px" color="{project.accentColor}">
   <div id="team-content">
     <h2>Meet The Team</h2>

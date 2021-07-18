@@ -48,6 +48,7 @@
     foster wider adoption.
   </p>
 </Section>
+
 <Section color="var(--gray-lighter)" id="timeline" padding="40px">
   <h2>Project Timeline</h2>
   <div id="timeline-steps">
@@ -102,6 +103,7 @@
     </Step>
   </div>
 </Section>
+
 <Section id="teams" padding="40px">
   <h2>Our Project Teams</h2>
   <div id="roles">
@@ -156,6 +158,7 @@
     </RoleCard>
   </div>
 </Section>
+
 <Section padding="40px" id="academy">
   <h2>Academy</h2>
   <p>
@@ -173,6 +176,7 @@
   </p>
   <div id="divider"></div>
 </Section>
+
 {#if faqs.length > 0}
   <Section padding="40px" id="faq" color="var(--gray-lighter)">
     <h2>Frequently Asked Questions</h2>
@@ -184,6 +188,7 @@
     {/each}
   </Section>
 {/if}
+
 <Section padding="40px" id="join" color="var(--blue)">
   <div class="cta-wrapper">
     <Row>

@@ -46,6 +46,7 @@
     />
   </span>
 </DoubleBanner>
+
 <Section id="featured-projects" padding="30px">
   <div id="featured-section">
     <h1>Featured Work</h1>

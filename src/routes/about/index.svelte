@@ -87,6 +87,7 @@
     </div>
   </div>
 </Section>
+
 <Section id="values" color="var(--gray-lighter)" padding="40px">
   <h2>Our Values</h2>
   <div id="values">
@@ -133,6 +134,7 @@
     </Step>
   </div>
 </Section>
+
 <Section id="work" color="var(--blue)" padding="40px">
   <div id="work-content">
     <h2>How We Work</h2>
