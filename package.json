@@ -3,7 +3,7 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "build": "svelte-kit build && npm run strip-data && npm run minify",
+    "build": "svelte-kit build && npm run minify",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "svelte-kit dev",
