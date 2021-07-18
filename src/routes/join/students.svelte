@@ -5,7 +5,7 @@
   import Button from "$lib/components/Button.svelte";
   import Row from "$lib/components/Row.svelte";
 
-  import type { ApplicationStep, FAQ, Role } from "../../utils/schema";
+  import type { ApplicationStep, FAQ, Role } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [faqs, openRoles, applicationSteps] = await Promise.all([

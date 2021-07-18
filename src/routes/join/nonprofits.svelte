@@ -6,7 +6,7 @@
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
 
-  import type { FAQ } from "../../utils/schema";
+  import type { FAQ } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const res = await fetch(`/server/work-faq.json`);

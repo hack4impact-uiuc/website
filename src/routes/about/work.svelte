@@ -5,7 +5,7 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ } from "../../utils/schema";
+  import type { FAQ } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const res = await fetch(`/server/work-faq.json`);

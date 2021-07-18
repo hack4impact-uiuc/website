@@ -1,4 +1,4 @@
-import { contentWrapper } from "../../../hooks";
+import { contentWrapper } from "$lib/hooks";
 
 export async function get({ params }): Promise<any> {
   const projects = await contentWrapper.get("project", {

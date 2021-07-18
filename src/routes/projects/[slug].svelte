@@ -3,9 +3,9 @@
   import Member from "$lib/components/projects/Member.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
-  import { pSBC } from "../../utils/color";
-  import { setImageHeight } from "../../utils/schema";
-  import type { Project } from "../../utils/schema";
+  import { pSBC } from "$lib/utils/color";
+  import { setImageHeight } from "$lib/utils/schema";
+  import type { Project } from "$lib/utils/schema";
 
   export async function load({ page, fetch }) {
     const { params } = page;

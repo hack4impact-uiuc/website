@@ -2,11 +2,11 @@
   import Section from "$lib/components/Section.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
-  import { semesterToId } from "../../utils/schema";
-  import viewport from "../../utils/useViewportAction";
-  import { generateProjectsInfo } from "../../utils/projects";
-  import type { SemesterProjects } from "../../utils/projects";
-  import type { Project } from "../../utils/schema";
+  import { semesterToId } from "$lib/utils/schema";
+  import viewport from "$lib/utils/useViewportAction";
+  import { generateProjectsInfo } from "$lib/utils/projects";
+  import type { SemesterProjects } from "$lib/utils/projects";
+  import type { Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const res = await fetch("/server/projects.json");

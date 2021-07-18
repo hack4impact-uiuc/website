@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Member } from "../utils/schema";
+  import type { Member } from "$lib/utils/schema";
 
   export let member: Member;
 </script>

@@ -4,7 +4,7 @@
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";
-  import type { Project } from "../utils/schema";
+  import type { Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const res = await fetch("/server/featured.json");

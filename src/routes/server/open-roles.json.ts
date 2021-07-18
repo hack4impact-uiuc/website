@@ -1,5 +1,5 @@
-import { contentWrapper } from "../../hooks";
-import type { Role } from "../../utils/schema";
+import { contentWrapper } from "$lib/hooks";
+import type { Role } from "$lib/utils/schema";
 
 export async function get(): Promise<any> {
   const faqs: Role[] = await contentWrapper.get("role", {

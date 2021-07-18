@@ -4,7 +4,7 @@
   import Testimonial from "$lib/components/Testimonial.svelte";
   import Accordion from "$lib/components/Accordion.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ, Image, Info as SiteInfo } from "../../utils/schema";
+  import type { FAQ, Image, Info as SiteInfo } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const res = await fetch("/server/info.json");

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { semesterToId } from "../utils/schema";
+  import { semesterToId } from "$lib/utils/schema";
 
   export let semesters: string[];
 </script>

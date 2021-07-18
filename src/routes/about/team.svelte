@@ -2,7 +2,7 @@
   import Button from "$lib/components/Button.svelte";
   import Member from "$lib/components/Member.svelte";
   import Section from "$lib/components/Section.svelte";
-  import type { Image, Info, Member as MemberType } from "../../utils/schema";
+  import type { Image, Info, Member as MemberType } from "$lib/utils/schema";
 
   /* @type {import('@sveltejs/kit').Load} */
   export async function load({ fetch }) {

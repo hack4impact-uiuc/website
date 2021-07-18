@@ -3,8 +3,8 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
-  import { setImageHeight } from "../../utils/schema";
-  import type { Image, Info, Member } from "../../utils/schema";
+  import { setImageHeight } from "$lib/utils/schema";
+  import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [info, members] = await Promise.all([
