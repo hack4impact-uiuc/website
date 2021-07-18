@@ -173,16 +173,17 @@
   </p>
   <div id="divider"></div>
 </Section>
-<Section padding="40px" id="faq" color="var(--gray-lighter)">
-  <h2>Frequently Asked Questions</h2>
-  {#each faqs as faq}
-    <Accordion>
-      <span slot="title">{faq.question}</span>
-      <p slot="contents">{faq.answer}</p>
-    </Accordion>
-  {/each}
-</Section>
-
+{#if faqs.length > 0}
+  <Section padding="40px" id="faq" color="var(--gray-lighter)">
+    <h2>Frequently Asked Questions</h2>
+    {#each faqs as faq}
+      <Accordion>
+        <span slot="title">{faq.question}</span>
+        <p slot="contents">{faq.answer}</p>
+      </Accordion>
+    {/each}
+  </Section>
+{/if}
 <Section padding="40px" id="join" color="var(--blue)">
   <div class="cta-wrapper">
     <Row>
