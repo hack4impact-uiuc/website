@@ -20,6 +20,7 @@
     "@contentful/rich-text-types": "^15.0.0",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
     "@sveltejs/kit": "next",
+    "@types/ackee-tracker": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
     "contentful": "^8.1.7",
@@ -37,6 +38,7 @@
   },
   "type": "module",
   "dependencies": {
+    "ackee-tracker": "^5.1.0",
     "html-minifier-terser": "^5.1.1"
   }
 }

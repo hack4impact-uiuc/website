@@ -2,7 +2,9 @@
   import Nav from "$lib/components/Nav.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import { generateProjectsInfo } from "$lib/utils/projects";
+  import * as ackeeTracker from "ackee-tracker";
   import type { Project } from "$lib/utils/schema";
+import { onMount } from "svelte";
 
   export async function load({ page, fetch }) {
     const res = await fetch("/server/projects.json");
@@ -18,6 +20,11 @@
   export let semesters: string[] = [];
 
   export let path: string;
+
+  onMount(() =>
+  ackeeTracker
+    .create("https://site-analytics.vercel.app/")
+    .record("7f105537-100a-47d3-8317-4b58e426ba85"));
 </script>
 
 <svelte:head>
