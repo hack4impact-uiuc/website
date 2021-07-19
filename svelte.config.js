@@ -19,7 +19,7 @@ const config = {
       process.env.NODE_ENV === "production"
         ? {
             optimizeDeps: {
-              include: ["contentful"],
+              include: ["ackee-tracker", "contentful"],
             },
           }
         : {},

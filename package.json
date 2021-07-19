@@ -23,11 +23,12 @@
     "@types/ackee-tracker": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
+    "ackee-tracker": "^5.1.0",
     "contentful": "^8.1.7",
     "dotenv": "^10.0.0",
     "eslint": "^7.22.0",
     "eslint-plugin-svelte3": "^3.2.0",
-    "html-minifier": "^4.0.0",
+    "html-minifier-terser": "^5.1.1",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "svelte": "^3.34.0",
@@ -36,9 +37,5 @@
     "tslib": "^2.0.0",
     "typescript": "^4.0.0"
   },
-  "type": "module",
-  "dependencies": {
-    "ackee-tracker": "^5.1.0",
-    "html-minifier-terser": "^5.1.1"
-  }
+  "type": "module"
 }
