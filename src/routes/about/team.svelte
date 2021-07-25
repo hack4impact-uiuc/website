@@ -121,20 +121,17 @@
     row-gap: 30px;
   }
 
-  @media screen and (max-width: 1145px) {
+  @media screen and (max-width: 1375px) {
     .member-grid {
+      column-gap: 30px;
       --columns: 3;
     }
   }
-  @media screen and (max-width: 875px) {
+  @media screen and (max-width: 1050px) {
     .member-grid {
+      column-gap: 10px;
+      row-gap: 1em;
       --columns: 2;
-    }
-  }
-
-  @media screen and (max-width: 590px) {
-    .member-grid {
-      --columns: 1;
     }
   }
 </style>
