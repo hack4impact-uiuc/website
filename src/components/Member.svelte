@@ -7,9 +7,9 @@
 <div class="member row-center">
   <img
     src="{member.picture.src}?h=160"
-    alt="{member.picture.alt}"
-    height="80"
-    width="80"
+    alt={member.picture.alt}
+    height="96"
+    width="96"
   />
   <div class="member-info">
     <h4>{member.name}</h4>
@@ -20,6 +20,8 @@
 <style>
   img {
     border-radius: 100%;
+    max-width: 30%;
+    height: auto;
     margin-right: 5%;
   }
 
@@ -29,5 +31,17 @@
 
   .member {
     justify-content: left;
+  }
+
+  @media screen and (max-width: 590px) {
+    .member.row-center {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .member.row-center img {
+      max-width: 66%;
+      margin-bottom: 0.5em;
+    }
   }
 </style>
