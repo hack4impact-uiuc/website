@@ -10,6 +10,7 @@
   <img
     src="{setImageHeight(project.nonprofitLogo.src, 100)}"
     alt="{project.nonprofitLogo.alt}"
+    draggable="false"
   />
 
   <h4>{project.name}</h4>
