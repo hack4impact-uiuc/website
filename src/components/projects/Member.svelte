@@ -19,6 +19,7 @@
   .member {
     color: #fff;
     padding: 10%;
+    box-sizing: border-box;
   }
 
   img {
