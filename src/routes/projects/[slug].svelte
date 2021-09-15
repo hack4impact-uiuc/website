@@ -14,6 +14,11 @@
 
     const project: Project = await res.json();
 
+    // default to colored logo if white logo unavailable
+    if (!project.logoWhite) {
+      project.logoWhite = project.nonprofitLogo;
+    }
+
     return { props: { project } };
   }
 </script>
@@ -57,8 +62,8 @@
   <span slot="left">
     <img
       id="nonprofit-logo"
-      src="{setImageHeight(project.nonprofitLogo.src, 100)}"
-      alt="{project.nonprofitLogo.alt}"
+      src="{setImageHeight(project.logoWhite.src, 100)}"
+      alt="{project.logoWhite.alt}"
     />
     <h1>{project.name}</h1>
     <h2 id="project-summary">{project.summary}</h2></span
@@ -146,7 +151,6 @@
   #nonprofit-logo {
     height: 60px;
     margin-bottom: 20px;
-    background-color: #fff;
   }
 
   #team-content {
