@@ -37,6 +37,7 @@ export interface Project {
   nonprofitDescription: string; // TODO: is this html?
   nonprofitUrl: string;
   nonprofitLogo: Image;
+  logoWhite?: Image;
   accentColor: string;
   fullDescription: string;
   productManager: Member[];
