@@ -141,6 +141,14 @@
     width: 100%;
   }
 
+  :global(#banner-right-content) {
+    padding-right: 0 !important;
+  }
+
+  :global(#banner-right-content #header-container) {
+    justify-content: flex-end;
+  }
+
   p {
     opacity: 80%;
   }
