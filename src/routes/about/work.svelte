@@ -174,7 +174,6 @@
     semester to building a full-stack web application of the team's choosing
     using the lessons learned earlier in the semester.
   </p>
-  <div id="divider"></div>
 </Section>
 
 {#if faqs.length > 0}
@@ -194,7 +193,7 @@
     <Row>
       <div class="cta">
         <h2>Join Us</h2>
-        <p>Lorem Ipsum.</p>
+        <p>Apply to Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
         <a href="/join/students" sveltekit:prefetch>
@@ -227,11 +226,5 @@
       --columns: 1;
       row-gap: 20px;
     }
-  }
-
-  #divider {
-    width: 100%;
-    height: 60px;
-    background-color: var(--gray-light);
   }
 </style>
