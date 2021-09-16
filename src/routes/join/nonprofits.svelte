@@ -105,7 +105,9 @@
         and humanitarians to create lasting and impactful social change. We work
         to foster the wider adoption of software as a tool for social good.
       </p>
-      <Button type="primary">Learn More</Button>
+      <a class="button-link" href="/about/work" sveltekit:prefetch
+        ><Button type="primary">Learn More</Button>
+      </a>
     </div>
     <figure>
       <img src="https://picsum.photos/630/320" alt="" />
