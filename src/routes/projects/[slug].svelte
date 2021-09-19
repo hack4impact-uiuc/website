@@ -75,6 +75,7 @@
         <img
           src="{setImageHeight(project.headerImage.src, 600)}"
           alt="{project.headerImage.alt}"
+          draggable="false"
         />
       </div>
     {/if}
@@ -138,11 +139,16 @@
   }
 
   #header-container img {
+    height: 90%;
     width: 100%;
+
+    object-fit: cover;
+    object-position: left top;
   }
 
   :global(#banner-right-content) {
     padding-right: 0 !important;
+    padding-left: calc(20% - 31px) !important;
   }
 
   :global(#banner-right-content #header-container) {
