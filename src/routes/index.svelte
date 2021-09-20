@@ -71,7 +71,6 @@
 
   a {
     margin: 0 20px 20px 0;
-    /* display: inline-block; */
   }
 
   #featured-section h1 {
@@ -80,13 +79,25 @@
   }
 
   #graphic-container {
-    width: 100%;
     height: 100%;
+    align-items: flex-end;
   }
 
   #graphic-container img {
-    margin-left: -5%;
-    width: calc(var(--content-width) / 2);
+    height: 75%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  :global(#banner-right-content) {
+    padding-right: 0 !important;
+    padding-left: 10% !important;
+  }
+
+  :global(#banner-right-content #graphic-container) {
+    justify-content: flex-end;
   }
 
   #graphic {
