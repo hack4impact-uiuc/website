@@ -66,22 +66,25 @@
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Hack4Impact provides our nonprofit partners with software solutions for
+        their needs typically in the web and mobile space. Ranging from one
+        semester to multiple semesters, teams will work on the product to the
+        specifications agreed upon by both the leads and partner.
       </p>
     </div>
     <div>
-      <h3>Web & Mobile Applications</h3>
+      <h3>Designs</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Our designers create product designs tailored specifically to the
+        nonprofit's needs and branding.
       </p>
     </div>
     <div>
-      <h3>Web & Mobile Applications</h3>
+      <h3>Iterative feedback and communication</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Our project leads stay are consistently in touch with your nonprofit's
+        point of contact to navigate decisions, clarify goals, and respond to
+        feedback.
       </p>
     </div>
   </Row>
