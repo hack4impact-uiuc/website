@@ -138,10 +138,11 @@
 <Section id="work" color="var(--blue)" padding="40px">
   <div id="work-content">
     <h2>How We Work</h2>
+    <div class="row-center"></div>
     <p>
-      Hack4Impact believes in technology’s huge potential to empower activists
-      and humanitarians to create lasting and impactful social change. We work
-      to foster the wider adoption of software as a tool for social good.
+      We partner with nonprofits and other socially minded organizations to
+      build impactful products. Each product is spearheaded by a dedicated
+      development team on a one or two semester timeline.
     </p>
     <a class="button-link" href="/about/work" sveltekit:prefetch
       ><Button type="primary-white">Learn More</Button></a
