@@ -102,9 +102,18 @@
     <div>
       <h2>How We Work</h2>
       <p>
-        Hack4Impact believes in technology’s huge potential to empower activists
-        and humanitarians to create lasting and impactful social change. We work
-        to foster the wider adoption of software as a tool for social good.
+        At Hack4Impact, we develop software for non-profits to make their work
+        more efficient, effective, and far-reaching. Generally, we set up a call
+        with potential non-profit clients to learn more about their projects,
+        initiatives, and goals. If our goals align with theirs, we delve deeper
+        into project specifications, pain points, user research, and gaining a
+        better understanding of the impact that will be made before confirming
+        the project and matching it to a development team. We aim to build
+        sustainable products that have long-lasting impact for the non-profit we
+        are working with and those they are trying to help. We currently support
+        web based and data science projects but we are open to other different
+        types of projects. For more details, please contact us at
+        uiuc@hack4impact.org.
       </p>
       <Button type="primary">Learn More</Button>
     </div>
