@@ -6,29 +6,24 @@
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
 
-  import type { FAQ } from "$lib/utils/schema";
+  import type { NonprofitStep, FAQ } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch(`/server/work-faq.json`);
-    const faqs: FAQ[] = await res.json();
+    const [applicationSteps, faqs] = await Promise.all([
+      fetch("/server/nonprofit-steps.json").then((res: Response) =>
+        res.json()
+      ) as Promise<NonprofitStep[]>,
+      fetch("/server/work-faq.json").then((res: Response) =>
+        res.json()
+      ) as Promise<FAQ[]>,
+    ]);
 
-    return { props: { faqs } };
+    return { props: { faqs, applicationSteps } };
   }
 </script>
 
 <script lang="ts">
-  interface ApplicationStep {
-    date: Date;
-    content: string;
-    name?: string;
-  }
-
-  let applicationSteps: ApplicationStep[] = Array(6)
-    .fill(Object())
-    .map(
-      () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
-    );
-
+  export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
 </script>
 
@@ -62,7 +57,7 @@
 <Section padding="60px">
   <h1>Nonprofits</h1>
   <h2>Our Services</h2>
-  <Row gap="{58}">
+  <Row gap="{58}" topAligned>
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
@@ -119,16 +114,13 @@
 <Section id="process" color="var(--gray-lighter)" padding="40px">
   <h2>Application Process</h2>
   <div id="process-steps">
-    {#each applicationSteps as step, idx}
-      <Step>
+    {#each applicationSteps as step, index}
+      <Step index="{index + 1}">
         <span slot="name">
-          {step.name !== undefined ? step.name : `Step ${idx + 1}`}
+          {step.name}
         </span>
         <span slot="description">
-          We evaluate the trade offs of our decisions, choose a direction to
-          head, and crush our goals. Whether it be personal or professional
-          growth, we avoid mindless movement and instead purposefully act. We
-          work with intention.
+          {step.description}
         </span>
       </Step>
     {/each}

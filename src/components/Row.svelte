@@ -2,11 +2,13 @@
   export let reverse = false;
   export let reverseOnMobile = false;
   export let gap: number | undefined = undefined;
+  export let topAligned = false;
 </script>
 
 <article
   class:reversed="{!!reverse}"
   class:mobileReversed="{!!reverseOnMobile}"
+  class:topAligned="{!!topAligned}"
   style="--row-gap: {gap ? gap : 0}px"
 >
   <slot />
@@ -27,6 +29,10 @@
     justify-content: center;
     align-items: flex-start;
     flex: 1;
+  }
+
+  article.topAligned > :global(*) {
+    justify-content: start;
   }
 
   article > :global(*) + :global(*) {

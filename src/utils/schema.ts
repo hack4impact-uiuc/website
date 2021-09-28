@@ -79,6 +79,12 @@ export interface ApplicationStep {
   icon: "Calendar" | "Form" | "Interview";
 }
 
+export interface NonprofitStep {
+  name: string;
+  description: string;
+  order: number;
+}
+
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
   if (src.endsWith(".svg")) {
