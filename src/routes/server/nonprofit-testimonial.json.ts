@@ -10,7 +10,13 @@ export async function get(): Promise<any> {
   const featuredTestimonialProject =
     testimonialProjects[Math.floor(Math.random() * testimonialProjects.length)];
 
+  const {
+    testimonial,
+    testimonialSourceName,
+    testimonialSourceDescription,
+  } = featuredTestimonialProject;
+
   return {
-    body: featuredTestimonialProject,
+    body: { testimonial, testimonialSourceName, testimonialSourceDescription },
   };
 }

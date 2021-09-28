@@ -46,8 +46,8 @@ export interface Project {
   softwareDevelopers: Member[];
   featured: boolean;
   testimonial?: string;
-  testimonialSourceName: string;
-  testimonialSourceDescription: string;
+  testimonialSourceName?: string;
+  testimonialSourceDescription?: string;
 }
 
 export interface Info {
