@@ -7,22 +7,17 @@
   import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, members] = await Promise.all([
+    const [info, testimonialMember] = await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
-      fetch("/server/members.json").then((res: Response) => res.json()),
-    ] as [Info, Member[]]);
-
-    const testimonialMembers = members.filter(
-      (member) => member.testimonial !== undefined
-    );
+      fetch("/server/member-testimonial.json").then((res: Response) =>
+        res.json()
+      ),
+    ] as [Info, Member]);
 
     return {
       props: {
         team: info.chapterPicture,
-        testimonialMember:
-          testimonialMembers[
-            Math.floor(Math.random() * testimonialMembers.length)
-          ],
+        testimonialMember,
       },
     };
   }
