@@ -4,21 +4,29 @@
   import Testimonial from "$lib/components/Testimonial.svelte";
   import Accordion from "$lib/components/Accordion.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ, Image, Info as SiteInfo } from "$lib/utils/schema";
+  import type {
+    FAQ,
+    Image,
+    Info as SiteInfo,
+    Project,
+  } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, faqs] = await Promise.all([
+    const [info, faqs, testimonialNonprofit] = await Promise.all([
       fetch("/server/info.json").then((res: Response) =>
         res.json()
       ) as Promise<SiteInfo>,
       fetch("/server/sponsor-faq.json").then((res: Response) =>
         res.json()
       ) as Promise<FAQ>,
+      fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
+        res.json()
+      ) as Promise<Project>,
     ]);
 
     const { whereWeWork } = info;
 
-    return { props: { whereWeWork, faqs } };
+    return { props: { whereWeWork, faqs, testimonialNonprofit } };
   }
 </script>
 
@@ -68,6 +76,7 @@
 
   export let faqs: FAQ[];
   export let whereWeWork: Image;
+  export let testimonialNonprofit: Project;
 </script>
 
 <svelte:head>
@@ -127,10 +136,9 @@
 
 <Section color="var(--gray-lighter)">
   <Testimonial
-    quote="“Hack4Impact believes in technology’s huge potential to empower activists and humanitarians to create lasting and impactful social change. We work to foster the wider adoption of software as a tool for social good.”"
-    name="Point of Contact Name"
-    desc="Position, Nonprofit"
-    imageSrc="https://picsum.photos/400"
+    quote="{testimonialNonprofit.testimonial}"
+    name="{testimonialNonprofit.testimonialSourceName}"
+    desc="{testimonialNonprofit.testimonialSourceDescription}"
   />
 </Section>
 
