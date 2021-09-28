@@ -6,30 +6,29 @@
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
 
-  import type { FAQ } from "$lib/utils/schema";
+  import type { NonprofitStep, FAQ, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch(`/server/work-faq.json`);
-    const faqs: FAQ[] = await res.json();
+    const [applicationSteps, faqs, testimonialNonprofit] = await Promise.all([
+      fetch("/server/nonprofit-steps.json").then((res: Response) =>
+        res.json()
+      ) as Promise<NonprofitStep[]>,
+      fetch("/server/work-faq.json").then((res: Response) =>
+        res.json()
+      ) as Promise<FAQ[]>,
+      fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
+        res.json()
+      ) as Promise<Project>,
+    ]);
 
-    return { props: { faqs } };
+    return { props: { faqs, applicationSteps, testimonialNonprofit } };
   }
 </script>
 
 <script lang="ts">
-  interface ApplicationStep {
-    date: Date;
-    content: string;
-    name?: string;
-  }
-
-  let applicationSteps: ApplicationStep[] = Array(6)
-    .fill(Object())
-    .map(
-      () => ({ date: new Date(), content: "lorem ipsum" } as ApplicationStep)
-    );
-
+  export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
+  export let testimonialNonprofit: Project;
 </script>
 
 <svelte:head>
@@ -62,26 +61,29 @@
 <Section padding="60px">
   <h1>Nonprofits</h1>
   <h2>Our Services</h2>
-  <Row gap="{58}">
+  <Row gap="{58}" topAligned>
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Hack4Impact provides our nonprofit partners with software solutions for
+        their needs typically in the web and mobile space. Ranging from one
+        semester to multiple semesters, teams will work on the product to the
+        specifications agreed upon by both the leads and partner.
       </p>
     </div>
     <div>
-      <h3>Web & Mobile Applications</h3>
+      <h3>Designs</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Our designers create product designs tailored specifically to the
+        nonprofit's needs and branding.
       </p>
     </div>
     <div>
-      <h3>Web & Mobile Applications</h3>
+      <h3>Iterative feedback and communication</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Our project leads stay are consistently in touch with your nonprofit's
+        point of contact to navigate decisions, clarify goals, and respond to
+        feedback.
       </p>
     </div>
   </Row>
@@ -89,10 +91,9 @@
 
 <Section color="var(--gray-lighter)">
   <Testimonial
-    quote="“Hack4Impact believes in technology’s huge potential to empower activists and humanitarians to create lasting and impactful social change. We work to foster the wider adoption of software as a tool for social good.”"
-    name="Point of Contact Name"
-    desc="Position, Nonprofit"
-    imageSrc="https://picsum.photos/400"
+    quote="{testimonialNonprofit.testimonial}"
+    name="{testimonialNonprofit.testimonialSourceName}"
+    desc="{testimonialNonprofit.testimonialSourceDescription}"
   />
 </Section>
 
@@ -101,9 +102,18 @@
     <div>
       <h2>How We Work</h2>
       <p>
-        Hack4Impact believes in technology’s huge potential to empower activists
-        and humanitarians to create lasting and impactful social change. We work
-        to foster the wider adoption of software as a tool for social good.
+        At Hack4Impact, we develop software for non-profits to make their work
+        more efficient, effective, and far-reaching. Generally, we set up a call
+        with potential non-profit clients to learn more about their projects,
+        initiatives, and goals. If our goals align with theirs, we delve deeper
+        into project specifications, pain points, user research, and gaining a
+        better understanding of the impact that will be made before confirming
+        the project and matching it to a development team. We aim to build
+        sustainable products that have long-lasting impact for the non-profit we
+        are working with and those they are trying to help. We currently support
+        web based and data science projects but we are open to other different
+        types of projects. For more details, please contact us at
+        uiuc@hack4impact.org.
       </p>
       <a class="button-link" href="/about/work" sveltekit:prefetch
         ><Button type="primary">Learn More</Button>
@@ -118,16 +128,13 @@
 <Section id="process" color="var(--gray-lighter)" padding="40px">
   <h2>Application Process</h2>
   <div id="process-steps">
-    {#each applicationSteps as step, idx}
-      <Step>
+    {#each applicationSteps as step, index}
+      <Step index="{index + 1}">
         <span slot="name">
-          {step.name !== undefined ? step.name : `Step ${idx + 1}`}
+          {step.name}
         </span>
         <span slot="description">
-          We evaluate the trade offs of our decisions, choose a direction to
-          head, and crush our goals. Whether it be personal or professional
-          growth, we avoid mindless movement and instead purposefully act. We
-          work with intention.
+          {step.description}
         </span>
       </Step>
     {/each}

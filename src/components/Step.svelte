@@ -1,6 +1,7 @@
 <script lang="ts">
   export let icon: string | undefined = undefined;
   export let iconAlt: string | undefined = undefined;
+  export let index: number | undefined = undefined;
 </script>
 
 <div class="step row-center">
@@ -8,6 +9,8 @@
     ><div id="icon-container">
       {#if icon !== undefined}
         <img src="{icon}" alt="{iconAlt}" />
+      {:else if index !== undefined}
+        <span class="step-index">{index}</span>
       {/if}
     </div>
   </span>
@@ -61,5 +64,11 @@
     h3 {
       margin-top: 1rem;
     }
+  }
+
+  .step-index {
+    font-size: 50px;
+    color: var(--blue-lighter);
+    text-align: center;
   }
 </style>
