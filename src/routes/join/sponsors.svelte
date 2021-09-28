@@ -7,12 +7,18 @@
   import type { FAQ, Image, Info as SiteInfo } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("/server/info.json");
-    const info: SiteInfo = await res.json();
+    const [info, faqs] = await Promise.all([
+      fetch("/server/info.json").then((res: Response) =>
+        res.json()
+      ) as Promise<SiteInfo>,
+      fetch("/server/sponsor-faq.json").then((res: Response) =>
+        res.json()
+      ) as Promise<FAQ>,
+    ]);
 
     const { whereWeWork } = info;
 
-    return { props: { whereWeWork } };
+    return { props: { whereWeWork, faqs } };
   }
 </script>
 
@@ -60,7 +66,7 @@
     ),
   ];
 
-  let faqs: FAQ[] = [];
+  export let faqs: FAQ[];
   export let whereWeWork: Image;
 </script>
 
