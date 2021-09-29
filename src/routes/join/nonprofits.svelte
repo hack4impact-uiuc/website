@@ -118,7 +118,10 @@
       <Button type="primary">Learn More</Button>
     </div>
     <figure>
-      <img src="https://picsum.photos/630/320" alt="" />
+      <img
+        src="{testimonialNonprofit.headerImage.src}"
+        alt="{testimonialNonprofit.headerImage.alt}"
+      />
     </figure>
   </Row>
 </Section>
