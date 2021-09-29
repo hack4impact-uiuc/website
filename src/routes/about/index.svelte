@@ -7,22 +7,17 @@
   import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, members] = await Promise.all([
+    const [info, testimonialMember] = await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
-      fetch("/server/members.json").then((res: Response) => res.json()),
-    ] as [Info, Member[]]);
-
-    const testimonialMembers = members.filter(
-      (member) => member.testimonial !== undefined
-    );
+      fetch("/server/member-testimonial.json").then((res: Response) =>
+        res.json()
+      ),
+    ] as [Info, Member]);
 
     return {
       props: {
         team: info.chapterPicture,
-        testimonialMember:
-          testimonialMembers[
-            Math.floor(Math.random() * testimonialMembers.length)
-          ],
+        testimonialMember,
       },
     };
   }
@@ -138,10 +133,11 @@
 <Section id="work" color="var(--blue)" padding="40px">
   <div id="work-content">
     <h2>How We Work</h2>
+    <div class="row-center"></div>
     <p>
-      Hack4Impact believes in technology’s huge potential to empower activists
-      and humanitarians to create lasting and impactful social change. We work
-      to foster the wider adoption of software as a tool for social good.
+      We partner with nonprofits and other socially minded organizations to
+      build impactful products. Each product is spearheaded by a dedicated
+      development team on a one or two semester timeline.
     </p>
     <a class="button-link" href="/about/work" sveltekit:prefetch
       ><Button type="primary-white">Learn More</Button></a
@@ -151,6 +147,21 @@
 
 <Section id="team" padding="40px">
   <h2>Meet The Team</h2>
+  <p>
+    We are a team of UIUC students who collectively believe in and support each
+    other towards <span id="meet-the-team-bold"
+      >our goal of using technology as a medium for advancing the public
+      interest</span
+    >. Our members come from a variety of background and identities, and we use
+    our differences to further our culture and create a thriving community of
+    students. Many of us consider their fellow members as close friends,
+    pursuing activities beyond the scope of the organization and their time at
+    UIUC.
+  </p>
+  <p>
+    Interested in being a part of the team? — check for open roles at the start
+    of every semester, and fill out our interest form!
+  </p>
   <Testimonial
     quote="{testimonialMember.testimonial}"
     name="{testimonialMember.name}"
@@ -210,5 +221,9 @@
 
   #work-content {
     color: #fff;
+  }
+
+  #meet-the-team-bold {
+    font-weight: bold;
   }
 </style>

@@ -43,9 +43,17 @@
 <Section id="intro" padding="60px">
   <h1>How We Work</h1>
   <p>
-    Hack4Impact believes in technology’s huge potential to empower activists and
-    humanitarians to create lasting and impactful social change. We work to
-    foster wider adoption.
+    Each semester, we partner with four to five organizations to fulfill their
+    technical challenges. As a partner, you’ll have a dedicated development team
+    working towards delivering a finished product. Your primary points of
+    contact will consist of a product research member, product manager, and
+    technical lead. Our product solutions are carefully planned beginning with
+    our product research phase wherein we identify project-fit and begin the
+    scoping process. Moving forward, the product manager further refines the
+    project scope while the technical lead designs the architecture and works
+    out implementation details. Over the course of the semester, you will be
+    kept in the loop with opportunities to provide feedback, culminating in a
+    project handoff.
   </p>
 </Section>
 
