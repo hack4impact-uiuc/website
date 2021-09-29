@@ -21,6 +21,6 @@ export async function get(): Promise<any> {
   }
 
   return {
-    body: projects,
+    body: projects.slice(0, 4),
   };
 }
