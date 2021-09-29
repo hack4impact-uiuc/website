@@ -1,4 +1,5 @@
 import { contentWrapper } from "$lib/hooks";
+import { generateProjectsInfo } from "$lib/utils/projects";
 import type { Project } from "$lib/utils/schema";
 
 export async function get(): Promise<any> {
@@ -15,7 +16,9 @@ export async function get(): Promise<any> {
     delete project.softwareDevelopers;
   });
 
+  const projectsInfo = generateProjectsInfo(projects);
+
   return {
-    body: projects,
+    body: projectsInfo,
   };
 }

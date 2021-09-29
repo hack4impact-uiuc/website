@@ -4,16 +4,14 @@
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
-  import { generateProjectsInfo } from "$lib/utils/projects";
-  import type { SemesterProjects } from "$lib/utils/projects";
-  import type { Project } from "$lib/utils/schema";
+  import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
 
   export async function load({ fetch }) {
     const res = await fetch("/server/projects.json");
 
-    const projects: Project[] = await res.json();
+    const projectsInfo: ProjectsInfo = await res.json();
 
-    return { props: generateProjectsInfo(projects) };
+    return { props: projectsInfo };
   }
 </script>
 

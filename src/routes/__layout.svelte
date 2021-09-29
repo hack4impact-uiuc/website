@@ -1,14 +1,11 @@
 <script context="module" lang="ts">
   import Nav from "$lib/components/Nav.svelte";
   import Footer from "$lib/components/Footer.svelte";
-  import { generateProjectsInfo } from "$lib/utils/projects";
-  import type { Project } from "$lib/utils/schema";
 
   export async function load({ page, fetch }) {
-    const res = await fetch("/server/projects.json");
+    const res = await fetch("/server/project-semesters.json");
 
-    const projects: Project[] = await res.json();
-    const { semesters } = generateProjectsInfo(projects);
+    const semesters: string[] = await res.json();
 
     const { path } = page;
 

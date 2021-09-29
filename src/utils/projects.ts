@@ -5,7 +5,7 @@ export interface SemesterProjects {
   projects: Project[];
 }
 
-interface ProjectsInfo {
+export interface ProjectsInfo {
   projectMap: Record<string, SemesterProjects>;
   semesters: string[];
 }
