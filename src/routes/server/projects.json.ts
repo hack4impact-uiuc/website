@@ -7,16 +7,29 @@ export async function get(): Promise<any> {
     order: "fields.name",
   });
 
-  projects.forEach((project) => {
-    delete project.nonprofitDescription;
-    delete project.fullDescription;
-    delete project.productManager;
-    delete project.techLead;
-    delete project.productDesigner;
-    delete project.softwareDevelopers;
-  });
+  const strippedProjects = projects.map(
+    ({
+      name,
+      summary,
+      slug,
+      accentColor,
+      nonprofitLogo,
+      semester,
+      featured,
+      headerImage,
+    }) => ({
+      name,
+      summary,
+      slug,
+      accentColor,
+      nonprofitLogo,
+      semester,
+      featured,
+      headerImage,
+    })
+  );
 
-  const projectsInfo = generateProjectsInfo(projects);
+  const projectsInfo = generateProjectsInfo(strippedProjects as Project[]);
 
   return {
     body: projectsInfo,
