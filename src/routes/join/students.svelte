@@ -22,6 +22,8 @@
 
     return { props: { faqs, openRoles, applicationSteps } };
   }
+
+  export const hydrate = false;
 </script>
 
 <script lang="ts">

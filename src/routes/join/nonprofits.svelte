@@ -23,6 +23,8 @@
 
     return { props: { faqs, applicationSteps, testimonialNonprofit } };
   }
+
+  export const hydrate = false;
 </script>
 
 <script lang="ts">

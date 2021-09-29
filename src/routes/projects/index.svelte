@@ -13,6 +13,8 @@
 
     return { props: projectsInfo };
   }
+
+  export const hydrate = false;
 </script>
 
 <script lang="ts">

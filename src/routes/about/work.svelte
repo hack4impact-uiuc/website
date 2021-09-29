@@ -13,6 +13,8 @@
 
     return { props: { faqs } };
   }
+
+  export const hydrate = false;
 </script>
 
 <script lang="ts">

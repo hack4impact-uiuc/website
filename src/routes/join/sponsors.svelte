@@ -28,6 +28,8 @@
 
     return { props: { whereWeWork, faqs, testimonialNonprofit } };
   }
+
+  export const hydrate = false;
 </script>
 
 <script lang="ts">
