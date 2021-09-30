@@ -101,6 +101,7 @@
         quote="{project.testimonial}"
         name="{project.testimonialSourceName}"
         desc="{project.testimonialSourceDescription}"
+        imageSrc="{project.testimonialSourceImage?.src}"
       />
     </div>
   </Section>

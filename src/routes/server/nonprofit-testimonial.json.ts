@@ -5,7 +5,9 @@ export async function get(): Promise<any> {
   const projects: Project[] = await contentWrapper.get("project");
   const testimonialProjects = projects.filter(
     (project) =>
-      project.testimonial !== undefined && project.headerImage !== undefined
+      project.testimonial !== undefined &&
+      project.headerImage !== undefined &&
+      project.testimonialSourceType === "Nonprofit"
   );
 
   const featuredTestimonialProject =
@@ -15,6 +17,7 @@ export async function get(): Promise<any> {
     testimonial,
     testimonialSourceName,
     testimonialSourceDescription,
+    testimonialSourceImage,
     headerImage,
   } = featuredTestimonialProject;
 
@@ -23,6 +26,7 @@ export async function get(): Promise<any> {
       testimonial,
       testimonialSourceName,
       testimonialSourceDescription,
+      testimonialSourceImage,
       headerImage,
     },
   };
