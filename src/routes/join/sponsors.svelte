@@ -140,6 +140,7 @@
     quote="{testimonialNonprofit.testimonial}"
     name="{testimonialNonprofit.testimonialSourceName}"
     desc="{testimonialNonprofit.testimonialSourceDescription}"
+    imageSrc="{testimonialNonprofit.testimonialSourceImage?.src}"
   />
 </Section>
 

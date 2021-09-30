@@ -9,7 +9,7 @@
   export async function load({ fetch }) {
     const res = await fetch("/server/featured.json");
 
-    const projects: Project[] = (await res.json()).slice(0, 4);
+    const projects: Project[] = await res.json();
 
     return { props: { projects } };
   }

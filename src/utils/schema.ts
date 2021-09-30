@@ -48,6 +48,8 @@ export interface Project {
   testimonial?: string;
   testimonialSourceName?: string;
   testimonialSourceDescription?: string;
+  testimonialSourceImage?: Image;
+  testimonialSourceType?: "Member" | "Nonprofit";
 }
 
 export interface Info {

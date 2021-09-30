@@ -4,35 +4,21 @@
   import Section from "$lib/components/Section.svelte";
   import type { Image, Info, Member as MemberType } from "$lib/utils/schema";
 
+  interface MembersResponse {
+    active: MemberType[];
+    alumni: MemberType[];
+  }
+
   /* @type {import('@sveltejs/kit').Load} */
   export async function load({ fetch }) {
     const [members, info] = (await Promise.all([
       fetch("/server/members.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
-    ])) as [MemberType[], Info];
-
-    const roles = [
-      "Co-Founder",
-      "Co-Director",
-      "Community Director",
-      "External Director",
-      "Tech Director",
-      "Product Manager",
-      "Tech Lead",
-      "Academy Lead",
-      "Product Research Lead",
-      "Product Designer",
-      "Software Developer",
-      "Academy Member",
-    ];
-
-    members.sort((a, b) => a.graduationYear - b.graduationYear);
-    members.sort((a, b) => roles.indexOf(a.role) - roles.indexOf(b.role));
+    ])) as [MembersResponse, Info];
 
     return {
       props: {
-        active: members.filter((member) => member.active),
-        alumni: members.filter((member) => !member.active),
+        ...members,
         team: info.chapterPicture,
       },
     };

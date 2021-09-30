@@ -4,7 +4,10 @@ import type { Project } from "$lib/utils/schema";
 export async function get(): Promise<any> {
   const projects: Project[] = await contentWrapper.get("project");
   const testimonialProjects = projects.filter(
-    (project) => project.testimonial !== undefined
+    (project) =>
+      project.testimonial !== undefined &&
+      project.headerImage !== undefined &&
+      project.testimonialSourceType === "Nonprofit"
   );
 
   const featuredTestimonialProject =
@@ -14,9 +17,17 @@ export async function get(): Promise<any> {
     testimonial,
     testimonialSourceName,
     testimonialSourceDescription,
+    testimonialSourceImage,
+    headerImage,
   } = featuredTestimonialProject;
 
   return {
-    body: { testimonial, testimonialSourceName, testimonialSourceDescription },
+    body: {
+      testimonial,
+      testimonialSourceName,
+      testimonialSourceDescription,
+      testimonialSourceImage,
+      headerImage,
+    },
   };
 }
