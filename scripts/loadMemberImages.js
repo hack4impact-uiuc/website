@@ -1,13 +1,14 @@
-import { readFileSync } from "fs";
+import { readFile } from "fs";
 import { promisify } from "util";
 import { exec } from "child_process";
 
 const execPromise = promisify(exec);
+const readFilePromise = promisify(readFile);
 
 async function run() {
   await execPromise("mkdir -p build/members");
 
-  const fileContents = readFileSync("build/server/members.json");
+  const fileContents = await readFilePromise("build/server/members.json");
   const members = JSON.parse(fileContents.toString());
   const allMembers = members.active.concat(members.alumni);
 
@@ -25,7 +26,7 @@ async function loadMemberImage(member) {
 
   const filePath = `build/members/${nameSnakeCase}.jpg`;
 
-  await promisify(exec)(`curl -o ${filePath} ${url}`);
+  await execPromise(`curl -o ${filePath} ${url}`);
   console.log(`Loaded ${filePath}`);
 }
 
