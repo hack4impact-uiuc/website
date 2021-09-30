@@ -6,7 +6,6 @@ export async function get(): Promise<any> {
   const testimonialProjects = projects.filter(
     (project) =>
       project.testimonial !== undefined &&
-      project.headerImage !== undefined &&
       project.testimonialSourceType === "Nonprofit"
   );
 
@@ -18,7 +17,6 @@ export async function get(): Promise<any> {
     testimonialSourceName,
     testimonialSourceDescription,
     testimonialSourceImage,
-    headerImage,
   } = featuredTestimonialProject;
 
   return {
@@ -27,7 +25,6 @@ export async function get(): Promise<any> {
       testimonialSourceName,
       testimonialSourceDescription,
       testimonialSourceImage,
-      headerImage,
     },
   };
 }

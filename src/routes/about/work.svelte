@@ -5,18 +5,25 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ } from "$lib/utils/schema";
+  import type { FAQ, Image } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch(`/server/work-faq.json`);
-    const faqs: FAQ[] = await res.json();
+    const [faqs, projectImage] = await Promise.all([
+      fetch("/server/work-faq.json").then((res: Response) =>
+        res.json()
+      ) as Promise<FAQ[]>,
+      fetch("/server/project-image.json").then((res: Response) =>
+        res.json()
+      ) as Promise<Image>,
+    ]);
 
-    return { props: { faqs } };
+    return { props: { faqs, projectImage } };
   }
 </script>
 
 <script lang="ts">
   export let faqs: FAQ[];
+  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -40,21 +47,28 @@
   />
 </svelte:head>
 
-<Section id="intro" padding="60px">
-  <h1>How We Work</h1>
-  <p>
-    Each semester, we partner with four to five organizations to fulfill their
-    technical challenges. As a partner, you’ll have a dedicated development team
-    working towards delivering a finished product. Your primary points of
-    contact will consist of a product research member, product manager, and
-    technical lead. Our product solutions are carefully planned beginning with
-    our product research phase wherein we identify project-fit and begin the
-    scoping process. Moving forward, the product manager further refines the
-    project scope while the technical lead designs the architecture and works
-    out implementation details. Over the course of the semester, you will be
-    kept in the loop with opportunities to provide feedback, culminating in a
-    project handoff.
-  </p>
+<Section id="intro" padding="40px">
+  <Row gap="{84}" reverseOnMobile
+    ><div>
+      <h1>How We Work</h1>
+      <p>
+        Each semester, we partner with four to five organizations to fulfill
+        their technical challenges. As a partner, you’ll have a dedicated
+        development team working towards delivering a finished product. Your
+        primary points of contact will consist of a product research member,
+        product manager, and technical lead. Our product solutions are carefully
+        planned beginning with our product research phase wherein we identify
+        project-fit and begin the scoping process. Moving forward, the product
+        manager further refines the project scope while the technical lead
+        designs the architecture and works out implementation details. Over the
+        course of the semester, you will be kept in the loop with opportunities
+        to provide feedback, culminating in a project handoff.
+      </p>
+    </div>
+    <figure>
+      <img src="{projectImage.src}" alt="{projectImage.alt}" />
+    </figure>
+  </Row>
 </Section>
 
 <Section color="var(--gray-lighter)" id="timeline" padding="40px">
