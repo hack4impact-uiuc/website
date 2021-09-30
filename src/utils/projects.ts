@@ -1,4 +1,5 @@
-import { parseSemester, Project } from "./schema";
+import { parseSemester } from "./schema";
+import type { Project } from "./schema";
 
 export interface SemesterProjects {
   featured?: Project;
