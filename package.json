@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "svelte-kit build && npm run minify && npm run build:images",
-    "build:images": "node scripts/loadMemberImages",
+    "build:images": "node scripts/loadImages.js",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "svelte-kit dev",
