@@ -7,25 +7,30 @@
   import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, testimonialMember] = await Promise.all([
+    const [info, testimonialMember, projectImage] = await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
       fetch("/server/member-testimonial.json").then((res: Response) =>
         res.json()
       ),
-    ] as [Info, Member]);
+      fetch("/server/project-image.json").then((res: Response) => res.json()),
+    ] as [Info, Member, Image]);
 
     return {
       props: {
         team: info.chapterPicture,
         testimonialMember,
+        projectImage,
       },
     };
   }
 </script>
 
 <script lang="ts">
+  import Row from "$lib/components/Row.svelte";
+
   export let team: Image;
   export let testimonialMember: Member;
+  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -131,18 +136,23 @@
 </Section>
 
 <Section id="work" color="var(--blue)" padding="40px">
-  <div id="work-content">
-    <h2>How We Work</h2>
-    <div class="row-center"></div>
-    <p>
-      We partner with nonprofits and other socially minded organizations to
-      build impactful products. Each product is spearheaded by a dedicated
-      development team on a one or two semester timeline.
-    </p>
-    <a class="button-link" href="/about/work" sveltekit:prefetch
-      ><Button type="primary-white">Learn More</Button></a
-    >
-  </div>
+  <Row gap="{84}" reverseOnMobile
+    ><div id="work-content">
+      <h2>How We Work</h2>
+      <div class="row-center"></div>
+      <p>
+        We partner with nonprofits and other socially minded organizations to
+        build impactful products. Each product is spearheaded by a dedicated
+        development team on a one or two semester timeline.
+      </p>
+      <a class="button-link" href="/about/work" sveltekit:prefetch
+        ><Button type="primary-white">Learn More</Button></a
+      >
+    </div>
+    <figure>
+      <img src="{projectImage.src}" alt="{projectImage.alt}" />
+    </figure></Row
+  >
 </Section>
 
 <Section id="team" padding="40px">
@@ -225,5 +235,10 @@
 
   #meet-the-team-bold {
     font-weight: bold;
+  }
+
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
   }
 </style>

@@ -6,10 +6,15 @@
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
 
-  import type { NonprofitStep, FAQ, Project } from "$lib/utils/schema";
+  import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [applicationSteps, faqs, testimonialNonprofit] = await Promise.all([
+    const [
+      applicationSteps,
+      faqs,
+      testimonialNonprofit,
+      projectImage,
+    ] = await Promise.all([
       fetch("/server/nonprofit-steps.json").then((res: Response) =>
         res.json()
       ) as Promise<NonprofitStep[]>,
@@ -19,9 +24,14 @@
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ) as Promise<Project>,
+      fetch("/server/project-image.json").then((res: Response) =>
+        res.json()
+      ) as Promise<Image>,
     ]);
 
-    return { props: { faqs, applicationSteps, testimonialNonprofit } };
+    return {
+      props: { faqs, applicationSteps, testimonialNonprofit, projectImage },
+    };
   }
 </script>
 
@@ -29,6 +39,7 @@
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let testimonialNonprofit: Project;
+  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -119,10 +130,7 @@
       <Button type="primary">Learn More</Button>
     </div>
     <figure>
-      <img
-        src="{testimonialNonprofit.headerImage.src}"
-        alt="{testimonialNonprofit.headerImage.alt}"
-      />
+      <img src="{projectImage.src}" alt="{projectImage.alt}" />
     </figure>
   </Row>
 </Section>
