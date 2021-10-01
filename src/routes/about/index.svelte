@@ -150,11 +150,7 @@
       >
     </div>
     <figure>
-      <img
-        id="project-image"
-        src="{projectImage.src}"
-        alt="{projectImage.alt}"
-      />
+      <img src="{projectImage.src}" alt="{projectImage.alt}" />
     </figure></Row
   >
 </Section>
@@ -241,7 +237,8 @@
     font-weight: bold;
   }
 
-  #project-image {
-    max-height: 600px;
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
   }
 </style>

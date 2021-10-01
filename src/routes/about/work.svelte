@@ -256,4 +256,9 @@
     height: 60px;
     background-color: var(--gray-light);
   }
+
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
+  }
 </style>
