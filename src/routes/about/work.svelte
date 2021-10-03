@@ -8,14 +8,10 @@
   import type { FAQ, Image } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [faqs, projectImage] = await Promise.all([
-      fetch("/server/work-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ[]>,
-      fetch("/server/project-image.json").then((res: Response) =>
-        res.json()
-      ) as Promise<Image>,
-    ]);
+    const [faqs, projectImage] = (await Promise.all([
+      fetch("/server/work-faq.json").then((res: Response) => res.json()),
+      fetch("/server/project-image.json").then((res: Response) => res.json()),
+    ])) as [FAQ[], Image];
 
     return { props: { faqs, projectImage } };
   }

@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import Button from "$lib/components/Button.svelte";
+  import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
@@ -26,8 +27,6 @@
 </script>
 
 <script lang="ts">
-  import Row from "$lib/components/Row.svelte";
-
   export let team: Image;
   export let testimonialMember: Member;
   export let projectImage: Image;

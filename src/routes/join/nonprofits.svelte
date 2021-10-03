@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Button from "$lib/components/Button.svelte";
 
   import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
 
@@ -14,20 +14,14 @@
       faqs,
       testimonialNonprofit,
       projectImage,
-    ] = await Promise.all([
-      fetch("/server/nonprofit-steps.json").then((res: Response) =>
-        res.json()
-      ) as Promise<NonprofitStep[]>,
-      fetch("/server/work-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ[]>,
+    ] = (await Promise.all([
+      fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
+      fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
-      ) as Promise<Project>,
-      fetch("/server/project-image.json").then((res: Response) =>
-        res.json()
-      ) as Promise<Image>,
-    ]);
+      ),
+      fetch("/server/project-image.json").then((res: Response) => res.json()),
+    ])) as [NonprofitStep[], FAQ[], Project, Image];
 
     return {
       props: { faqs, applicationSteps, testimonialNonprofit, projectImage },

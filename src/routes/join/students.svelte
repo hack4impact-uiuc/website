@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
   import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
 
   import type { ApplicationStep, FAQ, Info, Role } from "$lib/utils/schema";
 
@@ -13,20 +13,14 @@
       openRoles,
       applicationSteps,
       { applicationBlurb },
-    ] = await Promise.all([
-      fetch("/server/apply-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ[]>,
-      fetch("/server/open-roles.json").then((res: Response) =>
-        res.json()
-      ) as Promise<Role[]>,
+    ] = (await Promise.all([
+      fetch("/server/apply-faq.json").then((res: Response) => res.json()),
+      fetch("/server/open-roles.json").then((res: Response) => res.json()),
       fetch("/server/application-steps.json").then((res: Response) =>
         res.json()
-      ) as Promise<ApplicationStep>,
-      fetch("/server/info.json").then((res: Response) =>
-        res.json()
-      ) as Promise<Info>,
-    ]);
+      ),
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ])) as [FAQ[], Role[], ApplicationStep, Info];
 
     return { props: { faqs, openRoles, applicationSteps, applicationBlurb } };
   }
