@@ -64,6 +64,7 @@
       id="nonprofit-logo"
       src="{setImageHeight(project.logoWhite.src, 100)}"
       alt="{project.logoWhite.alt}"
+      draggable="false"
     />
     <h1>{project.name}</h1>
     <h2 id="project-summary">{project.summary}</h2></span
@@ -74,6 +75,7 @@
         <img
           src="{setImageHeight(project.headerImage.src, 600)}"
           alt="{project.headerImage.alt}"
+          draggable="false"
         />
       </div>
     {/if}
@@ -138,7 +140,20 @@
   }
 
   #header-container img {
+    height: 90%;
     width: 100%;
+
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  :global(#banner-right-content) {
+    padding-right: 0 !important;
+    padding-left: calc(20% - 31px) !important;
+  }
+
+  :global(#banner-right-content #header-container) {
+    justify-content: flex-end;
   }
 
   p {
@@ -152,6 +167,9 @@
   #nonprofit-logo {
     height: 60px;
     margin-bottom: 20px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left;
   }
 
   #team-content {
@@ -181,6 +199,7 @@
     max-width: 80%;
     object-fit: contain;
     max-height: 600px;
+    border-radius: 4px;
   }
 
   :global(#project-description h1) {

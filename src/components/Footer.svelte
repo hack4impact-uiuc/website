@@ -74,8 +74,8 @@
             <span class="blue-text link-section-header">Work With Us</span>
           </li>
           <li><a href="/join/nonprofits" sveltekit:prefetch>Nonprofits</a></li>
-          <li><a href="/join/students" sveltekit:prefetch>Students</a></li>
           <li><a href="/join/sponsors" sveltekit:prefetch>Sponsors</a></li>
+          <li><a href="/join/students" sveltekit:prefetch>Students</a></li>
         </ul>
       </span>
     </div>

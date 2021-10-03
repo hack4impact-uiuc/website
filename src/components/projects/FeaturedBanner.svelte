@@ -63,8 +63,8 @@
     z-index: 1;
     position: absolute;
     right: 0;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    height: 90%;
     max-width: 25%;
   }
 
@@ -101,6 +101,7 @@
 
     figure {
       max-width: 100%;
+      filter: blur(4px);
     }
   }
 

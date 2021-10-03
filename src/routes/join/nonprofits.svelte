@@ -121,7 +121,9 @@
         types of projects. For more details, please contact us at
         uiuc@hack4impact.org.
       </p>
-      <Button type="primary">Learn More</Button>
+      <a class="button-link" href="/about/work" sveltekit:prefetch
+        ><Button type="primary">Learn More</Button>
+      </a>
     </div>
     <figure>
       <img src="{projectImage.src}" alt="{projectImage.alt}" />
@@ -161,12 +163,12 @@
   <div class="cta-wrapper">
     <Row>
       <div class="cta">
-        <h2>Get Involved</h2>
-        <p>Join Hack4Impact.</p>
+        <h2>Interested?</h2>
+        <p>Work with us.</p>
       </div>
       <div class="button-wrapper">
-        <a href="/join/students" sveltekit:prefetch>
-          <Button type="primary-white">Apply</Button>
+        <a href="mailto:uiuc@hack4impact.org">
+          <Button type="primary-white">Contact Us</Button>
         </a>
         <a href="/about/work" sveltekit:prefetch>
           <Button type="secondary-white">How We Work</Button>

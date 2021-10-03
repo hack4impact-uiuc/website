@@ -2,6 +2,7 @@
   import Accordion from "$lib/components/Accordion.svelte";
   import Info from "$lib/components/Info.svelte";
   import Row from "$lib/components/Row.svelte";
+  import Button from "$lib/components/Button.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
   import type {
@@ -183,6 +184,25 @@
     {/each}
   </Section>
 {/if}
+
+<Section padding="60px" color="var(--blue)">
+  <div class="cta-wrapper">
+    <Row>
+      <div class="cta">
+        <h2>Interested?</h2>
+        <p>Work with us.</p>
+      </div>
+      <div class="button-wrapper">
+        <a href="mailto:uiuc@hack4impact.org">
+          <Button type="primary-white">Contact Us</Button>
+        </a>
+        <a href="/about/work" sveltekit:prefetch>
+          <Button type="secondary-white">How We Work</Button>
+        </a>
+      </div>
+    </Row>
+  </div>
+</Section>
 
 <style>
   p {

@@ -64,13 +64,28 @@
       width: 100%;
     }
 
+    section.row-center {
+      flex-direction: column;
+      position: relative;
+    }
+
+    .banner {
+      height: 500px;
+      padding-bottom: 100px;
+    }
+
     #banner-right {
-      display: none;
+      position: absolute;
+      bottom: -100px;
+      height: 150px;
+      z-index: 0;
+      background-color: transparent !important;
     }
 
     #banner-left-content {
       padding: 0 10%;
       margin: 0 auto;
+      z-index: 1;
     }
   }
 </style>
