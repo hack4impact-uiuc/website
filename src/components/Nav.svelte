@@ -14,7 +14,7 @@
   let windowWidth: number | undefined;
 </script>
 
-<svelte:window bind:innerWidth="{windowWidth}" />
+<svelte:window bind:innerWidth={windowWidth} />
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
@@ -22,52 +22,49 @@
       <img src="/logo.svg" alt="Hack4Impact logo" />
     </a>
     <button
-      on:click="{() => (showMobileMenu = !showMobileMenu)}"
+      on:click={() => (showMobileMenu = !showMobileMenu)}
       class="hide-on-desktop"
     >
       {showMobileMenu ? "×" : "≡"}
     </button>
     <div
       class="row-center"
-      class:closedOnMobile="{!showMobileMenu}"
+      class:closedOnMobile={!showMobileMenu}
       id="navlinks"
     >
       <a
         class="navlink"
         sveltekit:prefetch
-        aria-current="{path === '/' ? 'page' : undefined}"
+        aria-current={path === "/" ? "page" : undefined}
         href="/"><h2>Home</h2></a
       >
       <a
         class="navlink"
         sveltekit:prefetch
-        aria-current="{path && path.startsWith('/about') ? 'page' : undefined}"
+        aria-current={path && path.startsWith("/about") ? "page" : undefined}
         href="/about"><h2>About Us</h2></a
       >
       <a
         class="navlink"
         sveltekit:prefetch
-        aria-current="{path && path.startsWith('/projects')
-          ? 'page'
-          : undefined}"
+        aria-current={path && path.startsWith("/projects") ? "page" : undefined}
         href="/projects"><h2>Projects</h2></a
       >
       <span
         class="navlink dropdown"
-        tabindex="{windowWidth > 792 ? 0 : -1}"
-        aria-current="{path && path.startsWith('/join') ? 'page' : undefined}"
+        tabindex={windowWidth > 792 ? 0 : -1}
+        aria-current={path && path.startsWith("/join") ? "page" : undefined}
       >
         <h2>Work With Us<span id="caret"> &#9660;</span></h2>
         <div class="dropdown-contents">
           {#each dropdownRoutes as route}
             <a
               sveltekit:prefetch
-              on:click="{() => (showMobileMenu = false)}"
-              aria-current="{path &&
-              path.includes(`join/${route.toLowerCase()}`)
-                ? 'page'
-                : undefined}"
-              href="{`/join/${route.toLowerCase()}`}"
+              on:click={() => (showMobileMenu = false)}
+              aria-current={path && path.includes(`join/${route.toLowerCase()}`)
+                ? "page"
+                : undefined}
+              href={`/join/${route.toLowerCase()}`}
             >
               {route}
             </a>

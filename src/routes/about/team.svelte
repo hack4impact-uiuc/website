@@ -49,7 +49,7 @@
     property="og:description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta name="og:image" content="{team.src}" />
+  <meta name="og:image" content={team.src} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" value="https://uiuc.hack4impact.org/about/team" />
   <meta name="twitter:title" value="The Team | Hack4Impact UIUC" />
@@ -57,7 +57,7 @@
     name="twitter:description"
     value="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta name="twitter:image" content="{team.src}" />
+  <meta name="twitter:image" content={team.src} />
 </svelte:head>
 
 <Section>
@@ -68,7 +68,7 @@
   <section id="current">
     <h2>Current Members</h2>
     <div class="member-grid">
-      {#each active as member}<Member member="{member}" />{/each}
+      {#each active as member}<Member {member} />{/each}
     </div>
   </section>
 </Section>
@@ -78,12 +78,12 @@
     <h2>Alumni</h2>
     <div class="member-grid">
       {#each showAllAlumni ? alumni : alumni.slice(0, 12) as member}
-        <Member member="{member}" />
+        <Member {member} />
       {/each}
     </div>
     {#if !showAllAlumni && alumni.length > 12}
       <div id="show-all" class="row-center">
-        <Button type="secondary" onClick="{toggleAlumni}">Show All</Button>
+        <Button type="secondary" onClick={toggleAlumni}>Show All</Button>
       </div>
     {/if}
   </section>

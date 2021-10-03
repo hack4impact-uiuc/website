@@ -10,12 +10,12 @@
     {#if project.headerImage !== undefined}
       <figure>
         <img
-          src="{setImageHeight(project.headerImage.src, 600)}"
-          alt="{project.name}"
+          src={setImageHeight(project.headerImage.src, 600)}
+          alt={project.name}
         />
       </figure>
     {/if}
-    <div class="meta" class:masked="{project.headerImage !== undefined}">
+    <div class="meta" class:masked={project.headerImage !== undefined}>
       <h4>{project.name}</h4>
       <h2>{project.summary}</h2>
       <span>Learn More</span>

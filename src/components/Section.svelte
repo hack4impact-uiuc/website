@@ -5,7 +5,7 @@
   export let longForm = false;
 </script>
 
-<section id="{id}" class="row-center" style="background-color: {color}">
+<section {id} class="row-center" style="background-color: {color}">
   <div
     class="section-content{longForm ? ' long-form' : ''}"
     style="padding: {padding} 0"

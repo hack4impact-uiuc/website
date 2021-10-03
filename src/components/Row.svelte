@@ -6,9 +6,9 @@
 </script>
 
 <article
-  class:reversed="{!!reverse}"
-  class:mobileReversed="{!!reverseOnMobile}"
-  class:topAligned="{!!topAligned}"
+  class:reversed={!!reverse}
+  class:mobileReversed={!!reverseOnMobile}
+  class:topAligned={!!topAligned}
   style="--row-gap: {gap ? gap : 0}px"
 >
   <slot />

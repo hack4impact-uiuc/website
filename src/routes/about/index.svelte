@@ -44,7 +44,7 @@
     property="og:description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta name="og:image" content="{team.src}" />
+  <meta name="og:image" content={team.src} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" value="https://uiuc.hack4impact.org/about" />
   <meta name="twitter:title" value="About Us | Hack4Impact UIUC" />
@@ -52,7 +52,7 @@
     name="twitter:description"
     value="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta name="twitter:image" content="{team.src}" />
+  <meta name="twitter:image" content={team.src} />
 </svelte:head>
 
 <Section id="intro" padding="60px">
@@ -78,11 +78,7 @@
       </p>
     </div>
     <div id="about-intro-right">
-      <img
-        id="team-photo"
-        src="{setImageHeight(team.src, 900)}"
-        alt="{team.alt}"
-      />
+      <img id="team-photo" src={setImageHeight(team.src, 900)} alt={team.alt} />
     </div>
   </div>
 </Section>
@@ -135,10 +131,10 @@
 </Section>
 
 <Section id="work" color="var(--blue)" padding="40px">
-  <Row gap="{84}" reverseOnMobile
+  <Row gap={84} reverseOnMobile
     ><div id="work-content">
       <h2>How We Work</h2>
-      <div class="row-center"></div>
+      <div class="row-center" />
       <p>
         We partner with nonprofits and other socially minded organizations to
         build impactful products. Each product is spearheaded by a dedicated
@@ -149,7 +145,7 @@
       >
     </div>
     <figure>
-      <img src="{projectImage.src}" alt="{projectImage.alt}" />
+      <img src={projectImage.src} alt={projectImage.alt} />
     </figure></Row
   >
 </Section>
@@ -172,14 +168,14 @@
     of every semester, and fill out our interest form!
   </p>
   <Testimonial
-    quote="{testimonialMember.testimonial}"
-    name="{testimonialMember.name}"
-    desc="{`${
-      testimonialMember.active || testimonialMember.role === 'Co-Founder'
-        ? ''
-        : 'Former '
-    }${testimonialMember.role}`}"
-    imageSrc="{testimonialMember.picture.src}"
+    quote={testimonialMember.testimonial}
+    name={testimonialMember.name}
+    desc={`${
+      testimonialMember.active || testimonialMember.role === "Co-Founder"
+        ? ""
+        : "Former "
+    }${testimonialMember.role}`}
+    imageSrc={testimonialMember.picture.src}
     meetTheTeam
   />
 </Section>

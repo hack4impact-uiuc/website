@@ -44,7 +44,7 @@
 </svelte:head>
 
 <Section id="intro" padding="40px">
-  <Row gap="{84}" reverseOnMobile
+  <Row gap={84} reverseOnMobile
     ><div>
       <h1>How We Work</h1>
       <p>
@@ -62,7 +62,7 @@
       </p>
     </div>
     <figure>
-      <img src="{projectImage.src}" alt="{projectImage.alt}" />
+      <img src={projectImage.src} alt={projectImage.alt} />
     </figure>
   </Row>
 </Section>

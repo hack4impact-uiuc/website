@@ -43,7 +43,7 @@
   };
 </script>
 
-<svelte:window bind:innerWidth="{windowWidth}" />
+<svelte:window bind:innerWidth={windowWidth} />
 
 <svelte:head>
   <title>Projects | Hack4Impact UIUC</title>
@@ -69,14 +69,14 @@
 <Section padding="60px">
   <h1>Projects</h1>
   <div class="col-wrapper">
-    <aside style="{windowWidth ? `--window-width: ${windowWidth}px` : ''}">
+    <aside style={windowWidth ? `--window-width: ${windowWidth}px` : ""}>
       <ul id="semester-list">
         {#each semesters as semester, idx}
-          <li id="{`semester-${idx}`}">
+          <li id={`semester-${idx}`}>
             <a
-              href="{`/projects#${semesterToId(semester)}`}"
-              on:click="{() => setSemester(idx)}"
-              class:active="{currentSemester === idx}"
+              href={`/projects#${semesterToId(semester)}`}
+              on:click={() => setSemester(idx)}
+              class:active={currentSemester === idx}
             >
               {semester}
             </a>
@@ -87,15 +87,15 @@
     <article>
       {#each semesters as semester, idx}
         <section class="semester-section">
-          <span class="scroll-anchor" id="{semesterToId(semester)}"></span>
+          <span class="scroll-anchor" id={semesterToId(semester)} />
           <h2>{semester}</h2>
           {#if projectMap[semester].featured !== undefined}
-            <FeaturedBanner project="{projectMap[semester].featured}" />
+            <FeaturedBanner project={projectMap[semester].featured} />
           {/if}
-          <span use:viewport on:enterViewport="{() => setSemester(idx)}"></span>
+          <span use:viewport on:enterViewport={() => setSemester(idx)} />
           <div class="project-grid">
             {#each projectMap[semester].projects as project}
-              <ProjectCard project="{project}" />
+              <ProjectCard {project} />
             {/each}
           </div>
         </section>

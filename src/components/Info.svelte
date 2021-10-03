@@ -13,7 +13,7 @@
   <p>
     {content}
   </p>
-  <a href="{to}" sveltekit:prefetch>
+  <a href={to} sveltekit:prefetch>
     <Button
       type="secondary-custom"
       backgroundColor="var(--blue-darker)"

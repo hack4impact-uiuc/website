@@ -92,7 +92,7 @@
   <p>{@html applicationBlurb}</p>
   <div id="process-steps">
     {#each applicationSteps as step}
-      <Step icon="{iconMap[step.icon]}" iconAlt="{step.name}">
+      <Step icon={iconMap[step.icon]} iconAlt={step.name}>
         <span slot="name">{step.name}</span>
         <span slot="date">{step.date ?? ""}</span>
         <span slot="description">{@html step.description}</span>

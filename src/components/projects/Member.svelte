@@ -6,7 +6,7 @@
 </script>
 
 <div class="member column-center">
-  <img src="{member.picture.src}?h=300" alt="{member.picture.alt}" />
+  <img src="{member.picture.src}?h=300" alt={member.picture.alt} />
   <span>{member.name}</span>
   <i>{role}</i>
 </div>

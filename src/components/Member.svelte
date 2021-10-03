@@ -7,7 +7,7 @@
 <div class="member row-center">
   <img
     src="{member.picture.src}?h=160"
-    alt="{member.picture.alt}"
+    alt={member.picture.alt}
     height="96"
     width="96"
   />

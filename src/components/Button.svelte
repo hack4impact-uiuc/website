@@ -19,14 +19,14 @@
 
 <button
   class="button-{type}{arrow ? ' arrow' : ''}"
-  on:click="{onClick}"
-  style="{type.endsWith('custom')
+  on:click={onClick}
+  style={type.endsWith("custom")
     ? `background-color: ${
-        type.startsWith('primary') ? backgroundColor : 'transparent'
+        type.startsWith("primary") ? backgroundColor : "transparent"
       }; color: ${textColor}; border-color: ${
-        type.startsWith('primary') ? backgroundColor : textColor
+        type.startsWith("primary") ? backgroundColor : textColor
       }`
-    : undefined}"
+    : undefined}
 >
   <slot />
 </button>

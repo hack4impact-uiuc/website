@@ -33,10 +33,10 @@
   <meta name="twitter:domain" value="https://uiuc.hack4impact.org" />
 </svelte:head>
 
-<Nav path="{path}" />
+<Nav {path} />
 
 <main>
   <slot />
 </main>
 
-<Footer semesters="{semesters}" />
+<Footer {semesters} />

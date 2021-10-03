@@ -66,7 +66,7 @@
 <Section padding="60px">
   <h1>Nonprofits</h1>
   <h2>Our Services</h2>
-  <Row gap="{58}" topAligned>
+  <Row gap={58} topAligned>
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
@@ -96,15 +96,15 @@
 
 <Section color="var(--gray-lighter)">
   <Testimonial
-    quote="{testimonialNonprofit.testimonial}"
-    name="{testimonialNonprofit.testimonialSourceName}"
-    desc="{testimonialNonprofit.testimonialSourceDescription}"
-    imageSrc="{testimonialNonprofit.testimonialSourceImage?.src}"
+    quote={testimonialNonprofit.testimonial}
+    name={testimonialNonprofit.testimonialSourceName}
+    desc={testimonialNonprofit.testimonialSourceDescription}
+    imageSrc={testimonialNonprofit.testimonialSourceImage?.src}
   />
 </Section>
 
 <Section padding="83px">
-  <Row gap="{84}" reverseOnMobile>
+  <Row gap={84} reverseOnMobile>
     <div>
       <h2>How We Work</h2>
       <p>
@@ -126,7 +126,7 @@
       </a>
     </div>
     <figure>
-      <img src="{projectImage.src}" alt="{projectImage.alt}" />
+      <img src={projectImage.src} alt={projectImage.alt} />
     </figure>
   </Row>
 </Section>
@@ -135,7 +135,7 @@
   <h2>Application Process</h2>
   <div id="process-steps">
     {#each applicationSteps as step, index}
-      <Step index="{index + 1}">
+      <Step index={index + 1}>
         <span slot="name">
           {step.name}
         </span>

@@ -50,10 +50,10 @@
 <Section id="featured-projects" padding="30px">
   <div id="featured-section">
     <h1>Featured Work</h1>
-    {#if projects.length > 0}<FeaturedBanner project="{projects[0]}" />{/if}
+    {#if projects.length > 0}<FeaturedBanner project={projects[0]} />{/if}
     <div class="project-grid">
       {#each projects.slice(1) as project}
-        <ProjectCard project="{project}" />
+        <ProjectCard {project} />
       {/each}
     </div>
   </div>

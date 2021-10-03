@@ -27,7 +27,7 @@
           {/if}
         </div>
         <div class="right">
-          <img src="{imageSrc}" alt="{name + "'s photo"}" />
+          <img src={imageSrc} alt={name + "'s photo"} />
         </div>
       </Row>
     {:else}

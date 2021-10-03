@@ -8,7 +8,7 @@
   <span
     ><div id="icon-container">
       {#if icon !== undefined}
-        <img src="{icon}" alt="{iconAlt}" />
+        <img src={icon} alt={iconAlt} />
       {:else if index !== undefined}
         <span class="step-index">{index}</span>
       {/if}

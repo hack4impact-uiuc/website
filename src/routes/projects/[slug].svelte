@@ -29,41 +29,41 @@
 
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
-  <meta name="description" content="{project.summary}" />
+  <meta name="description" content={project.summary} />
   <meta
     property="og:url"
     content="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
-  <meta property="og:title" content="{project.name}" />
-  <meta property="og:description" content="{project.summary}" />
+  <meta property="og:title" content={project.name} />
+  <meta property="og:description" content={project.summary} />
   {#if project.headerImage !== undefined}
-    <meta property="og:image" content="{project.headerImage.src}" />
-    <meta name="twitter:image" content="{project.headerImage.src}" />
+    <meta property="og:image" content={project.headerImage.src} />
+    <meta name="twitter:image" content={project.headerImage.src} />
   {/if}
 
   <meta
     name="twitter:card"
-    content="{project.headerImage !== undefined
-      ? 'summary_large_image'
-      : 'summary'}"
+    content={project.headerImage !== undefined
+      ? "summary_large_image"
+      : "summary"}
   />
   <meta
     name="twitter:url"
     value="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
-  <meta name="twitter:title" value="{project.name}" />
-  <meta name="twitter:description" value="{project.summary}" />
+  <meta name="twitter:title" value={project.name} />
+  <meta name="twitter:description" value={project.summary} />
 </svelte:head>
 
 <DoubleBanner
-  leftColor="{project.accentColor}"
-  rightColor="{pSBC(-0.2, project.accentColor)}"
+  leftColor={project.accentColor}
+  rightColor={pSBC(-0.2, project.accentColor)}
 >
   <span slot="left">
     <img
       id="nonprofit-logo"
-      src="{setImageHeight(project.logoWhite.src, 100)}"
-      alt="{project.logoWhite.alt}"
+      src={setImageHeight(project.logoWhite.src, 100)}
+      alt={project.logoWhite.alt}
       draggable="false"
     />
     <h1>{project.name}</h1>
@@ -73,8 +73,8 @@
     {#if project.headerImage !== undefined}
       <div id="header-container" class="column-center">
         <img
-          src="{setImageHeight(project.headerImage.src, 600)}"
-          alt="{project.headerImage.alt}"
+          src={setImageHeight(project.headerImage.src, 600)}
+          alt={project.headerImage.alt}
           draggable="false"
         />
       </div>
@@ -100,34 +100,34 @@
   <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)">
     <div class="column-center">
       <Testimonial
-        quote="{project.testimonial}"
-        name="{project.testimonialSourceName}"
-        desc="{project.testimonialSourceDescription}"
-        imageSrc="{project.testimonialSourceImage?.src}"
+        quote={project.testimonial}
+        name={project.testimonialSourceName}
+        desc={project.testimonialSourceDescription}
+        imageSrc={project.testimonialSourceImage?.src}
       />
     </div>
   </Section>
 {/if}
 
-<Section id="team" longForm padding="40px" color="{project.accentColor}">
+<Section id="team" longForm padding="40px" color={project.accentColor}>
   <div id="team-content">
     <h2>Meet The Team</h2>
     <div class="team-grid">
       {#if project.productManager}
         {#each project.productManager as member}
-          <Member member="{member}" role="Product Manager" />
+          <Member {member} role="Product Manager" />
         {/each}{/if}
       {#if project.techLead}
         {#each project.techLead as member}
-          <Member member="{member}" role="Tech Lead" />
+          <Member {member} role="Tech Lead" />
         {/each}{/if}
       {#if project.productDesigner}
         {#each project.productDesigner as member}
-          <Member member="{member}" role="Product Designer" />
+          <Member {member} role="Product Designer" />
         {/each}{/if}
       {#if project.softwareDevelopers}
         {#each project.softwareDevelopers as member}
-          <Member member="{member}" role="Software Developer" />
+          <Member {member} role="Software Developer" />
         {/each}
       {/if}
     </div>
