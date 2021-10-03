@@ -144,7 +144,7 @@
           {step.name}
         </span>
         <span slot="description">
-          {step.description}
+          {@html step.description}
         </span>
       </Step>
     {/each}

@@ -55,6 +55,7 @@ export interface Project {
 export interface Info {
   chapterPicture: Image;
   whereWeWork: Image;
+  applicationBlurb: string;
 }
 
 export interface Semester {
@@ -76,7 +77,7 @@ export interface Role {
 
 export interface ApplicationStep {
   name: string;
-  date: string;
+  date?: string;
   description: string;
   icon: "Calendar" | "Form" | "Interview";
 }
