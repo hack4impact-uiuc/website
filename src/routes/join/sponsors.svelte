@@ -1,10 +1,10 @@
 <script lang="ts" context="module">
-  import Section from "$lib/components/Section.svelte";
-  import Info from "$lib/components/Info.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
   import Accordion from "$lib/components/Accordion.svelte";
+  import Info from "$lib/components/Info.svelte";
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
   import type {
     FAQ,
     Image,
@@ -13,17 +13,13 @@
   } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, faqs, testimonialNonprofit] = await Promise.all([
-      fetch("/server/info.json").then((res: Response) =>
-        res.json()
-      ) as Promise<SiteInfo>,
-      fetch("/server/sponsor-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ>,
+    const [info, faqs, testimonialNonprofit] = (await Promise.all([
+      fetch("/server/info.json").then((res: Response) => res.json()),
+      fetch("/server/sponsor-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
-      ) as Promise<Project>,
-    ]);
+      ),
+    ])) as [SiteInfo, FAQ[], Project];
 
     const { whereWeWork } = info;
 

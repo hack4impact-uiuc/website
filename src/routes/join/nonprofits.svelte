@@ -1,27 +1,31 @@
 <script lang="ts" context="module">
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Button from "$lib/components/Button.svelte";
 
-  import type { NonprofitStep, FAQ, Project } from "$lib/utils/schema";
+  import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [applicationSteps, faqs, testimonialNonprofit] = await Promise.all([
-      fetch("/server/nonprofit-steps.json").then((res: Response) =>
-        res.json()
-      ) as Promise<NonprofitStep[]>,
-      fetch("/server/work-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ[]>,
+    const [
+      applicationSteps,
+      faqs,
+      testimonialNonprofit,
+      projectImage,
+    ] = (await Promise.all([
+      fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
+      fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
-      ) as Promise<Project>,
-    ]);
+      ),
+      fetch("/server/project-image.json").then((res: Response) => res.json()),
+    ])) as [NonprofitStep[], FAQ[], Project, Image];
 
-    return { props: { faqs, applicationSteps, testimonialNonprofit } };
+    return {
+      props: { faqs, applicationSteps, testimonialNonprofit, projectImage },
+    };
   }
 </script>
 
@@ -29,6 +33,7 @@
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let testimonialNonprofit: Project;
+  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -121,10 +126,7 @@
       </a>
     </div>
     <figure>
-      <img
-        src="{testimonialNonprofit.headerImage.src}"
-        alt="{testimonialNonprofit.headerImage.alt}"
-      />
+      <img src="{projectImage.src}" alt="{projectImage.alt}" />
     </figure>
   </Row>
 </Section>
@@ -138,7 +140,7 @@
           {step.name}
         </span>
         <span slot="description">
-          {step.description}
+          {@html step.description}
         </span>
       </Step>
     {/each}

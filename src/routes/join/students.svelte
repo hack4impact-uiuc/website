@@ -1,26 +1,28 @@
 <script lang="ts" context="module">
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
   import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
 
-  import type { ApplicationStep, FAQ, Role } from "$lib/utils/schema";
+  import type { ApplicationStep, FAQ, Info, Role } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [faqs, openRoles, applicationSteps] = await Promise.all([
-      fetch("/server/apply-faq.json").then((res: Response) =>
-        res.json()
-      ) as Promise<FAQ[]>,
-      fetch("/server/open-roles.json").then((res: Response) =>
-        res.json()
-      ) as Promise<Role[]>,
+    const [
+      faqs,
+      openRoles,
+      applicationSteps,
+      { applicationBlurb },
+    ] = (await Promise.all([
+      fetch("/server/apply-faq.json").then((res: Response) => res.json()),
+      fetch("/server/open-roles.json").then((res: Response) => res.json()),
       fetch("/server/application-steps.json").then((res: Response) =>
         res.json()
-      ) as Promise<ApplicationStep>,
-    ]);
+      ),
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ])) as [FAQ[], Role[], ApplicationStep, Info];
 
-    return { props: { faqs, openRoles, applicationSteps } };
+    return { props: { faqs, openRoles, applicationSteps, applicationBlurb } };
   }
 </script>
 
@@ -28,6 +30,7 @@
   export let faqs: FAQ[];
   export let openRoles: Role[];
   export let applicationSteps: ApplicationStep[];
+  export let applicationBlurb: string;
 
   const iconMap = {
     Calendar: "/icons/calendar.svg",
@@ -70,26 +73,29 @@
   </p>
 </Section>
 
-<Section id="open-positions" color="var(--blue)" padding="60px">
-  <span class="light-text wrap">
-    <h2>Open Positions</h2>
-    {#each openRoles as openRole}
-      <Accordion theme="light">
-        <span slot="title">{openRole.name}</span>
-        <span slot="contents">{@html openRole.description}</span>
-      </Accordion>
-    {/each}
-  </span>
-</Section>
+{#if openRoles.length > 0}
+  <Section id="open-positions" color="var(--blue)" padding="60px">
+    <span class="light-text wrap">
+      <h2>Open Positions</h2>
+      {#each openRoles as openRole}
+        <Accordion theme="light">
+          <span slot="title">{openRole.name}</span>
+          <span slot="contents">{@html openRole.description}</span>
+        </Accordion>
+      {/each}
+    </span>
+  </Section>
+{/if}
 
 <Section id="process" color="var(--gray-lighter)" padding="40px">
   <h2>Application Process</h2>
+  <p>{@html applicationBlurb}</p>
   <div id="process-steps">
     {#each applicationSteps as step}
       <Step icon="{iconMap[step.icon]}" iconAlt="{step.name}">
         <span slot="name">{step.name}</span>
-        <span slot="date">{step.date}</span>
-        <span slot="description">{step.description}</span>
+        <span slot="date">{step.date ?? ""}</span>
+        <span slot="description">{@html step.description}</span>
       </Step>
     {/each}
   </div>
