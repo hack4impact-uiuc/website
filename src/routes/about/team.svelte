@@ -9,7 +9,6 @@
     alumni: MemberType[];
   }
 
-  /* @type {import('@sveltejs/kit').Load} */
   export async function load({ fetch }) {
     const [members, info] = (await Promise.all([
       fetch("/server/members.json").then((res: Response) => res.json()),
@@ -62,6 +61,23 @@
 
 <Section>
   <h1 id="title">The Team</h1>
+  <p>
+    We are a team of UIUC students who collectively believe in and support each
+    other towards <span id="meet-the-team-bold"
+      >our goal of using technology as a medium for advancing the public
+      interest</span
+    >. Our members come from a variety of background and identities, and we use
+    our differences to further our culture and create a thriving community of
+    students. Many of us consider their fellow members as close friends,
+    pursuing activities beyond the scope of the organization and their time at
+    UIUC.
+  </p>
+  <p>
+    Interested in being a part of the team? — check out our <a
+      href="/join/students"
+      sveltekit:prefetch>student page</a
+    >!
+  </p>
 </Section>
 
 <Section id="current" padding="30px">
@@ -119,5 +135,9 @@
       row-gap: 1em;
       --columns: 2;
     }
+  }
+
+  #meet-the-team-bold {
+    font-weight: bold;
   }
 </style>

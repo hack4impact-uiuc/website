@@ -152,21 +152,7 @@
 
 <Section id="team" padding="40px">
   <h2>Meet The Team</h2>
-  <p>
-    We are a team of UIUC students who collectively believe in and support each
-    other towards <span id="meet-the-team-bold"
-      >our goal of using technology as a medium for advancing the public
-      interest</span
-    >. Our members come from a variety of background and identities, and we use
-    our differences to further our culture and create a thriving community of
-    students. Many of us consider their fellow members as close friends,
-    pursuing activities beyond the scope of the organization and their time at
-    UIUC.
-  </p>
-  <p>
-    Interested in being a part of the team? — check for open roles at the start
-    of every semester, and fill out our interest form!
-  </p>
+
   <Testimonial
     quote={testimonialMember.testimonial}
     name={testimonialMember.name}
@@ -226,10 +212,6 @@
 
   #work-content {
     color: #fff;
-  }
-
-  #meet-the-team-bold {
-    font-weight: bold;
   }
 
   figure > img {
