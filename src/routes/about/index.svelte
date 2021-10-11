@@ -145,7 +145,7 @@
       >
     </div>
     <figure>
-      <img src={projectImage.src} alt={projectImage.alt} />
+      <img src={setImageHeight(projectImage.src, 800)} alt={projectImage.alt} />
     </figure></Row
   >
 </Section>

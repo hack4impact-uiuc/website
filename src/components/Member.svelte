@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { Member } from "$lib/utils/schema";
+  import { Member, setImageHeight } from "$lib/utils/schema";
 
   export let member: Member;
 </script>
 
 <div class="member row-center">
   <img
-    src="{member.picture.src}?h=160"
+    src={setImageHeight(member.picture.src, 160)}
     alt={member.picture.alt}
     height="96"
     width="96"

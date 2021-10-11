@@ -5,7 +5,7 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ, Image } from "$lib/utils/schema";
+  import { FAQ, Image, setImageHeight } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [faqs, projectImage] = (await Promise.all([
@@ -62,7 +62,7 @@
       </p>
     </div>
     <figure>
-      <img src={projectImage.src} alt={projectImage.alt} />
+      <img src={setImageHeight(projectImage.src, 800)} alt={projectImage.alt} />
     </figure>
   </Row>
 </Section>
