@@ -6,7 +6,7 @@
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
 
-  import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
+  import type { FAQ, NonprofitStep, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [applicationSteps, faqs, testimonialNonprofit] = (await Promise.all([

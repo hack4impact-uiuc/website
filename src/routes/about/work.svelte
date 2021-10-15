@@ -5,7 +5,7 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Row from "$lib/components/Row.svelte";
-  import { FAQ, Image, setImageHeight } from "$lib/utils/schema";
+  import type { FAQ } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const faqs = (await fetch("/server/work-faq.json").then((res: Response) =>
