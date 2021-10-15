@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { setImageHeight } from "$lib/utils/schema";
+
   import Button from "./Button.svelte";
   import Row from "./Row.svelte";
 
@@ -27,7 +29,7 @@
           {/if}
         </div>
         <div class="right">
-          <img src={imageSrc} alt={name + "'s photo"} />
+          <img src={setImageHeight(imageSrc, 400)} alt={name + "'s photo"} />
         </div>
       </Row>
     {:else}
