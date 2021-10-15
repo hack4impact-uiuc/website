@@ -9,22 +9,16 @@
   import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [
-      applicationSteps,
-      faqs,
-      testimonialNonprofit,
-      projectImage,
-    ] = (await Promise.all([
+    const [applicationSteps, faqs, testimonialNonprofit] = (await Promise.all([
       fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ),
-      fetch("/server/project-image.json").then((res: Response) => res.json()),
-    ])) as [NonprofitStep[], FAQ[], Project, Image];
+    ])) as [NonprofitStep[], FAQ[], Project];
 
     return {
-      props: { faqs, applicationSteps, testimonialNonprofit, projectImage },
+      props: { faqs, applicationSteps, testimonialNonprofit },
     };
   }
 </script>
@@ -33,7 +27,6 @@
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let testimonialNonprofit: Project;
-  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -126,7 +119,7 @@
       </a>
     </div>
     <figure>
-      <img src={projectImage.src} alt={projectImage.alt} />
+      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
     </figure>
   </Row>
 </Section>

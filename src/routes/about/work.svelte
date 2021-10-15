@@ -8,18 +8,16 @@
   import type { FAQ, Image } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [faqs, projectImage] = (await Promise.all([
-      fetch("/server/work-faq.json").then((res: Response) => res.json()),
-      fetch("/server/project-image.json").then((res: Response) => res.json()),
-    ])) as [FAQ[], Image];
+    const faqs = (await fetch("/server/work-faq.json").then((res: Response) =>
+      res.json()
+    )) as FAQ[];
 
-    return { props: { faqs, projectImage } };
+    return { props: { faqs } };
   }
 </script>
 
 <script lang="ts">
   export let faqs: FAQ[];
-  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -62,7 +60,7 @@
       </p>
     </div>
     <figure>
-      <img src={projectImage.src} alt={projectImage.alt} />
+      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
     </figure>
   </Row>
 </Section>
