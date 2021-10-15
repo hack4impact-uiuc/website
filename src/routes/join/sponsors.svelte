@@ -1,9 +1,10 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
-  import Info from "$lib/components/Info.svelte";
+  import Info from "$lib/components/sponsors/Info.svelte";
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
   import Section from "$lib/components/Section.svelte";
+  import Stats from "$lib/components/sponsors/Stats.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
   import type {
     FAQ,
@@ -28,15 +29,6 @@
 </script>
 
 <script lang="ts">
-  interface Statistic {
-    value: string;
-    name: string;
-  }
-
-  let stats: Statistic[] = [1, 2, 3, 4, 5, 6, 7, 8].map(
-    (n) => ({ value: n + "%", name: "stat-" + n } as Statistic)
-  );
-
   interface SponsorTier {
     name: string;
     price: number;
@@ -105,24 +97,16 @@
   <Row gap={30}>
     <div id="sponsor-intro-left">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore fugit
-        laboriosam saepe, minima explicabo, animi eligendi quam non natus
-        excepturi rem. Dolores molestiae sint qui enim a quaerat totam quas!
+        We are a team of UIUC students who create robust software for social
+        good. We believe that our engineering skillsets empower us to build a
+        better society together. Get to know a bit about us and how to get
+        involved below.
       </p>
     </div>
-    <div id="sponsor-intro-right">
-      {#each stats as stat}
-        <div class="stat">
-          <div>
-            <div class="val">
-              {stat.value}
-            </div>
-            <div>{stat.name}</div>
-          </div>
-        </div>
-      {/each}
-    </div>
   </Row>
+
+  <Stats />
+
   <Info
     title="Check Out Our Work"
     content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -216,43 +200,6 @@
     width: 100%;
     display: block;
     margin: 0 auto;
-  }
-
-  #sponsor-intro-right {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 1fr;
-    grid-gap: 15px;
-  }
-
-  #sponsor-intro-right > .stat::before {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 0;
-    padding-bottom: 100%;
-    grid-area: 1 / 1 / 2 / 2;
-  }
-
-  .stat {
-    display: grid;
-  }
-
-  .stat > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    grid-area: 1 / 1 / 2 / 2;
-    background-color: var(--blue);
-    color: white;
-    text-align: center;
-    border-radius: 50%;
-  }
-
-  .stat > div > .val {
-    font-size: 2rem;
-    line-height: 1;
   }
   .sponsor-perks .tier {
     display: block;
