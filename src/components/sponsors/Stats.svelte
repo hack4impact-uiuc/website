@@ -8,8 +8,8 @@
     <div>directors are women</div>
   </div>
   <div class="stat">
-    <div class="val">6%</div>
-    <div>acceptance rate at a</div>
+    <div class="val">4</div>
+    <div>round interview process at a</div>
     <div class="val">top 5</div>
     <div>CS/ECE school</div>
   </div>
