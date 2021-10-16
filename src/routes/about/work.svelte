@@ -46,17 +46,16 @@
     ><div>
       <h1>How We Work</h1>
       <p>
-        Each semester, we partner with four to five organizations to fulfill
-        their technical challenges. As a partner, you’ll have a dedicated
+        Each semester, we partner with four or five organizations to fulfill
+        their technical challenges. As a partner, you will have a dedicated
         development team working towards delivering a finished product. Your
-        primary points of contact will consist of a product research member,
-        product manager, and technical lead. Our product solutions are carefully
-        planned beginning with our product research phase wherein we identify
-        project-fit and begin the scoping process. Moving forward, the product
-        manager further refines the project scope while the technical lead
-        designs the architecture and works out implementation details. Over the
-        course of the semester, you will be kept in the loop with opportunities
-        to provide feedback, culminating in a project handoff.
+        primary points of contact will be a product research member, product
+        manager, and technical lead. Our solutions are carefully planned
+        beginning with our product research phase wherein we identify project
+        fit. Moving forward, a product manager further refines the scope while a
+        technical lead works out implementation details. During development, you
+        will be kept in the loop to provide feedback culminating in a project
+        handoff.
       </p>
     </div>
     <figure>
