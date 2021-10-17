@@ -38,12 +38,12 @@
   let tiers: SponsorTier[] = [
     {
       name: "Standard",
-      price: 1000,
+      price: 1500,
       perks: ["Digital Branding", "Resume Book", "Coffee Chats"],
     },
     {
       name: "Plus",
-      price: 1500,
+      price: 2000,
       perks: [
         "Digital Branding",
         "Resume Book",
@@ -53,7 +53,7 @@
     },
     {
       name: "Premier",
-      price: 2000,
+      price: 2500,
       perks: [
         "Digital Branding",
         "Resume Book",
