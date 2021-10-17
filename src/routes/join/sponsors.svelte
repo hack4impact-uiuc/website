@@ -124,6 +124,59 @@
   />
 </Section>
 
+<Section padding="60px">
+  <span class="wrap impact-teams">
+    <Row>
+      <div class="tier our-projects">
+        <h3>Our Projects</h3>
+        <ul>
+          <li>
+            Past deployed products consist of web, mobile, data science and data
+            visualization applications.
+          </li>
+          <li>
+            Timeline includes a Minimum Viable Product mid-semester, a handoff
+            at the end of the semester, and a 6 month guarantee for bug fixes.
+          </li>
+        </ul>
+      </div>
+      <div class="tier areas-of-impact">
+        <h3>Areas of Impact</h3>
+        <ul>
+          <li>Sustainability</li>
+          <li>Education</li>
+          <li>Healthcare</li>
+          <li>Human Trafficking</li>
+          <li>Immigration</li>
+          <li>Hate Groups</li>
+          <li>Journalism</li>
+        </ul>
+      </div>
+      <div class="tier our-teams">
+        <h3>Our Teams</h3>
+        <div>
+          <div>
+            <h4>Product Manager</h4>
+            1 per team
+          </div>
+          <div>
+            <h4>Technical Lead</h4>
+            1 per team
+          </div>
+          <div>
+            <h4>Product Designer</h4>
+            1 per team
+          </div>
+          <div>
+            <h4>Software Developer</h4>
+            4-5 per team
+          </div>
+        </div>
+      </div>
+    </Row>
+  </span>
+</Section>
+
 <Section color="var(--blue)" padding="60px">
   <span class="light-text wrap sponsor-perks">
     <h2>Sponsorship Tiers</h2>
@@ -131,7 +184,7 @@
       {#each tiers as tier}
         <div class="tier">
           <h3>{tier.name} Sponsor</h3>
-          <h4>{tier.price}$/semester</h4>
+          <h4>${tier.price}/semester</h4>
           <ul>
             {#each allPerks as perk}
               <li class={tier.perks.includes(perk) ? "" : "disabled"}>
@@ -201,11 +254,17 @@
     display: block;
     margin: 0 auto;
   }
-  .sponsor-perks .tier {
-    display: block;
+
+  .sponsor-perks h2 {
+    text-align: center;
+  }
+  .sponsor-perks .tier,
+  .impact-teams .tier {
+    align-items: center;
   }
 
-  .sponsor-perks .tier h3 {
+  .sponsor-perks h3,
+  .impact-teams h3 {
     margin-top: 1rem;
     font-size: 1.6rem;
     margin-bottom: 0;
@@ -215,11 +274,14 @@
     font-size: 1.2rem;
   }
 
-  .sponsor-perks ul {
+  .sponsor-perks ul,
+  .impact-teams ul {
     padding-left: 0;
     list-style: none;
     font-size: 1rem;
     line-height: 2;
+    width: auto;
+    text-align: left;
   }
 
   .sponsor-perks ul > li.disabled {
@@ -232,5 +294,43 @@
     user-select: none;
     display: inline-block;
     margin-right: 0.75em;
+  }
+
+  .impact-teams {
+    color: var(--blue);
+  }
+
+  .impact-teams .tier {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .impact-teams .tier:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  .our-projects {
+    flex: 2;
+  }
+
+  .impact-teams ul {
+    list-style: initial;
+    padding-left: 1.5rem;
+  }
+
+  .our-teams h4 {
+    margin-bottom: 0;
+  }
+
+  .our-teams > div {
+    flex: 1;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .our-teams > div > div:not(:last-child) {
+    margin-bottom: 1rem;
   }
 </style>
