@@ -33,9 +33,9 @@
   export let applicationBlurb: string;
 
   const iconMap = {
-    Calendar: "/icons/calendar.svg",
-    Form: "/icons/contract.svg",
-    Interview: "/icons/interview.svg",
+    Calendar: "calendar",
+    Form: "edit",
+    Interview: "conversation",
   };
 </script>
 
@@ -92,7 +92,7 @@
   <p>{@html applicationBlurb}</p>
   <div id="process-steps">
     {#each applicationSteps as step}
-      <Step icon={iconMap[step.icon]} iconAlt={step.name}>
+      <Step icon={iconMap[step.icon]}>
         <span slot="name">{step.name}</span>
         <span slot="date">{step.date ?? ""}</span>
         <span slot="description">{@html step.description}</span>

@@ -1,6 +1,9 @@
+<script lang="ts" context="module">
+  import Icon from "$lib/components/Icon.svelte";
+</script>
+
 <script lang="ts">
   export let icon: string | undefined = undefined;
-  export let iconAlt: string | undefined = undefined;
   export let index: number | undefined = undefined;
 </script>
 
@@ -8,7 +11,7 @@
   <span
     ><div id="icon-container">
       {#if icon !== undefined}
-        <img src={icon} alt={iconAlt} />
+        <Icon {icon} />
       {:else if index !== undefined}
         <span class="step-index">{index}</span>
       {/if}
@@ -42,8 +45,9 @@
     justify-content: center;
   }
 
-  img {
+  :global(svg) {
     height: 50px;
+    color: var(--blue-lighter);
   }
 
   .step {
