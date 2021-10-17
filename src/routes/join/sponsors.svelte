@@ -39,7 +39,17 @@
     {
       name: "Standard",
       price: 1000,
-      perks: ["Digital Branding", "Resume Book", "Standard Session"],
+      perks: ["Digital Branding", "Resume Book", "Coffee Chats"],
+    },
+    {
+      name: "Plus",
+      price: 1500,
+      perks: [
+        "Digital Branding",
+        "Resume Book",
+        "Standard Session",
+        "Coffee Chats",
+      ],
     },
     {
       name: "Premier",
@@ -49,6 +59,7 @@
         "Resume Book",
         "Premium Session",
         "Coffee Chats",
+        "Fellowship Funding",
       ],
     },
   ];
