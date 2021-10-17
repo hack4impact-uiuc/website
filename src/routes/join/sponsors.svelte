@@ -109,7 +109,7 @@
 
   <Info
     title="Check Out Our Work"
-    content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    content="Read more about any of over 20 past products built as technical solutions spanning over 7 areas of impact and the domains of web engineering, mobile applications, and data science."
     to="/projects"
     linkText="Learn More"
   />
