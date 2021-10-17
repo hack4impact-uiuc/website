@@ -8,19 +8,17 @@
   import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [info, testimonialMember, projectImage] = await Promise.all([
+    const [info, testimonialMember] = await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
       fetch("/server/member-testimonial.json").then((res: Response) =>
         res.json()
       ),
-      fetch("/server/project-image.json").then((res: Response) => res.json()),
-    ] as [Info, Member, Image]);
+    ] as [Info, Member]);
 
     return {
       props: {
         team: info.chapterPicture,
         testimonialMember,
-        projectImage,
       },
     };
   }
@@ -29,7 +27,6 @@
 <script lang="ts">
   export let team: Image;
   export let testimonialMember: Member;
-  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -145,7 +142,7 @@
       >
     </div>
     <figure>
-      <img src={setImageHeight(projectImage.src, 800)} alt={projectImage.alt} />
+      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
     </figure></Row
   >
 </Section>

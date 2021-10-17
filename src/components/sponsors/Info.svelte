@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Button from "./Button.svelte";
+  import Button from "../Button.svelte";
 
   // title, content, and route (for button)
   export let title: string;
@@ -30,7 +30,7 @@
     padding: 17px;
     border: 2px solid var(--blue-darker);
     border-radius: 4px;
-    margin: 5rem 0 0;
+    margin: 3rem 0 0;
     color: var(--blue-darker);
   }
 

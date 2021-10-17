@@ -6,25 +6,19 @@
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
 
-  import type { FAQ, Image, NonprofitStep, Project } from "$lib/utils/schema";
+  import type { FAQ, NonprofitStep, Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [
-      applicationSteps,
-      faqs,
-      testimonialNonprofit,
-      projectImage,
-    ] = (await Promise.all([
+    const [applicationSteps, faqs, testimonialNonprofit] = (await Promise.all([
       fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ),
-      fetch("/server/project-image.json").then((res: Response) => res.json()),
-    ])) as [NonprofitStep[], FAQ[], Project, Image];
+    ])) as [NonprofitStep[], FAQ[], Project];
 
     return {
-      props: { faqs, applicationSteps, testimonialNonprofit, projectImage },
+      props: { faqs, applicationSteps, testimonialNonprofit },
     };
   }
 </script>
@@ -33,7 +27,6 @@
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let testimonialNonprofit: Project;
-  export let projectImage: Image;
 </script>
 
 <svelte:head>
@@ -70,21 +63,20 @@
     <div>
       <h3>Web & Mobile Applications</h3>
       <p>
-        Hack4Impact provides our nonprofit partners with software solutions for
-        their needs typically in the web and mobile space. Ranging from one
-        semester to multiple semesters, teams will work on the product to the
-        specifications agreed upon by both the leads and partner.
+        We provide our nonprofit partners with software solutions for their
+        needs typically in the web and mobile space. Projects can take one or
+        multiple semesters.
       </p>
     </div>
     <div>
       <h3>Designs</h3>
       <p>
-        Our designers create product designs tailored specifically to the
-        nonprofit's needs and branding.
+        Our designers create product designs tailored specifically to a
+        nonprofit's needs and branding with an emphasis on user experience.
       </p>
     </div>
     <div>
-      <h3>Iterative feedback and communication</h3>
+      <h3>Iterative Feedback</h3>
       <p>
         Our project leads stay are consistently in touch with your nonprofit's
         point of contact to navigate decisions, clarify goals, and respond to
@@ -110,23 +102,18 @@
       <p>
         At Hack4Impact, we develop software for non-profits to make their work
         more efficient, effective, and far-reaching. Generally, we set up a call
-        with potential non-profit clients to learn more about their projects,
-        initiatives, and goals. If our goals align with theirs, we delve deeper
-        into project specifications, pain points, user research, and gaining a
-        better understanding of the impact that will be made before confirming
-        the project and matching it to a development team. We aim to build
-        sustainable products that have long-lasting impact for the non-profit we
-        are working with and those they are trying to help. We currently support
-        web based and data science projects but we are open to other different
-        types of projects. For more details, please contact us at
-        uiuc@hack4impact.org.
+        with potential clients to learn more about their initiatives and goals.
+        If our goals align, we delve deeper into project specifications, pain
+        points, and user research before confirming the project and matching a
+        development team. We aim to build sustainable products with long-lasting
+        impact for non-profits and those they are trying to help.
       </p>
       <a class="button-link" href="/about/work" sveltekit:prefetch
         ><Button type="primary">Learn More</Button>
       </a>
     </div>
     <figure>
-      <img src={projectImage.src} alt={projectImage.alt} />
+      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
     </figure>
   </Row>
 </Section>
