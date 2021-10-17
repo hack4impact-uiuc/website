@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
+  import Icon from "$lib/components/Icon.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
@@ -60,7 +61,8 @@
   <h1>Nonprofits</h1>
   <h2>Our Services</h2>
   <Row gap={58} topAligned>
-    <div>
+    <div class="service">
+      <Icon icon="devices" />
       <h3>Web & Mobile Applications</h3>
       <p>
         We provide our nonprofit partners with software solutions for their
@@ -68,14 +70,16 @@
         multiple semesters.
       </p>
     </div>
-    <div>
+    <div class="service">
+      <Icon icon="vector" />
       <h3>Designs</h3>
       <p>
         Our designers create product designs tailored specifically to a
         nonprofit's needs and branding with an emphasis on user experience.
       </p>
     </div>
-    <div>
+    <div class="service">
+      <Icon icon="conversation" />
       <h3>Iterative Feedback</h3>
       <p>
         Our project leads stay are consistently in touch with your nonprofit's
@@ -166,6 +170,11 @@
 </Section>
 
 <style>
+  :global(.service svg) {
+    max-width: 50px;
+    margin: 1.5rem 0 1rem;
+    fill: var(--blue);
+  }
   p {
     opacity: 80%;
   }

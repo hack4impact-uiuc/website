@@ -10,6 +10,8 @@
   import Conversation from "@svicons/boxicons-solid/conversation.svelte";
   import Calendar from "@svicons/boxicons-solid/calendar.svelte";
   import Slideshow from "@svicons/boxicons-solid/slideshow.svelte";
+  import Devices from "@svicons/boxicons-solid/devices.svelte";
+  import Vector from "@svicons/boxicons-solid/vector.svelte";
 </script>
 
 <script lang="ts">
@@ -38,6 +40,10 @@
   <Slideshow />
 {:else if icon === "transfer"}
   <Transfer />
+{:else if icon === "devices"}
+  <Devices />
+{:else if icon === "vector"}
+  <Vector />
 {:else}
   MISSING ICON
 {/if}
