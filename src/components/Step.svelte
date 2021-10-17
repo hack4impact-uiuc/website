@@ -45,7 +45,7 @@
     justify-content: center;
   }
 
-  :global(svg) {
+  :global(.step #icon-container svg) {
     height: 50px;
     color: var(--blue-lighter);
   }

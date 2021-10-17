@@ -39,5 +39,5 @@
 {:else if icon === "transfer"}
   <Transfer />
 {:else}
-  missing
+  MISSING ICON
 {/if}
