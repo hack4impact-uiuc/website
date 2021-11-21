@@ -130,7 +130,7 @@
   }
 
   #graphic-container img {
-    height: 100%;
+    height: 75%;
     width: 100%;
 
     object-fit: cover;
@@ -139,7 +139,7 @@
 
   :global(#banner-right-content) {
     padding-right: 0 !important;
-    padding-left: 5% !important;
+    padding-left: 10% !important;
   }
 
   :global(#banner-right-content #graphic-container) {
