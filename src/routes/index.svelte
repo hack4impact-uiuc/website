@@ -4,6 +4,7 @@
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";
+  import Row from "$lib/components/Row.svelte";
   import type { Project } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
@@ -47,7 +48,7 @@
   </span>
 </DoubleBanner>
 
-<Section id="featured-projects" padding="30px">
+<Section id="featured-projects" padding="60px">
   <div id="featured-section">
     <h1>Featured Work</h1>
     {#if projects.length > 0}<FeaturedBanner project={projects[0]} />{/if}
@@ -57,6 +58,51 @@
       {/each}
     </div>
   </div>
+</Section>
+
+<Section id="about" color="var(--gray-lighter)" padding="60px">
+  <Row gap={84} reverseOnMobile
+    ><div id="about-us-content">
+      <h2>About Us</h2>
+      <div class="row-center" />
+      <p>
+        We partner with nonprofits and other socially minded organizations to
+        build impactful products. Each product is spearheaded by a dedicated
+        development team on a one or two semester timeline.
+      </p>
+      <a class="button-link" href="/about" sveltekit:prefetch
+        ><Button type="primary">Learn More</Button></a
+      >
+    </div>
+    <figure>
+      <img src={"/howwework.png"} alt={""} />
+    </figure>
+  </Row>
+</Section>
+
+<Section id="partnerships" padding="60px">
+  <Row gap={84} reverse
+    ><div id="">
+      <h2>Partnerships</h2>
+      <div class="row-center" />
+      <p>
+        We partner with nonprofits and other socially minded organizations to
+        build impactful products. Each product is spearheaded by a dedicated
+        development team on a one or two semester timeline.
+      </p>
+      <div class="row-center">
+        <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
+          ><Button type="primary">For Nonprofits</Button></a
+        >
+        <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
+          ><Button type="secondary">For Students</Button></a
+        >
+      </div>
+    </div>
+    <figure>
+      <img src={"/howwework.png"} alt={""} />
+    </figure>
+  </Row>
 </Section>
 
 <style>
@@ -84,7 +130,7 @@
   }
 
   #graphic-container img {
-    height: 75%;
+    height: 100%;
     width: 100%;
 
     object-fit: cover;
@@ -93,7 +139,7 @@
 
   :global(#banner-right-content) {
     padding-right: 0 !important;
-    padding-left: 10% !important;
+    padding-left: 5% !important;
   }
 
   :global(#banner-right-content #graphic-container) {
@@ -102,5 +148,14 @@
 
   #graphic {
     height: 90%;
+  }
+
+  #about-us-content {
+    color: var(--blue-darker);
+  }
+
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
   }
 </style>
