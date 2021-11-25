@@ -5,18 +5,20 @@
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { Project } from "$lib/utils/schema";
+  import { Image, Info, Project, setImageHeight } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("/server/featured.json");
+    const [info, projects] = await Promise.all([
+      fetch("/server/info.json").then((res: Response) => res.json()),
+      fetch("/server/featured.json").then((res: Response) => res.json()),
+    ] as [Info, Project[]]);
 
-    const projects: Project[] = await res.json();
-
-    return { props: { projects } };
+    return { props: { about: info.homepageAbout, projects } };
   }
 </script>
 
 <script lang="ts">
+  export let about: Image;
   export let projects: Project[];
 </script>
 
@@ -75,7 +77,7 @@
       >
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={""} />
+      <img src={setImageHeight(about.src, 900)} alt={about.alt} />
     </figure>
   </Row>
 </Section>
