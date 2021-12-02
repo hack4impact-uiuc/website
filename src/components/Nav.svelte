@@ -14,7 +14,10 @@
   let windowWidth: number | undefined;
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} />
+<svelte:window
+  bind:innerWidth={windowWidth}
+  on:sveltekit:navigation-end={() => (showMobileMenu = false)}
+/>
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
