@@ -1,20 +1,16 @@
 <script lang="ts">
   export let path: string | undefined;
-  // let oldSegment: string;
-
-  let showMobileMenu = false;
-
-  // $: {
-  //   if (segment !== oldSegment || (path && !path.startsWith(segment))) {
-  //     showMobileMenu = false;
-  //   }
-  // }
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
+
   let windowWidth: number | undefined;
+  let showMobileMenu = false;
 </script>
 
-<svelte:window bind:innerWidth={windowWidth} />
+<svelte:window
+  bind:innerWidth={windowWidth}
+  on:sveltekit:navigation-end={() => (showMobileMenu = false)}
+/>
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
@@ -60,7 +56,6 @@
           {#each dropdownRoutes as route}
             <a
               sveltekit:prefetch
-              on:click={() => (showMobileMenu = false)}
               aria-current={path && path.includes(`join/${route.toLowerCase()}`)
                 ? "page"
                 : undefined}
