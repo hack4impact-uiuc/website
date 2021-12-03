@@ -1,17 +1,10 @@
 <script lang="ts">
   export let path: string | undefined;
-  // let oldSegment: string;
-
-  let showMobileMenu = false;
-
-  // $: {
-  //   if (segment !== oldSegment || (path && !path.startsWith(segment))) {
-  //     showMobileMenu = false;
-  //   }
-  // }
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
+
   let windowWidth: number | undefined;
+  let showMobileMenu = false;
 </script>
 
 <svelte:window
@@ -63,7 +56,6 @@
           {#each dropdownRoutes as route}
             <a
               sveltekit:prefetch
-              on:click={() => (showMobileMenu = false)}
               aria-current={path && path.includes(`join/${route.toLowerCase()}`)
                 ? "page"
                 : undefined}
