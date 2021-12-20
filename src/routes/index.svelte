@@ -4,18 +4,21 @@
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";
-  import type { Project } from "$lib/utils/schema";
+  import Row from "$lib/components/Row.svelte";
+  import { Image, Info, Project, setImageHeight } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("/server/featured.json");
+    const [info, projects] = await Promise.all([
+      fetch("/server/info.json").then((res: Response) => res.json()),
+      fetch("/server/featured.json").then((res: Response) => res.json()),
+    ] as [Info, Project[]]);
 
-    const projects: Project[] = await res.json();
-
-    return { props: { projects } };
+    return { props: { about: info.homepageAbout, projects } };
   }
 </script>
 
 <script lang="ts">
+  export let about: Image;
   export let projects: Project[];
 </script>
 
@@ -47,7 +50,7 @@
   </span>
 </DoubleBanner>
 
-<Section id="featured-projects" padding="30px">
+<Section id="featured-projects" padding="60px">
   <div id="featured-section">
     <h1>Featured Work</h1>
     {#if projects.length > 0}<FeaturedBanner project={projects[0]} />{/if}
@@ -57,6 +60,52 @@
       {/each}
     </div>
   </div>
+</Section>
+
+<Section id="about" color="var(--gray-lighter)" padding="60px">
+  <Row gap={84} reverseOnMobile
+    ><div id="about-us-content">
+      <h2>About Us</h2>
+      <div class="row-center" />
+      <p>
+        We partner with nonprofits and other socially minded organizations to
+        build impactful products. Each product is spearheaded by a dedicated
+        development team on a one or two semester timeline.
+      </p>
+      <a class="button-link" href="/about" sveltekit:prefetch
+        ><Button type="primary">Learn More</Button></a
+      >
+    </div>
+    <figure>
+      <img src={setImageHeight(about.src, 900)} alt={about.alt} />
+    </figure>
+  </Row>
+</Section>
+
+<Section id="partnerships" padding="60px">
+  <Row gap={84} reverse
+    ><div id="">
+      <h2>Partnerships</h2>
+      <div class="row-center" />
+      <p>
+        Interested in working with us? Non-profits can reach out to propose a
+        software product to increase reach and impact. Students are welcome to
+        check for open positions involving engineering and design at the
+        beginning of each semester.
+      </p>
+      <div class="row-center">
+        <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
+          ><Button type="primary">For Nonprofits</Button></a
+        >
+        <a class="button-link" href="/join/students" sveltekit:prefetch
+          ><Button type="secondary">For Students</Button></a
+        >
+      </div>
+    </div>
+    <figure>
+      <img src={"/howwework.png"} alt={""} />
+    </figure>
+  </Row>
 </Section>
 
 <style>
@@ -102,5 +151,14 @@
 
   #graphic {
     height: 90%;
+  }
+
+  #about-us-content {
+    color: var(--blue-darker);
+  }
+
+  figure > img {
+    width: 100%;
+    border-radius: 4px;
   }
 </style>
