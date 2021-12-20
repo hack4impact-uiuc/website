@@ -88,15 +88,16 @@
       <h2>Partnerships</h2>
       <div class="row-center" />
       <p>
-        We partner with nonprofits and other socially minded organizations to
-        build impactful products. Each product is spearheaded by a dedicated
-        development team on a one or two semester timeline.
+        Interested in working with us? Non-profits can reach out to propose a
+        software product to increase reach and impact. Students are welcome to
+        check for open positions involving engineering and design at the
+        beginning of each semester.
       </p>
       <div class="row-center">
         <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
           ><Button type="primary">For Nonprofits</Button></a
         >
-        <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
+        <a class="button-link" href="/join/students" sveltekit:prefetch
           ><Button type="secondary">For Students</Button></a
         >
       </div>
