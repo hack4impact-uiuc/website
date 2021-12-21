@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
+  import type { IconType } from "$lib/components/Icon.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
@@ -32,7 +33,7 @@
   export let applicationSteps: ApplicationStep[];
   export let applicationBlurb: string;
 
-  const iconMap = {
+  const iconMap: Record<string, IconType> = {
     Calendar: "calendar",
     Form: "edit",
     Interview: "conversation",

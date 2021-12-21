@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-  import Icon from "$lib/components/Icon.svelte";
+  import Icon, { IconType } from "$lib/components/Icon.svelte";
 </script>
 
 <script lang="ts">
-  export let icon: string | undefined = undefined;
+  export let icon: IconType | undefined = undefined;
   export let index: number | undefined = undefined;
 </script>
 

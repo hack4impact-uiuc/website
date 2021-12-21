@@ -14,7 +14,7 @@
   import Vector from "@svicons/boxicons-solid/vector.svelte";
   import type { SvelteComponent } from "svelte";
 
-  type IconType =
+  export type IconType =
     | "brain"
     | "bulb"
     | "calendar"
@@ -47,7 +47,7 @@
 </script>
 
 <script lang="ts">
-  export let icon: string;
+  export let icon: IconType;
 </script>
 
 <svelte:component this={iconMap[icon]} />
