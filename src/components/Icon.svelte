@@ -47,7 +47,7 @@
 </script>
 
 <script lang="ts">
-  export let icon: IconType;
+  export let icon: string;
 </script>
 
 <svelte:component this={iconMap[icon]} />
