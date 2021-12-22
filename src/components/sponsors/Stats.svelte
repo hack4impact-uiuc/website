@@ -8,8 +8,6 @@
     <div>directors are women</div>
   </div>
   <div class="stat">
-    <div class="val">4</div>
-    <div>round interview process at a</div>
     <div class="val">top 5</div>
     <div>CS/ECE school</div>
   </div>
@@ -40,8 +38,8 @@
 <style>
   .stats {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 20px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     margin: 2rem 0 2rem;
@@ -52,11 +50,12 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    background-color: var(--blue-light);
-    color: white;
+    color: var(--blue-lighter);
     text-align: center;
     padding: 5px;
     box-sizing: border-box;
+    border: 2px solid var(--blue-light);
+    border-radius: 4px;
   }
 
   .val {
@@ -64,39 +63,11 @@
     font-weight: bold;
     line-height: 1;
     margin: 5px 0;
+
+    color: white;
   }
   div:last-child.val {
     margin-top: 0;
-  }
-
-  .stat:nth-child(1) {
-    grid-area: 1 / 1 / 5 / 3;
-  }
-  .stat:nth-child(2) {
-    grid-area: 5 / 1 / 9 / 3;
-    background-color: var(--blue-darker);
-  }
-  .stat:nth-child(3) {
-    grid-area: 1 / 3 / 9 / 4;
-    background-color: var(--blue);
-  }
-  .stat:nth-child(4) {
-    grid-area: 1 / 4 / 5 / 6;
-  }
-  .stat:nth-child(5) {
-    grid-area: 5 / 4 / 9 / 6;
-    background-color: var(--blue-darker);
-  }
-  .stat:nth-child(6) {
-    grid-area: 1 / 6 / 4 / 8;
-  }
-  .stat:nth-child(7) {
-    grid-area: 4 / 6 / 9 / 8;
-    background-color: var(--blue-darker);
-  }
-  .stat:nth-child(8) {
-    grid-area: 1 / 8 / 9 / 9;
-    background-color: var(--blue);
   }
 
   @media only screen and (max-width: 792px) {

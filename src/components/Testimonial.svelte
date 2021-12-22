@@ -54,7 +54,7 @@
   }
 
   .testimonial {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-flow: row;
     align-items: center;
@@ -91,6 +91,7 @@
     text-align: right;
     font-size: 1rem;
     display: block;
+    margin-top: 1rem;
   }
 
   caption > span.desc {
