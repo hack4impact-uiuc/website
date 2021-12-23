@@ -2,9 +2,10 @@
   import Button from "$lib/components/Button.svelte";
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
+  import Head from "$lib/components/Head.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
-  import Section from "$lib/components/Section.svelte";
   import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
   import { Image, Info, Project, setImageHeight } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
@@ -23,27 +24,12 @@
 </script>
 
 <svelte:head>
-  <title>Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/projects"
+    image="/static/howwework.jpg"
   />
-
-  <meta name="og:title" content="Hack4Impact UIUC" />
-  <meta
-    name="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="og:url" content="https://uiuc.hack4impact.org" />
-  <meta name="og:image" content="/static/howwework.jpg" />
-
-  <meta name="twitter:title" content="Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:url" content="https://uiuc.hack4impact.org" />
-  <meta name="twitter:image" content="/static/howwework.jpg" />
 </svelte:head>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">

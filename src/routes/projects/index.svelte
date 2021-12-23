@@ -1,7 +1,8 @@
 <script context="module" lang="ts">
-  import Section from "$lib/components/Section.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
+  import Head from "$lib/components/Head.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
+  import Section from "$lib/components/Section.svelte";
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
   import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
@@ -46,27 +47,12 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <svelte:head>
-  <title>Projects | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Projects | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/projects"
+    image="/static/howwework.jpg"
   />
-
-  <meta property="og:title" content="Projects | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta property="og:url" content="https://uiuc.hack4impact.org/projects" />
-  <meta name="og:image" content="/static/howwework.jpg" />
-
-  <meta name="twitter:title" value="Projects | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/projects" />
-  <meta name="twitter:image" content="/static/howwework.jpg" />
 </svelte:head>
 
 <Section padding="60px">

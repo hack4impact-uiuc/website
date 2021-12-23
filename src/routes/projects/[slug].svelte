@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Member from "$lib/components/projects/Member.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
@@ -28,33 +29,12 @@
 </script>
 
 <svelte:head>
-  <title>{project.name} | Hack4Impact UIUC</title>
-  <meta name="description" content={project.summary} />
-
-  <meta property="og:title" content={project.name} />
-  <meta property="og:description" content={project.summary} />
-  <meta
-    property="og:url"
-    content="https://uiuc.hack4impact.org/projects/{project.slug}"
+  <Head
+    title="{project.name} | Hack4Impact UIUC"
+    description={project.summary}
+    url="https://uiuc.hack4impact.org/projects/{project.slug}"
+    image={project.headerImage?.src}
   />
-
-  <meta
-    name="twitter:card"
-    content={project.headerImage !== undefined
-      ? "summary_large_image"
-      : "summary"}
-  />
-  <meta name="twitter:title" value={project.name} />
-  <meta name="twitter:description" value={project.summary} />
-  <meta
-    name="twitter:url"
-    value="https://uiuc.hack4impact.org/projects/{project.slug}"
-  />
-
-  {#if project.headerImage !== undefined}
-    <meta property="og:image" content={project.headerImage.src} />
-    <meta name="twitter:image" content={project.headerImage.src} />
-  {/if}
 </svelte:head>
 
 <DoubleBanner
