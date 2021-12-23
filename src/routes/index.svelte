@@ -35,6 +35,7 @@
     content="Uniting students to build well-engineered and impactful products for social change."
   />
   <meta name="og:url" content="https://uiuc.hack4impact.org" />
+  <meta name="og:image" content="/static/howwework.jpg" />
 
   <meta name="twitter:title" content="Hack4Impact UIUC" />
   <meta

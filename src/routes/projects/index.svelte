@@ -51,19 +51,22 @@
     name="description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta property="og:url" content="https://uiuc.hack4impact.org/projects" />
+
   <meta property="og:title" content="Projects | Hack4Impact UIUC" />
   <meta
     property="og:description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/projects" />
+  <meta property="og:url" content="https://uiuc.hack4impact.org/projects" />
+  <meta name="og:image" content="/static/howwework.jpg" />
+
   <meta name="twitter:title" value="Projects | Hack4Impact UIUC" />
   <meta
     name="twitter:description"
     value="Uniting students to build well-engineered and impactful products for social change."
   />
+  <meta name="twitter:url" value="https://uiuc.hack4impact.org/projects" />
+  <meta name="twitter:image" content="/static/howwework.jpg" />
 </svelte:head>
 
 <Section padding="60px">

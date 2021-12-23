@@ -30,16 +30,13 @@
 <svelte:head>
   <title>{project.name} | Hack4Impact UIUC</title>
   <meta name="description" content={project.summary} />
+
+  <meta property="og:title" content={project.name} />
+  <meta property="og:description" content={project.summary} />
   <meta
     property="og:url"
     content="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
-  <meta property="og:title" content={project.name} />
-  <meta property="og:description" content={project.summary} />
-  {#if project.headerImage !== undefined}
-    <meta property="og:image" content={project.headerImage.src} />
-    <meta name="twitter:image" content={project.headerImage.src} />
-  {/if}
 
   <meta
     name="twitter:card"
@@ -47,12 +44,17 @@
       ? "summary_large_image"
       : "summary"}
   />
+  <meta name="twitter:title" value={project.name} />
+  <meta name="twitter:description" value={project.summary} />
   <meta
     name="twitter:url"
     value="https://uiuc.hack4impact.org/projects/{project.slug}"
   />
-  <meta name="twitter:title" value={project.name} />
-  <meta name="twitter:description" value={project.summary} />
+
+  {#if project.headerImage !== undefined}
+    <meta property="og:image" content={project.headerImage.src} />
+    <meta name="twitter:image" content={project.headerImage.src} />
+  {/if}
 </svelte:head>
 
 <DoubleBanner
