@@ -57,6 +57,7 @@ export interface Info {
   whereWeWork: Image;
   applicationBlurb: string;
   homepageAbout: Image;
+  homepagePartnerships: Image;
 }
 
 export interface Semester {

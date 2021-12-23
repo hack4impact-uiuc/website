@@ -18,6 +18,7 @@
 
     return {
       props: {
+        projectsImage: info.homepagePartnerships,
         team: info.chapterPicture,
         testimonialMember,
       },
@@ -26,6 +27,7 @@
 </script>
 
 <script lang="ts">
+  export let projectsImage: Image;
   export let team: Image;
   export let testimonialMember: Member;
 </script>
@@ -130,7 +132,7 @@
       >
     </div>
     <figure>
-      <img src={"/howwework.jpg"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={projectsImage.src} alt={projectsImage.alt} />
     </figure></Row
   >
 </Section>

@@ -8,16 +8,30 @@
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
 
-  import type { FAQ, NonprofitStep, Project } from "$lib/utils/schema";
+  import type {
+    FAQ,
+    Image,
+    Info,
+    NonprofitStep,
+    Project,
+  } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [applicationSteps, faqs, testimonialNonprofit] = (await Promise.all([
+    const [
+      applicationSteps,
+      faqs,
+      testimonialNonprofit,
+      ionfo,
+    ] = (await Promise.all([
       fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ),
-    ])) as [NonprofitStep[], FAQ[], Project];
+      fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
+        res.json()
+      ),
+    ])) as [NonprofitStep[], FAQ[], Project, Info];
 
     return {
       props: { faqs, applicationSteps, testimonialNonprofit },
@@ -28,6 +42,7 @@
 <script lang="ts">
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
+  export let projectsImage: Image;
   export let testimonialNonprofit: Project;
 </script>
 
@@ -36,7 +51,7 @@
     title="Nonprofits | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/join/nonprofits"
-    image="/howwewework.jpg"
+    image={projectsImage.src}
   />
 </svelte:head>
 
@@ -101,7 +116,7 @@
       </a>
     </div>
     <figure>
-      <img src={"/howwework.jpg"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={projectsImage.src} alt={projectsImage.alt} />
     </figure>
   </Row>
 </Section>

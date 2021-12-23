@@ -14,12 +14,19 @@
       fetch("/server/featured.json").then((res: Response) => res.json()),
     ] as [Info, Project[]]);
 
-    return { props: { about: info.homepageAbout, projects } };
+    return {
+      props: {
+        about: info.homepageAbout,
+        partnerships: info.homepagePartnerships,
+        projects,
+      },
+    };
   }
 </script>
 
 <script lang="ts">
   export let about: Image;
+  export let partnerships: Image;
   export let projects: Project[];
 </script>
 
@@ -28,7 +35,7 @@
     title="Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/projects"
-    image="/static/howwework.jpg"
+    image={partnerships.src}
   />
 </svelte:head>
 
@@ -105,7 +112,7 @@
       </div>
     </div>
     <figure>
-      <img src={"/howwework.jpg"} alt="How we work" />
+      <img src={partnerships.src} alt={partnerships.alt} />
     </figure>
   </Row>
 </Section>

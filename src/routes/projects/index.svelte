@@ -6,17 +6,22 @@
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
   import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
+  import type { Image, Info, Member } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const res = await fetch("/server/projects.json");
+    const [projectsInfo, info] = await Promise.all([
+      fetch("/server/projects.json").then((res: Response) => res.json()),
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ] as [ProjectsInfo, Info]);
 
-    const projectsInfo: ProjectsInfo = await res.json();
-
-    return { props: projectsInfo };
+    return {
+      props: { ...projectsInfo, projectsImage: info.homepagePartnerships },
+    };
   }
 </script>
 
 <script lang="ts">
+  export let projectsImage: Image;
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
@@ -51,7 +56,7 @@
     title="Projects | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/projects"
-    image="/static/howwework.jpg"
+    image={projectsImage.src}
   />
 </svelte:head>
 
