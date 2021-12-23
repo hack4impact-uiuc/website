@@ -30,7 +30,7 @@
     padding: 17px;
     border: 2px solid var(--blue-darker);
     border-radius: 4px;
-    margin: 3rem 0 0;
+    margin: 1rem 0 0;
     color: var(--blue-darker);
   }
 

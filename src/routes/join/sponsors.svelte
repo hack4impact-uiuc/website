@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
+  import Icon from "$lib/components/Icon.svelte";
   import Info from "$lib/components/sponsors/Info.svelte";
   import Row from "$lib/components/Row.svelte";
   import Button from "$lib/components/Button.svelte";
@@ -38,17 +39,28 @@
   let tiers: SponsorTier[] = [
     {
       name: "Standard",
-      price: 1000,
-      perks: ["Digital Branding", "Resume Book", "Standard Session"],
+      price: 1500,
+      perks: ["Digital Branding", "Resume Book", "Coffee Chats"],
+    },
+    {
+      name: "Plus",
+      price: 2000,
+      perks: [
+        "Digital Branding",
+        "Resume Book",
+        "Standard Session",
+        "Coffee Chats",
+      ],
     },
     {
       name: "Premier",
-      price: 2000,
+      price: 2500,
       perks: [
         "Digital Branding",
         "Resume Book",
         "Premium Session",
         "Coffee Chats",
+        "Fellowship Funding",
       ],
     },
   ];
@@ -105,14 +117,19 @@
     </div>
   </Row>
 
-  <Stats />
-
   <Info
     title="Check Out Our Work"
-    content="We’re Looking for ... Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    content="Read more about any of over 20 past products built as technical solutions spanning over 7 areas of impact and the domains of web engineering, mobile applications, and data science."
     to="/projects"
     linkText="Learn More"
   />
+</Section>
+
+<Section color="var(--blue)" padding="60px">
+  <span class="wrap" id="by-the-numbers">
+    <h2>By the Numbers</h2>
+    <Stats />
+  </span>
 </Section>
 
 <Section color="var(--gray-lighter)">
@@ -124,6 +141,48 @@
   />
 </Section>
 
+<Section padding="60px">
+  <span class="wrap" id="areas-of-impact">
+    <h2>Areas of Impact</h2>
+    <div>
+      <div><Icon icon="tree" /> Sustainability</div>
+      <div><Icon icon="education" /> Education</div>
+      <div><Icon icon="health" /> Healthcare</div>
+      <div><Icon icon="unlink" /> Human Trafficking</div>
+      <div><Icon icon="plane" /> Immigration</div>
+      <div><Icon icon="hate" /> Hate Groups</div>
+      <div><Icon icon="news" /> Journalism</div>
+      <div><Icon icon="conversation" /> Community</div>
+      <div><Icon icon="dollar" /> Financial Literacy</div>
+      <div><Icon icon="donate" /> Philanthropy</div>
+      <div><Icon icon="shield" /> Safety</div>
+    </div>
+  </span>
+  <span class="wrap">
+    <h2>Our Teams</h2>
+    <div class="our-teams">
+      <div>
+        <div>
+          <h4>Product Manager</h4>
+          1 per team
+        </div>
+        <div>
+          <h4>Technical Lead</h4>
+          1 per team
+        </div>
+        <div>
+          <h4>Product Designer</h4>
+          1 per team
+        </div>
+        <div>
+          <h4>Software Developer</h4>
+          4-5 per team
+        </div>
+      </div>
+    </div></span
+  >
+</Section>
+
 <Section color="var(--blue)" padding="60px">
   <span class="light-text wrap sponsor-perks">
     <h2>Sponsorship Tiers</h2>
@@ -131,7 +190,7 @@
       {#each tiers as tier}
         <div class="tier">
           <h3>{tier.name} Sponsor</h3>
-          <h4>{tier.price}$/semester</h4>
+          <h4>${tier.price}/semester</h4>
           <ul>
             {#each allPerks as perk}
               <li class={tier.perks.includes(perk) ? "" : "disabled"}>
@@ -201,11 +260,12 @@
     display: block;
     margin: 0 auto;
   }
+
   .sponsor-perks .tier {
-    display: block;
+    align-items: center;
   }
 
-  .sponsor-perks .tier h3 {
+  .sponsor-perks h3 {
     margin-top: 1rem;
     font-size: 1.6rem;
     margin-bottom: 0;
@@ -220,6 +280,8 @@
     list-style: none;
     font-size: 1rem;
     line-height: 2;
+    width: auto;
+    text-align: left;
   }
 
   .sponsor-perks ul > li.disabled {
@@ -232,5 +294,65 @@
     user-select: none;
     display: inline-block;
     margin-right: 0.75em;
+  }
+
+  .our-teams h4 {
+    margin-bottom: 0;
+  }
+
+  .our-teams > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex: 1;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+
+  .our-teams > div > div:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  #areas-of-impact {
+    margin-bottom: 60px;
+  }
+
+  #areas-of-impact div {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  #areas-of-impact div > div {
+    display: flex;
+    font-size: 1rem;
+    background: var(--blue);
+    border-radius: 12rem;
+    padding: 0.5rem 0.5rem;
+    grid-gap: 0rem;
+    color: #fff;
+  }
+
+  #by-the-numbers {
+    color: white;
+  }
+
+  :global(#areas-of-impact div > div > svg) {
+    width: 1rem;
+    margin: 0 0.5rem 0 0.25rem;
+  }
+
+  @media screen and (max-width: 990px) {
+    #areas-of-impact div {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 475px) {
+    #areas-of-impact div {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
