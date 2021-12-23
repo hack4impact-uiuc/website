@@ -106,11 +106,12 @@
       <p>
         At Hack4Impact, we develop software for nonprofits to make their work
         more efficient, effective, and far-reaching. Generally, we set up a call
-        with potential clients to learn more about their initiatives and goals.
-        If our goals align, we delve deeper into project specifications, pain
-        points, and user research before confirming the project and matching a
-        development team. We aim to build sustainable products with long-lasting
-        impact for nonprofits and those they are trying to help.
+        with potential nonprofit partners to learn more about their initiatives
+        and goals. If our goals align, we delve deeper into project
+        specifications, pain points, and user research before confirming the
+        project and matching a development team. We aim to build sustainable
+        products with long-lasting impact for nonprofits and those they are
+        trying to help.
       </p>
       <a class="button-link" href="/about/work" sveltekit:prefetch
         ><Button type="primary">Learn More</Button>

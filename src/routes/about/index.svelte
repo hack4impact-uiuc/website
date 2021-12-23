@@ -90,9 +90,10 @@
         head, and crush our goals. Whether it be personal or professional
         growth, we avoid mindless movement and instead purposefully act. We work
         with intention. We understand that at the end of the day, Hack4Impact
-        exists to build solutions that are right for our clients and their
-        users. We carefully assess the concerns of our users, stakeholders, and
-        clients, to develop a custom solution that fits our precise constraints.</span
+        exists to build solutions that are right for our nonprofit partners and
+        their users. We carefully assess the concerns of our users,
+        stakeholders, and partners, to develop a custom solution that fits our
+        precise constraints.</span
       >
     </Step>
     <Step icon="conversation">
@@ -102,12 +103,12 @@
         us. We dive deep into our fields of study and work, and seek feedback
         from our teammates, students, and teachers. We are hungry, yet humble;
         we are able to set aside our egos and view each moment and interaction
-        as an opportunity to learn. We are incredibly curious about our clients.
-        We know we might not know everything, so we must ask the right questions
-        to even begin to grasp the complexity of our clients’ situations.
-        Curiosity also enables us to look beyond our immediate vicinity and
-        deliver the best solution to our clients, even if the solution isn’t
-        built by Hack4Impact.</span
+        as an opportunity to learn. We are incredibly curious about our
+        nonprofit partners. We know we might not know everything, so we must ask
+        the right questions to even begin to grasp the complexity of our
+        partners' situations. Curiosity also enables us to look beyond our
+        immediate vicinity and deliver the best solution to our partners, even
+        if the solution isn’t built by Hack4Impact.</span
       >
     </Step>
     <Step icon="heart">
@@ -119,9 +120,9 @@
         environments we are surrounded by and deeply listening to our teammates.
         We are then able to best mentor our own teammates growth because we can
         see where they are coming from. Empathy drives every decision we make on
-        behalf of our clients. Our empathetic approach provides a North Star to
-        our development process. We’re able to settle difficult debates by
-        agreeing and executing on what’s best for our client.</span
+        behalf of our nonprofit partners. Our empathetic approach provides a
+        North Star to our development process. We’re able to settle difficult
+        debates by agreeing and executing on what’s best for our partner.</span
       >
     </Step>
   </div>
