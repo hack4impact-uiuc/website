@@ -59,7 +59,7 @@
       </p>
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={"/howwework.jpg"} alt={"Past Hack4Impact UIUC Projects"} />
     </figure>
   </Row>
 </Section>

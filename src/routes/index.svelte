@@ -28,6 +28,21 @@
     name="description"
     content="Uniting students to build well-engineered and impactful products for social change."
   />
+
+  <meta name="og:title" content="Hack4Impact UIUC" />
+  <meta
+    name="og:description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="og:url" content="https://uiuc.hack4impact.org" />
+
+  <meta name="twitter:title" content="Hack4Impact UIUC" />
+  <meta
+    name="twitter:description"
+    content="Uniting students to build well-engineered and impactful products for social change."
+  />
+  <meta name="twitter:url" content="https://uiuc.hack4impact.org" />
+  <meta name="twitter:image" content="/static/howwework.jpg" />
 </svelte:head>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
@@ -103,7 +118,7 @@
       </div>
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={""} />
+      <img src={"/howwework.jpg"} alt={"How we work"} />
     </figure>
   </Row>
 </Section>
