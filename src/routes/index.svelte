@@ -105,7 +105,7 @@
       </div>
     </div>
     <figure>
-      <img src={"/howwework.jpg"} alt={"How we work"} />
+      <img src={"/howwework.jpg"} alt="How we work" />
     </figure>
   </Row>
 </Section>
