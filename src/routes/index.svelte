@@ -88,7 +88,7 @@
       <h2>Partnerships</h2>
       <div class="row-center" />
       <p>
-        Interested in working with us? Non-profits can reach out to propose a
+        Interested in working with us? Nonprofits can reach out to propose a
         software product to increase reach and impact. Students are welcome to
         check for open positions involving engineering and design at the
         beginning of each semester.
