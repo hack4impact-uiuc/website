@@ -1,12 +1,12 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
-  import type { IconType } from "$lib/components/Icon.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
-
   import type { ApplicationStep, FAQ, Info, Role } from "$lib/utils/schema";
+  import type { IconType } from "$lib/components/Icon.svelte";
 
   export async function load({ fetch }) {
     const [
@@ -41,26 +41,11 @@
 </script>
 
 <svelte:head>
-  <title>Students | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta
-    property="og:url"
-    content="https://uiuc.hack4impact.org/join/students"
-  />
-  <meta property="og:title" content="Students | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/join/students" />
-  <meta name="twitter:title" value="Students | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Students | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/join/students"
+    image="/howwewework.jpg"
   />
 </svelte:head>
 

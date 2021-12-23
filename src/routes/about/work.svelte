@@ -23,7 +23,7 @@
 
 <svelte:head>
   <Head
-    title="How We Work| Hack4Impact UIUC"
+    title="How We Work | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/about/work"
     image="/howwewework.jpg"

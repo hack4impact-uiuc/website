@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Icon from "$lib/components/Icon.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -31,29 +32,11 @@
 </script>
 
 <svelte:head>
-  <title>Nonprofits | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta
-    property="og:url"
-    content="https://uiuc.hack4impact.org/join/nonprofits"
-  />
-  <meta property="og:title" content="Nonprofits | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:card" content="summary" />
-  <meta
-    name="twitter:url"
-    value="https://uiuc.hack4impact.org/join/nonprofits"
-  />
-  <meta name="twitter:title" value="Nonprofits | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Nonprofits | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/join/nonprofits"
+    image="/howwewework.jpg"
   />
 </svelte:head>
 
