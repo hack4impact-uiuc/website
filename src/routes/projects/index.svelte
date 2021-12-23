@@ -6,7 +6,7 @@
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
   import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
-  import type { Image, Info, Member } from "$lib/utils/schema";
+  import type { Image, Info } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [projectsInfo, info] = await Promise.all([
