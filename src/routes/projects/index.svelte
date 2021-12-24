@@ -1,12 +1,11 @@
 <script context="module" lang="ts">
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
   import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
-  import type { Image, Info } from "$lib/utils/schema";
+  import type { Info } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
     const [projectsInfo, info] = await Promise.all([
@@ -14,14 +13,24 @@
       fetch("/server/info.json").then((res: Response) => res.json()),
     ] as [ProjectsInfo, Info]);
 
+    const projectsImage = info.homepagePartnerships;
+
     return {
-      props: { ...projectsInfo, projectsImage: info.homepagePartnerships },
+      props: { ...projectsInfo, projectsImage },
+      stuff: {
+        metadata: {
+          title: "Projects | Hack4Impact UIUC",
+          description:
+            "Uniting students to build well-engineered and impactful products for social change.",
+          url: "https://uiuc.hack4impact.org/projects",
+          image: projectsImage.src,
+        },
+      },
     };
   }
 </script>
 
 <script lang="ts">
-  export let projectsImage: Image;
   export let projectMap: Record<string, SemesterProjects>;
   export let semesters: string[];
 
@@ -50,15 +59,6 @@
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
-
-<svelte:head>
-  <Head
-    title="Projects | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/projects"
-    image={projectsImage.src}
-  />
-</svelte:head>
 
 <Section padding="60px">
   <h1>Projects</h1>

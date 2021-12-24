@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
   import Member from "$lib/components/projects/Member.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
@@ -20,22 +19,23 @@
       project.logoWhite = project.nonprofitLogo;
     }
 
-    return { props: { project } };
+    return {
+      props: { project },
+      stuff: {
+        metadata: {
+          title: "{project.name} | Hack4Impact UIUC",
+          description: project.summary,
+          url: `https://uiuc.hack4impact.org/projects/${project.slug}`,
+          image: project.headerImage?.src,
+        },
+      },
+    };
   }
 </script>
 
 <script lang="ts">
   export let project: Project;
 </script>
-
-<svelte:head>
-  <Head
-    title="{project.name} | Hack4Impact UIUC"
-    description={project.summary}
-    url="https://uiuc.hack4impact.org/projects/{project.slug}"
-    image={project.headerImage?.src}
-  />
-</svelte:head>
 
 <DoubleBanner
   leftColor={project.accentColor}

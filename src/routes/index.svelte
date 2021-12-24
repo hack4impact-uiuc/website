@@ -2,7 +2,6 @@
   import Button from "$lib/components/Button.svelte";
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -14,11 +13,22 @@
       fetch("/server/featured.json").then((res: Response) => res.json()),
     ] as [Info, Project[]]);
 
+    const partnerships = info.homepagePartnerships;
+
     return {
       props: {
         about: info.homepageAbout,
-        partnerships: info.homepagePartnerships,
+        partnerships,
         projects,
+      },
+      stuff: {
+        metadata: {
+          title: "Hack4Impact UIUC",
+          description:
+            "Uniting students to build well-engineered and impactful products for social change.",
+          url: "https://uiuc.hack4impact.org",
+          image: partnerships.src,
+        },
       },
     };
   }
@@ -29,15 +39,6 @@
   export let partnerships: Image;
   export let projects: Project[];
 </script>
-
-<svelte:head>
-  <Head
-    title="Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org"
-    image={partnerships.src}
-  />
-</svelte:head>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <span slot="left">
