@@ -119,7 +119,7 @@ export class ContentWrapper {
       case "Asset":
         return link.src !== undefined // why do I need to do this?
           ? link
-          : { src: `https://${link.fields.file.url}`, alt: link.fields.title };
+          : { src: `https:${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
         return await this.serialize(

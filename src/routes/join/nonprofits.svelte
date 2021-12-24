@@ -1,25 +1,43 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Icon from "$lib/components/Icon.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
 
-  import type { FAQ, NonprofitStep, Project } from "$lib/utils/schema";
+  import type {
+    FAQ,
+    Image,
+    Info,
+    NonprofitStep,
+    Project,
+  } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [applicationSteps, faqs, testimonialNonprofit] = (await Promise.all([
+    const [
+      applicationSteps,
+      faqs,
+      testimonialNonprofit,
+      info,
+    ] = (await Promise.all([
       fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ),
-    ])) as [NonprofitStep[], FAQ[], Project];
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ])) as [NonprofitStep[], FAQ[], Project, Info];
 
     return {
-      props: { faqs, applicationSteps, testimonialNonprofit },
+      props: {
+        faqs,
+        applicationSteps,
+        testimonialNonprofit,
+        projectsImage: info.homepagePartnerships,
+      },
     };
   }
 </script>
@@ -27,33 +45,16 @@
 <script lang="ts">
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
+  export let projectsImage: Image;
   export let testimonialNonprofit: Project;
 </script>
 
 <svelte:head>
-  <title>Nonprofits | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta
-    property="og:url"
-    content="https://uiuc.hack4impact.org/join/nonprofits"
-  />
-  <meta property="og:title" content="Nonprofits | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:card" content="summary" />
-  <meta
-    name="twitter:url"
-    value="https://uiuc.hack4impact.org/join/nonprofits"
-  />
-  <meta name="twitter:title" value="Nonprofits | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Nonprofits | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/join/nonprofits"
+    image={projectsImage.src}
   />
 </svelte:head>
 
@@ -118,7 +119,7 @@
       </a>
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={projectsImage.src} alt={projectsImage.alt} />
     </figure>
   </Row>
 </Section>

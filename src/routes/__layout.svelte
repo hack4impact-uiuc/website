@@ -28,11 +28,6 @@
   );
 </script>
 
-<svelte:head>
-  <meta property="og:type" content="website" />
-  <meta name="twitter:domain" value="https://uiuc.hack4impact.org" />
-</svelte:head>
-
 <Nav {path} />
 
 <main>

@@ -2,9 +2,10 @@
   import Button from "$lib/components/Button.svelte";
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
+  import Head from "$lib/components/Head.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
-  import Section from "$lib/components/Section.svelte";
   import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
   import { Image, Info, Project, setImageHeight } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
@@ -13,20 +14,28 @@
       fetch("/server/featured.json").then((res: Response) => res.json()),
     ] as [Info, Project[]]);
 
-    return { props: { about: info.homepageAbout, projects } };
+    return {
+      props: {
+        about: info.homepageAbout,
+        partnerships: info.homepagePartnerships,
+        projects,
+      },
+    };
   }
 </script>
 
 <script lang="ts">
   export let about: Image;
+  export let partnerships: Image;
   export let projects: Project[];
 </script>
 
 <svelte:head>
-  <title>Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/projects"
+    image={partnerships.src}
   />
 </svelte:head>
 
@@ -103,7 +112,7 @@
       </div>
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={""} />
+      <img src={partnerships.src} alt={partnerships.alt} />
     </figure>
   </Row>
 </Section>

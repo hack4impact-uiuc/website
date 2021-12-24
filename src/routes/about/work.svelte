@@ -1,43 +1,34 @@
 <script lang="ts" context="module">
   import Accordion from "$lib/components/Accordion.svelte";
   import Button from "$lib/components/Button.svelte";
+  import Head from "$lib/components/Head.svelte";
   import RoleCard from "$lib/components/RoleCard.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Row from "$lib/components/Row.svelte";
-  import type { FAQ } from "$lib/utils/schema";
+  import type { FAQ, Image, Info } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const faqs = (await fetch("/server/work-faq.json").then((res: Response) =>
-      res.json()
-    )) as FAQ[];
+    const [faqs, info] = await Promise.all([
+      fetch("/server/work-faq.json").then((res: Response) => res.json()),
+      fetch("/server/info.json").then((res: Response) => res.json()),
+    ] as [FAQ[], Info]);
 
-    return { props: { faqs } };
+    return { props: { faqs, projectsImage: info.homepagePartnerships } };
   }
 </script>
 
 <script lang="ts">
   export let faqs: FAQ[];
+  export let projectsImage: Image;
 </script>
 
 <svelte:head>
-  <title>How We Work | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta property="og:url" content="https://uiuc.hack4impact.org/about/work" />
-  <meta property="og:title" content="How We Work | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/about/work" />
-  <meta name="twitter:title" value="How We Work | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="How We Work | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/about/work"
+    image={projectsImage.src}
   />
 </svelte:head>
 
@@ -59,7 +50,7 @@
       </p>
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={projectsImage.src} alt={projectsImage.alt} />
     </figure>
   </Row>
 </Section>

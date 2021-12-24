@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import Button from "$lib/components/Button.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
@@ -17,6 +18,7 @@
 
     return {
       props: {
+        projectsImage: info.homepagePartnerships,
         team: info.chapterPicture,
         testimonialMember,
       },
@@ -25,31 +27,18 @@
 </script>
 
 <script lang="ts">
+  export let projectsImage: Image;
   export let team: Image;
   export let testimonialMember: Member;
 </script>
 
 <svelte:head>
-  <title>About Us | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="About Us | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/about"
+    image={team.src}
   />
-  <meta property="og:url" content="https://uiuc.hack4impact.org/about" />
-  <meta property="og:title" content="About Us | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="og:image" content={team.src} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/about" />
-  <meta name="twitter:title" value="About Us | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:image" content={team.src} />
 </svelte:head>
 
 <Section id="intro" padding="60px">
@@ -143,7 +132,7 @@
       >
     </div>
     <figure>
-      <img src={"/howwework.png"} alt={"Past Hack4Impact UIUC Projects"} />
+      <img src={projectsImage.src} alt={projectsImage.alt} />
     </figure></Row
   >
 </Section>

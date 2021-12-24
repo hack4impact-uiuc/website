@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import Button from "$lib/components/Button.svelte";
+  import Head from "$lib/components/Head.svelte";
   import Member from "$lib/components/Member.svelte";
   import Section from "$lib/components/Section.svelte";
   import type { Image, Info, Member as MemberType } from "$lib/utils/schema";
@@ -37,26 +38,12 @@
 </script>
 
 <svelte:head>
-  <title>The Team | Hack4Impact UIUC</title>
-  <meta
-    name="description"
-    content="Uniting students to build well-engineered and impactful products for social change."
+  <Head
+    title="The Team | Hack4Impact UIUC"
+    description="Uniting students to build well-engineered and impactful products for social change."
+    url="https://uiuc.hack4impact.org/about/team"
+    image={team.src}
   />
-  <meta property="og:url" content="https://uiuc.hack4impact.org/about/team" />
-  <meta property="og:title" content="The Team | Hack4Impact UIUC" />
-  <meta
-    property="og:description"
-    content="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="og:image" content={team.src} />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" value="https://uiuc.hack4impact.org/about/team" />
-  <meta name="twitter:title" value="The Team | Hack4Impact UIUC" />
-  <meta
-    name="twitter:description"
-    value="Uniting students to build well-engineered and impactful products for social change."
-  />
-  <meta name="twitter:image" content={team.src} />
 </svelte:head>
 
 <Section>
