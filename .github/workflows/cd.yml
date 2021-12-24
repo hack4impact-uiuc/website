@@ -110,4 +110,7 @@ jobs:
         run: npm install -g surge
 
       - name: Deploy website
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: surge build uiuc.hack4impact.org
