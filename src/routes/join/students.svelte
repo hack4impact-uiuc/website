@@ -5,16 +5,17 @@
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
-  import type { ApplicationStep, FAQ, Info, Role } from "$lib/utils/schema";
+  import type {
+    ApplicationStep,
+    FAQ,
+    Image,
+    Info,
+    Role,
+  } from "$lib/utils/schema";
   import type { IconType } from "$lib/components/Icon.svelte";
 
   export async function load({ fetch }) {
-    const [
-      faqs,
-      openRoles,
-      applicationSteps,
-      { applicationBlurb },
-    ] = (await Promise.all([
+    const [faqs, openRoles, applicationSteps, info] = (await Promise.all([
       fetch("/server/apply-faq.json").then((res: Response) => res.json()),
       fetch("/server/open-roles.json").then((res: Response) => res.json()),
       fetch("/server/application-steps.json").then((res: Response) =>
@@ -23,7 +24,17 @@
       fetch("/server/info.json").then((res: Response) => res.json()),
     ])) as [FAQ[], Role[], ApplicationStep, Info];
 
-    return { props: { faqs, openRoles, applicationSteps, applicationBlurb } };
+    const { applicationBlurb } = info;
+
+    return {
+      props: {
+        faqs,
+        openRoles,
+        applicationSteps,
+        applicationBlurb,
+        projectsImage: info.homepagePartnerships,
+      },
+    };
   }
 </script>
 
@@ -32,6 +43,7 @@
   export let openRoles: Role[];
   export let applicationSteps: ApplicationStep[];
   export let applicationBlurb: string;
+  export let projectsImage: Image;
 
   const iconMap: Record<string, IconType> = {
     Calendar: "calendar",
@@ -45,7 +57,7 @@
     title="Students | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/join/students"
-    image="/howwewework.jpg"
+    image={projectsImage.src}
   />
 </svelte:head>
 

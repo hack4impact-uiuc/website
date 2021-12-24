@@ -26,7 +26,14 @@
 
     const { whereWeWork } = info;
 
-    return { props: { whereWeWork, faqs, testimonialNonprofit } };
+    return {
+      props: {
+        whereWeWork,
+        faqs,
+        testimonialNonprofit,
+        projectsImage: info.homepagePartnerships,
+      },
+    };
   }
 </script>
 
@@ -79,6 +86,7 @@
   export let faqs: FAQ[];
   export let whereWeWork: Image;
   export let testimonialNonprofit: Project;
+  export let projectsImage: Image;
 </script>
 
 <svelte:head>
@@ -86,7 +94,7 @@
     title="Sponsors | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
     url="https://uiuc.hack4impact.org/join/sponsors"
-    image="/howwewework.jpg"
+    image={projectsImage.src}
   />
 </svelte:head>
 
