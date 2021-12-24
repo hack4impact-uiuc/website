@@ -1,6 +1,6 @@
 # UIUC Chapter Website
 
-The currently-WIP upcoming version of the Hack4Impact UIUC Chapter Website.
+The new Hack4Impact UIUC Chapter Website.
 
 ## Motivation
 
