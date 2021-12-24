@@ -81,7 +81,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    needs: [format, lint, build]
+    needs: [format, lint, check]
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
