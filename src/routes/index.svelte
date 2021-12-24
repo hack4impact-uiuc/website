@@ -34,7 +34,7 @@
   <Head
     title="Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/projects"
+    url="https://uiuc.hack4impact.org"
     image={partnerships.src}
   />
 </svelte:head>
