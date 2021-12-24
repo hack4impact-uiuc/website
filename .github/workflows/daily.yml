@@ -79,7 +79,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Build
     needs: [format, lint, check]
     steps:
       - name: Check out repository
