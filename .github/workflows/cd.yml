@@ -21,8 +21,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-format
+          path: node_modules
+          key: cd-check-format
 
       - name: Install dependencies
         run: npm install
@@ -45,8 +45,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-format
+          path: node_modules
+          key: cd-check-format
 
       - name: Install dependencies
         run: npm install
@@ -69,8 +69,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-cache
+          path: node_modules
+          key: cd-check-cache
 
       - name: Install dependencies
         run: npm install
@@ -78,7 +78,7 @@ jobs:
       - name: Run svelte-check
         run: npm run check
 
-  deploy:
+  build:
     runs-on: ubuntu-latest
     name: Deploy
     needs: [format, lint, check]
@@ -94,8 +94,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-build-cache
+          path: node_modules
+          key: cd-build-cache
 
       - name: Install dependencies
         run: npm install
@@ -105,6 +105,28 @@ jobs:
           CONTENTFUL_DELIVERY_KEY: ${{ secrets.CONTENTFUL_DELIVERY_KEY }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run build
+
+      - name: Cache build output
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: cd-build-output-cache
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    needs: [build]
+    steps:
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Fetch build output
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: cd-build-output-cache
 
       - name: Install Surge
         run: npm install -g surge

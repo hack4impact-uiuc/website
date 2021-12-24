@@ -20,8 +20,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-format
+          path: node_modules
+          key: daily-check-format
 
       - name: Install dependencies
         run: npm install
@@ -44,8 +44,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-format
+          path: node_modules
+          key: daily-check-format
 
       - name: Install dependencies
         run: npm install
@@ -68,8 +68,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-check-cache
+          path: node_modules
+          key: daily-check-cache
 
       - name: Install dependencies
         run: npm install
@@ -77,10 +77,10 @@ jobs:
       - name: Run svelte-check
         run: npm run check
 
-  deploy:
+  build:
     runs-on: ubuntu-latest
     name: Deploy
-    needs: [format, lint, build]
+    needs: [format, lint, check]
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -93,8 +93,8 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-          path: client/node_modules
-          key: ci-build-cache
+          path: node_modules
+          key: daily-build-cache
 
       - name: Install dependencies
         run: npm install
@@ -105,8 +105,33 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run build
 
+      - name: Cache build output
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: daily-build-output-cache
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    needs: [build]
+    steps:
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Fetch build output
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: daily-build-output-cache
+
       - name: Install Surge
         run: npm install -g surge
 
       - name: Deploy website
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: surge build uiuc.hack4impact.org
