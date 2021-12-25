@@ -1,3 +1,5 @@
+import { browser } from '$app/env';
+
 <script lang="ts">
   export let title: string;
   export let description: string;
@@ -5,7 +7,7 @@
   export let image: string | undefined;
 
   $: {
-    if (document) {
+    if (browser) {
       document.title = title;
     }
   }
