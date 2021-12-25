@@ -13,16 +13,8 @@ const config = {
       lib: "src",
     },
     prerender: {
-      pages: ["*", "/404"],
+      entries: ["*", "/404"],
     },
-    vite: () =>
-      process.env.NODE_ENV === "production"
-        ? {
-            optimizeDeps: {
-              include: ["ackee-tracker", "contentful"],
-            },
-          }
-        : {},
   },
 };
 
