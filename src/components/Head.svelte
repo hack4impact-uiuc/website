@@ -1,6 +1,6 @@
-import { browser } from '$app/env';
-
 <script lang="ts">
+  import { browser } from '$app/env';
+
   export let title: string;
   export let description: string;
   export let url: string;
