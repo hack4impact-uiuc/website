@@ -29,6 +29,7 @@
 </script>
 
 <svelte:head>
+  <title>{project.name} | Hack4Impact UIUC</title>
   <Head
     title="{project.name} | Hack4Impact UIUC"
     description={project.summary}

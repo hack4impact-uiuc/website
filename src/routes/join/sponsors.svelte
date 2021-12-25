@@ -90,6 +90,7 @@
 </script>
 
 <svelte:head>
+  <title>Sponsors | Hack4Impact UIUC</title>
   <Head
     title="Sponsors | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."

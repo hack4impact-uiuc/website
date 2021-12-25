@@ -53,6 +53,7 @@
 </script>
 
 <svelte:head>
+  <title>Students | Hack4Impact UIUC</title>
   <Head
     title="Students | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."

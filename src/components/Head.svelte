@@ -5,7 +5,6 @@
   export let image: string | undefined;
 </script>
 
-<title>{title}</title>
 <meta name="description" content={description} />
 
 <meta property="og:type" content="website" />

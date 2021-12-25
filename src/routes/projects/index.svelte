@@ -52,6 +52,7 @@
 <svelte:window bind:innerWidth={windowWidth} />
 
 <svelte:head>
+  <title>Projects | Hack4Impact UIUC</title>
   <Head
     title="Projects | Hack4Impact UIUC"
     description="Uniting students to build well-engineered and impactful products for social change."
