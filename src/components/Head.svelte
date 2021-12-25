@@ -1,15 +1,12 @@
 <script lang="ts">
-  import { browser } from "$app/env";
+  import { onMount } from "svelte";
+
   export let title: string;
   export let description: string;
   export let url: string;
   export let image: string | undefined;
 
-  $: {
-    if (browser) {
-      document.title = title;
-    }
-  }
+  onMount(() => (document.title = title));
 </script>
 
 <title>{title}</title>
