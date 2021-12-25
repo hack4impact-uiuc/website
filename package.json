@@ -3,7 +3,8 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "build": "svelte-kit build && npm run minify && npm run build:images",
+    "build": "svelte-kit build && npm run build:404 && npm run minify && npm run build:images",
+    "build:404": "mv build/404/index.html build/404.html && rm -rf build/404",
     "build:images": "node scripts/loadImages.js",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
