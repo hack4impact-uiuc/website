@@ -105,32 +105,10 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run build
 
-      - name: Cache build output
-        uses: actions/cache@v2
-        with:
-          path: build
-          key: daily-build-output-cache
-
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy
-    needs: [build]
-    steps:
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-
-      - name: Fetch build output
-        uses: actions/cache@v2
-        with:
-          path: build
-          key: daily-build-output-cache
-
       - name: Install Surge
         run: npm install -g surge
 
       - name: Deploy website
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge build uiuc.hack4impact.org --token $SURGE_TOKEN
+        run: surge build uiuc.hack4impact.org
