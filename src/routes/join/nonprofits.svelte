@@ -17,19 +17,17 @@
   } from "$lib/utils/schema";
 
   export async function load({ fetch }) {
-    const [
-      applicationSteps,
-      faqs,
-      testimonialNonprofit,
-      info,
-    ] = (await Promise.all([
-      fetch("/server/nonprofit-steps.json").then((res: Response) => res.json()),
-      fetch("/server/work-faq.json").then((res: Response) => res.json()),
-      fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
-        res.json()
-      ),
-      fetch("/server/info.json").then((res: Response) => res.json()),
-    ])) as [NonprofitStep[], FAQ[], Project, Info];
+    const [applicationSteps, faqs, testimonialNonprofit, info] =
+      (await Promise.all([
+        fetch("/server/nonprofit-steps.json").then((res: Response) =>
+          res.json()
+        ),
+        fetch("/server/work-faq.json").then((res: Response) => res.json()),
+        fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
+          res.json()
+        ),
+        fetch("/server/info.json").then((res: Response) => res.json()),
+      ])) as [NonprofitStep[], FAQ[], Project, Info];
 
     return {
       props: {
