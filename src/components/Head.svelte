@@ -5,7 +5,9 @@
   export let image: string | undefined;
 
   $: {
-    document.title = title;
+    if (document) {
+      document.title = title;
+    }
   }
 </script>
 
