@@ -20,6 +20,7 @@
     color: #fff;
     padding: 10%;
     box-sizing: border-box;
+    text-align: center;
   }
 
   img {
