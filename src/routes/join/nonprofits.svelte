@@ -112,8 +112,8 @@
         products with long-lasting impact for nonprofits and those they are
         trying to help.
       </p>
-      <a class="button-link" href="/about/work" sveltekit:prefetch
-        ><Button type="primary">Learn More</Button>
+      <a class="button-link" href="/about/work" sveltekit:prefetch>
+        <Button type="primary">Learn More</Button>
       </a>
     </div>
     <figure>
@@ -144,7 +144,7 @@
     {#each faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
-        <p slot="contents">{faq.answer}</p>
+        <p slot="contents">{@html faq.answer}</p>
       </Accordion>
     {/each}
   </Section>

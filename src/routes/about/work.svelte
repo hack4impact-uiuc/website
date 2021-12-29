@@ -188,7 +188,7 @@
     {#each faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
-        <p slot="contents">{faq.answer}</p>
+        <p slot="contents">{@html faq.answer}</p>
       </Accordion>
     {/each}
   </Section>
