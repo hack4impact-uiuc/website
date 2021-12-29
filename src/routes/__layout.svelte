@@ -18,13 +18,12 @@
   import { beforeUpdate } from "svelte";
 
   export let semesters: string[] = [];
-
   export let path: string;
 
   beforeUpdate(() =>
     ackeeTracker
-      .create("https://site-analytics.vercel.app/")
-      .record("7f105537-100a-47d3-8317-4b58e426ba85")
+      .create(import.meta.env.CLIENT_ACKEE_URL)
+      .record(import.meta.env.CLIENT_ACKEE_DOMAIN_ID)
   );
 </script>
 

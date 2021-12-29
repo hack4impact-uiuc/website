@@ -42,11 +42,16 @@ npm install
 
 #### Environment
 
-Enter your Contentful space ID and content delivery key into `.env`, as shown in `.env.example`:
+Enter your Contentful space ID, Contentful content delivery key, Ackee server address, and Ackee domain ID into `.env`, as shown in `.env.example`:
 
 ```sh
 CONTENTFUL_DELIVERY_KEY="your Contentful delivery key"
 CONTENTFUL_SPACE_ID="your Contentful space ID"
+
+# Prefixed with CLIENT to be statically evaluated at build.
+# These environment variables will be exposed on the client.
+CLIENT_ACKEE_URL="your Ackee server address"
+CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 ```
 
 ### Usage

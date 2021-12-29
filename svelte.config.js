@@ -15,6 +15,9 @@ const config = {
     prerender: {
       entries: ["*", "/404"],
     },
+    vite: () => ({
+      envPrefix: "CLIENT_",
+    }),
   },
 };
 
