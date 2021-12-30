@@ -321,9 +321,10 @@
 
   #areas-of-impact div > div {
     display: flex;
+    align-items: center;
     font-size: 1rem;
     background: var(--blue);
-    border-radius: 12rem;
+    border-radius: 2rem;
     padding: 0.5rem 0.5rem;
     grid-gap: 0rem;
     color: #fff;
@@ -335,6 +336,7 @@
 
   :global(#areas-of-impact div > div > svg) {
     width: 1rem;
+    height: 1rem;
     margin: 0 0.5rem 0 0.25rem;
   }
 
