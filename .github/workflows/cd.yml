@@ -108,10 +108,11 @@ jobs:
           CLIENT_ACKEE_DOMAIN_ID: ${{ secrets.CLIENT_ACKEE_DOMAIN_ID }}
         run: npm run build
 
-      - name: Install Surge
-        run: npm install -g surge
+      - name: Install Netlify
+        run: npm install -g netlify-cli
 
       - name: Deploy website
         env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge build uiuc.hack4impact.org
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+        run: netlify deploy --dir=build --prod
