@@ -5,6 +5,7 @@ import type { Project } from "$lib/utils/schema";
 export async function get(): Promise<any> {
   const projects: Project[] = await contentWrapper.get("project", {
     order: "fields.name",
+    limit: 1000,
   });
 
   const strippedProjects = projects.map(
