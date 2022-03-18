@@ -1,10 +1,12 @@
 <script lang="ts">
-  export let path: string | undefined;
+  import { page } from "$app/stores";
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
 
   let windowWidth: number | undefined;
   let showMobileMenu = false;
+
+  $: path = $page.path;
 </script>
 
 <svelte:window

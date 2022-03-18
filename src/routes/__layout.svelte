@@ -2,14 +2,12 @@
   import Nav from "$lib/components/Nav.svelte";
   import Footer from "$lib/components/Footer.svelte";
 
-  export async function load({ page, fetch }) {
+  export async function load({ fetch }) {
     const res = await fetch("/server/project-semesters.json");
 
     const semesters: string[] = await res.json();
 
-    const { path } = page;
-
-    return { props: { semesters, path } };
+    return { props: { semesters } };
   }
 </script>
 
@@ -18,7 +16,6 @@
   import { beforeUpdate } from "svelte";
 
   export let semesters: string[] = [];
-  export let path: string;
 
   beforeUpdate(() =>
     ackeeTracker
@@ -27,7 +24,7 @@
   );
 </script>
 
-<Nav {path} />
+<Nav />
 
 <main>
   <slot />
