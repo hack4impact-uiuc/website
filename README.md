@@ -61,3 +61,7 @@ CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 `npm run build` - use `adapter-static` to export all pages as static HTML to the `build` directory
 
 `npm run preview` - view the built website (requires `npm run build` to have been run prior)
+
+---
+
+[![Vercel logo](https://user-images.githubusercontent.com/18171421/159822577-d9886b8b-0c6b-488b-8676-ba850aba9d69.svg)](https://vercel.com/?utm_source=hack4impact1&utm_campaign=oss)
