@@ -22,7 +22,8 @@
           href="https://vercel.com/?utm_source=hack4impact1&utm_campaign=oss"
           target="_blank"
         >
-          Powered by <svg
+          Powered by
+          <svg
             width="71"
             height="16"
             viewBox="0 0 71 16"
@@ -174,19 +175,19 @@
   .vercel-banner a {
     display: inline-flex;
     box-sizing: border-box;
+    font-size: 0.75rem;
     align-items: center;
     margin-top: 20px;
     padding: 10px 15px;
-    background: var(--blue);
+    background: black;
     border-radius: 4px;
     font-family: Chivo;
     color: white;
-    opacity: 0.8;
   }
 
   .vercel-banner a:hover {
     text-decoration: none;
-    opacity: 1;
+    opacity: 0.6;
   }
 
   .vercel-banner svg {
