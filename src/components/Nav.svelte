@@ -2,9 +2,12 @@
   export let path: string | undefined;
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
+  const workWithUsTabLimit = 792;
 
-  let windowWidth: number | undefined;
+  let windowWidth: number = workWithUsTabLimit + 1; // By default, make "Work With Us" tabbable
   let showMobileMenu = false;
+
+  $: workWithUsTabIndex = windowWidth > workWithUsTabLimit ? 0 : -1;
 </script>
 
 <svelte:window
@@ -48,7 +51,7 @@
       >
       <span
         class="navlink dropdown"
-        tabindex={windowWidth > 792 ? 0 : -1}
+        tabindex={workWithUsTabIndex}
         aria-current={path && path.startsWith("/join") ? "page" : undefined}
       >
         <h2>Work With Us<span id="caret"> &#9660;</span></h2>
