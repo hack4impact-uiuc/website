@@ -1,5 +1,5 @@
 declare namespace svelte.JSX {
-  interface HTMLProps<T> {
+  interface HTMLAttributes<T> {
     onenterViewport?: () => void;
   }
 }
