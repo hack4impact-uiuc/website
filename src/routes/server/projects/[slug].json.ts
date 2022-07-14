@@ -1,7 +1,9 @@
-import { contentWrapper } from "$lib/hooks";
+import { contentWrapper } from "$hooks";
+import type { Project } from "$utils/schema";
+import type { RequestHandler } from "./__types/[slug].json";
 
-export async function get({ params }): Promise<any> {
-  const projects = await contentWrapper.get("project", {
+export const get: RequestHandler = async ({ params }) => {
+  const projects: Project[] = await contentWrapper.get("project", {
     "fields.slug": params.slug,
   });
 
@@ -14,4 +16,4 @@ export async function get({ params }): Promise<any> {
       status: 404,
     };
   }
-}
+};

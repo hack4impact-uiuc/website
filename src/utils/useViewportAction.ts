@@ -1,5 +1,5 @@
 // adapted from https://svelte.dev/repl/c6a402704224403f96a3db56c2f48dfc?version=3.31.2
-let intersectionObserver;
+let intersectionObserver: IntersectionObserver | undefined;
 
 function ensureIntersectionObserver() {
   if (intersectionObserver) return;
@@ -12,15 +12,15 @@ function ensureIntersectionObserver() {
   });
 }
 
-export default function viewport(element: HTMLSpanElement) {
+export default function viewport(element: HTMLElement) {
   if (element) {
     ensureIntersectionObserver();
 
-    intersectionObserver.observe(element);
+    intersectionObserver!.observe(element);
 
     return {
       destroy() {
-        intersectionObserver.unobserve(element);
+        intersectionObserver!.unobserve(element);
       },
     };
   }

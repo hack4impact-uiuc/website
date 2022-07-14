@@ -1,13 +1,16 @@
-import { contentWrapper } from "$lib/hooks";
-import type { Project } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { Project, NonprofitTestimonialProject } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const get: RequestHandler = async () => {
   const projects: Project[] = await contentWrapper.get("project");
   const testimonialProjects = projects.filter(
     (project) =>
       project.testimonial !== undefined &&
+      project.testimonialSourceName !== undefined &&
+      project.testimonialSourceDescription !== undefined &&
       project.testimonialSourceType === "Nonprofit"
-  );
+  ) as NonprofitTestimonialProject[];
 
   const featuredTestimonialProject =
     testimonialProjects[Math.floor(Math.random() * testimonialProjects.length)];
@@ -27,4 +30,4 @@ export async function get(): Promise<any> {
       testimonialSourceImage,
     },
   };
-}
+};

@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
-  import Nav from "$lib/components/Nav.svelte";
-  import Footer from "$lib/components/Footer.svelte";
+  import Nav from "$components/Nav.svelte";
+  import Footer from "$components/Footer.svelte";
+  import type { Load } from "@sveltejs/kit";
+  import "../app.css";
 
   export async function load({ page, fetch }) {
     const res = await fetch("/server/project-semesters.json");

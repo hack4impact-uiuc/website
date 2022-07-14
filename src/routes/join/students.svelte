@@ -1,18 +1,13 @@
 <script lang="ts" context="module">
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
-  import type {
-    ApplicationStep,
-    FAQ,
-    Image,
-    Info,
-    Role,
-  } from "$lib/utils/schema";
-  import type { IconType } from "$lib/components/Icon.svelte";
+  import Accordion from "$components/Accordion.svelte";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import Step from "$components/Step.svelte";
+  import type { ApplicationStep, FAQ, Image, Info, Role } from "$utils/schema";
+  import type { IconType } from "$components/Icon.svelte";
+  import type { Load } from "@sveltejs/kit";
 
   export async function load({ fetch }) {
     const [faqs, openRoles, applicationSteps, info] = (await Promise.all([

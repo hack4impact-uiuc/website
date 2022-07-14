@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import { setImageHeight } from "$lib/utils/schema";
-  import type { Project } from "$lib/utils/schema";
+  import Button from "$components/Button.svelte";
+  import { setImageHeight } from "$utils/schema";
+  import type { Project } from "$utils/schema";
 
   export let project: Project;
 </script>

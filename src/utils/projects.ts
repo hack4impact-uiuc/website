@@ -1,15 +1,15 @@
 import { parseSemester } from "./schema";
 import type { Project } from "./schema";
 
-export interface SemesterProjects {
+export type SemesterProjects = {
   featured?: Project;
   projects: Project[];
-}
+};
 
-export interface ProjectsInfo {
+export type ProjectsInfo = {
   projectMap: Record<string, SemesterProjects>;
   semesters: string[];
-}
+};
 
 // Function copied from https://stackoverflow.com/a/12646864
 function shuffleArray<T>(array: T[]): void {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Member, setImageHeight } from "$lib/utils/schema";
+  import { type Member, setImageHeight } from "$utils/schema";
 
   export let member: Member;
   export let role: string;

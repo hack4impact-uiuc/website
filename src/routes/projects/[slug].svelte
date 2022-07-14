@@ -1,15 +1,15 @@
 <script context="module" lang="ts">
-  import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Member from "$lib/components/projects/Member.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
-  import { pSBC } from "$lib/utils/color";
-  import { setImageHeight } from "$lib/utils/schema";
-  import type { Project } from "$lib/utils/schema";
+  import DoubleBanner from "$components/DoubleBanner.svelte";
+  import Head from "$components/Head.svelte";
+  import Member from "$components/projects/Member.svelte";
+  import Section from "$components/Section.svelte";
+  import Testimonial from "$components/Testimonial.svelte";
+  import { pSBC } from "$utils/color";
+  import { setImageHeight } from "$utils/schema";
+  import type { Project } from "$utils/schema";
+  import type { Load } from "./__types/[slug]";
 
-  export async function load({ page, fetch }) {
-    const { params } = page;
+  export const load: Load = async ({ params, fetch }) => {
     const { slug } = params;
     const res = await fetch(`/server/projects/${slug}.json`);
 
@@ -21,7 +21,7 @@
     }
 
     return { props: { project } };
-  }
+  };
 </script>
 
 <script lang="ts">

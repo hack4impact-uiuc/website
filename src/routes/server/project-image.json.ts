@@ -1,7 +1,8 @@
-import { contentWrapper } from "$lib/hooks";
-import type { Project } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { Project } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const get: RequestHandler = async () => {
   const projects: Project[] = await contentWrapper.get("project", {
     "fields.featured": true,
   });
@@ -16,4 +17,4 @@ export async function get(): Promise<any> {
   return {
     body: headerImageProject.headerImage,
   };
-}
+};

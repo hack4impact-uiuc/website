@@ -1,15 +1,16 @@
 <script context="module" lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
-  import { setImageHeight } from "$lib/utils/schema";
-  import type { Image, Info, Member } from "$lib/utils/schema";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import Step from "$components/Step.svelte";
+  import Testimonial from "$components/Testimonial.svelte";
+  import { setImageHeight, type TestimonialMember } from "$utils/schema";
+  import type { Image, Info } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
-    const [info, testimonialMember] = await Promise.all([
+  export const load: Load = async ({ fetch }) => {
+    const [info, testimonialMember] = (await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
       fetch("/server/member-testimonial.json").then((res: Response) =>
         res.json()

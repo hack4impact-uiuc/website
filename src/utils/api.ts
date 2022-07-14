@@ -1,3 +1,5 @@
+// @ts-nocheck
+// TODO: Type this file correctly
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
@@ -31,11 +33,11 @@ export class ContentWrapper {
     }
 
     const [entries, schema] = await Promise.all([
-      this.client.getEntries({
+      this.client!.getEntries({
         content_type: entity,
         ...options,
       }),
-      this.client.getContentType(entity),
+      this.client!.getContentType(entity),
     ]);
 
     return Promise.all(
@@ -61,7 +63,7 @@ export class ContentWrapper {
             case "Array":
               res[id] = await Promise.all(
                 res[id].map((link: any) =>
-                  this.transformLink(link, field.items.linkType)
+                  this.transformLink(link, field.items!.linkType)
                 )
               );
               break;
@@ -121,7 +123,7 @@ export class ContentWrapper {
       case "Entry":
         return await this.serialize(
           link,
-          await this.client.getContentType(link.sys.contentType.sys.id)
+          await this.client!.getContentType(link.sys.contentType.sys.id)
         );
 
       case undefined:

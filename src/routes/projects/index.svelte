@@ -1,23 +1,24 @@
 <script context="module" lang="ts">
-  import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import { semesterToId } from "$lib/utils/schema";
-  import viewport from "$lib/utils/useViewportAction";
-  import type { ProjectsInfo, SemesterProjects } from "$lib/utils/projects";
-  import type { Image, Info } from "$lib/utils/schema";
+  import FeaturedBanner from "$components/projects/FeaturedBanner.svelte";
+  import Head from "$components/Head.svelte";
+  import ProjectCard from "$components/projects/ProjectCard.svelte";
+  import Section from "$components/Section.svelte";
+  import { semesterToId } from "$utils/schema";
+  import viewport from "$utils/useViewportAction";
+  import type { ProjectsInfo, SemesterProjects } from "$utils/projects";
+  import type { Image, Info } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
-    const [projectsInfo, info] = await Promise.all([
+  export const load: Load = async ({ fetch }) => {
+    const [projectsInfo, info] = (await Promise.all([
       fetch("/server/projects.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
-    ] as [ProjectsInfo, Info]);
+    ])) as [ProjectsInfo, Info];
 
     return {
       props: { ...projectsInfo, projectsImage: info.homepagePartnerships },
     };
-  }
+  };
 </script>
 
 <script lang="ts">

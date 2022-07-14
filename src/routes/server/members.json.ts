@@ -1,7 +1,8 @@
-import { contentWrapper } from "$lib/hooks";
-import type { Member } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { Member } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const get: RequestHandler = async () => {
   const members: Member[] = await contentWrapper.get("member", {
     order: "fields.name",
     limit: 1000,
@@ -31,4 +32,4 @@ export async function get(): Promise<any> {
       alumni: members.filter((member) => !member.active),
     },
   };
-}
+};

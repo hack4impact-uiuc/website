@@ -1,11 +1,12 @@
-import { contentWrapper } from "$lib/hooks";
-import type { Member } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { Member, TestimonialMember } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const get: RequestHandler = async () => {
   const members: Member[] = await contentWrapper.get("member");
   const testimonialMembers = members.filter(
     (member) => member.testimonial !== undefined
-  );
+  ) as TestimonialMember[];
 
   const featuredTestimonialMember =
     testimonialMembers[Math.floor(Math.random() * testimonialMembers.length)];
@@ -13,4 +14,4 @@ export async function get(): Promise<any> {
   return {
     body: featuredTestimonialMember,
   };
-}
+};

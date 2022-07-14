@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Member from "$lib/components/Member.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import type { Image, Info, Member as MemberType } from "$lib/utils/schema";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Member from "$components/Member.svelte";
+  import Section from "$components/Section.svelte";
+  import type { Image, Info, Member as MemberType } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
   interface MembersResponse {
     active: MemberType[];
