@@ -86,7 +86,7 @@
     </div>
     {#if !showAllAlumni && alumni.length > 12}
       <div id="show-all" class="row-center">
-        <Button type="secondary" onClick={toggleAlumni}>Show All</Button>
+        <Button type="secondary" on:click={toggleAlumni}>Show All</Button>
       </div>
     {/if}
   </section>
