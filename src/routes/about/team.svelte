@@ -11,7 +11,7 @@
     alumni: MemberType[];
   }
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [members, info] = (await Promise.all([
       fetch("/server/members.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
@@ -23,7 +23,7 @@
         team: info.chapterPicture,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">

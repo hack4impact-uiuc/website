@@ -1,28 +1,29 @@
 <script lang="ts" context="module">
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Icon from "$lib/components/Icon.svelte";
-  import Info from "$lib/components/sponsors/Info.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Stats from "$lib/components/sponsors/Stats.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
+  import Accordion from "$components/Accordion.svelte";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Icon from "$components/Icon.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import Info from "$components/sponsors/Info.svelte";
+  import Stats from "$components/sponsors/Stats.svelte";
+  import Testimonial from "$components/Testimonial.svelte";
   import type {
     FAQ,
     Image,
     Info as SiteInfo,
-    Project,
-  } from "$lib/utils/schema";
+    NonprofitTestimonialProject,
+  } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [info, faqs, testimonialNonprofit] = (await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
       fetch("/server/sponsor-faq.json").then((res: Response) => res.json()),
       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
         res.json()
       ),
-    ])) as [SiteInfo, FAQ[], Project];
+    ])) as [SiteInfo, FAQ[], NonprofitTestimonialProject];
 
     const { whereWeWork } = info;
 
@@ -34,7 +35,7 @@
         projectsImage: info.homepagePartnerships,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -85,7 +86,7 @@
 
   export let faqs: FAQ[];
   export let whereWeWork: Image;
-  export let testimonialNonprofit: Project;
+  export let testimonialNonprofit: NonprofitTestimonialProject;
   export let projectsImage: Image;
 </script>
 

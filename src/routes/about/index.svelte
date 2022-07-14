@@ -15,7 +15,7 @@
       fetch("/server/member-testimonial.json").then((res: Response) =>
         res.json()
       ),
-    ] as [Info, Member]);
+    ])) as [Info, TestimonialMember];
 
     return {
       props: {
@@ -24,13 +24,13 @@
         testimonialMember,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
   export let projectsImage: Image;
   export let team: Image;
-  export let testimonialMember: Member;
+  export let testimonialMember: TestimonialMember;
 </script>
 
 <svelte:head>

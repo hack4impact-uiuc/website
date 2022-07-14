@@ -9,14 +9,14 @@
   import type { FAQ, Image, Info } from "$utils/schema";
   import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
-    const [faqs, info] = await Promise.all([
+  export const load: Load = async ({ fetch }) => {
+    const [faqs, info] = (await Promise.all([
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
-    ] as [FAQ[], Info]);
+    ])) as [FAQ[], Info];
 
     return { props: { faqs, projectsImage: info.homepagePartnerships } };
-  }
+  };
 </script>
 
 <script lang="ts">

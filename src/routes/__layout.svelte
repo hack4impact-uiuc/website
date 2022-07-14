@@ -4,15 +4,13 @@
   import type { Load } from "@sveltejs/kit";
   import "../app.css";
 
-  export async function load({ page, fetch }) {
+  export const load: Load = async ({ url, fetch }) => {
     const res = await fetch("/server/project-semesters.json");
 
     const semesters: string[] = await res.json();
 
-    const { path } = page;
-
-    return { props: { semesters, path } };
-  }
+    return { props: { semesters, path: url.pathname } };
+  };
 </script>
 
 <script lang="ts">

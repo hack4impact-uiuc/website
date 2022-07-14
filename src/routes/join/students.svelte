@@ -9,7 +9,7 @@
   import type { IconType } from "$components/Icon.svelte";
   import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [faqs, openRoles, applicationSteps, info] = (await Promise.all([
       fetch("/server/apply-faq.json").then((res: Response) => res.json()),
       fetch("/server/open-roles.json").then((res: Response) => res.json()),
@@ -30,7 +30,7 @@
         projectsImage: info.homepagePartnerships,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">

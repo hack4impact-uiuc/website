@@ -17,7 +17,7 @@
   } from "$utils/schema";
   import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [applicationSteps, faqs, testimonialNonprofit, info] =
       (await Promise.all([
         fetch("/server/nonprofit-steps.json").then((res: Response) =>
@@ -28,7 +28,7 @@
           res.json()
         ),
         fetch("/server/info.json").then((res: Response) => res.json()),
-      ])) as [NonprofitStep[], FAQ[], Project, Info];
+      ])) as [NonprofitStep[], FAQ[], NonprofitTestimonialProject, Info];
 
     return {
       props: {
@@ -38,14 +38,14 @@
         projectsImage: info.homepagePartnerships,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let projectsImage: Image;
-  export let testimonialNonprofit: Project;
+  export let testimonialNonprofit: NonprofitTestimonialProject;
 </script>
 
 <svelte:head>
