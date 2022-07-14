@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { afterNavigate } from "$app/navigation";
+
   export let path: string | undefined;
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
@@ -8,12 +10,11 @@
   let showMobileMenu = false;
 
   $: workWithUsTabIndex = windowWidth > workWithUsTabLimit ? 0 : -1;
+
+  afterNavigate(() => (showMobileMenu = false));
 </script>
 
-<svelte:window
-  bind:innerWidth={windowWidth}
-  on:sveltekit:navigation-end={() => (showMobileMenu = false)}
-/>
+<svelte:window bind:innerWidth={windowWidth} />
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
