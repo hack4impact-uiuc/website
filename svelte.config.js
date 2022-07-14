@@ -9,6 +9,7 @@ const config = {
     adapter: adapter(),
     prerender: {
       entries: ["*", "/404"],
+      default: true,
     },
   },
 };
