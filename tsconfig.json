@@ -13,7 +13,7 @@
       "$utils/*": ["src/utils/*"],
       "$components/*": ["src/components/*"],
       "$hooks": ["src/hooks.ts"]
-    }  
+    }
   },
   "exclude": ["./scripts/*"]
 }
