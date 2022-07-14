@@ -81,11 +81,12 @@
     </aside>
     <article>
       {#each semesters as semester, idx}
+        {@const featured = projectMap[semester].featured}
         <section class="semester-section">
           <span class="scroll-anchor" id={semesterToId(semester)} />
           <h2>{semester}</h2>
-          {#if projectMap[semester].featured !== undefined}
-            <FeaturedBanner project={projectMap[semester].featured} />
+          {#if featured}
+            <FeaturedBanner project={featured} />
           {/if}
           <span use:viewport on:enterViewport={() => setSemester(idx)} />
           <div class="project-grid">

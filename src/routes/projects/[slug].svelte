@@ -42,12 +42,14 @@
   rightColor={pSBC(-0.2, project.accentColor)}
 >
   <span slot="left">
-    <img
-      id="nonprofit-logo"
-      src={setImageHeight(project.logoWhite.src, 100)}
-      alt={project.logoWhite.alt}
-      draggable="false"
-    />
+    {#if project.logoWhite}
+      <img
+        id="nonprofit-logo"
+        src={setImageHeight(project.logoWhite.src, 100)}
+        alt={project.logoWhite.alt}
+        draggable="false"
+      />
+    {/if}
     <h1>{project.name}</h1>
     <h2 id="project-summary">{project.summary}</h2></span
   >
