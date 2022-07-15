@@ -1,5 +1,3 @@
-// @ts-nocheck
-// TODO: Type this file correctly
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
@@ -27,7 +25,7 @@ export class ContentWrapper {
     });
   }
 
-  async get<T>(entity: string, options: any = {}): Promise<T[]> {
+  async get(entity: string, options: any = {}): Promise<any[]> {
     if (this.client === undefined) {
       await this.build();
     }
@@ -41,13 +39,11 @@ export class ContentWrapper {
     ]);
 
     return Promise.all(
-      entries.items.map(
-        async (entry) => (await this.serialize(entry, schema)) as T
-      )
+      entries.items.map(async (entry) => await this.serialize(entry, schema))
     );
   }
 
-  async serialize<T>(entry: Entry<T>, schema: ContentType): Promise<T> {
+  async serialize(entry: Entry<any>, schema: ContentType): Promise<any> {
     const res = entry.fields;
 
     await Promise.all(
