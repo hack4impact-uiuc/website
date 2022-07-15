@@ -3,8 +3,8 @@
   "description": "Hack4Impact UIUC's chapter website.",
   "version": "0.0.1",
   "scripts": {
-    "build": "vite build && npm run build:images",
-    "build:images": "node scripts/loadImages.js",
+    "build": "vite build",
+    "postbuild": "node scripts/loadImages.js",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "dev": "vite dev",
