@@ -1,7 +1,6 @@
 <script lang="ts">
   import { afterNavigate } from "$app/navigation";
-
-  export let path: string | undefined;
+  import { page } from "$app/stores";
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
   const workWithUsTabLimit = 792;
@@ -10,6 +9,7 @@
   let showMobileMenu = false;
 
   $: workWithUsTabIndex = windowWidth > workWithUsTabLimit ? 0 : -1;
+  $: path = $page.url.pathname;
 
   afterNavigate(() => (showMobileMenu = false));
 </script>

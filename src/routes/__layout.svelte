@@ -3,12 +3,12 @@
   import Footer from "$components/Footer.svelte";
   import type { Load } from "@sveltejs/kit";
 
-  export const load: Load = async ({ url, fetch }) => {
+  export const load: Load = async ({ fetch }) => {
     const res = await fetch("/server/project-semesters.json");
 
     const semesters: string[] = await res.json();
 
-    return { props: { semesters, path: url.pathname } };
+    return { props: { semesters } };
   };
 </script>
 
@@ -18,7 +18,6 @@
   import "../app.css";
 
   export let semesters: string[] = [];
-  export let path: string;
 
   if (
     import.meta.env.CLIENT_ACKEE_URL &&
@@ -32,7 +31,7 @@
   }
 </script>
 
-<Nav {path} />
+<Nav />
 
 <main>
   <slot />
