@@ -2,7 +2,7 @@ import { contentWrapper } from "$hooks";
 import type { Project } from "$utils/schema";
 import type { RequestHandler } from "./__types/[slug].json";
 
-export const get: RequestHandler = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
   const projects: Project[] = await contentWrapper.get("project", {
     "fields.slug": params.slug,
   });

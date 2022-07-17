@@ -2,7 +2,7 @@ import { contentWrapper } from "$hooks";
 import type { Member, TestimonialMember } from "$utils/schema";
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
   const members: Member[] = await contentWrapper.get("member");
   const testimonialMembers = members.filter(
     (member) => member.testimonial !== undefined

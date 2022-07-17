@@ -2,7 +2,7 @@ import { contentWrapper } from "$hooks";
 import type { Member } from "$utils/schema";
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
   const members: Member[] = await contentWrapper.get("member", {
     order: "fields.name",
     limit: 1000,

@@ -2,7 +2,7 @@ import { contentWrapper } from "$hooks";
 import type { NonprofitStep } from "$utils/schema";
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
   const nonprofitSteps: NonprofitStep[] = await contentWrapper.get(
     "nonprofitStep",
     {

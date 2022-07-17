@@ -12,4 +12,7 @@ export default defineConfig({
       $hooks: resolve("./src/hooks.ts"),
     },
   },
+  server: {
+    port: 3000,
+  },
 });

@@ -2,7 +2,7 @@ import { contentWrapper } from "$hooks";
 import type { Project, NonprofitTestimonialProject } from "$utils/schema";
 import type { RequestHandler } from "@sveltejs/kit";
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
   const projects: Project[] = await contentWrapper.get("project");
   const testimonialProjects = projects.filter(
     (project) =>
