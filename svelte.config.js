@@ -12,6 +12,7 @@ const config = {
     prerender: {
       default: true,
     },
+    inlineStyleThreshold: 1024,
   },
 };
 
