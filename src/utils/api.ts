@@ -12,7 +12,7 @@ export class ContentWrapper {
     this.accessToken = accessToken;
   }
 
-  async build() {
+  async build(): Promise<ContentfulClientApi> {
     const contentful = await import("contentful");
     const createClient =
       process.env.NODE_ENV === "production"
@@ -23,19 +23,20 @@ export class ContentWrapper {
       space: this.space,
       accessToken: this.accessToken,
     });
+    return this.client;
   }
 
   async get(entity: string, options: any = {}): Promise<any[]> {
     if (this.client === undefined) {
-      await this.build();
+      this.client = await this.build();
     }
 
     const [entries, schema] = await Promise.all([
-      this.client!.getEntries({
+      this.client.getEntries({
         content_type: entity,
         ...options,
       }),
-      this.client!.getContentType(entity),
+      this.client.getContentType(entity),
     ]);
 
     return Promise.all(
@@ -110,6 +111,10 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
+    if (this.client === undefined) {
+      this.client = await this.build();
+    }
+
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?
@@ -119,7 +124,7 @@ export class ContentWrapper {
       case "Entry":
         return await this.serialize(
           link,
-          await this.client!.getContentType(link.sys.contentType.sys.id)
+          await this.client.getContentType(link.sys.contentType.sys.id)
         );
 
       case undefined:
