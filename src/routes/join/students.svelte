@@ -47,14 +47,12 @@
   };
 </script>
 
-<svelte:head>
-  <Head
-    title="Students | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/join/students"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="Students | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/join/students"
+  image={projectsImage.src}
+/>
 
 <Section padding="60px">
   <h1>Students</h1>

@@ -28,14 +28,12 @@
   export let project: Project;
 </script>
 
-<svelte:head>
-  <Head
-    title="{project.name} | Hack4Impact UIUC"
-    description={project.summary}
-    url="https://uiuc.hack4impact.org/projects/{project.slug}"
-    image={project.headerImage?.src}
-  />
-</svelte:head>
+<Head
+  title="{project.name} | Hack4Impact UIUC"
+  description={project.summary}
+  url="https://uiuc.hack4impact.org/projects/{project.slug}"
+  image={project.headerImage?.src}
+/>
 
 <DoubleBanner
   leftColor={project.accentColor}

@@ -90,14 +90,12 @@
   export let projectsImage: Image;
 </script>
 
-<svelte:head>
-  <Head
-    title="Sponsors | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/join/sponsors"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="Sponsors | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/join/sponsors"
+  image={projectsImage.src}
+/>
 
 <Section padding="60px">
   <h1>Sponsors</h1>

@@ -36,14 +36,12 @@
   export let projects: Project[];
 </script>
 
-<svelte:head>
-  <Head
-    title="Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org"
-    image={partnerships.src}
-  />
-</svelte:head>
+<Head
+  title="Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org"
+  image={partnerships.src}
+/>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <span slot="left">

@@ -33,14 +33,12 @@
   export let testimonialMember: TestimonialMember;
 </script>
 
-<svelte:head>
-  <Head
-    title="About Us | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/about"
-    image={team.src}
-  />
-</svelte:head>
+<Head
+  title="About Us | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/about"
+  image={team.src}
+/>
 
 <Section id="intro" padding="60px">
   <div class="about-intro">

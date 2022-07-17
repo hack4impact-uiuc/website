@@ -52,14 +52,12 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<svelte:head>
-  <Head
-    title="Projects | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/projects"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="Projects | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/projects"
+  image={projectsImage.src}
+/>
 
 <Section padding="60px">
   <h1>Projects</h1>

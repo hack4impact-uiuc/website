@@ -24,14 +24,12 @@
   export let projectsImage: Image;
 </script>
 
-<svelte:head>
-  <Head
-    title="How We Work | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/about/work"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="How We Work | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/about/work"
+  image={projectsImage.src}
+/>
 
 <Section id="intro" padding="40px">
   <Row gap={84} reverseOnMobile
