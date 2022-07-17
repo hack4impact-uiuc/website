@@ -1,6 +1,7 @@
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { dev } from "$app/env";
 
 export class ContentWrapper {
   client: ContentfulClientApi | undefined;
@@ -14,10 +15,9 @@ export class ContentWrapper {
 
   async build(): Promise<ContentfulClientApi> {
     const contentful = await import("contentful");
-    const createClient =
-      process.env.NODE_ENV === "production"
-        ? contentful.default.createClient
-        : contentful.createClient;
+    const createClient = !dev
+      ? contentful.default.createClient
+      : contentful.createClient;
 
     this.client = createClient({
       space: this.space,
