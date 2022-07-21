@@ -30,7 +30,7 @@ Most crucially, Contentful's rich text support is utilized in our project pages 
 
 ### Setup
 
-This website requires Node 14 in order to support SvelteKit.
+This website requires Node 16 in order to support SvelteKit.
 
 #### Dependencies
 
