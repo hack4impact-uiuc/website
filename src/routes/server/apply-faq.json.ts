@@ -1,7 +1,8 @@
-import { contentWrapper } from "$lib/hooks";
-import type { FAQ } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { FAQ } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const GET: RequestHandler = async () => {
   const faqs: FAQ[] = await contentWrapper.get("faq", {
     order: "fields.order",
     "fields.category": "Apply",
@@ -10,4 +11,4 @@ export async function get(): Promise<any> {
   return {
     body: faqs,
   };
-}
+};

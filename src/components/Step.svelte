@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import Icon, { IconType } from "$lib/components/Icon.svelte";
+  import Icon, { type IconType } from "$components/Icon.svelte";
 </script>
 
 <script lang="ts">

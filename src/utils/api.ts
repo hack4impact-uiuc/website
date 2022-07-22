@@ -1,6 +1,7 @@
 import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { dev } from "$app/env";
 
 export class ContentWrapper {
   client: ContentfulClientApi | undefined;
@@ -12,22 +13,22 @@ export class ContentWrapper {
     this.accessToken = accessToken;
   }
 
-  async build() {
+  async build(): Promise<ContentfulClientApi> {
     const contentful = await import("contentful");
-    const createClient =
-      process.env.NODE_ENV === "production"
-        ? contentful.default.createClient
-        : contentful.createClient;
+    const createClient = !dev
+      ? contentful.default.createClient
+      : contentful.createClient;
 
     this.client = createClient({
       space: this.space,
       accessToken: this.accessToken,
     });
+    return this.client;
   }
 
-  async get<T>(entity: string, options: any = {}): Promise<T[]> {
+  async get(entity: string, options: any = {}): Promise<any[]> {
     if (this.client === undefined) {
-      await this.build();
+      this.client = await this.build();
     }
 
     const [entries, schema] = await Promise.all([
@@ -39,13 +40,11 @@ export class ContentWrapper {
     ]);
 
     return Promise.all(
-      entries.items.map(
-        async (entry) => (await this.serialize(entry, schema)) as T
-      )
+      entries.items.map(async (entry) => await this.serialize(entry, schema))
     );
   }
 
-  async serialize<T>(entry: Entry<T>, schema: ContentType): Promise<T> {
+  async serialize(entry: Entry<any>, schema: ContentType): Promise<any> {
     const res = entry.fields;
 
     await Promise.all(
@@ -61,7 +60,7 @@ export class ContentWrapper {
             case "Array":
               res[id] = await Promise.all(
                 res[id].map((link: any) =>
-                  this.transformLink(link, field.items.linkType)
+                  this.transformLink(link, field.items!.linkType)
                 )
               );
               break;
@@ -112,6 +111,10 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
+    if (this.client === undefined) {
+      this.client = await this.build();
+    }
+
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?

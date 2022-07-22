@@ -1,16 +1,20 @@
 <script lang="ts">
-  export let path: string | undefined;
+  import { afterNavigate } from "$app/navigation";
+  import { page } from "$app/stores";
 
   const dropdownRoutes = ["Nonprofits", "Sponsors", "Students"];
+  const workWithUsTabLimit = 792;
 
-  let windowWidth: number | undefined;
+  let windowWidth: number = workWithUsTabLimit + 1; // By default, make "Work With Us" tabbable
   let showMobileMenu = false;
+
+  $: workWithUsTabIndex = windowWidth > workWithUsTabLimit ? 0 : -1;
+  $: path = $page.url.pathname;
+
+  afterNavigate(() => (showMobileMenu = false));
 </script>
 
-<svelte:window
-  bind:innerWidth={windowWidth}
-  on:sveltekit:navigation-end={() => (showMobileMenu = false)}
-/>
+<svelte:window bind:innerWidth={windowWidth} />
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
@@ -48,7 +52,7 @@
       >
       <span
         class="navlink dropdown"
-        tabindex={windowWidth > 792 ? 0 : -1}
+        tabindex={workWithUsTabIndex}
         aria-current={path && path.startsWith("/join") ? "page" : undefined}
       >
         <h2>Work With Us<span id="caret"> &#9660;</span></h2>

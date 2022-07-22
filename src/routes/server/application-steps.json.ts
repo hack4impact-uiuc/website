@@ -1,7 +1,8 @@
-import { contentWrapper } from "$lib/hooks";
-import type { ApplicationStep } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import type { ApplicationStep } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const GET: RequestHandler = async () => {
   const applicationSteps: ApplicationStep[] = await contentWrapper.get(
     "applicationStep",
     {
@@ -12,4 +13,4 @@ export async function get(): Promise<any> {
   return {
     body: applicationSteps,
   };
-}
+};

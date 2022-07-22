@@ -1,16 +1,17 @@
 <script context="module" lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Member from "$lib/components/Member.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import type { Image, Info, Member as MemberType } from "$lib/utils/schema";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Member from "$components/Member.svelte";
+  import Section from "$components/Section.svelte";
+  import type { Image, Info, Member as MemberType } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
   interface MembersResponse {
     active: MemberType[];
     alumni: MemberType[];
   }
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [members, info] = (await Promise.all([
       fetch("/server/members.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
@@ -22,7 +23,7 @@
         team: info.chapterPicture,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -37,14 +38,12 @@
   }
 </script>
 
-<svelte:head>
-  <Head
-    title="The Team | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/about/team"
-    image={team.src}
-  />
-</svelte:head>
+<Head
+  title="The Team | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/about/team"
+  image={team.src}
+/>
 
 <Section>
   <h1 id="title">The Team</h1>
@@ -86,7 +85,7 @@
     </div>
     {#if !showAllAlumni && alumni.length > 12}
       <div id="show-all" class="row-center">
-        <Button type="secondary" onClick={toggleAlumni}>Show All</Button>
+        <Button type="secondary" on:click={toggleAlumni}>Show All</Button>
       </div>
     {/if}
   </section>

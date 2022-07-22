@@ -1,21 +1,22 @@
 <script lang="ts" context="module">
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import RoleCard from "$lib/components/RoleCard.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import type { FAQ, Image, Info } from "$lib/utils/schema";
+  import Accordion from "$components/Accordion.svelte";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import RoleCard from "$components/RoleCard.svelte";
+  import Section from "$components/Section.svelte";
+  import Step from "$components/Step.svelte";
+  import Row from "$components/Row.svelte";
+  import type { FAQ, Image, Info } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
-    const [faqs, info] = await Promise.all([
+  export const load: Load = async ({ fetch }) => {
+    const [faqs, info] = (await Promise.all([
       fetch("/server/work-faq.json").then((res: Response) => res.json()),
       fetch("/server/info.json").then((res: Response) => res.json()),
-    ] as [FAQ[], Info]);
+    ])) as [FAQ[], Info];
 
     return { props: { faqs, projectsImage: info.homepagePartnerships } };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -23,14 +24,12 @@
   export let projectsImage: Image;
 </script>
 
-<svelte:head>
-  <Head
-    title="How We Work | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/about/work"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="How We Work | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/about/work"
+  image={projectsImage.src}
+/>
 
 <Section id="intro" padding="40px">
   <Row gap={84} reverseOnMobile

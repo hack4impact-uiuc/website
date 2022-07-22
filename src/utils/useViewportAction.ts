@@ -1,8 +1,8 @@
 // adapted from https://svelte.dev/repl/c6a402704224403f96a3db56c2f48dfc?version=3.31.2
-let intersectionObserver;
+let intersectionObserver: IntersectionObserver | undefined;
 
 function ensureIntersectionObserver() {
-  if (intersectionObserver) return;
+  if (intersectionObserver) return intersectionObserver;
 
   intersectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -10,11 +10,12 @@ function ensureIntersectionObserver() {
       entry.target.dispatchEvent(new CustomEvent(eventName));
     });
   });
+  return intersectionObserver;
 }
 
-export default function viewport(element: HTMLSpanElement) {
+export default function viewport(element: HTMLElement) {
   if (element) {
-    ensureIntersectionObserver();
+    const intersectionObserver = ensureIntersectionObserver();
 
     intersectionObserver.observe(element);
 

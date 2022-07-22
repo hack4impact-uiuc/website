@@ -1,20 +1,15 @@
 <script lang="ts" context="module">
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
-  import type {
-    ApplicationStep,
-    FAQ,
-    Image,
-    Info,
-    Role,
-  } from "$lib/utils/schema";
-  import type { IconType } from "$lib/components/Icon.svelte";
+  import Accordion from "$components/Accordion.svelte";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import Step from "$components/Step.svelte";
+  import type { ApplicationStep, FAQ, Image, Info, Role } from "$utils/schema";
+  import type { IconType } from "$components/Icon.svelte";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [faqs, openRoles, applicationSteps, info] = (await Promise.all([
       fetch("/server/apply-faq.json").then((res: Response) => res.json()),
       fetch("/server/open-roles.json").then((res: Response) => res.json()),
@@ -35,7 +30,7 @@
         projectsImage: info.homepagePartnerships,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -52,14 +47,12 @@
   };
 </script>
 
-<svelte:head>
-  <Head
-    title="Students | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/join/students"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="Students | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/join/students"
+  image={projectsImage.src}
+/>
 
 <Section padding="60px">
   <h1>Students</h1>

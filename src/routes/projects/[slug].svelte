@@ -1,15 +1,15 @@
 <script context="module" lang="ts">
-  import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Member from "$lib/components/projects/Member.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
-  import { pSBC } from "$lib/utils/color";
-  import { setImageHeight } from "$lib/utils/schema";
-  import type { Project } from "$lib/utils/schema";
+  import DoubleBanner from "$components/DoubleBanner.svelte";
+  import Head from "$components/Head.svelte";
+  import Member from "$components/projects/Member.svelte";
+  import Section from "$components/Section.svelte";
+  import Testimonial from "$components/Testimonial.svelte";
+  import { pSBC } from "$utils/color";
+  import { setImageHeight } from "$utils/schema";
+  import type { Project } from "$utils/schema";
+  import type { Load } from "./__types/[slug]";
 
-  export async function load({ page, fetch }) {
-    const { params } = page;
+  export const load: Load = async ({ params, fetch }) => {
     const { slug } = params;
     const res = await fetch(`/server/projects/${slug}.json`);
 
@@ -21,33 +21,33 @@
     }
 
     return { props: { project } };
-  }
+  };
 </script>
 
 <script lang="ts">
   export let project: Project;
 </script>
 
-<svelte:head>
-  <Head
-    title="{project.name} | Hack4Impact UIUC"
-    description={project.summary}
-    url="https://uiuc.hack4impact.org/projects/{project.slug}"
-    image={project.headerImage?.src}
-  />
-</svelte:head>
+<Head
+  title="{project.name} | Hack4Impact UIUC"
+  description={project.summary}
+  url="https://uiuc.hack4impact.org/projects/{project.slug}"
+  image={project.headerImage?.src}
+/>
 
 <DoubleBanner
   leftColor={project.accentColor}
   rightColor={pSBC(-0.2, project.accentColor)}
 >
   <span slot="left">
-    <img
-      id="nonprofit-logo"
-      src={setImageHeight(project.logoWhite.src, 100)}
-      alt={project.logoWhite.alt}
-      draggable="false"
-    />
+    {#if project.logoWhite}
+      <img
+        id="nonprofit-logo"
+        src={setImageHeight(project.logoWhite.src, 100)}
+        alt={project.logoWhite.alt}
+        draggable="false"
+      />
+    {/if}
     <h1>{project.name}</h1>
     <h2 id="project-summary">{project.summary}</h2></span
   >

@@ -1,22 +1,23 @@
 <script lang="ts" context="module">
-  import Accordion from "$lib/components/Accordion.svelte";
-  import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import Icon from "$lib/components/Icon.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import Step from "$lib/components/Step.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
+  import Accordion from "$components/Accordion.svelte";
+  import Button from "$components/Button.svelte";
+  import Head from "$components/Head.svelte";
+  import Icon from "$components/Icon.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import Step from "$components/Step.svelte";
+  import Testimonial from "$components/Testimonial.svelte";
 
   import type {
     FAQ,
     Image,
     Info,
     NonprofitStep,
-    Project,
-  } from "$lib/utils/schema";
+    NonprofitTestimonialProject,
+  } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
+  export const load: Load = async ({ fetch }) => {
     const [applicationSteps, faqs, testimonialNonprofit, info] =
       (await Promise.all([
         fetch("/server/nonprofit-steps.json").then((res: Response) =>
@@ -27,7 +28,7 @@
           res.json()
         ),
         fetch("/server/info.json").then((res: Response) => res.json()),
-      ])) as [NonprofitStep[], FAQ[], Project, Info];
+      ])) as [NonprofitStep[], FAQ[], NonprofitTestimonialProject, Info];
 
     return {
       props: {
@@ -37,24 +38,22 @@
         projectsImage: info.homepagePartnerships,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
   export let applicationSteps: NonprofitStep[];
   export let faqs: FAQ[];
   export let projectsImage: Image;
-  export let testimonialNonprofit: Project;
+  export let testimonialNonprofit: NonprofitTestimonialProject;
 </script>
 
-<svelte:head>
-  <Head
-    title="Nonprofits | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/join/nonprofits"
-    image={projectsImage.src}
-  />
-</svelte:head>
+<Head
+  title="Nonprofits | Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org/join/nonprofits"
+  image={projectsImage.src}
+/>
 
 <Section padding="60px">
   <h1>Nonprofits</h1>

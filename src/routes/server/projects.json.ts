@@ -1,8 +1,9 @@
-import { contentWrapper } from "$lib/hooks";
-import { generateProjectsInfo } from "$lib/utils/projects";
-import type { Project } from "$lib/utils/schema";
+import { contentWrapper } from "$hooks";
+import { generateProjectsInfo } from "$utils/projects";
+import type { Project } from "$utils/schema";
+import type { RequestHandler } from "@sveltejs/kit";
 
-export async function get(): Promise<any> {
+export const GET: RequestHandler = async () => {
   const projects: Project[] = await contentWrapper.get("project", {
     order: "fields.name",
     limit: 1000,
@@ -35,4 +36,4 @@ export async function get(): Promise<any> {
   return {
     body: projectsInfo,
   };
-}
+};

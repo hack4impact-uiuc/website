@@ -1,10 +1,12 @@
 <script lang="ts" context="module">
-  export async function load({ page }) {
+  import type { Load } from "@sveltejs/kit";
+
+  export const load: Load = async ({ url }) => {
     return {
       status: 301,
-      redirect: page.path.replace("apply", "join"),
+      redirect: url.pathname.replace("apply", "join"),
     };
-  }
+  };
 </script>
 
 <slot />

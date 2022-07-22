@@ -1,18 +1,24 @@
 <script context="module" lang="ts">
-  import Button from "$lib/components/Button.svelte";
-  import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
-  import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
-  import Row from "$lib/components/Row.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import { Image, Info, Project, setImageHeight } from "$lib/utils/schema";
+  import Button from "$components/Button.svelte";
+  import DoubleBanner from "$components/DoubleBanner.svelte";
+  import FeaturedBanner from "$components/projects/FeaturedBanner.svelte";
+  import Head from "$components/Head.svelte";
+  import ProjectCard from "$components/projects/ProjectCard.svelte";
+  import Row from "$components/Row.svelte";
+  import Section from "$components/Section.svelte";
+  import {
+    type Image,
+    type Info,
+    type Project,
+    setImageHeight,
+  } from "$utils/schema";
+  import type { Load } from "@sveltejs/kit";
 
-  export async function load({ fetch }) {
-    const [info, projects] = await Promise.all([
+  export const load: Load = async ({ fetch }) => {
+    const [info, projects] = (await Promise.all([
       fetch("/server/info.json").then((res: Response) => res.json()),
       fetch("/server/featured.json").then((res: Response) => res.json()),
-    ] as [Info, Project[]]);
+    ])) as [Info, Project[]];
 
     return {
       props: {
@@ -21,7 +27,7 @@
         projects,
       },
     };
-  }
+  };
 </script>
 
 <script lang="ts">
@@ -30,14 +36,12 @@
   export let projects: Project[];
 </script>
 
-<svelte:head>
-  <Head
-    title="Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org"
-    image={partnerships.src}
-  />
-</svelte:head>
+<Head
+  title="Hack4Impact UIUC"
+  description="Uniting students to build well-engineered and impactful products for social change."
+  url="https://uiuc.hack4impact.org"
+  image={partnerships.src}
+/>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <span slot="left">

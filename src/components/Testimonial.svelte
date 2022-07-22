@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setImageHeight } from "$lib/utils/schema";
+  import { setImageHeight } from "$utils/schema";
 
   import Button from "./Button.svelte";
   import Row from "./Row.svelte";

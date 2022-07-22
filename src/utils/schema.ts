@@ -1,9 +1,9 @@
-export interface Image {
+export type Image = {
   src: string;
   alt: string;
-}
+};
 
-export interface Member {
+export type Member = {
   name: string;
   picture: Image;
   role: RoleName;
@@ -11,7 +11,11 @@ export interface Member {
   active: boolean;
   graduationYear: number;
   testimonial?: string;
-}
+};
+
+export type TestimonialMember = Member & {
+  testimonial: string;
+};
 
 type RoleName =
   | "Co-Founder"
@@ -27,7 +31,7 @@ type RoleName =
   | "Software Developer"
   | "Academy Member";
 
-export interface Project {
+export type Project = {
   name: string;
   subname: string;
   semester: string[];
@@ -50,45 +54,52 @@ export interface Project {
   testimonialSourceDescription?: string;
   testimonialSourceImage?: Image;
   testimonialSourceType?: "Member" | "Nonprofit";
-}
+};
 
-export interface Info {
+export type NonprofitTestimonialProject = Project & {
+  testimonial: string;
+  testimonialSourceName: string;
+  testimonialSourceDescription: string;
+  testimonialSourceType: "Nonprofit";
+};
+
+export type Info = {
   chapterPicture: Image;
   whereWeWork: Image;
   applicationBlurb: string;
   homepageAbout: Image;
   homepagePartnerships: Image;
-}
+};
 
-export interface Semester {
+export type Semester = {
   season: string;
   year: number;
-}
+};
 
-export interface FAQ {
+export type FAQ = {
   question: string;
   answer: string;
   category: string;
-}
+};
 
-export interface Role {
+export type Role = {
   name: RoleName;
   description: string;
   open: boolean;
-}
+};
 
-export interface ApplicationStep {
+export type ApplicationStep = {
   name: string;
   date?: string;
   description: string;
   icon: "Calendar" | "Form" | "Interview";
-}
+};
 
-export interface NonprofitStep {
+export type NonprofitStep = {
   name: string;
   description: string;
   order: number;
-}
+};
 
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {

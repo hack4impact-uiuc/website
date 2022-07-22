@@ -13,13 +13,11 @@
 
   // append hover-animated arrow
   export let arrow: boolean | undefined = false;
-
-  export let onClick: () => void | undefined = undefined;
 </script>
 
 <button
   class="button-{type}{arrow ? ' arrow' : ''}"
-  on:click={onClick}
+  on:click
   style={type.endsWith("custom")
     ? `background-color: ${
         type.startsWith("primary") ? backgroundColor : "transparent"
