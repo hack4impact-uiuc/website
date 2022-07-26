@@ -1,3 +1,5 @@
+import type { IconType } from "$components/Icon.svelte";
+
 export type Image = {
   src: string;
   alt: string;
@@ -100,6 +102,51 @@ export type NonprofitStep = {
   description: string;
   order: number;
 };
+
+export type PerkType = {
+  name: string;
+  icon: IconType;
+  description: string;
+};
+
+export const Perk: Record<string, PerkType> = {
+  DIGITAL_BRANDING: {
+    name: "Digital Branding",
+    icon: "tag",
+    description:
+      "Feature your company’s name and logo on our website, event pages, and social media.",
+  },
+  RESUME_BOOK: {
+    name: "Resume Book",
+    icon: "book",
+    description:
+      "Gain access to our talented members via a digital resume book.",
+  },
+  STANDARD_SESSION: {
+    name: "Standard Session",
+    icon: "group",
+    description:
+      "45 min session for a presentation on topic of your choice, Q&A, and networking with 40 attendees over Zoom.",
+  },
+  PREMIUM_SESSION: {
+    name: "Premium Session",
+    icon: "chalkboard",
+    description:
+      "1 hour session for a presentation on topic of your choice, Q&A, and networking with 40 attendees over Zoom.",
+  },
+  COFFEE_CHATS: {
+    name: "Coffee Chats",
+    icon: "coffee",
+    description:
+      "Opportunity to talk to our members in a more casual setting. Meet members in small groups for 30 minute Zoom sessions. We guarantee at least 20 members to sign up.",
+  },
+  MENTORSHIP: {
+    name: "Mentorship",
+    icon: "education",
+    description:
+      "Engineers, Product Managers, and/or Product Designers from the sponsoring company can be paired with our student teams to provide guidance and advice over the course of the semester.",
+  },
+} as const;
 
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
