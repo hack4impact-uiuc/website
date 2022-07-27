@@ -67,7 +67,7 @@
 {#if openRoles.length > 0}
   <Section id="open-positions" color="var(--blue)" padding="60px">
     <span class="light-text wrap">
-      <h2>Open Positions</h2>
+      <h2>Roles</h2>
       {#each openRoles as openRole}
         <Accordion theme="light">
           <span slot="title">{openRole.name}</span>
