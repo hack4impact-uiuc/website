@@ -4,6 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [sveltekit()],
+  envPrefix: "CLIENT_",
   resolve: {
     alias: {
       $utils: resolve("./src/utils"),
