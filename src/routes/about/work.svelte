@@ -164,23 +164,6 @@
   </div>
 </Section>
 
-<Section padding="40px" id="academy">
-  <h2>Academy</h2>
-  <p>
-    Academy is our program for training less technically-experienced members
-    (typically freshmen) to become full-fledged Software Developers the
-    following semester.
-  </p>
-  <p>
-    In the first half of the semester, Academy Members go through a rigorous web
-    development bootcamp consisting of lessons and take-home assignments that
-    will familiarize them with the tech stack we commonly use for our nonprofit
-    projects. After that, the Academy team dedicates the second half of the
-    semester to building a full-stack web application of the team's choosing
-    using the lessons learned earlier in the semester.
-  </p>
-</Section>
-
 {#if faqs.length > 0}
   <Section padding="40px" id="faq" color="var(--gray-lighter)">
     <h2>Frequently Asked Questions</h2>
