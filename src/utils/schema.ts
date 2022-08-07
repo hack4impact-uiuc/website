@@ -110,17 +110,17 @@ export type PerkType = {
 };
 
 export const Perk: Record<string, PerkType> = {
-  DIGITAL_BRANDING: {
-    name: "Digital Branding",
-    icon: "tag",
-    description:
-      "Feature your company’s name and logo on our website, event pages, and social media.",
-  },
   RESUME_BOOK: {
     name: "Resume Book",
     icon: "book",
     description:
       "Gain access to our talented members via a digital resume book.",
+  },
+  DIGITAL_BRANDING: {
+    name: "Digital Branding",
+    icon: "tag",
+    description:
+      "Feature your company’s name and logo on our website, event pages, and social media.",
   },
   STANDARD_SESSION: {
     name: "Standard Session",
