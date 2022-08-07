@@ -8,11 +8,13 @@
   import Info from "$components/sponsors/Info.svelte";
   import Stats from "$components/sponsors/Stats.svelte";
   import Testimonial from "$components/Testimonial.svelte";
-  import type {
-    FAQ,
-    Image,
-    Info as SiteInfo,
-    NonprofitTestimonialProject,
+  import {
+    Perk,
+    type FAQ,
+    type Image,
+    type Info as SiteInfo,
+    type NonprofitTestimonialProject,
+    type PerkType,
   } from "$utils/schema";
   import type { Load } from "@sveltejs/kit";
 
@@ -42,46 +44,36 @@
   interface SponsorTier {
     name: string;
     price: number;
-    perks: string[];
+    perks: PerkType[];
   }
 
-  let tiers: SponsorTier[] = [
+  const tiers: SponsorTier[] = [
     {
       name: "Standard",
-      price: 1500,
-      perks: ["Digital Branding", "Resume Book", "Coffee Chats"],
+      price: 2000,
+      perks: [Perk.RESUME_BOOK],
     },
     {
       name: "Plus",
-      price: 2000,
+      price: 3500,
       perks: [
-        "Digital Branding",
-        "Resume Book",
-        "Standard Session",
-        "Coffee Chats",
+        Perk.DIGITAL_BRANDING,
+        Perk.RESUME_BOOK,
+        Perk.STANDARD_SESSION,
+        Perk.COFFEE_CHATS,
       ],
     },
     {
       name: "Premier",
-      price: 2500,
+      price: 5000,
       perks: [
-        "Digital Branding",
-        "Resume Book",
-        "Premium Session",
-        "Coffee Chats",
-        "Fellowship Funding",
+        Perk.DIGITAL_BRANDING,
+        Perk.RESUME_BOOK,
+        Perk.PREMIUM_SESSION,
+        Perk.COFFEE_CHATS,
+        Perk.MENTORSHIP,
       ],
     },
-  ];
-
-  let allPerks: string[] = [
-    ...new Set(
-      tiers
-        .map((tier) => tier.perks)
-        .reduce((totalPerks: string[], perks: string[]) =>
-          totalPerks.concat(perks)
-        )
-    ),
   ];
 
   export let faqs: FAQ[];
@@ -185,7 +177,7 @@
           <h3>{tier.name} Sponsor</h3>
           <h4>${tier.price}/semester</h4>
           <ul>
-            {#each allPerks as perk}
+            {#each Object.values(Perk) as perk}
               <li class={tier.perks.includes(perk) ? "" : "disabled"}>
                 <span class="status">
                   {#if tier.perks.includes(perk)}
@@ -194,13 +186,30 @@
                     &times;
                   {/if}
                 </span>
-                {perk}
+                {perk.name}
               </li>
             {/each}
           </ul>
         </div>
       {/each}
     </Row>
+    <div class="perks">
+      {#each Object.values(Perk) as perk}
+        <article>
+          <div class="icon-container"><Icon icon={perk.icon} /></div>
+          <div>
+            <h2>{perk.name}</h2>
+            <h3>
+              {tiers
+                .filter(({ perks }) => perks.includes(perk))
+                .map((tier) => tier.name)
+                .join(", ")}
+            </h3>
+            <p>{perk.description}</p>
+          </div>
+        </article>
+      {/each}
+    </div>
   </span>
 </Section>
 
@@ -244,6 +253,7 @@
   p {
     opacity: 80%;
   }
+
   .light-text {
     color: #fff;
   }
@@ -258,17 +268,17 @@
     align-items: center;
   }
 
-  .sponsor-perks h3 {
+  .sponsor-perks .tier h3 {
     margin-top: 1rem;
     font-size: 1.6rem;
     margin-bottom: 0;
   }
 
-  .sponsor-perks h4 {
+  .sponsor-perks .tier h4 {
     font-size: 1.2rem;
   }
 
-  .sponsor-perks ul {
+  .sponsor-perks .tier ul {
     padding-left: 0;
     list-style: none;
     font-size: 1rem;
@@ -277,13 +287,13 @@
     text-align: left;
   }
 
-  .sponsor-perks ul > li.disabled {
+  .sponsor-perks .tier ul > li.disabled {
     opacity: 0.6;
     user-select: none;
     cursor: disabled;
   }
 
-  .sponsor-perks ul > li > .status {
+  .sponsor-perks .tier ul > li > .status {
     user-select: none;
     display: inline-block;
     margin-right: 0.75em;
@@ -331,6 +341,33 @@
 
   #by-the-numbers {
     color: white;
+  }
+
+  .perks {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 25px 50px;
+    justify-content: center;
+    padding-block: 2rem;
+  }
+
+  .perks > article {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    gap: 15px;
+    max-width: 60ch;
+    flex: 1 0 50ch;
+  }
+
+  .perks > article h2 {
+    margin-bottom: 0;
+  }
+
+  .icon-container {
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
   }
 
   :global(#areas-of-impact div > div > svg) {
