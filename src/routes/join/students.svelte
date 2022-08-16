@@ -10,9 +10,9 @@
   import type { Load } from "@sveltejs/kit";
 
   export const load: Load = async ({ fetch }) => {
-    const [faqs, openRoles, applicationSteps, info] = (await Promise.all([
+    const [faqs, visibleRoles, applicationSteps, info] = (await Promise.all([
       fetch("/server/apply-faq.json").then((res: Response) => res.json()),
-      fetch("/server/open-roles.json").then((res: Response) => res.json()),
+      fetch("/server/visible-roles.json").then((res: Response) => res.json()),
       fetch("/server/application-steps.json").then((res: Response) =>
         res.json()
       ),
@@ -24,7 +24,7 @@
     return {
       props: {
         faqs,
-        openRoles,
+        visibleRoles,
         applicationSteps,
         applicationBlurb,
         projectsImage: info.homepagePartnerships,
@@ -35,7 +35,7 @@
 
 <script lang="ts">
   export let faqs: FAQ[];
-  export let openRoles: Role[];
+  export let visibleRoles: Role[];
   export let applicationSteps: ApplicationStep[];
   export let applicationBlurb: string;
   export let projectsImage: Image;
@@ -64,14 +64,14 @@
   </p>
 </Section>
 
-{#if openRoles.length > 0}
+{#if visibleRoles.length > 0}
   <Section id="open-positions" color="var(--blue)" padding="60px">
     <span class="light-text wrap">
-      <h2>Open Positions</h2>
-      {#each openRoles as openRole}
+      <h2>Roles</h2>
+      {#each visibleRoles as role}
         <Accordion theme="light">
-          <span slot="title">{openRole.name}</span>
-          <span slot="contents">{@html openRole.description}</span>
+          <span slot="title">{role.name}</span>
+          <span slot="contents">{@html role.description}</span>
         </Accordion>
       {/each}
     </span>
