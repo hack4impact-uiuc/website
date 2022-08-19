@@ -27,8 +27,9 @@
   import Unlink from "@svicons/boxicons-regular/unlink.svelte";
   import Coffee from "@svicons/boxicons-solid/coffee.svelte";
   import Group from "@svicons/boxicons-solid/group.svelte";
+  import ChevronCompactRight from "@svicons/boxicons-solid/chevron-right.svelte";
 
-  import type { SvelteComponent } from "svelte";
+  import type { ComponentType, SvelteComponentTyped } from "svelte";
 
   export type IconType =
     | "brain"
@@ -58,9 +59,17 @@
     | "news"
     | "dollar"
     | "plane"
-    | "unlink";
+    | "unlink"
+    | "chevron-right";
 
-  const iconMap: Record<IconType, typeof SvelteComponent> = {
+  const iconMap: Record<
+    IconType,
+    ComponentType<
+      SvelteComponentTyped<
+        svelte.JSX.SVGAttributes<SVGElementTagNameMap["svg"]>
+      >
+    >
+  > = {
     brain: Brain,
     bulb: Bulb,
     book: Book,
@@ -89,11 +98,17 @@
     dollar: Dollar,
     plane: Plane,
     unlink: Unlink,
+    "chevron-right": ChevronCompactRight,
   };
 </script>
 
 <script lang="ts">
   export let icon: IconType;
+
+  interface $$Props
+    extends svelte.JSX.SVGAttributes<SVGElementTagNameMap["svg"]> {
+    icon: IconType;
+  }
 </script>
 
-<svelte:component this={iconMap[icon]} />
+<svelte:component this={iconMap[icon]} {...$$restProps} />

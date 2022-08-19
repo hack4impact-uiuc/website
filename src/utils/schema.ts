@@ -71,6 +71,8 @@ export type Info = {
   applicationBlurb: string;
   homepageAbout: Image;
   homepagePartnerships: Image;
+  homepageBannerText: string;
+  homepageBannerUrl: string;
 };
 
 export type Semester = {
@@ -87,6 +89,7 @@ export type FAQ = {
 export type Role = {
   name: RoleName;
   description: string;
+  visible: boolean;
   open: boolean;
 };
 

@@ -26,4 +26,5 @@ module.exports = {
     es2017: true,
     node: true,
   },
+  globals: { svelte: true, SVGElementTagNameMap: true },
 };

@@ -34,6 +34,8 @@
 </script>
 
 <script lang="ts">
+  import RoleInfo from "$components/RoleInfo.svelte";
+
   export let faqs: FAQ[];
   export let visibleRoles: Role[];
   export let applicationSteps: ApplicationStep[];
@@ -45,6 +47,9 @@
     Form: "edit",
     Interview: "conversation",
   };
+
+  $: openRoles = visibleRoles.filter((role) => role.open);
+  $: otherRoles = visibleRoles.filter((role) => !role.open);
 </script>
 
 <Head
@@ -65,15 +70,24 @@
 </Section>
 
 {#if visibleRoles.length > 0}
-  <Section id="open-positions" color="var(--blue)" padding="60px">
+  <Section id="positions" color="var(--blue)" padding="60px">
     <span class="light-text wrap">
-      <h2>Roles</h2>
-      {#each visibleRoles as role}
-        <Accordion theme="light">
-          <span slot="title">{role.name}</span>
-          <span slot="contents">{@html role.description}</span>
-        </Accordion>
-      {/each}
+      {#if openRoles.length > 0}
+        <Section id="open-positions" color="var(--blue)">
+          <h2>Open Roles</h2>
+          {#each openRoles as role}
+            <RoleInfo {role} />
+          {/each}
+        </Section>
+      {/if}
+      {#if otherRoles.length > 0}
+        <Section id="other-positions" color="var(--blue)" padding="60px 0 0">
+          <h2>Other Roles</h2>
+          {#each otherRoles as role}
+            <RoleInfo {role} />
+          {/each}
+        </Section>
+      {/if}
     </span>
   </Section>
 {/if}

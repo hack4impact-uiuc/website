@@ -24,6 +24,7 @@
       props: {
         about: info.homepageAbout,
         partnerships: info.homepagePartnerships,
+        banner: { text: info.homepageBannerText, url: info.homepageBannerUrl },
         projects,
       },
     };
@@ -31,8 +32,11 @@
 </script>
 
 <script lang="ts">
+  import Icon from "$components/Icon.svelte";
+
   export let about: Image;
   export let partnerships: Image;
+  export let banner: { text?: string; url?: string };
   export let projects: Project[];
 </script>
 
@@ -45,6 +49,12 @@
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <span slot="left">
+    {#if banner.text && banner.url}
+      <a class="banner" href={banner.url} sveltekit:prefetch>
+        {banner.text}
+        <Icon icon="chevron-right" width="1.5em" height="1.5em" />
+      </a>
+    {/if}
     <h1>Software For Nonprofits</h1>
     <p id="banner-mission">
       Uniting students to build well-engineered and impactful products for
@@ -135,6 +145,21 @@
     margin: 0 20px 20px 0;
   }
 
+  .banner {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 5px 10px;
+    line-height: 5;
+  }
+
+  .banner > :global(svg) {
+    vertical-align: calc(-1 * calc(1.5em / 4));
+  }
+
+  .banner:hover > :global(svg) {
+    animation: squish 400ms ease 1 both;
+  }
+
   #featured-section h1 {
     font-size: 1.6rem;
     margin-bottom: 20px;
@@ -173,5 +198,15 @@
   figure > img {
     width: 100%;
     border-radius: 4px;
+  }
+
+  @keyframes -global-squish {
+    0%,
+    100% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(0.75);
+    }
   }
 </style>
