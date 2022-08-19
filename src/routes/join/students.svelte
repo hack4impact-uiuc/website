@@ -70,7 +70,10 @@
       <h2>Roles</h2>
       {#each visibleRoles as role}
         <Accordion theme="light">
-          <span slot="title">{role.name}</span>
+          <span slot="title">
+            {role.name}
+            {#if role.open} (Recruiting){/if}
+          </span>
           <span slot="contents">{@html role.description}</span>
         </Accordion>
       {/each}
