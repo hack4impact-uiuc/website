@@ -7,7 +7,7 @@ const config = {
 
   kit: {
     adapter: adapter({
-      precompress: false,
+      fallback: "404.html",
     }),
     prerender: {
       default: true,
