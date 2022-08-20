@@ -201,12 +201,8 @@
   }
 
   @keyframes -global-squish {
-    0%,
-    100% {
-      transform: scaleY(1);
-    }
     50% {
-      transform: scaleY(0.75);
+      transform: scaleY(0.75) translateX(3px);
     }
   }
 </style>
