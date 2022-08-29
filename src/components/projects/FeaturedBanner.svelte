@@ -29,8 +29,7 @@
     margin-bottom: 20px;
   }
 
-  h4,
-  a {
+  h4 {
     opacity: 80%;
   }
 
