@@ -23,6 +23,8 @@
     max-width: 30%;
     height: auto;
     margin-right: 5%;
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 
   h4 {
