@@ -9,5 +9,6 @@
   <span slot="title">
     {role.name}
   </span>
+  <slot name="actions" slot="actions" />
   <span slot="contents">{@html role.description}</span>
 </Accordion>

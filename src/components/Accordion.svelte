@@ -14,6 +14,7 @@
 
 <button class="accordion" on:click={toggle} class:light={theme === "light"}>
   <h3>{open ? "−" : "+"} <slot name="title" /></h3>
+  <slot name="actions" />
 </button>
 {#if open}
   <div class="panel" transition:slide={{ duration: 150 }}>
@@ -23,6 +24,10 @@
 
 <style>
   .accordion {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
     width: 100%;
     border: none;
     cursor: pointer;
