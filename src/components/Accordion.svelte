@@ -41,7 +41,7 @@
   }
 
   .summary {
-    flex: 1 0 auto;
+    flex: 1;
     height: 100%;
     border: none;
     cursor: pointer;
