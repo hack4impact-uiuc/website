@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Role } from "$utils/schema";
   import Accordion from "./Accordion.svelte";
+  import Button from "./Button.svelte";
 
   export let role: Role;
 </script>
@@ -9,6 +10,12 @@
   <span slot="title">
     {role.name}
   </span>
-  <slot name="actions" slot="actions" />
+  <svelte:fragment slot="actions">
+    {#if role.open}
+      <a href="#process">
+        <Button type="primary-white">Apply</Button>
+      </a>
+    {/if}
+  </svelte:fragment>
   <span slot="contents">{@html role.description}</span>
 </Accordion>

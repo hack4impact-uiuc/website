@@ -71,11 +71,7 @@
     <span class="light-text wrap">
       <h2>Open Positions</h2>
       {#each visibleRoles as role}
-        <RoleInfo {role}>
-          <a href="#process" slot="actions">
-            <Button type="primary-white">Apply</Button>
-          </a>
-        </RoleInfo>
+        <RoleInfo {role} />
       {/each}
     </span>
   </Section>
