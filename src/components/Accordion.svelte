@@ -12,10 +12,14 @@
   }
 </script>
 
-<button class="accordion" on:click={toggle} class:light={theme === "light"}>
-  <h3>{open ? "−" : "+"} <slot name="title" /></h3>
-  <slot name="actions" />
-</button>
+<div class="accordion" class:light={theme === "light"}>
+  <button class="summary" on:click={toggle}>
+    <h3>{open ? "−" : "+"} <slot name="title" /></h3>
+  </button>
+  <div>
+    <slot name="actions" />
+  </div>
+</div>
 {#if open}
   <div class="panel" transition:slide={{ duration: 150 }}>
     <slot name="contents" />
@@ -29,14 +33,21 @@
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
+    border-bottom: 1px solid var(--blue);
+  }
+
+  .accordion > * {
+    padding: 20px 0;
+  }
+
+  .summary {
+    flex: 1 0 auto;
+    height: 100%;
     border: none;
     cursor: pointer;
     background-color: transparent;
     border: none;
     outline: none;
-    border-bottom: 1px solid var(--blue);
-    text-align: left;
-    padding: 20px 0;
   }
 
   .panel {
@@ -46,13 +57,14 @@
   h3 {
     color: var(--blue);
     margin: 0;
+    text-align: start;
   }
 
-  button.light > h3 {
+  .light h3 {
     color: var(--gray-lighter);
   }
 
-  .accordion.light {
+  .light {
     border-color: var(--gray-lighter);
   }
 </style>
