@@ -9,7 +9,6 @@
     | "secondary-white"
     | "secondary-custom";
 
-  export let inline = false;
   export let size: "small" | "medium" | "large" = "medium";
 
   // backgroundColor and textColor props only applied on custom button types
@@ -22,7 +21,6 @@
 
 <button
   class="{type} {size}"
-  class:inline
   class:arrow
   on:click
   style={type.endsWith("custom")
@@ -62,10 +60,6 @@
     border: solid 2px var(--border-color);
     background-color: var(--background-color);
     color: var(--text-color);
-  }
-
-  button.inline {
-    display: inline-flex;
   }
 
   button.small {
