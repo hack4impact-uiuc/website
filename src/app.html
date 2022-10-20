@@ -36,6 +36,11 @@
 
         --animation: 0.2s ease;
 
+        --fonts-body: "Open Sans", Roboto, Lato, Arial, -apple-system,
+          BlinkMacSystemFont, sans-serif;
+        --fonts-heading: "Chivo", Roboto, Lato, Arial, -apple-system,
+          BlinkMacSystemFont, sans-serif;
+
         font-size: 16px;
       }
 
@@ -77,8 +82,7 @@
 
       body {
         margin: 0;
-        font-family: Open Sans, Roboto, Lato, Arial, -apple-system,
-          BlinkMacSystemFont, sans-serif;
+        font-family: var(--fonts-body);
         font-size: 0.7rem;
         line-height: 1.5;
         color: var(--text-dark);
@@ -93,7 +97,7 @@
         margin: 0 0 0.5em 0;
         font-weight: 400;
         line-height: 1.2;
-        font-family: Chivo, sans-serif;
+        font-family: var(--fonts-heading);
       }
 
       h1 {
@@ -222,7 +226,6 @@
       .cta > p {
         margin-bottom: 0;
       }
-
       .cta-wrapper .button-wrapper {
         display: flex;
         align-items: center;

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Icon from "./Icon.svelte";
+
   export let type:
     | "primary"
     | "primary-white"
@@ -6,6 +8,9 @@
     | "secondary"
     | "secondary-white"
     | "secondary-custom";
+
+  export let inline = false;
+  export let size: "small" | "medium" | "large" = "medium";
 
   // backgroundColor and textColor props only applied on custom button types
   export let backgroundColor = "#fff";
@@ -16,7 +21,9 @@
 </script>
 
 <button
-  class="button-{type}{arrow ? ' arrow' : ''}"
+  class="{type} {size}"
+  class:inline
+  class:arrow
   on:click
   style={type.endsWith("custom")
     ? `background-color: ${
@@ -27,61 +34,94 @@
     : undefined}
 >
   <slot />
+  {#if arrow}
+    <Icon icon="chevron-right" width="1.125em" height="1.125em" />
+  {/if}
 </button>
 
 <style>
   button {
-    border-radius: 4px;
+    --border-color: var(--blue);
+    --background-color: var(--blue);
+    --text-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     cursor: pointer;
-    opacity: 100%;
     transition: 0.2s;
-    border: solid 2px;
-    font-size: 0.7rem;
-    font-family: Open Sans;
-    padding: 1em 2.5em;
+
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: var(--fonts-body);
+    padding: 0 1.5em;
+    height: 3em;
+    border-radius: 0.35em;
+
+    border: solid 2px var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  button.inline {
+    display: inline-flex;
+  }
+
+  button.small {
+    font-size: 0.75rem;
+    border-width: 1.5px;
+  }
+
+  button.large {
+    font-size: 1rem;
   }
 
   button:hover {
-    opacity: 80%;
+    opacity: 0.85;
     transition: 0.2s;
   }
 
-  .button-primary {
-    border-color: var(--blue);
-    background-color: var(--blue);
-    color: #fff;
+  @media (prefers-reduced-motion: no-preference) {
+    button:active {
+      transform: scale(0.95);
+    }
   }
 
-  .button-primary-white {
-    border-color: #fff;
-    background-color: #fff;
-    color: var(--blue);
+  .primary {
+    --border-color: var(--blue);
+    --background-color: var(--blue);
+    --text-color: #fff;
   }
 
-  .button-secondary {
-    border-color: var(--blue);
-    background-color: transparent;
-    color: var(--blue);
+  .primary-white {
+    --border-color: #fff;
+    --background-color: #fff;
+    --text-color: var(--blue);
   }
 
-  .button-secondary-white {
-    border-color: #fff;
-    background-color: transparent;
-    color: #fff;
+  .secondary {
+    --border-color: var(--blue);
+    --background-color: transparent;
+    --text-color: var(--blue);
+  }
+
+  .secondary-white {
+    --border-color: #fff;
+    --background-color: transparent;
+    --text-color: #fff;
   }
 
   .arrow {
-    padding-right: 2.2em;
+    padding-right: 1em;
   }
 
-  .arrow::after {
-    content: "\2192";
-    padding: 0 0.3em 0 0.5em;
+  .arrow > :global(svg) {
+    padding: 0 0.2em 0 0.5em;
     transition: padding var(--animation);
   }
 
-  .arrow:hover::after {
-    padding: 0 0 0 0.8em;
+  .arrow:hover > :global(svg) {
+    padding: 0 0 0 0.7em;
   }
 </style>

@@ -135,6 +135,10 @@
     z-index: 1;
   }
 
+  .meta > span {
+    font-family: var(--fonts-body);
+  }
+
   .featured-project > .meta > span::after {
     content: "\2192";
     padding-left: 0.5em;

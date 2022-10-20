@@ -169,7 +169,7 @@
   }
 
   .link-section-header {
-    font-family: Chivo;
+    font-family: var(--fonts-heading);
   }
 
   .vercel-banner a {
@@ -181,7 +181,7 @@
     padding: 10px 15px;
     background: black;
     border-radius: 4px;
-    font-family: Chivo;
+    font-family: var(--fonts-body);
     color: white;
   }
 
