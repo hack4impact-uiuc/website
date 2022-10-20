@@ -27,10 +27,6 @@
 </div>
 
 <style>
-  a {
-    text-decoration: none;
-  }
-
   p {
     opacity: 80%;
     height: 5em;
