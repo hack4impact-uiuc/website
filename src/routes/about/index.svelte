@@ -126,9 +126,7 @@
         build impactful products. Each product is spearheaded by a dedicated
         development team on a one or two semester timeline.
       </p>
-      <a class="button-link" href="/about/work" sveltekit:prefetch
-        ><Button type="primary-white">Learn More</Button></a
-      >
+      <Button type="primary-white" href="/about/work">Learn More</Button>
     </div>
     <figure>
       <img src={projectsImage.src} alt={projectsImage.alt} />

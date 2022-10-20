@@ -1,6 +1,9 @@
 <script lang="ts">
   import Icon from "./Icon.svelte";
 
+  // href for link button
+  export let href: undefined | string = undefined;
+
   export let type:
     | "primary"
     | "primary-white"
@@ -16,34 +19,48 @@
   export let textColor = "var(--text-dark)";
 
   // append hover-animated arrow
-  export let arrow: boolean | undefined = false;
-</script>
+  export let arrow = false;
 
-<button
-  class="{type} {size}"
-  class:arrow
-  on:click
-  style={type.endsWith("custom")
+  $: customStyles = type.endsWith("custom")
     ? `background-color: ${
         type.startsWith("primary") ? backgroundColor : "transparent"
       }; color: ${textColor}; border-color: ${
         type.startsWith("primary") ? backgroundColor : textColor
       }`
-    : undefined}
+    : undefined;
+  $: classes = `button ${type} ${size} ${arrow ? "arrow" : ""}`;
+
+  $: tag = href ? "a" : "button";
+  $: props = {
+    href,
+    class: classes,
+    style: customStyles,
+  };
+  $: isExternal =
+    href?.startsWith("http") ||
+    href?.startsWith("mailto") ||
+    href?.startsWith("tel");
+</script>
+
+<svelte:element
+  this={tag}
+  {...props}
+  on:click
+  sveltekit:prefetch={!isExternal ? true : undefined}
 >
   <slot />
   {#if arrow}
     <Icon icon="chevron-right" width="1.125em" height="1.125em" />
   {/if}
-</button>
+</svelte:element>
 
 <style>
-  button {
+  .button {
     --border-color: var(--blue);
     --background-color: var(--blue);
     --text-color: #fff;
 
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -60,24 +77,26 @@
     border: solid 2px var(--border-color);
     background-color: var(--background-color);
     color: var(--text-color);
+
+    text-decoration: none;
   }
 
-  button.small {
+  .button.small {
     font-size: 0.75rem;
     border-width: 1.5px;
   }
 
-  button.large {
+  .button.large {
     font-size: 1rem;
   }
 
-  button:hover {
+  .button:hover {
     opacity: 0.85;
     transition: 0.2s;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    button:active {
+    .button:active {
       transform: scale(0.95);
     }
   }

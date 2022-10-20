@@ -238,12 +238,10 @@
         <p>Work with us.</p>
       </div>
       <div class="button-wrapper">
-        <a href="mailto:uiuc@hack4impact.org">
-          <Button type="primary-white">Contact Us</Button>
-        </a>
-        <a href="/about/work" sveltekit:prefetch>
-          <Button type="secondary-white">How We Work</Button>
-        </a>
+        <Button type="primary-white" href="mailto:uiuc@hack4impact.org"
+          >Contact Us</Button
+        >
+        <Button type="secondary-white" href="/about/work">How We Work</Button>
       </div>
     </Row>
   </div>

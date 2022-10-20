@@ -34,9 +34,7 @@
 {#if status === 404}
   <Section id="page-not-found" padding="40px">
     <h1>Page not found.</h1>
-    <a href="/" sveltekit:prefetch>
-      <Button type="primary">Return to home</Button>
-    </a>
+    <Button type="primary" href="/">Return to home</Button>
   </Section>
 {:else}
   <h1 class="title">{status}</h1>

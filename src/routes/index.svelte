@@ -60,9 +60,7 @@
       Uniting students to build well-engineered and impactful products for
       social change.
     </p>
-    <a class="button-link" href="/projects">
-      <Button type="primary-white">See Our Work</Button>
-    </a>
+    <Button type="primary-white" href="/projects">See Our Work</Button>
   </span>
   <span slot="right" id="graphic-container" class="column-center">
     <img
@@ -95,9 +93,7 @@
         build impactful products. Each product is spearheaded by a dedicated
         development team on a one or two semester timeline.
       </p>
-      <a class="button-link" href="/about" sveltekit:prefetch
-        ><Button type="primary">Learn More</Button></a
-      >
+      <Button type="primary" href="/about">Learn More</Button>
     </div>
     <figure>
       <img src={setImageHeight(about.src, 900)} alt={about.alt} />
@@ -116,13 +112,9 @@
         check for open positions involving engineering and design at the
         beginning of each semester.
       </p>
-      <div class="row-center">
-        <a class="button-link" href="/join/nonprofits" sveltekit:prefetch
-          ><Button type="primary">For Nonprofits</Button></a
-        >
-        <a class="button-link" href="/join/students" sveltekit:prefetch
-          ><Button type="secondary">For Students</Button></a
-        >
+      <div class="row-center gap">
+        <Button type="primary" href="/join/nonprofits">For Nonprofits</Button>
+        <Button type="secondary" href="/join/students">For Students</Button>
       </div>
     </div>
     <figure>
