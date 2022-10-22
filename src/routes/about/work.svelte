@@ -184,12 +184,8 @@
         <p>Apply to Hack4Impact.</p>
       </div>
       <div class="button-wrapper">
-        <a href="/join/students" sveltekit:prefetch>
-          <Button type="primary-white">Apply</Button>
-        </a>
-        <a href="/about/team" sveltekit:prefetch>
-          <Button type="secondary-white">Meet the Team</Button>
-        </a>
+        <Button type="primary-white" href="/join/students">Apply</Button>
+        <Button type="secondary-white" href="/about/team">Meet the Team</Button>
       </div>
     </Row>
   </div>

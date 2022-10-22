@@ -15,18 +15,18 @@
 
   <h4>{project.name}</h4>
   <p>{project.summary}</p>
-  <a href="/projects/{project.slug}" sveltekit:prefetch>
-    <Button type="secondary-custom" arrow textColor={project.accentColor}>
-      Learn More
-    </Button>
-  </a>
+  <Button
+    href="/projects/{project.slug}"
+    type="secondary-custom"
+    arrow
+    textColor={project.accentColor}
+    size="small"
+  >
+    Learn More
+  </Button>
 </div>
 
 <style>
-  a {
-    text-decoration: none;
-  }
-
   p {
     opacity: 80%;
     height: 5em;

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { setImageHeight } from "$utils/schema";
   import type { Project } from "$utils/schema";
+  import Icon from "$components/Icon.svelte";
 
   export let project: Project;
 </script>
@@ -18,7 +19,13 @@
     <div class="meta" class:masked={project.headerImage !== undefined}>
       <h4>{project.name}</h4>
       <h2>{project.summary}</h2>
-      <span>Learn More</span>
+      <p>
+        Learn More <Icon
+          icon="chevron-right"
+          width="1.125em"
+          height="1.125em"
+        />
+      </p>
     </div>
   </div>
 </a>
@@ -135,13 +142,20 @@
     z-index: 1;
   }
 
-  .featured-project > .meta > span::after {
-    content: "\2192";
-    padding-left: 0.5em;
+  .featured-project > .meta > p {
+    display: flex;
+    align-items: center;
+  }
+
+  .featured-project > .meta > p > :global(svg) {
+    padding-left: 0.2em;
+    transform: translateY(0.025em);
+    opacity: 0.8;
     transition: padding var(--animation);
   }
 
-  .featured-project:hover > .meta > span::after {
-    padding-left: 0.8em;
+  .featured-project:hover > .meta > p > :global(svg) {
+    padding-left: 0.55em;
+    opacity: 1;
   }
 </style>

@@ -23,9 +23,7 @@
             <span class="desc">{desc}</span>
           </caption>
           {#if meetTheTeam}
-            <a href="/about/team" sveltekit:prefetch>
-              <Button type="primary">Meet The Team</Button>
-            </a>
+            <Button type="primary" href="/about/team">Meet The Team</Button>
           {/if}
         </div>
         <div class="right">
