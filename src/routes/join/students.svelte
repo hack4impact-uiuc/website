@@ -47,9 +47,6 @@
     Form: "edit",
     Interview: "conversation",
   };
-
-  $: openRoles = visibleRoles.filter((role) => role.open);
-  $: otherRoles = visibleRoles.filter((role) => !role.open);
 </script>
 
 <Head
@@ -72,22 +69,10 @@
 {#if visibleRoles.length > 0}
   <Section id="positions" color="var(--blue)" padding="60px">
     <span class="light-text wrap">
-      {#if openRoles.length > 0}
-        <Section id="open-positions" color="var(--blue)">
-          <h2>Open Roles</h2>
-          {#each openRoles as role}
-            <RoleInfo {role} />
-          {/each}
-        </Section>
-      {/if}
-      {#if otherRoles.length > 0}
-        <Section id="other-positions" color="var(--blue)" padding="60px 0 0">
-          <h2>Other Roles</h2>
-          {#each otherRoles as role}
-            <RoleInfo {role} />
-          {/each}
-        </Section>
-      {/if}
+      <h2>Open Positions</h2>
+      {#each visibleRoles as role}
+        <RoleInfo {role} />
+      {/each}
     </span>
   </Section>
 {/if}
