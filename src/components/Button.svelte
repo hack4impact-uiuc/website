@@ -28,31 +28,34 @@
         type.startsWith("primary") ? backgroundColor : textColor
       }`
     : undefined;
-  $: classes = `button ${type} ${size} ${arrow ? "arrow" : ""}`;
 
-  $: tag = href ? "a" : "button";
+  $: classes = `button ${type} ${size} ${arrow ? "arrow" : ""}`;
   $: props = {
-    href,
     class: classes,
     style: customStyles,
   };
+
   $: isExternal =
     href?.startsWith("http") ||
     href?.startsWith("mailto") ||
     href?.startsWith("tel");
 </script>
 
-<svelte:element
-  this={tag}
-  {...props}
-  on:click
-  sveltekit:prefetch={!isExternal ? true : undefined}
->
-  <slot />
-  {#if arrow}
-    <Icon icon="chevron-right" width="1.125em" height="1.125em" />
-  {/if}
-</svelte:element>
+{#if href}
+  <a {...props} {href} sveltekit:prefetch={!isExternal ? true : undefined}>
+    <slot />
+    {#if arrow}
+      <Icon icon="chevron-right" width="1.125em" height="1.125em" />
+    {/if}
+  </a>
+{:else}
+  <button {...props} on:click>
+    <slot />
+    {#if arrow}
+      <Icon icon="chevron-right" width="1.125em" height="1.125em" />
+    {/if}
+  </button>
+{/if}
 
 <style>
   .button {
