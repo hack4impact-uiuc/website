@@ -32,6 +32,7 @@
     flex-flow: row nowrap;
     align-items: flex-end;
     justify-content: space-between;
+    gap: 5px;
     width: 100%;
     border-bottom: 1px solid var(--blue);
   }
