@@ -158,6 +158,10 @@
     article {
       margin-top: 2em;
     }
+
+    .semester-section > h2 {
+      scroll-margin-top: calc(60px + 0.25em + 85px);
+    }
   }
 
   @media only screen and (max-width: 792px) {
