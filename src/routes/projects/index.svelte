@@ -81,8 +81,7 @@
       {#each semesters as semester, idx}
         {@const featured = projectMap[semester].featured}
         <section class="semester-section">
-          <span class="scroll-anchor" id={semesterToId(semester)} />
-          <h2>{semester}</h2>
+          <h2 id={semesterToId(semester)}>{semester}</h2>
           {#if featured}
             <FeaturedBanner project={featured} />
           {/if}
@@ -104,11 +103,6 @@
     position: relative;
   }
 
-  .semester-section .scroll-anchor {
-    position: absolute;
-    top: -87px;
-  }
-
   .semester-section:first-child {
     margin-top: 0;
   }
@@ -127,10 +121,6 @@
     .col-wrapper {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr, 1fr;
-    }
-
-    .semester-section .scroll-anchor {
-      top: -135px;
     }
   }
 
