@@ -77,8 +77,8 @@
   </Section>
 {/if}
 
-<Section id="process" color="var(--gray-lighter)" padding="40px">
-  <h2>Application Process</h2>
+<Section color="var(--gray-lighter)" padding="40px">
+  <h2 id="process">Application Process</h2>
   <p>{@html applicationBlurb}</p>
   <div id="process-steps">
     {#each applicationSteps as step}
