@@ -43,19 +43,16 @@
 <script lang="ts">
   interface SponsorTier {
     name: string;
-    price: number;
     perks: PerkType[];
   }
 
   const tiers: SponsorTier[] = [
     {
       name: "Standard",
-      price: 2000,
       perks: [Perk.RESUME_BOOK],
     },
     {
       name: "Plus",
-      price: 3500,
       perks: [
         Perk.DIGITAL_BRANDING,
         Perk.RESUME_BOOK,
@@ -65,7 +62,6 @@
     },
     {
       name: "Premier",
-      price: 5000,
       perks: [
         Perk.DIGITAL_BRANDING,
         Perk.RESUME_BOOK,
@@ -175,7 +171,6 @@
       {#each tiers as tier}
         <div class="tier">
           <h3>{tier.name} Sponsor</h3>
-          <h4>${tier.price}/semester</h4>
           <ul>
             {#each Object.values(Perk) as perk}
               <li class={tier.perks.includes(perk) ? "" : "disabled"}>
@@ -270,10 +265,6 @@
     margin-top: 1rem;
     font-size: 1.6rem;
     margin-bottom: 0;
-  }
-
-  .sponsor-perks .tier h4 {
-    font-size: 1.2rem;
   }
 
   .sponsor-perks .tier ul {
