@@ -2,7 +2,7 @@ import { contentWrapper } from "$lib/server/contentful";
 import type { Info, Member, TestimonialMember } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = () => {
   return {
     info: contentWrapper
       .get("info")
