@@ -8,12 +8,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "paths": {
-      "$utils/*": ["src/utils/*"],
-      "$components/*": ["src/components/*"],
-      "$hooks": ["src/hooks.ts"]
-    }
+    "strict": true
   },
   "exclude": ["./scripts/*"]
 }

@@ -1,23 +1,13 @@
 /// <reference types="@sveltejs/kit" />
-/// <reference types="vite/client" />
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 // and what to do when importing types
 declare namespace App {
   // interface Locals {}
+  // interface Error {}
+  // interface PageData {}
   // interface Platform {}
-  // interface Session {}
-  // interface Stuff {}
-}
-
-interface ImportMetaEnv {
-  readonly CLIENT_ACKEE_URL: string;
-  readonly CLIENT_ACKEE_DOMAIN_ID: string;
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
 }
 
 declare namespace svelte.JSX {
