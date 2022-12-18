@@ -171,3 +171,16 @@ export function parseSemester(semester: string): Semester {
 export function semesterToId(semester: string): string {
   return semester.split(" ").join("-").toLowerCase();
 }
+
+export function titleCase(name: string) {
+  const capitalizeAroundCharacter = (text: string, character: string) => {
+    return text
+      .split(character)
+      .map((part) => part[0].toUpperCase() + part.slice(1))
+      .join(character);
+  };
+
+  name = capitalizeAroundCharacter(name, " ");
+  name = capitalizeAroundCharacter(name, "-");
+  return name;
+}

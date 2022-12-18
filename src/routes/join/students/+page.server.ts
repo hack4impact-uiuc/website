@@ -2,7 +2,7 @@ import { contentWrapper } from "$lib/content/contentful";
 import type { ApplicationStep, FAQ, Role } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = () => {
   return {
     title: "Students",
     faqs: contentWrapper.get("faq", {

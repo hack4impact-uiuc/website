@@ -1,7 +1,7 @@
 import { contentWrapper } from "$lib/content/contentful";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = () => {
   return {
     title: "How We Work",
     faqs: contentWrapper.get("faq", {

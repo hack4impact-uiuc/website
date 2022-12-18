@@ -2,7 +2,7 @@ import { contentWrapper } from "$lib/content/contentful";
 import type { Member } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = () => {
   return {
     title: "The Team",
     members: getMembers(),

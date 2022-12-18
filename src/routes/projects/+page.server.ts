@@ -3,7 +3,7 @@ import { generateProjectsInfo } from "$lib/utils/projects";
 import type { Project } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = () => {
   return {
     title: "Projects",
     projectsInfo: getProjectsInfo(),

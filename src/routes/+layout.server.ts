@@ -5,7 +5,7 @@ import type { LayoutServerLoad } from "./$types";
 
 export const prerender = true;
 
-export const load: LayoutServerLoad = async () => {
+export const load: LayoutServerLoad = () => {
   return {
     semesters: getSemesters(),
     info: contentWrapper
