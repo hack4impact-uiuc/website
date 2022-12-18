@@ -1,4 +1,4 @@
-import { contentWrapper } from "$lib/server/contentful";
+import { contentWrapper } from "$lib/content/contentful";
 import { error } from "@sveltejs/kit";
 import type { Project } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";

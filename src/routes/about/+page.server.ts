@@ -1,4 +1,4 @@
-import { contentWrapper } from "$lib/server/contentful";
+import { contentWrapper } from "$lib/content/contentful";
 import type { Member, TestimonialMember } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 

@@ -1,6 +1,5 @@
 <script lang="ts">
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
   import ProjectMember from "$lib/components/projects/ProjectMember.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";

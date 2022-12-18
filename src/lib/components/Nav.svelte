@@ -18,7 +18,7 @@
 
 <nav class="row-center">
   <div class="row-center" id="nav-contents">
-    <a class="row-center" sveltekit:prefetch href="/">
+    <a href="/" class="row-center">
       <img src="/logo.svg" alt="Hack4Impact logo" />
     </a>
     <button
@@ -33,24 +33,23 @@
       id="navlinks"
     >
       <a
+        href="/"
         class="navlink"
-        sveltekit:prefetch
-        aria-current={path === "/" ? "page" : undefined}
-        href="/"><h2>Home</h2></a
+        aria-current={path === "/" ? "page" : undefined}><h2>Home</h2></a
       >
       <a
+        href="/about"
         class="navlink"
-        sveltekit:prefetch
         aria-current={path && path.startsWith("/about") ? "page" : undefined}
-        href="/about"><h2>About Us</h2></a
+        ><h2>About Us</h2></a
       >
       <a
+        href="/projects"
         class="navlink"
-        sveltekit:prefetch
         aria-current={path && path.startsWith("/projects") ? "page" : undefined}
-        href="/projects"><h2>Projects</h2></a
+        ><h2>Projects</h2></a
       >
-      <span
+      <button
         class="navlink dropdown"
         tabindex={workWithUsTabIndex}
         aria-current={path && path.startsWith("/join") ? "page" : undefined}
@@ -59,7 +58,6 @@
         <div class="dropdown-contents">
           {#each dropdownRoutes as route}
             <a
-              sveltekit:prefetch
               aria-current={path && path.includes(`join/${route.toLowerCase()}`)
                 ? "page"
                 : undefined}
@@ -69,7 +67,7 @@
             </a>
           {/each}
         </div>
-      </span>
+      </button>
     </div>
   </div>
 </nav>
@@ -142,6 +140,10 @@
 
   .hide-on-desktop {
     display: none;
+  }
+
+  .dropdown {
+    appearance: none;
   }
 
   .dropdown > h2 {

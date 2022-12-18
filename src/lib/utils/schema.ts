@@ -1,4 +1,4 @@
-import type { IconType } from "$components/Icon.svelte";
+import type { IconType } from "$lib/components/Icon.svelte";
 
 export type Image = {
   src: string;

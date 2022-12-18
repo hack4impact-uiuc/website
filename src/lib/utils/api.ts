@@ -1,7 +1,6 @@
-import type { ContentfulClientApi, Entry, ContentType } from "contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-import { dev } from "$app/environment";
+import type { ContentfulClientApi, ContentType, Entry } from "contentful";
 
 export class ContentWrapper {
   client: ContentfulClientApi | undefined;

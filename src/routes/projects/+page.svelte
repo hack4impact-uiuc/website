@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Head from "$lib/components/Head.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
   import Section from "$lib/components/Section.svelte";

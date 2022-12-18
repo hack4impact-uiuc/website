@@ -1,4 +1,4 @@
-import { contentWrapper } from "$lib/server/contentful";
+import { contentWrapper } from "$lib/content/contentful";
 import { generateProjectsInfo } from "$lib/utils/projects";
 import type { Project } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
