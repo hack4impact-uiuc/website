@@ -23,5 +23,8 @@ export const load: PageServerLoad = async ({ params }) => {
     project.logoWhite = project.nonprofitLogo;
   }
 
-  return { project };
+  return {
+    title: project.name,
+    project,
+  };
 };

@@ -11,15 +11,6 @@
   export let data: PageData;
 </script>
 
-<svelte:head>
-  <Head
-    title="{data.project.name} | Hack4Impact UIUC"
-    description={data.project.summary}
-    url="https://uiuc.hack4impact.org/projects/{data.project.slug}"
-    image={data.project.headerImage?.src}
-  />
-</svelte:head>
-
 <DoubleBanner
   leftColor={data.project.accentColor}
   rightColor={pSBC(-0.2, data.project.accentColor)}

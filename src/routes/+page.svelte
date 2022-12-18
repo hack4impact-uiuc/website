@@ -1,7 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
-  import Head from "$lib/components/Head.svelte";
   import Icon from "$lib/components/Icon.svelte";
   import FeaturedBanner from "$lib/components/projects/FeaturedBanner.svelte";
   import ProjectCard from "$lib/components/projects/ProjectCard.svelte";
@@ -12,15 +11,6 @@
 
   export let data: PageData;
 </script>
-
-<svelte:head>
-  <Head
-    title="Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org"
-    image={data.info.homepagePartnerships.src}
-  />
-</svelte:head>
 
 <DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
   <span slot="left">

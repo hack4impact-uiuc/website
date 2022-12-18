@@ -6,7 +6,10 @@
 declare namespace App {
   // interface Locals {}
   // interface Error {}
-  // interface PageData {}
+  interface PageData {
+    // This page data value is used as the start of the page title by the root layout
+    title?: string;
+  }
   // interface Platform {}
 }
 

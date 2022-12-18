@@ -5,6 +5,7 @@
   import Section from "$lib/components/Section.svelte";
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 
@@ -34,21 +35,12 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-<svelte:head>
-  <Head
-    title="Projects | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/projects"
-    image={data.projectsImage.src}
-  />
-</svelte:head>
-
 <Section padding="60px">
   <h1>Projects</h1>
   <div class="col-wrapper">
     <aside style={windowWidth ? `--window-width: ${windowWidth}px` : ""}>
       <ul id="semester-list">
-        {#each data.semesters as semester, idx}
+        {#each data.projectsInfo.semesters as semester, idx}
           <li id={`semester-${idx}`}>
             <a
               href={`/projects#${semesterToId(semester)}`}
@@ -62,8 +54,8 @@
       </ul>
     </aside>
     <article>
-      {#each data.semesters as semester, idx}
-        {@const featured = data.projectMap[semester].featured}
+      {#each data.projectsInfo.semesters as semester, idx}
+        {@const featured = data.projectsInfo.projectMap[semester].featured}
         <section class="semester-section">
           <h2 id={semesterToId(semester)}>{semester}</h2>
           {#if featured}
@@ -71,7 +63,7 @@
           {/if}
           <span use:viewport on:enterViewport={() => setSemester(idx)} />
           <div class="project-grid">
-            {#each data.projectMap[semester].projects as project}
+            {#each data.projectsInfo.projectMap[semester].projects as project}
               <ProjectCard {project} />
             {/each}
           </div>

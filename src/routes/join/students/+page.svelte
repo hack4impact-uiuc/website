@@ -1,48 +1,5 @@
-<script lang="ts" context="module">
-  throw new Error(
-    "@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)"
-  );
-
-  // import Accordion from "$components/Accordion.svelte";
-  // import Button from "$components/Button.svelte";
-  // import Head from "$components/Head.svelte";
-  // import Row from "$components/Row.svelte";
-  // import Section from "$components/Section.svelte";
-  // import Step from "$components/Step.svelte";
-  // import type { ApplicationStep, FAQ, Image, Info, Role } from "$lib/utils/schema";
-  // import type { IconType } from "$components/Icon.svelte";
-  // import type { Load } from "@sveltejs/kit";
-
-  // export const load: Load = async ({ fetch }) => {
-  //   const [faqs, visibleRoles, applicationSteps, info] = (await Promise.all([
-  //     fetch("/server/apply-faq.json").then((res: Response) => res.json()),
-  //     fetch("/server/visible-roles.json").then((res: Response) => res.json()),
-  //     fetch("/server/application-steps.json").then((res: Response) =>
-  //       res.json()
-  //     ),
-  //     fetch("/server/info.json").then((res: Response) => res.json()),
-  //   ])) as [FAQ[], Role[], ApplicationStep, Info];
-
-  //   const { applicationBlurb } = info;
-
-  //   return {
-  //     props: {
-  //       faqs,
-  //       visibleRoles,
-  //       applicationSteps,
-  //       applicationBlurb,
-  //       projectsImage: info.homepagePartnerships,
-  //     },
-  //   };
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error(
-    "@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)"
-  );
-
-  import RoleInfo from "$components/RoleInfo.svelte";
+  import Head from "$lib/components/Head.svelte";
 
   export let faqs: FAQ[];
   export let visibleRoles: Role[];
@@ -58,7 +15,7 @@
 </script>
 
 <Head
-  title="Students | Hack4Impact UIUC"
+  title=" | Hack4Impact UIUC"
   description="Uniting students to build well-engineered and impactful products for social change."
   url="https://uiuc.hack4impact.org/join/students"
   image={projectsImage.src}

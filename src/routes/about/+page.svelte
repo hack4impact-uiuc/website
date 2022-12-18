@@ -1,6 +1,5 @@
 <script lang="ts">
   import Button from "$lib/components/Button.svelte";
-  import Head from "$lib/components/Head.svelte";
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
@@ -10,15 +9,6 @@
 
   export let data: PageData;
 </script>
-
-<svelte:head>
-  <Head
-    title="About Us | Hack4Impact UIUC"
-    description="Uniting students to build well-engineered and impactful products for social change."
-    url="https://uiuc.hack4impact.org/about"
-    image={data.info.chapterPicture.src}
-  />
-</svelte:head>
 
 <Section id="intro" padding="60px">
   <div class="about-intro">
