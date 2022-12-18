@@ -61,7 +61,6 @@ CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 
 `npm run preview` - view the built website (requires `npm run build` to have been run prior)
 
-
 ### Tips
 
 Hold (cmd|ctrl) + shift to enable the "Svelte inspector." Clicking any page element with this open will go to the element's source in VSCode.
