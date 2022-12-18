@@ -1,43 +1,14 @@
-<script lang="ts" context="module">
-  throw new Error(
-    "@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)"
-  );
-
-  // import Accordion from "$components/Accordion.svelte";
-  // import Button from "$components/Button.svelte";
-  // import Head from "$components/Head.svelte";
-  // import RoleCard from "$components/RoleCard.svelte";
-  // import Section from "$components/Section.svelte";
-  // import Step from "$components/Step.svelte";
-  // import Row from "$components/Row.svelte";
-  // import type { FAQ, Image, Info } from "$lib/utils/schema";
-  // import type { Load } from "@sveltejs/kit";
-
-  // export const load: Load = async ({ fetch }) => {
-  //   const [faqs, info] = (await Promise.all([
-  //     fetch("/server/work-faq.json").then((res: Response) => res.json()),
-  //     fetch("/server/info.json").then((res: Response) => res.json()),
-  //   ])) as [FAQ[], Info];
-
-  //   return { props: { faqs, projectsImage: info.homepagePartnerships } };
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error(
-    "@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)"
-  );
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import RoleCard from "$lib/components/RoleCard.svelte";
+  import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import type { PageData } from "./$types";
 
-  export let faqs: FAQ[];
-  export let projectsImage: Image;
+  export let data: PageData;
 </script>
-
-<Head
-  title="How We Work | Hack4Impact UIUC"
-  description="Uniting students to build well-engineered and impactful products for social change."
-  url="https://uiuc.hack4impact.org/about/work"
-  image={projectsImage.src}
-/>
 
 <Section id="intro" padding="40px">
   <Row gap={84} reverseOnMobile
@@ -57,7 +28,10 @@
       </p>
     </div>
     <figure>
-      <img src={projectsImage.src} alt={projectsImage.alt} />
+      <img
+        src={data.info.homepagePartnerships.src}
+        alt={data.info.homepagePartnerships.alt}
+      />
     </figure>
   </Row>
 </Section>
@@ -172,10 +146,10 @@
   </div>
 </Section>
 
-{#if faqs.length > 0}
+{#if data.faqs.length > 0}
   <Section padding="40px" id="faq" color="var(--gray-lighter)">
     <h2>Frequently Asked Questions</h2>
-    {#each faqs as faq}
+    {#each data.faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
         <p slot="contents">{@html faq.answer}</p>

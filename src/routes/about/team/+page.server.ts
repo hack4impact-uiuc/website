@@ -1,9 +1,15 @@
-import { json } from "@sveltejs/kit";
-import { contentWrapper } from "src/hooks.server";
+import { contentWrapper } from "$lib/server/contentful";
 import type { Member } from "src/lib/utils/schema";
-import type { RequestHandler } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
-export const GET: RequestHandler = async () => {
+export const load: PageServerLoad = async () => {
+  return {
+    title: "The Team",
+    members: getMembers(),
+  };
+};
+
+async function getMembers() {
   const members: Member[] = await contentWrapper.get("member", {
     order: "fields.name",
     limit: 1000,
@@ -27,8 +33,8 @@ export const GET: RequestHandler = async () => {
   members.sort((a, b) => a.graduationYear - b.graduationYear);
   members.sort((a, b) => roles.indexOf(a.role) - roles.indexOf(b.role));
 
-  return json({
+  return {
     active: members.filter((member) => member.active),
     alumni: members.filter((member) => !member.active),
-  });
-};
+  };
+}

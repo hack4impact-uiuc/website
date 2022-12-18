@@ -1,53 +1,16 @@
-<script lang="ts" context="module">
-  throw new Error(
-    "@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)"
-  );
-
-  // import Accordion from "$components/Accordion.svelte";
-  // import Button from "$components/Button.svelte";
-  // import Head from "$components/Head.svelte";
-  // import Icon from "$components/Icon.svelte";
-  // import Row from "$components/Row.svelte";
-  // import Section from "$components/Section.svelte";
-  // import Info from "$components/sponsors/Info.svelte";
-  // import Stats from "$components/sponsors/Stats.svelte";
-  // import Testimonial from "$components/Testimonial.svelte";
-  // import {
-  //   Perk,
-  //   type FAQ,
-  //   type Image,
-  //   type Info as SiteInfo,
-  //   type NonprofitTestimonialProject,
-  //   type PerkType,
-  // } from "$lib/utils/schema";
-  // import type { Load } from "@sveltejs/kit";
-
-  // export const load: Load = async ({ fetch }) => {
-  //   const [info, faqs, testimonialNonprofit] = (await Promise.all([
-  //     fetch("/server/info.json").then((res: Response) => res.json()),
-  //     fetch("/server/sponsor-faq.json").then((res: Response) => res.json()),
-  //     fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
-  //       res.json()
-  //     ),
-  //   ])) as [SiteInfo, FAQ[], NonprofitTestimonialProject];
-
-  //   const { whereWeWork } = info;
-
-  //   return {
-  //     props: {
-  //       whereWeWork,
-  //       faqs,
-  //       testimonialNonprofit,
-  //       projectsImage: info.homepagePartnerships,
-  //     },
-  //   };
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error(
-    "@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)"
-  );
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Icon from "$lib/components/Icon.svelte";
+  import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Info from "$lib/components/sponsors/Info.svelte";
+  import Stats from "$lib/components/sponsors/Stats.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
+  import { Perk, type PerkType } from "$lib/utils/schema";
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
 
   interface SponsorTier {
     name: string;
@@ -79,19 +42,7 @@
       ],
     },
   ];
-
-  export let faqs: FAQ[];
-  export let whereWeWork: Image;
-  export let testimonialNonprofit: NonprofitTestimonialProject;
-  export let projectsImage: Image;
 </script>
-
-<Head
-  title="Sponsors | Hack4Impact UIUC"
-  description="Uniting students to build well-engineered and impactful products for social change."
-  url="https://uiuc.hack4impact.org/join/sponsors"
-  image={projectsImage.src}
-/>
 
 <Section padding="60px">
   <h1>Sponsors</h1>
@@ -123,10 +74,10 @@
 
 <Section color="var(--gray-lighter)">
   <Testimonial
-    quote={testimonialNonprofit.testimonial}
-    name={testimonialNonprofit.testimonialSourceName}
-    desc={testimonialNonprofit.testimonialSourceDescription}
-    imageSrc={testimonialNonprofit.testimonialSourceImage?.src}
+    quote={data.testimonialNonprofit.testimonial}
+    name={data.testimonialNonprofit.testimonialSourceName}
+    desc={data.testimonialNonprofit.testimonialSourceDescription}
+    imageSrc={data.testimonialNonprofit.testimonialSourceImage?.src}
   />
 </Section>
 
@@ -218,13 +169,17 @@
 
 <Section padding="60px">
   <h2>Where We Work</h2>
-  <img id="where-we-work" src={whereWeWork.src} alt={whereWeWork.alt} />
+  <img
+    id="where-we-work"
+    src={data.info.whereWeWork.src}
+    alt={data.info.whereWeWork.alt}
+  />
 </Section>
 
-{#if faqs.length > 0}
+{#if data.faqs.length > 0}
   <Section padding="40px" id="faq" color="var(--gray-lighter)">
     <h2>Frequently Asked Questions</h2>
-    {#each faqs as faq}
+    {#each data.faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
         <p slot="contents">{@html faq.answer}</p>

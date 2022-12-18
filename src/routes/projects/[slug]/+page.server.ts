@@ -5,6 +5,7 @@ import type { PageServerLoad } from "./$types";
 
 // Prerender all projects found by SvelteKit crawler (displayed in projects page)
 // But include server-side JS to load any projects not found (preview projects)
+// TODO: Actually hook into Contentful preview API by changing contentWrapper
 export const prerender = "auto";
 
 export const load: PageServerLoad = async ({ params }) => {

@@ -1,67 +1,15 @@
-<script lang="ts" context="module">
-  throw new Error(
-    "@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)"
-  );
-
-  // import Accordion from "$components/Accordion.svelte";
-  // import Button from "$components/Button.svelte";
-  // import Head from "$components/Head.svelte";
-  // import Icon from "$components/Icon.svelte";
-  // import Row from "$components/Row.svelte";
-  // import Section from "$components/Section.svelte";
-  // import Step from "$components/Step.svelte";
-  // import Testimonial from "$components/Testimonial.svelte";
-
-  // import type {
-  //   FAQ,
-  //   Image,
-  //   Info,
-  //   NonprofitStep,
-  //   NonprofitTestimonialProject,
-  // } from "$lib/utils/schema";
-  // import type { Load } from "@sveltejs/kit";
-
-  // export const load: Load = async ({ fetch }) => {
-  //   const [applicationSteps, faqs, testimonialNonprofit, info] =
-  //     (await Promise.all([
-  //       fetch("/server/nonprofit-steps.json").then((res: Response) =>
-  //         res.json()
-  //       ),
-  //       fetch("/server/work-faq.json").then((res: Response) => res.json()),
-  //       fetch("/server/nonprofit-testimonial.json").then((res: Response) =>
-  //         res.json()
-  //       ),
-  //       fetch("/server/info.json").then((res: Response) => res.json()),
-  //     ])) as [NonprofitStep[], FAQ[], NonprofitTestimonialProject, Info];
-
-  //   return {
-  //     props: {
-  //       faqs,
-  //       applicationSteps,
-  //       testimonialNonprofit,
-  //       projectsImage: info.homepagePartnerships,
-  //     },
-  //   };
-  // };
-</script>
-
 <script lang="ts">
-  throw new Error(
-    "@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)"
-  );
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import Icon from "$lib/components/Icon.svelte";
+  import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import Testimonial from "$lib/components/Testimonial.svelte";
+  import type { PageData } from "./$types";
 
-  export let applicationSteps: NonprofitStep[];
-  export let faqs: FAQ[];
-  export let projectsImage: Image;
-  export let testimonialNonprofit: NonprofitTestimonialProject;
+  export let data: PageData;
 </script>
-
-<Head
-  title="Nonprofits | Hack4Impact UIUC"
-  description="Uniting students to build well-engineered and impactful products for social change."
-  url="https://uiuc.hack4impact.org/join/nonprofits"
-  image={projectsImage.src}
-/>
 
 <Section padding="60px">
   <h1>Nonprofits</h1>
@@ -98,10 +46,10 @@
 
 <Section color="var(--gray-lighter)">
   <Testimonial
-    quote={testimonialNonprofit.testimonial}
-    name={testimonialNonprofit.testimonialSourceName}
-    desc={testimonialNonprofit.testimonialSourceDescription}
-    imageSrc={testimonialNonprofit.testimonialSourceImage?.src}
+    quote={data.testimonialNonprofit.testimonial}
+    name={data.testimonialNonprofit.testimonialSourceName}
+    desc={data.testimonialNonprofit.testimonialSourceDescription}
+    imageSrc={data.testimonialNonprofit.testimonialSourceImage?.src}
   />
 </Section>
 
@@ -122,7 +70,10 @@
       <Button type="primary" href="/about/work">Learn More</Button>
     </div>
     <figure>
-      <img src={projectsImage.src} alt={projectsImage.alt} />
+      <img
+        src={data.info.homepagePartnerships.src}
+        alt={data.info.homepagePartnerships.alt}
+      />
     </figure>
   </Row>
 </Section>
@@ -130,7 +81,7 @@
 <Section id="process" color="var(--gray-lighter)" padding="40px">
   <h2>Application Process</h2>
   <div id="process-steps">
-    {#each applicationSteps as step, index}
+    {#each data.applicationSteps as step, index}
       <Step index={index + 1}>
         <span slot="name">
           {step.name}
@@ -143,10 +94,10 @@
   </div>
 </Section>
 
-{#if faqs.length > 0}
+{#if data.faqs.length > 0}
   <Section padding="40px" id="faq">
     <h2>Frequently Asked Questions</h2>
-    {#each faqs as faq}
+    {#each data.faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
         <p slot="contents">{@html faq.answer}</p>

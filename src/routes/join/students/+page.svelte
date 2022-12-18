@@ -1,11 +1,14 @@
 <script lang="ts">
-  import Head from "$lib/components/Head.svelte";
+  import Accordion from "$lib/components/Accordion.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import type { IconType } from "$lib/components/Icon.svelte";
+  import RoleInfo from "$lib/components/RoleInfo.svelte";
+  import Row from "$lib/components/Row.svelte";
+  import Section from "$lib/components/Section.svelte";
+  import Step from "$lib/components/Step.svelte";
+  import type { PageData } from "./$types";
 
-  export let faqs: FAQ[];
-  export let visibleRoles: Role[];
-  export let applicationSteps: ApplicationStep[];
-  export let applicationBlurb: string;
-  export let projectsImage: Image;
+  export let data: PageData;
 
   const iconMap: Record<string, IconType> = {
     Calendar: "calendar",
@@ -13,13 +16,6 @@
     Interview: "conversation",
   };
 </script>
-
-<Head
-  title=" | Hack4Impact UIUC"
-  description="Uniting students to build well-engineered and impactful products for social change."
-  url="https://uiuc.hack4impact.org/join/students"
-  image={projectsImage.src}
-/>
 
 <Section padding="60px">
   <h1>Students</h1>
@@ -31,11 +27,11 @@
   </p>
 </Section>
 
-{#if visibleRoles.length > 0}
+{#if data.visibleRoles.length > 0}
   <Section id="positions" color="var(--blue)" padding="60px">
     <span class="light-text wrap">
       <h2>Open Positions</h2>
-      {#each visibleRoles as role}
+      {#each data.visibleRoles as role}
         <RoleInfo {role} />
       {/each}
     </span>
@@ -44,9 +40,9 @@
 
 <Section color="var(--gray-lighter)" padding="40px">
   <h2 id="process">Application Process</h2>
-  <p>{@html applicationBlurb}</p>
+  <p>{@html data.info.applicationBlurb}</p>
   <div id="process-steps">
-    {#each applicationSteps as step}
+    {#each data.applicationSteps as step}
       <Step icon={iconMap[step.icon]}>
         <span slot="name">{step.name}</span>
         <span slot="date">{step.date ?? ""}</span>
@@ -56,10 +52,10 @@
   </div>
 </Section>
 
-{#if faqs.length > 0}
+{#if data.faqs.length > 0}
   <Section padding="40px" id="faq" color="var(--gray-lighter)">
     <h2>Frequently Asked Questions</h2>
-    {#each faqs as faq}
+    {#each data.faqs as faq}
       <Accordion>
         <span slot="title">{faq.question}</span>
         <p slot="contents">{@html faq.answer}</p>
