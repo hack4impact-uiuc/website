@@ -12,6 +12,14 @@ const config = {
       publicPrefix: "CLIENT_",
     },
   },
+
+  vitePlugin: {
+    experimental: {
+      inspector: {
+        holdMode: true,
+      },
+    },
+  },
 };
 
 export default config;

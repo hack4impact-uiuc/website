@@ -142,8 +142,14 @@
     display: none;
   }
 
-  .dropdown {
+  /* Use 0 specificity :where to select .dropdown to only override user-agent styles */
+  :where(.dropdown) {
+    box-sizing: initial;
+    border: none;
     appearance: none;
+    font: inherit;
+    text-align: start;
+    background-color: unset;
   }
 
   .dropdown > h2 {

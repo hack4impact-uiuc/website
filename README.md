@@ -48,8 +48,7 @@ Enter your Contentful space ID, Contentful content delivery key, Ackee server ad
 CONTENTFUL_DELIVERY_KEY="your Contentful delivery key"
 CONTENTFUL_SPACE_ID="your Contentful space ID"
 
-# Prefixed with CLIENT to be statically evaluated at build.
-# These environment variables will be exposed on the client.
+# Prefix variables with CLIENT to allow their use in client side JS.
 CLIENT_ACKEE_URL="your Ackee server address"
 CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 ```
@@ -61,6 +60,11 @@ CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 `npm run build` - use `adapter-static` to export all pages as static HTML to the `build` directory
 
 `npm run preview` - view the built website (requires `npm run build` to have been run prior)
+
+
+### Tips
+
+Hold (cmd|ctrl) + shift to enable the "Svelte inspector." Clicking any page element with this open will go to the element's source in VSCode.
 
 ---
 
