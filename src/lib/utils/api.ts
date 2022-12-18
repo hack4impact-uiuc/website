@@ -15,7 +15,7 @@ export class ContentWrapper {
   async build(): Promise<ContentfulClientApi> {
     const contentful = await import("contentful");
 
-    this.client = contentful.createClient({
+    this.client = contentful.default.createClient({
       space: this.space,
       accessToken: this.accessToken,
     });

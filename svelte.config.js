@@ -11,6 +11,10 @@ const config = {
     env: {
       publicPrefix: "CLIENT_",
     },
+    prerender: {
+      concurrency: 2,
+      entries: ["*", "/apply/nonprofits", "/apply/sponsors", "/apply/students"],
+    },
   },
 
   vitePlugin: {
