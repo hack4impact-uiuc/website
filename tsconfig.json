@@ -10,5 +10,10 @@
     "sourceMap": true,
     "strict": true
   },
-  "exclude": ["./scripts/*"]
+  // Excludes merged with .svelte-kit/tsconfig.json
+  "exclude": [
+    "./scripts/*",
+    "./node_modules/**",
+    "./.svelte-kit/[!ambient.d.ts]**"
+  ]
 }
