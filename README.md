@@ -16,7 +16,7 @@ This website uses [SvelteKit](https://kit.svelte.dev/) as its frontend framework
 
 ### SvelteKit
 
-When used correctly, Svelte results in lighter-weight and more performant websites than React, and is thus more suited for static websites such as this. By leveraging SvelteKit's [static adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-static), we are able to statically render both hard-coded pages as well as dynamic content hosted on Contentful.
+When used correctly, Svelte results in lighter-weight and more performant websites than React, and is thus more suited for static websites such as this. By leveraging SvelteKit's [page options](https://kit.svelte.dev/docs/page-options), we are able to generate static assets for prerenderable pages as well as serve dynamic content hosted on Contentful.
 
 ### Contentful
 
