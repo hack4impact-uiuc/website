@@ -1,18 +1,28 @@
-import preprocess from "svelte-preprocess";
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-netlify";
+import { vitePreprocess } from "@sveltejs/kit/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: preprocess(),
+  preprocess: vitePreprocess(),
 
   kit: {
-    adapter: adapter({
-      fallback: "404.html",
-    }),
-    prerender: {
-      default: true,
-    },
+    adapter: adapter(),
     inlineStyleThreshold: 1024,
+    env: {
+      publicPrefix: "CLIENT_",
+    },
+    prerender: {
+      concurrency: 2,
+      entries: ["*", "/apply/nonprofits", "/apply/sponsors", "/apply/students"],
+    },
+  },
+
+  vitePlugin: {
+    experimental: {
+      inspector: {
+        holdMode: true,
+      },
+    },
   },
 };
 

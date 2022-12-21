@@ -16,7 +16,7 @@ This website uses [SvelteKit](https://kit.svelte.dev/) as its frontend framework
 
 ### SvelteKit
 
-When used correctly, Svelte results in lighter-weight and more performant websites than React, and is thus more suited for static websites such as this. By leveraging SvelteKit's [static adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-static), we are able to statically render both hard-coded pages as well as dynamic content hosted on Contentful.
+When used correctly, Svelte results in lighter-weight and more performant websites than React, and is thus more suited for static websites such as this. By leveraging SvelteKit's [page options](https://kit.svelte.dev/docs/page-options), we are able to generate static assets for prerenderable pages as well as serve dynamic content hosted on Contentful.
 
 ### Contentful
 
@@ -48,8 +48,7 @@ Enter your Contentful space ID, Contentful content delivery key, Ackee server ad
 CONTENTFUL_DELIVERY_KEY="your Contentful delivery key"
 CONTENTFUL_SPACE_ID="your Contentful space ID"
 
-# Prefixed with CLIENT to be statically evaluated at build.
-# These environment variables will be exposed on the client.
+# Prefix variables with CLIENT to allow their use in client side JS.
 CLIENT_ACKEE_URL="your Ackee server address"
 CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 ```
@@ -61,6 +60,10 @@ CLIENT_ACKEE_DOMAIN_ID="your Ackee domain ID"
 `npm run build` - use `adapter-static` to export all pages as static HTML to the `build` directory
 
 `npm run preview` - view the built website (requires `npm run build` to have been run prior)
+
+### Tips
+
+Hold (cmd|ctrl) + shift to enable the "Svelte inspector." Clicking any page element with this open will go to the element's source in VSCode.
 
 ---
 

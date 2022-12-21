@@ -62,6 +62,9 @@ jobs:
         run: npm install
 
       - name: Run svelte-check
+        env:
+          CONTENTFUL_DELIVERY_KEY: ${{ secrets.CONTENTFUL_DELIVERY_KEY }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
         run: npm run check
 
   build:
