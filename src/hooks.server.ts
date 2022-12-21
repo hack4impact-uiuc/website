@@ -31,7 +31,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   event.locals.contentWrapper = new ContentWrapper(
     CONTENTFUL_SPACE_ID,
     CONTENTFUL_DELIVERY_KEY,
-    isPreview(event.url) ? CONTENTFUL_PREVIEW_KEY : undefined
+    !building && isPreview(event.url) ? CONTENTFUL_PREVIEW_KEY : undefined
   );
 
   const response = await resolve(event);
