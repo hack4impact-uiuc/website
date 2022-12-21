@@ -1,15 +1,15 @@
-import { contentWrapper } from "$lib/content/contentful";
+import type { ContentWrapper } from "$lib/utils/api";
 import type { Member } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = () => {
+export const load: PageServerLoad = ({ locals }) => {
   return {
     title: "The Team",
-    members: getMembers(),
+    members: getMembers(locals.contentWrapper),
   };
 };
 
-async function getMembers() {
+async function getMembers(contentWrapper: ContentWrapper) {
   const members: Member[] = await contentWrapper.get("member", {
     order: "fields.name",
     limit: 1000,

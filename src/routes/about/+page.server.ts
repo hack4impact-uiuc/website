@@ -1,15 +1,15 @@
-import { contentWrapper } from "$lib/content/contentful";
+import type { ContentWrapper } from "$lib/utils/api";
 import type { Member, TestimonialMember } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = () => {
+export const load: PageServerLoad = ({ locals }) => {
   return {
     title: "About Us",
-    testimonialMember: getTestimonialMember(),
+    testimonialMember: getTestimonialMember(locals.contentWrapper),
   };
 };
 
-async function getTestimonialMember() {
+async function getTestimonialMember(contentWrapper: ContentWrapper) {
   const members: Member[] = await contentWrapper.get("member");
   const testimonialMembers = members.filter(
     (member) => member.testimonial !== undefined

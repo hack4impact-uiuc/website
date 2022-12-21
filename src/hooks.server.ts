@@ -1,6 +1,19 @@
 import { minify, type Options } from "html-minifier-terser";
 import { building } from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
+import {
+  CONTENTFUL_DELIVERY_KEY,
+  CONTENTFUL_PREVIEW_FLAG,
+  CONTENTFUL_PREVIEW_KEY,
+  CONTENTFUL_SPACE_ID,
+} from "$env/static/private";
+import { ContentWrapper } from "$lib/utils/api";
+
+const contentfulPreviewSearchParam = "preview";
+
+const isPreview = (url: URL) =>
+  url.searchParams.get(contentfulPreviewSearchParam) ===
+  CONTENTFUL_PREVIEW_FLAG;
 
 const minificationOptions: Options = {
   collapseBooleanAttributes: true,
@@ -15,6 +28,12 @@ const minificationOptions: Options = {
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
+  event.locals.contentWrapper = new ContentWrapper(
+    CONTENTFUL_SPACE_ID,
+    CONTENTFUL_DELIVERY_KEY,
+    isPreview(event.url) ? CONTENTFUL_PREVIEW_KEY : undefined
+  );
+
   const response = await resolve(event);
 
   if (building && response.headers.get("content-type") === "text/html") {

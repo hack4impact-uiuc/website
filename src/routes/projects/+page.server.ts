@@ -1,16 +1,16 @@
-import { contentWrapper } from "$lib/content/contentful";
+import type { ContentWrapper } from "$lib/utils/api";
 import { generateProjectsInfo } from "$lib/utils/projects";
 import type { Project } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = () => {
+export const load: PageServerLoad = ({ locals }) => {
   return {
     title: "Projects",
-    projectsInfo: getProjectsInfo(),
+    projectsInfo: getProjectsInfo(locals.contentWrapper),
   };
 };
 
-async function getProjectsInfo() {
+async function getProjectsInfo(contentWrapper: ContentWrapper) {
   const projects: Project[] = await contentWrapper.get("project", {
     order: "fields.name",
     limit: 1000,

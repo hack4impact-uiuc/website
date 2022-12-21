@@ -1,4 +1,3 @@
-import { contentWrapper } from "$lib/content/contentful";
 import { error } from "@sveltejs/kit";
 import type { Project } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";
@@ -8,10 +7,14 @@ import type { PageServerLoad } from "./$types";
 // TODO: Actually hook into Contentful preview API by changing contentWrapper
 export const prerender = "auto";
 
-export const load: PageServerLoad = async ({ params }) => {
-  const projects: Project[] = await contentWrapper.get("project", {
-    "fields.slug": params.slug,
-  });
+export const load: PageServerLoad = async ({ params, locals }) => {
+  const projects: Project[] = await locals.contentWrapper.get(
+    "project",
+    {
+      "fields.slug": params.slug,
+    },
+    { preview: true }
+  );
 
   if (projects.length === 0) {
     throw error(404);
