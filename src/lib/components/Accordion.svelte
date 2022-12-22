@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { prefersReducedMotion } from "$lib/utils/accessibility";
+
   export let open = false;
   export let theme: "light" | "dark" | undefined = undefined;
 
@@ -25,7 +27,7 @@
         paddingBlock: paddingKeyframes,
       },
       {
-        duration: 150,
+        duration: !$prefersReducedMotion ? 150 : 0,
         easing: opening ? "ease-out" : "ease-in",
         direction: opening ? "normal" : "reverse",
       }
