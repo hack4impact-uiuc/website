@@ -1,6 +1,11 @@
+import { browser } from "$app/environment";
 import { readable } from "svelte/store";
 
 export function mediaQuery(queryString: string) {
+  if (!browser) {
+    return readable(true);
+  }
+
   const query = window.matchMedia(queryString);
 
   return readable(query.matches, (set) => {
