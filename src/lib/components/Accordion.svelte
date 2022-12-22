@@ -1,32 +1,79 @@
-<script lang="ts" context="module">
-  import { slide } from "svelte/transition";
-</script>
-
 <script lang="ts">
+  export let open = false;
   export let theme: "light" | "dark" | undefined = undefined;
 
-  let open = false;
+  let panel: HTMLDivElement;
 
-  function toggle() {
-    open = !open;
+  $: if (panel && open) {
+    animatePanel(true);
+  }
+
+  function animatePanel(opening: boolean) {
+    const paddingBlock = Number(
+      getComputedStyle(panel).paddingBlock.replace("px", "")
+    );
+
+    const heightKeyframes = [
+      "0px",
+      `${panel.clientHeight - 2 * paddingBlock}px`,
+    ];
+    const paddingKeyframes = ["0px", `${paddingBlock}px`];
+
+    const animation = panel.animate(
+      {
+        height: heightKeyframes,
+        paddingBlock: paddingKeyframes,
+      },
+      {
+        duration: 150,
+        easing: opening ? "ease-out" : "ease-in",
+        direction: opening ? "normal" : "reverse",
+      }
+    );
+
+    if (!opening) {
+      animation.oncancel =
+        animation.onfinish =
+        animation.onremove =
+          () => (open = false);
+    }
+  }
+
+  function togglePanel() {
+    // Open up immediately to get the panel to animate
+    // when closing wait until it's done animating to close.
+    if (!open) {
+      open = true;
+    } else {
+      animatePanel(false);
+    }
   }
 </script>
 
-<div class="accordion" class:light={theme === "light"}>
-  <button class="summary" on:click={toggle}>
-    <h3>{open ? "−" : "+"} <slot name="title" /></h3>
-  </button>
-  <div>
-    <slot name="actions" />
-  </div>
-</div>
-{#if open}
-  <div class="panel" transition:slide={{ duration: 150 }}>
+<details bind:open>
+  <summary
+    class="accordion"
+    class:light={theme === "light"}
+    on:click|preventDefault={togglePanel}
+  >
+    <div class="heading">
+      <slot name="title" />
+    </div>
+    <div>
+      <slot name="actions" />
+    </div>
+  </summary>
+
+  <div class="panel" bind:this={panel}>
     <slot name="contents" />
   </div>
-{/if}
+</details>
 
 <style>
+  details {
+    overflow: hidden;
+  }
+
   .accordion {
     display: flex;
     flex-flow: row nowrap;
@@ -41,7 +88,7 @@
     padding: 20px 0;
   }
 
-  .summary {
+  summary {
     flex: 1;
     height: 100%;
     border: none;
@@ -49,19 +96,31 @@
     background-color: transparent;
     border: none;
     outline: none;
-  }
 
-  .panel {
-    padding: 10px 0;
-  }
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    font-family: var(--fonts-heading);
 
-  h3 {
     color: var(--blue);
     margin: 0;
     text-align: start;
   }
 
-  .light h3 {
+  .panel {
+    display: flex;
+    padding: 10px 0;
+  }
+
+  .heading::before {
+    content: "+ ";
+  }
+
+  details[open] .heading::before {
+    content: "− ";
+  }
+
+  .accordion.light .heading {
     color: var(--gray-lighter);
   }
 
