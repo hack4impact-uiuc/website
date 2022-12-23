@@ -86,6 +86,15 @@
     border-bottom: 1px solid var(--blue);
   }
 
+  .accordion:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: -2px;
+  }
+
+  .accordion.light:focus-visible {
+    outline-color: var(--gray-lighter);
+  }
+
   .accordion > * {
     padding: 20px 0;
   }
