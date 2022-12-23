@@ -93,6 +93,7 @@
     font-size: 1rem;
     display: block;
     margin-top: 1rem;
+    align-self: flex-end;
   }
 
   figcaption > span.desc {
