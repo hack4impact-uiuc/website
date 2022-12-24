@@ -11,7 +11,9 @@ export default function animatedDetails(
     transitioning = true;
 
     const heightKeyframes = [
-      `${element.firstElementChild?.offsetHeight}px`,
+      `${
+        (element.firstElementChild as HTMLElement | undefined)?.offsetHeight
+      }px`,
       `${element.offsetHeight}px`,
     ];
 
