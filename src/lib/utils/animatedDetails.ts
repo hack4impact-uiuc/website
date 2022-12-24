@@ -5,15 +5,16 @@ export default function animatedDetails(
     easing: "ease-out",
   }
 ) {
+  const summary = element.querySelector("summary");
+  if (!summary) return;
+
   let transitioning = false;
 
   const animatePanel = (opening: boolean) => {
     transitioning = true;
 
     const heightKeyframes = [
-      `${
-        (element.firstElementChild as HTMLElement | undefined)?.offsetHeight
-      }px`,
+      `${summary.offsetHeight}px`,
       `${element.offsetHeight}px`,
     ];
 
@@ -65,12 +66,12 @@ export default function animatedDetails(
   };
 
   element.addEventListener("toggle", onToggle);
-  element.firstElementChild?.addEventListener("click", onClick);
+  summary.addEventListener("click", onClick);
 
   return {
     destroy() {
       element.removeEventListener("toggle", onToggle);
-      element.firstElementChild?.removeEventListener("click", onClick);
+      summary.removeEventListener("click", onClick);
     },
     update(
       {
