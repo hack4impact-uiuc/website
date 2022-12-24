@@ -13,12 +13,6 @@ declare namespace App {
   // interface Platform {}
 }
 
-declare namespace svelte.JSX {
-  interface HTMLAttributes<T> {
-    onenterViewport?: () => void;
-  }
-}
-
 declare module "*.gif" {
   const value: string;
   export = value;
