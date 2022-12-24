@@ -13,7 +13,6 @@
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
 
-<meta name="twitter:domain" value="https://uiuc.hack4impact.org" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:url" content={url} />
