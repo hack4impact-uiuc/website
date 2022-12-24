@@ -1,6 +1,11 @@
+type AnimatedDetailsOptions = Pick<
+  KeyframeAnimationOptions,
+  "duration" | "easing"
+>;
+
 export default function animatedDetails(
   element: HTMLDetailsElement,
-  { duration = 150, easing = "ease-out" }: KeyframeAnimationOptions = {
+  { duration = 150, easing = "ease-out" }: AnimatedDetailsOptions = {
     duration: 150,
     easing: "ease-out",
   }
@@ -77,7 +82,7 @@ export default function animatedDetails(
       {
         duration: newDuration = 150,
         easing: newEasing = "ease-out",
-      }: KeyframeAnimationOptions = {
+      }: AnimatedDetailsOptions = {
         duration: 150,
         easing: "ease-out",
       }
