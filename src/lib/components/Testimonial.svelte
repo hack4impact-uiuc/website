@@ -16,11 +16,13 @@
     {#if imageSrc !== undefined}
       <Row>
         <div class="left">
-          <blockquote>{quote}</blockquote>
-          <caption>
-            {name}<br />
-            <span class="desc">{desc}</span>
-          </caption>
+          <figure>
+            <blockquote>{quote}</blockquote>
+            <figcaption>
+              {name}<br />
+              <span class="desc">{desc}</span>
+            </figcaption>
+          </figure>
           {#if meetTheTeam}
             <Button type="primary" href="/about/team">Meet The Team</Button>
           {/if}
@@ -30,13 +32,13 @@
         </div>
       </Row>
     {:else}
-      <div class="center">
+      <figure class="center">
         <blockquote>{quote}</blockquote>
-        <caption>
+        <figcaption>
           {name}<br />
           <span class="desc">{desc}</span>
-        </caption>
-      </div>
+        </figcaption>
+      </figure>
     {/if}
   </div>
 </div>
@@ -68,7 +70,9 @@
 
   .left,
   .center {
-    display: block;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
     box-sizing: border-box;
   }
 
@@ -79,19 +83,20 @@
     text-justify: newspaper;
     font-size: 1rem;
   }
-  /* blockquote::before,
-  blockquote::after {
-    content: '"';
-  } */
 
-  caption {
+  figure {
+    margin: 0;
+  }
+
+  figcaption {
     text-align: right;
     font-size: 1rem;
     display: block;
     margin-top: 1rem;
+    align-self: flex-end;
   }
 
-  caption > span.desc {
+  figcaption > span.desc {
     font-size: 0.8rem;
   }
 

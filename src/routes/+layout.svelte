@@ -7,6 +7,7 @@
   import type { PageData } from "./$types";
   import Head from "$lib/components/Head.svelte";
   import { page } from "$app/stores";
+  import SkipLink from "$lib/components/SkipLink.svelte";
 
   export let data: PageData;
 
@@ -32,9 +33,11 @@
   />
 </svelte:head>
 
+<SkipLink />
+
 <Nav />
 
-<main>
+<main id="content">
   <slot />
 </main>
 
