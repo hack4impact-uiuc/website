@@ -4,6 +4,9 @@ import type { ContentfulClientApi, ContentType, Entry } from "contentful";
 import contentful from "contentful";
 
 type ContentWrapperGetOptions = {
+  /**
+   * Use draft data from the Contentful preview API if the ContentWrapper is authorized to do so.
+   */
   preview: boolean;
 };
 
