@@ -39,7 +39,7 @@
     "@svicons/boxicons-solid": "^0.1.3",
     "ackee-tracker": "^5.1.0",
     "contentful": "^9.1.5",
-    "svelte-animated-details": "^1.0.0"
+    "svelte-animated-details": "^1.0.1"
   },
   "type": "module"
 }
