@@ -1,6 +1,6 @@
 <script lang="ts">
   import { prefersReducedMotion } from "$lib/utils/accessibility";
-  import animatedDetails from "$lib/utils/animatedDetails";
+  import animatedDetails from "svelte-animated-details";
 
   export let open = false;
   export let theme: "light" | "dark" | undefined = undefined;
