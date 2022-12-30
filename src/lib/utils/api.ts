@@ -7,7 +7,7 @@ type ContentWrapperGetOptions = {
   /**
    * Use draft data from the Contentful preview API if the ContentWrapper is authorized to do so.
    */
-  preview: boolean;
+  allowPreview: boolean;
 };
 
 export class ContentWrapper {
@@ -29,11 +29,11 @@ export class ContentWrapper {
   async get(
     entity: string,
     contentfulOptions: any = {},
-    { preview = false }: ContentWrapperGetOptions = { preview: false }
+    { allowPreview = false }: ContentWrapperGetOptions = { allowPreview: false }
   ): Promise<any[]> {
     let client = this.client;
 
-    if (preview && this.previewClient) {
+    if (allowPreview && this.previewClient) {
       client = this.previewClient;
     }
 

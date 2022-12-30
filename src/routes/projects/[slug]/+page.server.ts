@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     {
       "fields.slug": params.slug,
     },
-    { preview: true }
+    { allowPreview: true }
   );
 
   if (projects.length === 0) {
