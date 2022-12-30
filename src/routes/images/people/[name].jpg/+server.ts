@@ -1,12 +1,11 @@
-import { contentWrapper } from "$lib/content/contentful";
 import { setImageHeight, titleCase, type Member } from "$lib/utils/schema";
 import { error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 
-export const GET: RequestHandler = async ({ params, fetch, url }) => {
+export const GET: RequestHandler = async ({ params, fetch, url, locals }) => {
   const contentfulName = titleCase(params.name.replace("_", " "));
 
-  const members: Member[] = await contentWrapper.get("member", {
+  const members: Member[] = await locals.contentWrapper.get("member", {
     "fields.name": contentfulName,
   });
 

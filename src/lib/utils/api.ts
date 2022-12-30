@@ -1,38 +1,48 @@
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import type { ContentfulClientApi, ContentType, Entry } from "contentful";
+import contentful from "contentful";
+
+type ContentWrapperGetOptions = {
+  /**
+   * Use draft data from the Contentful preview API if the ContentWrapper is authorized to do so.
+   */
+  allowPreview: boolean;
+};
 
 export class ContentWrapper {
-  client: ContentfulClientApi | undefined;
-  space: string;
-  accessToken: string;
+  client: ContentfulClientApi;
+  previewClient: ContentfulClientApi | undefined;
 
-  constructor(space: string, accessToken: string) {
-    this.space = space;
-    this.accessToken = accessToken;
+  constructor(space: string, accessToken: string, previewAccessToken?: string) {
+    this.client = contentful.createClient({ space, accessToken });
+
+    if (previewAccessToken) {
+      this.previewClient = contentful.createClient({
+        space,
+        accessToken: previewAccessToken,
+        host: "preview.contentful.com",
+      });
+    }
   }
 
-  async build(): Promise<ContentfulClientApi> {
-    const contentful = await import("contentful");
+  async get(
+    entity: string,
+    contentfulOptions: any = {},
+    { allowPreview = false }: ContentWrapperGetOptions = { allowPreview: false }
+  ): Promise<any[]> {
+    let client = this.client;
 
-    this.client = contentful.default.createClient({
-      space: this.space,
-      accessToken: this.accessToken,
-    });
-    return this.client;
-  }
-
-  async get(entity: string, options: any = {}): Promise<any[]> {
-    if (this.client === undefined) {
-      this.client = await this.build();
+    if (allowPreview && this.previewClient) {
+      client = this.previewClient;
     }
 
     const [entries, schema] = await Promise.all([
-      this.client.getEntries({
+      client.getEntries({
         content_type: entity,
-        ...options,
+        ...contentfulOptions,
       }),
-      this.client.getContentType(entity),
+      client.getContentType(entity),
     ]);
 
     return Promise.all(
@@ -107,10 +117,6 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
-    if (this.client === undefined) {
-      this.client = await this.build();
-    }
-
     switch (type) {
       case "Asset":
         return link.src !== undefined // why do I need to do this?

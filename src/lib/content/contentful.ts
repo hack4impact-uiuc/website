@@ -1,16 +1,9 @@
-import {
-  CONTENTFUL_DELIVERY_KEY,
-  CONTENTFUL_SPACE_ID,
-} from "$env/static/private";
-import { ContentWrapper } from "$lib/utils/api";
+import type { ContentWrapper } from "$lib/utils/api";
 import type { NonprofitTestimonialProject, Project } from "$lib/utils/schema";
 
-export const contentWrapper = new ContentWrapper(
-  CONTENTFUL_SPACE_ID,
-  CONTENTFUL_DELIVERY_KEY
-);
-
-export async function getTestimonialNonprofit(): Promise<NonprofitTestimonialProject> {
+export async function getTestimonialNonprofit(
+  contentWrapper: ContentWrapper
+): Promise<NonprofitTestimonialProject> {
   const projects: Project[] = await contentWrapper.get("project");
   const testimonialProjects = projects.filter(
     (project) =>

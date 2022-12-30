@@ -64,6 +64,8 @@ jobs:
         env:
           CONTENTFUL_DELIVERY_KEY: ${{ secrets.CONTENTFUL_DELIVERY_KEY }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_PREVIEW_KEY: ${{ secrets.CONTENTFUL_PREVIEW_KEY }}
+          CONTENTFUL_PREVIEW_FLAG: ${{ secrets.CONTENTFUL_PREVIEW_FLAG }}
         run: npm run check
 
   build:
@@ -87,6 +89,8 @@ jobs:
         env:
           CONTENTFUL_DELIVERY_KEY: ${{ secrets.CONTENTFUL_DELIVERY_KEY }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_PREVIEW_KEY: ${{ secrets.CONTENTFUL_PREVIEW_KEY }}
+          CONTENTFUL_PREVIEW_FLAG: ${{ secrets.CONTENTFUL_PREVIEW_FLAG }}
           CLIENT_ACKEE_URL: ${{ secrets.CLIENT_ACKEE_URL }}
           CLIENT_ACKEE_DOMAIN_ID: ${{ secrets.CLIENT_ACKEE_DOMAIN_ID }}
         run: npm run build
