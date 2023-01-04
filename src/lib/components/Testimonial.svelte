@@ -109,6 +109,7 @@
   .right > img {
     height: 12rem;
     aspect-ratio: 1;
+    object-fit: cover;
     border-radius: 50%;
   }
 
