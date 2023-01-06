@@ -80,7 +80,6 @@
     padding: 0;
     margin: 0;
     text-align: justify;
-    text-justify: newspaper;
     font-size: 1rem;
   }
 
