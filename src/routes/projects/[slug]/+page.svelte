@@ -49,7 +49,12 @@
   <p>{data.project.nonprofitDescription}</p>
 </Section>
 
-<Section id="project-description" longForm padding="40px">
+<Section
+  id="project-description"
+  longForm
+  padding="40px"
+  --accent-color={data.project.accentColor}
+>
   {@html data.project.fullDescription}
 </Section>
 
@@ -165,5 +170,9 @@
 
   :global(#project-description h2) {
     font-size: 1.2rem;
+  }
+
+  :global(#project-description li) {
+    text-decoration: underline var(--accent-color);
   }
 </style>

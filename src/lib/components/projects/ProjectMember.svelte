@@ -27,5 +27,7 @@
     border-radius: 100%;
     margin-bottom: 10px;
     width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 </style>

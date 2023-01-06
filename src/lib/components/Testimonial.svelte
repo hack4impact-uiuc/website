@@ -80,7 +80,6 @@
     padding: 0;
     margin: 0;
     text-align: justify;
-    text-justify: newspaper;
     font-size: 1rem;
   }
 
@@ -109,6 +108,7 @@
   .right > img {
     height: 12rem;
     aspect-ratio: 1;
+    object-fit: cover;
     border-radius: 50%;
   }
 
