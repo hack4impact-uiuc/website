@@ -174,5 +174,6 @@
 
   :global(#project-description li) {
     text-decoration: underline var(--accent-color);
+    font-size: 1rem;
   }
 </style>
