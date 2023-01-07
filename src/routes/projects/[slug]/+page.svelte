@@ -30,7 +30,7 @@
     {#if data.project.headerImage !== undefined}
       <div id="header-container" class="column-center">
         <img
-          src={setImageHeight(data.project.headerImage.src, 600)}
+          src={setImageHeight(data.project.headerImage.src, 800)}
           alt={data.project.headerImage.alt}
           draggable="false"
         />
