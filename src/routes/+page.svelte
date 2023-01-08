@@ -12,7 +12,11 @@
   export let data: PageData;
 </script>
 
-<DoubleBanner leftColor="var(--blue)" rightColor="var(--blue-darker)">
+<DoubleBanner
+  leftColor="var(--blue)"
+  rightColor="var(--blue-darker)"
+  class="landing"
+>
   <span slot="left">
     {#if data.info.homepageBannerText && data.info.homepageBannerUrl}
       <a class="banner" href={data.info.homepageBannerUrl}>
@@ -143,7 +147,7 @@
     object-position: left top;
   }
 
-  :global(#banner-right-content) {
+  :global(.landing #banner-right-content) {
     padding-right: 0 !important;
     padding-left: 10% !important;
   }
