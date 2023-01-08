@@ -3,7 +3,9 @@
   export let rightColor = "#fff";
 </script>
 
-<section class="row-center">
+<section
+  class={$$restProps.class ? `row-center ${$$restProps.class}` : "row-center"}
+>
   <div
     id="banner-left"
     class="banner column-center"
