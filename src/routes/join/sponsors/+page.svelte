@@ -7,6 +7,7 @@
   import Info from "$lib/components/sponsors/Info.svelte";
   import Stats from "$lib/components/sponsors/Stats.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
+  import { listFormatter } from "$lib/utils/format";
   import { Perk, type PerkType } from "$lib/utils/schema";
   import type { PageData } from "./$types";
 
@@ -19,26 +20,27 @@
 
   const tiers: SponsorTier[] = [
     {
-      name: "Standard",
-      perks: [Perk.RESUME_BOOK],
+      name: "Gold",
+      perks: [Perk.DIGITAL_BRANDING],
     },
     {
-      name: "Plus",
-      perks: [
-        Perk.DIGITAL_BRANDING,
-        Perk.RESUME_BOOK,
-        Perk.STANDARD_SESSION,
-        Perk.COFFEE_CHATS,
-      ],
-    },
-    {
-      name: "Premier",
+      name: "Platinum",
       perks: [
         Perk.DIGITAL_BRANDING,
         Perk.RESUME_BOOK,
         Perk.PREMIUM_SESSION,
-        Perk.COFFEE_CHATS,
         Perk.MENTORSHIP,
+      ],
+    },
+    {
+      name: "Diamond",
+      perks: [
+        Perk.DIGITAL_BRANDING,
+        Perk.RESUME_BOOK,
+        Perk.PREMIUM_SESSION,
+        Perk.MENTORSHIP,
+        Perk.COFFEE_CHATS,
+        Perk.VOLUNTEERING_EVENTS,
       ],
     },
   ];
@@ -154,10 +156,11 @@
           <div>
             <h2>{perk.name}</h2>
             <h3>
-              {tiers
-                .filter(({ perks }) => perks.includes(perk))
-                .map((tier) => tier.name)
-                .join(", ")}
+              {listFormatter.format(
+                tiers
+                  .filter(({ perks }) => perks.includes(perk))
+                  .map((tier) => tier.name)
+              )}
             </h3>
             <p>{perk.description}</p>
           </div>
