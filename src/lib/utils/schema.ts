@@ -149,7 +149,7 @@ export const Perk = {
     description:
       "Sponsor numerous Computer Science workshops ran by our members in underserved communities in the Chicago Metropolitan area",
   },
-} as const satisfies Record<string, PerkType>;
+} satisfies Record<string, PerkType>;
 
 // avoids unnecessary resizing of SVGs
 export function setImageHeight(src: string, height: number): string {
