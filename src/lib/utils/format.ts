@@ -5,7 +5,7 @@ function createListFormatter() {
 
   return {
     format(items: any[]) {
-      items.join(",");
+      items.join(", ");
     },
   };
 }
