@@ -28,6 +28,7 @@
   import Tag from "@svicons/boxicons-solid/tag.svelte";
   import Tree from "@svicons/boxicons-solid/tree.svelte";
   import Vector from "@svicons/boxicons-solid/vector.svelte";
+  import HomeHeart from "@svicons/boxicons-solid/home-heart.svelte";
   import type { SVGAttributes } from "svelte/elements";
 
   import type { ComponentType, SvelteComponentTyped } from "svelte";
@@ -61,7 +62,8 @@
     | "dollar"
     | "plane"
     | "unlink"
-    | "chevron-right";
+    | "chevron-right"
+    | "volunteering";
 
   const iconMap: Record<
     IconType,
@@ -96,6 +98,7 @@
     plane: Plane,
     unlink: Unlink,
     "chevron-right": ChevronCompactRight,
+    volunteering: HomeHeart,
   };
 </script>
 
