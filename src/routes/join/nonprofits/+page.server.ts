@@ -1,4 +1,4 @@
-import { getTestimonialNonprofit } from "$lib/content/contentful";
+import { getNonprofitTestimonial } from "$lib/content/contentful";
 import type { FAQ, NonprofitStep } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
@@ -12,6 +12,6 @@ export const load: PageServerLoad = ({ locals }) => {
     applicationSteps: locals.contentWrapper.get("nonprofitStep", {
       order: "fields.order",
     }) as Promise<NonprofitStep[]>,
-    testimonialNonprofit: getTestimonialNonprofit(locals.contentWrapper),
+    testimonial: getNonprofitTestimonial(locals.contentWrapper),
   };
 };
