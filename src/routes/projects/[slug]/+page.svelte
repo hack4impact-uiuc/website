@@ -3,6 +3,7 @@
   import ProjectMember from "$lib/components/projects/ProjectMember.svelte";
   import Section from "$lib/components/Section.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
+  import TestimonialCarousel from "$lib/components/TestimonialCarousel.svelte";
   import { pSBC } from "$lib/utils/color";
   import { setImageHeight } from "$lib/utils/schema";
   import type { PageData } from "./$types";
@@ -58,15 +59,10 @@
   {@html data.project.fullDescription}
 </Section>
 
-{#if data.project.testimonial !== undefined && data.project.testimonialSourceName !== undefined && data.project.testimonialSourceDescription !== undefined}
+{#if data.project.testimonials && data.project.testimonials.length > 0}
   <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)">
     <div class="column-center">
-      <Testimonial
-        quote={data.project.testimonial}
-        name={data.project.testimonialSourceName}
-        desc={data.project.testimonialSourceDescription}
-        imageSrc={data.project.testimonialSourceImage?.src}
-      />
+      <TestimonialCarousel testimonials={data.project.testimonials} />
     </div>
   </Section>
 {/if}

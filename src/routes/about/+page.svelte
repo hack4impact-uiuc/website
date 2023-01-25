@@ -115,15 +115,10 @@
   <h2>Meet The Team</h2>
 
   <Testimonial
-    quote={data.testimonialMember.testimonial}
-    name={data.testimonialMember.name}
-    desc={`${
-      data.testimonialMember.active ||
-      data.testimonialMember.role === "Co-Founder"
-        ? ""
-        : "Former "
-    }${data.testimonialMember.role}`}
-    imageSrc={data.testimonialMember.picture.src}
+    quote={data.testimonial.content}
+    name={data.testimonial.sourceName}
+    desc={data.testimonial.sourceDescription}
+    imageSrc={data.testimonial.sourceImage?.src}
     meetTheTeam
   />
 </Section>

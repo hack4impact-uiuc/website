@@ -29,6 +29,8 @@
   import Tree from "@svicons/boxicons-solid/tree.svelte";
   import Vector from "@svicons/boxicons-solid/vector.svelte";
   import HomeHeart from "@svicons/boxicons-solid/home-heart.svelte";
+  import Pause from "@svicons/boxicons-regular/pause-circle.svelte";
+  import Play from "@svicons/boxicons-regular/play-circle.svelte";
   import type { SVGAttributes } from "svelte/elements";
 
   import type { ComponentType, SvelteComponentTyped } from "svelte";
@@ -63,7 +65,9 @@
     | "plane"
     | "unlink"
     | "chevron-right"
-    | "volunteering";
+    | "volunteering"
+    | "pause"
+    | "play";
 
   const iconMap: Record<
     IconType,
@@ -99,6 +103,8 @@
     unlink: Unlink,
     "chevron-right": ChevronCompactRight,
     volunteering: HomeHeart,
+    pause: Pause,
+    play: Play,
   };
 </script>
 

@@ -1,22 +1,26 @@
 import type { ContentWrapper } from "$lib/utils/api";
-import type { Member, TestimonialMember } from "$lib/utils/schema";
+import type { Testimonial } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = ({ locals }) => {
   return {
     title: "About Us",
-    testimonialMember: getTestimonialMember(locals.contentWrapper),
+    testimonial: getTestimonial(locals.contentWrapper),
   };
 };
 
-async function getTestimonialMember(contentWrapper: ContentWrapper) {
-  const members: Member[] = await contentWrapper.get("member");
-  const testimonialMembers = members.filter(
-    (member) => member.testimonial !== undefined
-  ) as TestimonialMember[];
+async function getTestimonial(contentWrapper: ContentWrapper) {
+  const testimonials: Testimonial[] = await contentWrapper.get("testimonial");
+  const memberTestimonialsAboutH4I = testimonials.filter(
+    (testimonial) =>
+      testimonial.sourceType === "Member" &&
+      testimonial.contentType === "Hack4Impact"
+  ) as Testimonial[];
 
-  const featuredTestimonialMember =
-    testimonialMembers[Math.floor(Math.random() * testimonialMembers.length)];
+  const featuredTestimonial =
+    memberTestimonialsAboutH4I[
+      Math.floor(Math.random() * memberTestimonialsAboutH4I.length)
+    ];
 
-  return featuredTestimonialMember;
+  return featuredTestimonial;
 }

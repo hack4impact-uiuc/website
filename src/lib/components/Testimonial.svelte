@@ -1,5 +1,6 @@
 <script lang="ts">
   import { setImageHeight } from "$lib/utils/schema";
+  import { tick } from "svelte";
   import Button from "./Button.svelte";
   import Row from "./Row.svelte";
 
@@ -9,6 +10,25 @@
   export let name: string;
   export let desc: string;
   export let meetTheTeam = false;
+
+  const maxMinimizedQuoteLength = 500;
+
+  let blockquote: HTMLQuoteElement;
+  let readMore = false;
+
+  $: slicedQuote = quote.slice(0, maxMinimizedQuoteLength);
+  $: needsReadMore = quote.length > slicedQuote.length;
+  $: text = readMore
+    ? quote
+    : slicedQuote + (needsReadMore && !readMore ? "..." : "");
+
+  async function toggle() {
+    readMore = !readMore;
+    if (!readMore) {
+      await tick();
+      blockquote.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 </script>
 
 <div class="wrap">
@@ -17,7 +37,15 @@
       <Row>
         <div class="left">
           <figure>
-            <blockquote>{quote}</blockquote>
+            <blockquote bind:this={blockquote}>
+              {@html text}
+
+              {#if needsReadMore}
+                <button class="readmore" on:click={toggle}>
+                  {readMore ? "Read less" : "Read more"}
+                </button>
+              {/if}
+            </blockquote>
             <figcaption>
               {name}<br />
               <span class="desc">{desc}</span>
@@ -33,7 +61,15 @@
       </Row>
     {:else}
       <figure class="center">
-        <blockquote>{quote}</blockquote>
+        <blockquote bind:this={blockquote}>
+          {@html text}
+
+          {#if needsReadMore}
+            <button class="readmore" on:click={toggle}>
+              {readMore ? "Read less" : "Read more"}
+            </button>
+          {/if}
+        </blockquote>
         <figcaption>
           {name}<br />
           <span class="desc">{desc}</span>
@@ -110,6 +146,16 @@
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  .readmore {
+    display: inline;
+    cursor: pointer;
+    color: var(--gray-light);
+    padding: 0;
+    background-color: transparent;
+    appearance: none;
+    border: none;
   }
 
   @media screen and (max-width: 900px) {

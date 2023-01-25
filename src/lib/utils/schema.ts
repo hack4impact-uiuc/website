@@ -12,11 +12,15 @@ export type Member = {
   linkedin: string;
   active: boolean;
   graduationYear: number;
-  testimonial?: string;
 };
 
-export type TestimonialMember = Member & {
-  testimonial: string;
+export type Testimonial = {
+  content: string;
+  contentType: "Project" | "Hack4Impact";
+  sourceName: string;
+  sourceDescription: string;
+  sourceType: "Member" | "Nonprofit";
+  sourceImage?: Image;
 };
 
 type RoleName =
@@ -51,18 +55,7 @@ export type Project = {
   productDesigner: Member[];
   softwareDevelopers: Member[];
   featured: boolean;
-  testimonial?: string;
-  testimonialSourceName?: string;
-  testimonialSourceDescription?: string;
-  testimonialSourceImage?: Image;
-  testimonialSourceType?: "Member" | "Nonprofit";
-};
-
-export type NonprofitTestimonialProject = Project & {
-  testimonial: string;
-  testimonialSourceName: string;
-  testimonialSourceDescription: string;
-  testimonialSourceType: "Nonprofit";
+  testimonials?: Testimonial[];
 };
 
 export type Info = {
