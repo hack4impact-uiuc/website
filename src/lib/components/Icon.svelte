@@ -31,6 +31,8 @@
   import HomeHeart from "@svicons/boxicons-solid/home-heart.svelte";
   import Pause from "@svicons/boxicons-regular/pause-circle.svelte";
   import Play from "@svicons/boxicons-regular/play-circle.svelte";
+  import RightArrow from "@svicons/boxicons-regular/right-arrow-alt.svelte";
+  import LeftArrow from "@svicons/boxicons-regular/left-arrow-alt.svelte";
   import type { SVGAttributes } from "svelte/elements";
 
   import type { ComponentType, SvelteComponentTyped } from "svelte";
@@ -67,7 +69,9 @@
     | "chevron-right"
     | "volunteering"
     | "pause"
-    | "play";
+    | "play"
+    | "right-arrow"
+    | "left-arrow";
 
   const iconMap: Record<
     IconType,
@@ -105,6 +109,8 @@
     volunteering: HomeHeart,
     pause: Pause,
     play: Play,
+    "right-arrow": RightArrow,
+    "left-arrow": LeftArrow,
   };
 </script>
 

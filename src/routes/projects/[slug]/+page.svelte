@@ -60,11 +60,7 @@
 </Section>
 
 {#if data.project.testimonials && data.project.testimonials.length > 0}
-  <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)">
-    <div class="column-center">
-      <TestimonialCarousel testimonials={data.project.testimonials} />
-    </div>
-  </Section>
+  <TestimonialCarousel testimonials={data.project.testimonials} />
 {/if}
 
 <Section id="team" longForm padding="40px" color={data.project.accentColor}>

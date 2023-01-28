@@ -11,19 +11,20 @@
   export let desc: string;
   export let meetTheTeam = false;
 
-  const maxMinimizedQuoteLength = 500;
+  export function close() {
+    toggle(false);
+  }
 
   let blockquote: HTMLQuoteElement;
   let readMore = false;
+  let slicedQuote = quote;
 
-  $: slicedQuote = quote.slice(0, maxMinimizedQuoteLength);
-  $: needsReadMore = quote.length > slicedQuote.length;
-  $: text = readMore
-    ? quote
-    : slicedQuote + (needsReadMore && !readMore ? "..." : "");
+  $: slicedQuote = quote.slice(0, quote.indexOf("</p>"));
+  $: needsReadMore = quote.length > slicedQuote.length + "</p>".length;
+  $: text = readMore ? quote : slicedQuote + "</p>";
 
-  async function toggle() {
-    readMore = !readMore;
+  async function toggle(open?: boolean) {
+    readMore = open ?? !readMore;
     if (!readMore) {
       await tick();
       blockquote.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -41,7 +42,7 @@
               {@html text}
 
               {#if needsReadMore}
-                <button class="readmore" on:click={toggle}>
+                <button class="readmore" on:click={() => toggle()}>
                   {readMore ? "Read less" : "Read more"}
                 </button>
               {/if}
@@ -65,7 +66,7 @@
           {@html text}
 
           {#if needsReadMore}
-            <button class="readmore" on:click={toggle}>
+            <button class="readmore" on:click={() => toggle()}>
               {readMore ? "Read less" : "Read more"}
             </button>
           {/if}
@@ -139,6 +140,7 @@
     flex: auto !important;
     max-width: 12rem;
     overflow: hidden;
+    align-self: flex-start;
   }
 
   .right > img {
@@ -149,13 +151,14 @@
   }
 
   .readmore {
-    display: inline;
+    display: block;
     cursor: pointer;
     color: var(--gray-light);
     padding: 0;
     background-color: transparent;
     appearance: none;
     border: none;
+    margin-left: auto;
   }
 
   @media screen and (max-width: 900px) {

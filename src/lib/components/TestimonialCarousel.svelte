@@ -1,253 +1,176 @@
 <script lang="ts">
-  import { prefersReducedMotion } from "$lib/utils/accessibility";
-  import {
-    setImageHeight,
-    type Testimonial as TestimonialType,
-  } from "$lib/utils/schema";
-  import { createClock } from "$lib/utils/stores";
-  import viewport from "$lib/utils/useViewportAction";
-  import { fade, slide } from "svelte/transition";
+  import type { Testimonial as TestimonialType } from "$lib/utils/schema";
+  import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
+  import Button from "./Button.svelte";
   import Icon from "./Icon.svelte";
+
+  import Section from "./Section.svelte";
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
 
-  const appearDuration = 12500;
-  const clock = createClock(false);
+  let scroller: HTMLDivElement;
+  let hasPrevious = false;
+  let hasNext = false;
 
-  let testimonialWrapper: HTMLDivElement;
-  let testimonialIdx = 0;
-  let lastProgress = 0;
-  let startTime = 0;
+  $: testimonialComponents = testimonials.map(() => ({})) as {
+    elem?: HTMLDivElement;
+    component?: Testimonial;
+  }[];
+  $: console.log(testimonialComponents);
+  onMount(() => {
+    const observerOptions = {
+      root: scroller,
+      rootMargin: "0px",
+      threshold: [0, 0.15, 1],
+    };
 
-  $: progress = ($clock.time - startTime) / appearDuration;
-  $: if (progress >= 1) {
-    advanceCarousel();
-  }
+    const observer = new IntersectionObserver((observerEntries) => {
+      for (const entry of observerEntries) {
+        if (entry.target == testimonialComponents[0].elem) {
+          hasPrevious = entry.intersectionRatio < 0.25;
+        } else {
+          hasNext = entry.intersectionRatio < 0.25;
+        }
+      }
+    }, observerOptions);
 
-  function advanceCarousel(i?: number) {
-    lastProgress = progress;
-    testimonialIdx = i ?? (testimonialIdx + 1) % testimonials.length;
-    startTime = $clock.time;
-  }
+    observer.observe(testimonialComponents[0].elem!);
+    observer.observe(
+      testimonialComponents[testimonialComponents.length - 1].elem!
+    );
 
-  function onEnterViewport() {
-    if (!$prefersReducedMotion) {
-      clock.play();
-    }
-    advanceCarousel(0);
-    testimonialWrapper.setAttribute("aria-live", "polite");
-  }
+    return observer.disconnect;
+  });
 
-  function onExitViewport() {
-    clock.pause();
-    testimonialWrapper.removeAttribute("aria-live");
-  }
-
-  function togglePlay() {
-    if ($clock.paused) {
-      clock.play();
-    } else {
-      clock.pause();
-    }
+  async function scroll(direction: "left" | "right") {
+    const scrollAmount = 100;
+    const sign = direction === "left" ? -1 : 1;
+    testimonialComponents.forEach((component) => component.component!.close());
+    scroller.parentElement?.scrollBy({
+      behavior: "smooth",
+      left: scrollAmount * sign,
+    });
   }
 </script>
 
-{#if testimonials.length === 1}
-  {@const testimonial = testimonials[0]}
-
-  <Testimonial
-    quote={testimonial.content}
-    name={testimonial.sourceName}
-    desc={testimonial.sourceDescription}
-    imageSrc={testimonial.sourceImage?.src}
-  />
-{:else if testimonials.length > 1}
-  <div
-    class="carousel"
-    use:viewport
-    on:enterViewport={onEnterViewport}
-    on:exitViewport={onExitViewport}
-  >
-    <div class="guide" class:paused={$clock.paused}>
-      {#if !$prefersReducedMotion}
-        <button class="pause" on:click={togglePlay}>
-          <Icon icon={$clock.paused ? "play" : "pause"} style="height: 75%;" />
-        </button>
-      {/if}
-
-      {#each testimonials as testimonial, i}
-        {@const active = testimonialIdx === i}
-        <button
-          class="item"
-          class:active
-          style:--progress={active ? progress : lastProgress}
-          on:click={() => {
-            clock.pause();
-            advanceCarousel(i);
-          }}
-          on:pointerenter={() => {
-            if (active) {
-              clock.pause();
-            }
-          }}
-          on:pointerleave={() => {
-            if (!$prefersReducedMotion) {
-              clock.play();
-            }
-          }}
+<Section id="testimonial" padding="40px" color="var(--gray-lighter)">
+  <div class="column-center" bind:this={scroller}>
+    <div class="carousel">
+      {#each testimonials as testimonial, i (testimonial)}
+        <div
+          class="testimonial-wrapper"
+          bind:this={testimonialComponents[i].elem}
         >
-          {#if testimonial.sourceImage}
-            <img
-              src={setImageHeight(testimonial.sourceImage.src, 100)}
-              alt={testimonial.sourceName}
-            />
-          {:else}
-            {testimonial.sourceName}
-          {/if}
-        </button>
+          <Testimonial
+            quote={testimonial.content}
+            name={testimonial.sourceName}
+            desc={testimonial.sourceDescription}
+            imageSrc={testimonial.sourceImage?.src}
+            bind:this={testimonialComponents[i].component}
+          />
+        </div>
       {/each}
     </div>
-
-    {#key testimonialIdx}
-      <div
-        class="testimonial-wrapper"
-        aria-relevant="additions"
-        out:slide={{ duration: 200 }}
-        in:fade={{ delay: 200, duration: 200 }}
-        bind:this={testimonialWrapper}
-        on:pointerenter={clock.pause}
-        on:pointerleave={clock.play}
-        on:outrostart={(e) =>
-          e.currentTarget.setAttribute("aria-hidden", "true")}
-      >
-        <Testimonial
-          quote={testimonials[testimonialIdx].content}
-          name={testimonials[testimonialIdx].sourceName}
-          desc={testimonials[testimonialIdx].sourceDescription}
-          imageSrc={testimonials[testimonialIdx].sourceImage?.src}
-        />
-      </div>
-    {/key}
   </div>
-{/if}
+  {#if hasPrevious}
+    <div class="page-button" transition:fade>
+      <Button type="primary" on:click={() => scroll("left")}>
+        <Icon icon="left-arrow" width="2em" height="2em" />
+      </Button>
+    </div>
+  {/if}
+  {#if hasNext}
+    <div class="page-button" transition:fade>
+      <Button type="primary" on:click={() => scroll("right")}>
+        <Icon icon="right-arrow" width="2em" height="2em" />
+      </Button>
+    </div>
+  {/if}
+</Section>
 
 <style>
+  :global(#testimonial) {
+    position: relative;
+  }
+
+  :global(#testimonial > :first-child) {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  :global(#testimonial)::before,
+  :global(#testimonial)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(calc(100vw - var(--content-width)) / 2);
+    height: 100%;
+    width: calc(
+      calc(calc(var(--content-width) - var(--long-form-width)) / 2) * 0.75
+    );
+    --gradient-colors: var(--gray-lighter), transparent;
+    background: linear-gradient(90deg, var(--gradient-colors));
+    z-index: 20;
+  }
+
+  :global(#testimonial)::after {
+    left: unset;
+    right: calc(calc(100vw - var(--content-width)) / 2);
+    background: linear-gradient(-90deg, var(--gradient-colors));
+  }
+
+  .page-button {
+    position: absolute;
+    top: 75%;
+    left: calc(calc(100vw - var(--content-width)) / 2);
+    transform: translateY(-50%);
+    transition: opacity 150ms ease-in;
+    z-index: 21;
+  }
+
+  .page-button:last-child {
+    left: unset;
+    right: calc(calc(100vw - var(--content-width)) / 2);
+  }
+
+  .column-center {
+    max-width: var(--long-form-width);
+    margin-inline: auto;
+  }
+
   .carousel {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    grid-template-rows: 1fr;
+    display: flex;
+    width: 100%;
+    --hidden-percent-of-empty-space: 0.5;
+    gap: calc(
+      calc(calc(var(--content-width) - var(--long-form-width)) / 2) *
+        var(--hidden-percent-of-empty-space)
+    );
   }
 
   .testimonial-wrapper {
-    grid-area: 1 / 2 / 1 / 3;
-    padding-left: 25px;
+    scroll-snap-align: center;
+    flex: 0 0 100%;
+    scroll-padding-block-end: 50px;
   }
 
-  .guide {
-    display: flex;
-    flex-flow: column nowrap;
-    padding-right: 25px;
-    border-right: 1px solid var(--gray-light);
+  .testimonial-wrapper:last-of-type {
+    /* Extra right padding since parent is left offset from scroll container */
+    padding-right: calc(
+      calc(var(--content-width) - var(--long-form-width)) / 2
+    );
   }
 
-  .guide > .item {
-    position: relative;
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    flex: 1;
-  }
-
-  .guide > .item + .item {
-    border-top: 1px solid var(--gray-light);
-  }
-
-  .guide > .item::after {
-    content: "";
-    position: absolute;
-    top: 10%;
-    left: 100%;
-    width: 5px;
-    height: 80%;
-    background-color: var(--blue);
-    transform-origin: top;
-    z-index: 10;
-    opacity: 0;
-    transform: scaleY(var(--progress));
-    transition: opacity 400ms ease;
-  }
-
-  .guide > .item.active::after {
-    transform: scaleY(var(--progress));
-    opacity: 1;
-  }
-
-  .guide.paused > .item.active::after {
-    transition: opacity 400ms ease, transform 100ms ease;
-    transform: unset;
-    opacity: 1;
-  }
-
-  .guide > .item > img {
-    width: 50px;
-    border-radius: 50%;
-  }
-
-  .pause {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    cursor: pointer;
-    border: none;
-    border-right: 1px solid var(--gray-light);
-    appearance: none;
-  }
-
-  @media (max-width: 750px) or (pointer: coarse) or (hover: none) {
+  @media (max-width: 900px) {
     .carousel {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr min-content;
-      gap: 25px;
-      transition: all 1000ms ease;
+      --hidden-percent-of-empty-space: 0.65;
     }
 
-    .testimonial-wrapper {
-      grid-area: 1 / 1 / 2 / 2;
-    }
-
-    .guide {
-      display: flex;
-      flex-flow: initial;
-      padding: 0;
-      padding-top: 25px;
-      border: none;
-      border-top: 1px solid var(--gray-light);
-    }
-
-    .guide > .item::after {
-      left: 10%;
-      top: 100%;
-      width: 80%;
-      height: 5px;
-      transform-origin: top left;
-      transform: scaleX(var(--progress));
-    }
-
-    .guide > .item.active::after {
-      transform: scaleX(var(--progress));
-    }
-
-    .guide > .item + .item {
-      border: none;
-      border-left: 1px solid var(--gray-light);
-    }
-
-    .pause {
-      display: flex;
+    .page-button {
+      top: unset;
+      bottom: 0;
     }
   }
 </style>
