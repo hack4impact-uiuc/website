@@ -13,7 +13,6 @@
 
   let blockquote: HTMLQuoteElement;
   let readMore = false;
-  let slicedQuote = quote;
 
   $: slicedQuote = quote.slice(0, quote.indexOf("</p>"));
   $: needsReadMore = quote.length > slicedQuote.length + "</p>".length;
