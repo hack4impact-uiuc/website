@@ -158,11 +158,7 @@
   .carousel {
     display: flex;
     width: 100%;
-    --hidden-percent-of-empty-space: 0.5;
-    gap: calc(
-      calc(calc(var(--content-width) - var(--long-form-width)) / 2) *
-        var(--hidden-percent-of-empty-space)
-    );
+    gap: 60px;
   }
 
   .testimonial-wrapper {
@@ -205,12 +201,17 @@
 
   @media (max-width: 900px) {
     .carousel {
-      --hidden-percent-of-empty-space: 0.65;
+      gap: 40px;
     }
 
     .page-button {
       top: unset;
       bottom: 0;
+    }
+
+    .guide {
+      top: unset;
+      bottom: 5%;
     }
   }
 </style>
