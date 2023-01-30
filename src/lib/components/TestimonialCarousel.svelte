@@ -138,9 +138,9 @@
 
   .page-button {
     position: absolute;
-    top: 85%;
+    bottom: 75px;
     left: calc(calc(100vw - var(--content-width)) / 2);
-    transform: translateY(-50%);
+    transform: translateY(50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
   }
@@ -178,9 +178,9 @@
     position: absolute;
     display: flex;
     gap: 10px;
-    top: 85%;
+    bottom: 75px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 50%);
   }
 
   .guide > button {
@@ -204,13 +204,8 @@
       gap: 40px;
     }
 
-    .page-button {
-      top: unset;
-      bottom: 0;
-    }
-
+    .page-button,
     .guide {
-      top: unset;
       bottom: 35px;
     }
   }
