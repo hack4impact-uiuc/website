@@ -29,8 +29,6 @@
   import Tree from "@svicons/boxicons-solid/tree.svelte";
   import Vector from "@svicons/boxicons-solid/vector.svelte";
   import HomeHeart from "@svicons/boxicons-solid/home-heart.svelte";
-  import Pause from "@svicons/boxicons-regular/pause-circle.svelte";
-  import Play from "@svicons/boxicons-regular/play-circle.svelte";
   import RightArrow from "@svicons/boxicons-regular/right-arrow-alt.svelte";
   import LeftArrow from "@svicons/boxicons-regular/left-arrow-alt.svelte";
   import type { SVGAttributes } from "svelte/elements";
@@ -68,8 +66,6 @@
     | "unlink"
     | "chevron-right"
     | "volunteering"
-    | "pause"
-    | "play"
     | "right-arrow"
     | "left-arrow";
 
@@ -107,8 +103,6 @@
     unlink: Unlink,
     "chevron-right": ChevronCompactRight,
     volunteering: HomeHeart,
-    pause: Pause,
-    play: Play,
     "right-arrow": RightArrow,
     "left-arrow": LeftArrow,
   };
