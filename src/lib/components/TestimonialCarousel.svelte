@@ -158,7 +158,10 @@
   .carousel {
     display: flex;
     width: 100%;
-    gap: 60px;
+    gap: max(
+      calc(calc(var(--content-width) - var(--long-form-width)) / 2),
+      60px
+    );
   }
 
   .testimonial-wrapper {
