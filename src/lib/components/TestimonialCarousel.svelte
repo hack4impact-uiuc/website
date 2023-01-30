@@ -10,17 +10,15 @@
 
   export let testimonials: TestimonialType[];
 
-  let scrollerChild: HTMLDivElement | undefined;
+  let scrollerChild: HTMLDivElement;
   let hasPrevious = false;
   let hasNext = false;
   let viewingIndex = 0;
   let testimonialElements = [] as HTMLDivElement[];
 
-  $: scroller = scrollerChild?.parentElement;
-
   onMount(() => {
     const observerOptions = {
-      root: scroller,
+      root: scrollerChild?.parentElement,
       rootMargin: "0px",
       threshold: [0.25, 0.75, 1],
     };
@@ -53,7 +51,7 @@
   async function scroll(direction: "left" | "right") {
     const scrollAmount = 100;
     const sign = direction === "left" ? -1 : 1;
-    scroller?.scrollBy({
+    scrollerChild.parentElement?.scrollBy({
       behavior: "smooth",
       left: scrollAmount * sign,
     });
