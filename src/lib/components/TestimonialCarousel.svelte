@@ -74,14 +74,14 @@
     </div>
   </div>
   {#if hasPrevious}
-    <div class="page-button prev" transition:fade>
+    <div class="page-button prev" transition:fade|local>
       <Button type="primary" on:click={() => scroll("left")}>
         <Icon icon="left-arrow" width="2em" height="2em" />
       </Button>
     </div>
   {/if}
   {#if hasNext}
-    <div class="page-button next" transition:fade>
+    <div class="page-button next" transition:fade|local>
       <Button type="primary" on:click={() => scroll("right")}>
         <Icon icon="right-arrow" width="2em" height="2em" />
       </Button>
