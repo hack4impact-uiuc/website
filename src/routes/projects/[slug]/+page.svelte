@@ -2,7 +2,6 @@
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import ProjectMember from "$lib/components/projects/ProjectMember.svelte";
   import Section from "$lib/components/Section.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
   import TestimonialCarousel from "$lib/components/TestimonialCarousel.svelte";
   import { pSBC } from "$lib/utils/color";
   import { setImageHeight } from "$lib/utils/schema";
