@@ -93,10 +93,6 @@
     transition: 0.2s;
   }
 
-  .button:disabled {
-    cursor: default;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
     .button:active {
       transform: scale(0.95);
