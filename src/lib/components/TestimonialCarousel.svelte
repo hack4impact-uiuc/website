@@ -4,17 +4,17 @@
   import { fade } from "svelte/transition";
   import Button from "./Button.svelte";
   import Icon from "./Icon.svelte";
-
   import Section from "./Section.svelte";
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
 
   let scrollerChild: HTMLDivElement;
-  let hasPrevious = false;
-  let hasNext = false;
-  let viewingIndex = 0;
   let testimonialElements = [] as HTMLDivElement[];
+  let viewingIndex = 0;
+
+  $: hasPrevious = viewingIndex !== 0;
+  $: hasNext = viewingIndex !== testimonials.length - 1;
 
   onMount(() => {
     const observerOptions = {
@@ -29,14 +29,6 @@
           viewingIndex = testimonialElements.findIndex(
             (elem) => entry.target === elem
           );
-        }
-
-        if (entry.target == testimonialElements[0]) {
-          hasPrevious = entry.intersectionRatio <= 0.25;
-        } else if (
-          entry.target === testimonialElements[testimonialElements.length - 1]
-        ) {
-          hasNext = entry.intersectionRatio <= 0.25;
         }
       }
     }, observerOptions);
