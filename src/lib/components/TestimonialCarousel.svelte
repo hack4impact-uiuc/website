@@ -10,45 +10,50 @@
 
   export let testimonials: TestimonialType[];
 
-  let scroller: HTMLDivElement;
+  let scrollerChild: HTMLDivElement | undefined;
   let hasPrevious = false;
   let hasNext = false;
+  let viewingIndex = 0;
+  let testimonialElements = [] as HTMLDivElement[];
 
-  $: testimonialComponents = testimonials.map(() => ({})) as {
-    elem?: HTMLDivElement;
-    component?: Testimonial;
-  }[];
-  $: console.log(testimonialComponents);
+  $: scroller = scrollerChild?.parentElement;
+
   onMount(() => {
     const observerOptions = {
       root: scroller,
       rootMargin: "0px",
-      threshold: [0, 0.15, 1],
+      threshold: [0.25, 0.75, 1],
     };
 
     const observer = new IntersectionObserver((observerEntries) => {
       for (const entry of observerEntries) {
-        if (entry.target == testimonialComponents[0].elem) {
-          hasPrevious = entry.intersectionRatio < 0.25;
-        } else {
-          hasNext = entry.intersectionRatio < 0.25;
+        if (entry.intersectionRatio >= 0.75) {
+          viewingIndex = testimonialElements.findIndex(
+            (elem) => entry.target === elem
+          );
+        }
+
+        if (entry.target == testimonialElements[0]) {
+          hasPrevious = entry.intersectionRatio <= 0.25;
+        } else if (
+          entry.target === testimonialElements[testimonialElements.length - 1]
+        ) {
+          hasNext = entry.intersectionRatio <= 0.25;
         }
       }
     }, observerOptions);
 
-    observer.observe(testimonialComponents[0].elem!);
-    observer.observe(
-      testimonialComponents[testimonialComponents.length - 1].elem!
-    );
+    for (const element of testimonialElements) {
+      observer.observe(element);
+    }
 
-    return observer.disconnect;
+    return () => observer.disconnect();
   });
 
   async function scroll(direction: "left" | "right") {
     const scrollAmount = 100;
     const sign = direction === "left" ? -1 : 1;
-    testimonialComponents.forEach((component) => component.component!.close());
-    scroller.parentElement?.scrollBy({
+    scroller?.scrollBy({
       behavior: "smooth",
       left: scrollAmount * sign,
     });
@@ -56,36 +61,48 @@
 </script>
 
 <Section id="testimonial" padding="40px" color="var(--gray-lighter)">
-  <div class="column-center" bind:this={scroller}>
+  <div class="column-center" bind:this={scrollerChild}>
     <div class="carousel">
       {#each testimonials as testimonial, i (testimonial)}
-        <div
-          class="testimonial-wrapper"
-          bind:this={testimonialComponents[i].elem}
-        >
+        <div class="testimonial-wrapper" bind:this={testimonialElements[i]}>
           <Testimonial
             quote={testimonial.content}
             name={testimonial.sourceName}
             desc={testimonial.sourceDescription}
             imageSrc={testimonial.sourceImage?.src}
-            bind:this={testimonialComponents[i].component}
           />
         </div>
       {/each}
     </div>
   </div>
   {#if hasPrevious}
-    <div class="page-button" transition:fade>
+    <div class="page-button prev" transition:fade>
       <Button type="primary" on:click={() => scroll("left")}>
         <Icon icon="left-arrow" width="2em" height="2em" />
       </Button>
     </div>
   {/if}
   {#if hasNext}
-    <div class="page-button" transition:fade>
+    <div class="page-button next" transition:fade>
       <Button type="primary" on:click={() => scroll("right")}>
         <Icon icon="right-arrow" width="2em" height="2em" />
       </Button>
+    </div>
+  {/if}
+  {#if testimonials.length > 1}
+    <div class="guide">
+      {#each testimonials as _, i}
+        <button
+          aria-label="See testimonial {i + 1}"
+          class:active={viewingIndex === i}
+          on:click={() =>
+            testimonialElements[i].scrollIntoView({
+              behavior: "smooth",
+              inline: "center",
+              block: "nearest",
+            })}
+        />
+      {/each}
     </div>
   {/if}
 </Section>
@@ -105,7 +122,7 @@
     content: "";
     position: absolute;
     top: 0;
-    left: calc(calc(100vw - var(--content-width)) / 2);
+    left: calc(calc(100% - var(--content-width)) / 2);
     height: 100%;
     width: calc(
       calc(calc(var(--content-width) - var(--long-form-width)) / 2) * 0.75
@@ -117,20 +134,20 @@
 
   :global(#testimonial)::after {
     left: unset;
-    right: calc(calc(100vw - var(--content-width)) / 2);
+    right: calc(calc(100% - var(--content-width)) / 2);
     background: linear-gradient(-90deg, var(--gradient-colors));
   }
 
   .page-button {
     position: absolute;
-    top: 75%;
+    top: 85%;
     left: calc(calc(100vw - var(--content-width)) / 2);
     transform: translateY(-50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
   }
 
-  .page-button:last-child {
+  .page-button.next {
     left: unset;
     right: calc(calc(100vw - var(--content-width)) / 2);
   }
@@ -161,6 +178,31 @@
     padding-right: calc(
       calc(var(--content-width) - var(--long-form-width)) / 2
     );
+  }
+
+  .guide {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .guide > button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    appearance: none;
+    border: none;
+    background-color: var(--gray-light);
+    transition: background-color 250ms ease;
+  }
+
+  .guide > button.active {
+    background-color: black;
   }
 
   @media (max-width: 900px) {

@@ -11,10 +11,6 @@
   export let desc: string;
   export let meetTheTeam = false;
 
-  export function close() {
-    toggle(false);
-  }
-
   let blockquote: HTMLQuoteElement;
   let readMore = false;
   let slicedQuote = quote;
@@ -23,8 +19,8 @@
   $: needsReadMore = quote.length > slicedQuote.length + "</p>".length;
   $: text = readMore ? quote : slicedQuote + "</p>";
 
-  async function toggle(open?: boolean) {
-    readMore = open ?? !readMore;
+  async function toggle() {
+    readMore = !readMore;
     if (!readMore) {
       await tick();
       blockquote.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -42,7 +38,7 @@
               {@html text}
 
               {#if needsReadMore}
-                <button class="readmore" on:click={() => toggle()}>
+                <button class="readmore" on:click={toggle}>
                   {readMore ? "Read less" : "Read more"}
                 </button>
               {/if}
@@ -66,7 +62,7 @@
           {@html text}
 
           {#if needsReadMore}
-            <button class="readmore" on:click={() => toggle()}>
+            <button class="readmore" on:click={toggle}>
               {readMore ? "Read less" : "Read more"}
             </button>
           {/if}
