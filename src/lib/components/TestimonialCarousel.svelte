@@ -211,7 +211,7 @@
 
     .guide {
       top: unset;
-      bottom: 5%;
+      bottom: 35px;
     }
   }
 </style>
