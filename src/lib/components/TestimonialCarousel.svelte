@@ -202,6 +202,9 @@
     .guide {
       bottom: 35px;
       top: unset;
+    }
+
+    .page-button {
       transform: translateY(50%);
     }
   }
