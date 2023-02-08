@@ -1,7 +1,7 @@
 <script lang="ts">
   import { setImageHeight } from "$lib/utils/schema";
-  import { tick } from "svelte";
   import Button from "./Button.svelte";
+  import Dialog from "./Dialog.svelte";
   import Row from "./Row.svelte";
 
   // title, content, and route (for button)
@@ -11,20 +11,12 @@
   export let desc: string;
   export let meetTheTeam = false;
 
-  let blockquote: HTMLQuoteElement;
-  let readMore = false;
+  let dialog: Dialog;
 
-  $: slicedQuote = quote.slice(0, quote.indexOf("</p>"));
-  $: needsReadMore = quote.length > slicedQuote.length + "</p>".length;
-  $: text = readMore ? quote : slicedQuote + "</p>";
-
-  async function toggle() {
-    readMore = !readMore;
-    if (!readMore) {
-      await tick();
-      blockquote.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  }
+  $: slicedQuote = quote.slice(0, quote.indexOf("</p>")) + "</p>";
+  $: needsReadMore = quote.length > slicedQuote.length;
+  // End with two dots only since we slice after the first paragraph, which should end with a period.
+  $: text = !needsReadMore ? quote : slicedQuote.replace(/<\/?p>/gi, "") + "..";
 </script>
 
 <div class="wrap">
@@ -33,12 +25,12 @@
       <Row>
         <div class="left">
           <figure>
-            <blockquote bind:this={blockquote}>
+            <blockquote>
               {@html text}
 
               {#if needsReadMore}
-                <button class="readmore" on:click={toggle}>
-                  {readMore ? "Read less" : "Read more"}
+                <button class="readmore" on:click={dialog.open}>
+                  Read more
                 </button>
               {/if}
             </blockquote>
@@ -57,13 +49,11 @@
       </Row>
     {:else}
       <figure class="center">
-        <blockquote bind:this={blockquote}>
+        <blockquote>
           {@html text}
 
           {#if needsReadMore}
-            <button class="readmore" on:click={toggle}>
-              {readMore ? "Read less" : "Read more"}
-            </button>
+            <button class="readmore" on:click={dialog.open}>Read more</button>
           {/if}
         </blockquote>
         <figcaption>
@@ -72,6 +62,12 @@
         </figcaption>
       </figure>
     {/if}
+
+    <Dialog bind:this={dialog}>
+      {@html quote}
+
+      <button class="readmore" on:click={dialog.close}>Read less</button>
+    </Dialog>
   </div>
 </div>
 
@@ -146,10 +142,10 @@
   }
 
   .readmore {
-    display: block;
     cursor: pointer;
-    color: var(--gray-light);
+    color: var(--blue-light);
     padding: 0;
+    font-size: 0.75em;
     background-color: transparent;
     appearance: none;
     border: none;

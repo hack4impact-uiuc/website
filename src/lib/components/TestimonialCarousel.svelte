@@ -1,8 +1,6 @@
 <script lang="ts">
   import type { Testimonial as TestimonialType } from "$lib/utils/schema";
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
-  import Button from "./Button.svelte";
   import Icon from "./Icon.svelte";
   import Section from "./Section.svelte";
   import Testimonial from "./Testimonial.svelte";
@@ -12,9 +10,6 @@
   let scrollerChild: HTMLDivElement;
   let testimonialElements = [] as HTMLDivElement[];
   let viewingIndex = 0;
-
-  $: hasPrevious = viewingIndex !== 0;
-  $: hasNext = viewingIndex !== testimonials.length - 1;
 
   onMount(() => {
     const observerOptions = {
@@ -40,12 +35,15 @@
     return () => observer.disconnect();
   });
 
-  async function scroll(direction: "left" | "right") {
-    const scrollAmount = 100;
-    const sign = direction === "left" ? -1 : 1;
-    scrollerChild.parentElement?.scrollBy({
+  async function scroll(index: number) {
+    if (index < 0) {
+      index = testimonialElements.length + index;
+    }
+
+    testimonialElements[index % testimonialElements.length].scrollIntoView({
       behavior: "smooth",
-      left: scrollAmount * sign,
+      inline: "center",
+      block: "nearest",
     });
   }
 </script>
@@ -65,35 +63,23 @@
       {/each}
     </div>
   </div>
-  {#if hasPrevious}
-    <div class="page-button prev" transition:fade|local>
-      <Button type="primary" on:click={() => scroll("left")}>
-        <Icon icon="left-arrow" width="2em" height="2em" />
-      </Button>
-    </div>
-  {/if}
-  {#if hasNext}
-    <div class="page-button next" transition:fade|local>
-      <Button type="primary" on:click={() => scroll("right")}>
-        <Icon icon="right-arrow" width="2em" height="2em" />
-      </Button>
-    </div>
-  {/if}
   {#if testimonials.length > 1}
     <div class="guide">
       {#each testimonials as _, i}
         <button
           aria-label="See testimonial {i + 1}"
           class:active={viewingIndex === i}
-          on:click={() =>
-            testimonialElements[i].scrollIntoView({
-              behavior: "smooth",
-              inline: "center",
-              block: "nearest",
-            })}
+          on:click={() => scroll(i)}
         />
       {/each}
     </div>
+
+    <button class="page-button prev" on:click={() => scroll(viewingIndex - 1)}>
+      <Icon icon="left-arrow" width="2em" height="2em" />
+    </button>
+    <button class="page-button next" on:click={() => scroll(viewingIndex + 1)}>
+      <Icon icon="right-arrow" width="2em" height="2em" />
+    </button>
   {/if}
 </Section>
 
@@ -105,6 +91,10 @@
   :global(#testimonial > :first-child) {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+  }
+
+  :global(#testimonial > :first-child::-webkit-scrollbar) {
+    display: none;
   }
 
   :global(#testimonial)::before,
@@ -130,11 +120,19 @@
 
   .page-button {
     position: absolute;
-    bottom: 75px;
+    display: flex;
+    align-items: center;
+    top: 50%;
     left: calc(calc(100vw - var(--content-width)) / 2);
-    transform: translateY(50%);
+    transform: translateY(-50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    cursor: pointer;
+    background-color: white;
   }
 
   .page-button.next {
@@ -202,6 +200,8 @@
     .page-button,
     .guide {
       bottom: 35px;
+      top: unset;
+      transform: unset;
     }
   }
 </style>
