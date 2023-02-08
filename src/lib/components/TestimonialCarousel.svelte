@@ -118,13 +118,13 @@
     background: linear-gradient(-90deg, var(--gradient-colors));
   }
 
-  .page-button {
+  :where(.page-button) {
     position: absolute;
     display: flex;
     align-items: center;
     top: 50%;
     left: calc(calc(100vw - var(--content-width)) / 2);
-    transform: translateY(-50%);
+    transform: translate(-75%, -50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
     appearance: none;
@@ -135,8 +135,9 @@
     background-color: white;
   }
 
-  .page-button.next {
+  :where(.page-button.next) {
     left: unset;
+    transform: translate(75%, -50%);
     right: calc(calc(100vw - var(--content-width)) / 2);
   }
 
@@ -201,7 +202,7 @@
     .guide {
       bottom: 35px;
       top: unset;
-      transform: unset;
+      transform: translateY(50%);
     }
   }
 </style>
