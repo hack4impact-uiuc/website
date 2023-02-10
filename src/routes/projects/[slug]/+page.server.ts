@@ -1,5 +1,5 @@
+import type { Project } from "$lib/utils/schema";
 import { error } from "@sveltejs/kit";
-import type { Project } from "src/lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
 // Prerender all projects found by SvelteKit crawler (displayed in projects page)

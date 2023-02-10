@@ -1,5 +1,5 @@
 import type { ContentWrapper } from "$lib/utils/api";
-import type { Member } from "src/lib/utils/schema";
+import type { Member } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = ({ locals }) => {

@@ -1,15 +1,18 @@
 <script lang="ts">
   import type { Testimonial as TestimonialType } from "$lib/utils/schema";
-  import { onMount } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import Icon from "./Icon.svelte";
   import Section from "./Section.svelte";
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
+  export let meetTheTeam = false;
 
+  const dispatch = createEventDispatcher<{ carouselSpin: number }>();
+
+  let viewingIndex = 0;
   let scrollerChild: HTMLDivElement;
   let testimonialElements = [] as HTMLDivElement[];
-  let viewingIndex = 0;
 
   onMount(() => {
     const observerOptions = {
@@ -24,6 +27,7 @@
           viewingIndex = testimonialElements.findIndex(
             (elem) => entry.target === elem
           );
+          dispatch("carouselSpin", viewingIndex);
         }
       }
     }, observerOptions);
@@ -35,70 +39,82 @@
     return () => observer.disconnect();
   });
 
-  async function scroll(index: number) {
+  export async function scroll(
+    index: number,
+    behavior: ScrollBehavior = "smooth"
+  ) {
     if (index < 0) {
       index = testimonialElements.length + index;
     }
 
     testimonialElements[index % testimonialElements.length].scrollIntoView({
-      behavior: "smooth",
+      behavior,
       inline: "center",
       block: "nearest",
     });
   }
 </script>
 
-<Section id="testimonial" padding="40px" color="var(--gray-lighter)">
-  <div class="column-center" bind:this={scrollerChild}>
-    <div class="carousel">
-      {#each testimonials as testimonial, i (testimonial)}
-        <div class="testimonial-wrapper" bind:this={testimonialElements[i]}>
-          <Testimonial
-            quote={testimonial.content}
-            name={testimonial.sourceName}
-            desc={testimonial.sourceDescription}
-            imageSrc={testimonial.sourceImage?.src}
+<div class="wrapper">
+  <div class="scroller">
+    <div class="column-center" bind:this={scrollerChild}>
+      <div class="carousel">
+        {#each testimonials as testimonial, i (testimonial)}
+          <div class="testimonial-wrapper" bind:this={testimonialElements[i]}>
+            <Testimonial
+              quote={testimonial.content}
+              name={testimonial.sourceName}
+              desc={testimonial.sourceDescription}
+              imageSrc={testimonial.sourceImage?.src}
+              {meetTheTeam}
+            />
+          </div>
+        {/each}
+      </div>
+    </div>
+    {#if testimonials.length > 1}
+      <div class="guide">
+        {#each testimonials as _, i}
+          <button
+            aria-label="See testimonial {i + 1}"
+            class:active={viewingIndex === i}
+            on:click={() => scroll(i)}
           />
-        </div>
-      {/each}
-    </div>
-  </div>
-  {#if testimonials.length > 1}
-    <div class="guide">
-      {#each testimonials as _, i}
-        <button
-          aria-label="See testimonial {i + 1}"
-          class:active={viewingIndex === i}
-          on:click={() => scroll(i)}
-        />
-      {/each}
-    </div>
+        {/each}
+      </div>
 
-    <button class="page-button prev" on:click={() => scroll(viewingIndex - 1)}>
-      <Icon icon="left-arrow" width="2em" height="2em" />
-    </button>
-    <button class="page-button next" on:click={() => scroll(viewingIndex + 1)}>
-      <Icon icon="right-arrow" width="2em" height="2em" />
-    </button>
-  {/if}
-</Section>
+      <button
+        class="page-button prev"
+        on:click={() => scroll(viewingIndex - 1)}
+      >
+        <Icon icon="left-arrow" width="2em" height="2em" />
+      </button>
+      <button
+        class="page-button next"
+        on:click={() => scroll(viewingIndex + 1)}
+      >
+        <Icon icon="right-arrow" width="2em" height="2em" />
+      </button>
+    {/if}
+  </div>
+</div>
 
 <style>
-  :global(#testimonial) {
+  .wrapper {
     position: relative;
   }
 
-  :global(#testimonial > :first-child) {
+  .scroller {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
   }
 
-  :global(#testimonial > :first-child::-webkit-scrollbar) {
+  .scroller::-webkit-scrollbar {
     display: none;
   }
 
-  :global(#testimonial)::before,
-  :global(#testimonial)::after {
+  .wrapper::before,
+  .wrapper::after {
     content: "";
     position: absolute;
     top: 0;
@@ -107,12 +123,13 @@
     width: calc(
       calc(calc(var(--content-width) - var(--long-form-width)) / 2) * 0.75
     );
-    --gradient-colors: var(--gray-lighter), transparent;
+    --gradient-colors: var(--testimonial-background, var(--gray-lighter)),
+      transparent;
     background: linear-gradient(90deg, var(--gradient-colors));
     z-index: 20;
   }
 
-  :global(#testimonial)::after {
+  .wrapper::after {
     left: unset;
     right: calc(calc(100% - var(--content-width)) / 2);
     background: linear-gradient(-90deg, var(--gradient-colors));
@@ -123,7 +140,7 @@
     display: flex;
     align-items: center;
     top: 50%;
-    left: calc(calc(100vw - var(--content-width)) / 2);
+    left: 0;
     transform: translate(-75%, -50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
@@ -138,7 +155,7 @@
   :where(.page-button.next) {
     left: unset;
     transform: translate(75%, -50%);
-    right: calc(calc(100vw - var(--content-width)) / 2);
+    right: 0;
   }
 
   .column-center {
@@ -172,7 +189,6 @@
     position: absolute;
     display: flex;
     gap: 10px;
-    bottom: 75px;
     left: 50%;
     transform: translate(-50%, 50%);
   }
@@ -196,16 +212,17 @@
   @media (max-width: 900px) {
     .carousel {
       gap: 40px;
+      padding-bottom: 20px;
     }
 
     .page-button,
     .guide {
-      bottom: 35px;
       top: unset;
+      transform: translate(-50%, -50%);
     }
 
     .page-button {
-      transform: translateY(50%);
+      transform: translateY(-50%);
     }
   }
 </style>

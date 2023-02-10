@@ -59,7 +59,9 @@
 </Section>
 
 {#if data.project.testimonials && data.project.testimonials.length > 0}
-  <TestimonialCarousel testimonials={data.project.testimonials} />
+  <Section id="project-testimonial" color="var(--gray-lighter)" padding="40px">
+    <TestimonialCarousel testimonials={data.project.testimonials} />
+  </Section>
 {/if}
 
 <Section id="team" longForm padding="40px" color={data.project.accentColor}>
@@ -69,15 +71,18 @@
       {#if data.project.productManager}
         {#each data.project.productManager as member}
           <ProjectMember {member} role="Product Manager" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.techLead}
         {#each data.project.techLead as member}
           <ProjectMember {member} role="Tech Lead" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.productDesigner}
         {#each data.project.productDesigner as member}
           <ProjectMember {member} role="Product Designer" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.softwareDevelopers}
         {#each data.project.softwareDevelopers as member}
           <ProjectMember {member} role="Software Developer" />

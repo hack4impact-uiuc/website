@@ -1,4 +1,4 @@
-import type { ApplicationStep, FAQ, Role } from "src/lib/utils/schema";
+import type { ApplicationStep, FAQ, Role } from "$lib/utils/schema";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = ({ locals }) => {
