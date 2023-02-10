@@ -2,7 +2,6 @@
   import type { Testimonial as TestimonialType } from "$lib/utils/schema";
   import { createEventDispatcher, onMount } from "svelte";
   import Icon from "./Icon.svelte";
-  import Section from "./Section.svelte";
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
