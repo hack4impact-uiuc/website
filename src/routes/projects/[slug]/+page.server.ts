@@ -1,12 +1,11 @@
 import { error } from "@sveltejs/kit";
-import type { Project } from "src/lib/utils/schema";
-import type { PageServerLoad } from "./$types";
+import type { Project } from "$lib/utils/schema";
 
 // Prerender all projects found by SvelteKit crawler (displayed in projects page)
 // But include server-side JS to load any projects not found (preview projects)
 export const prerender = "auto";
 
-export const load: PageServerLoad = async ({ params, locals }) => {
+export async function load({ params, locals }) {
   const projects: Project[] = await locals.contentWrapper.get(
     "project",
     {
@@ -30,4 +29,4 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     title: project.name,
     project,
   };
-};
+}

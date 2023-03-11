@@ -9,9 +9,8 @@
   import Testimonial from "$lib/components/Testimonial.svelte";
   import { listFormatter } from "$lib/utils/format";
   import { Perk, type PerkType } from "$lib/utils/schema";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 
   interface SponsorTier {
     name: string;

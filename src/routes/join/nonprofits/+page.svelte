@@ -6,9 +6,8 @@
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
   import Testimonial from "$lib/components/Testimonial.svelte";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 </script>
 
 <Section padding="60px">
