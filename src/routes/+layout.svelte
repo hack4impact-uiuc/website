@@ -4,7 +4,6 @@
   import { env } from "$env/dynamic/public";
   import Nav from "$lib/components/Nav.svelte";
   import Footer from "$lib/components/Footer.svelte";
-
   import Head from "$lib/components/Head.svelte";
   import { page } from "$app/stores";
   import SkipLink from "$lib/components/SkipLink.svelte";
