@@ -15,7 +15,7 @@
   <h2>Our Services</h2>
   <Row gap={58} topAligned>
     <div class="service">
-      <Icon icon="devices" />
+      <Icon icon="devices" color="var(--blue)" />
       <h3>Web & Mobile Applications</h3>
       <p>
         We provide our nonprofit partners with software solutions for their
@@ -24,7 +24,7 @@
       </p>
     </div>
     <div class="service">
-      <Icon icon="vector" />
+      <Icon icon="vector" color="var(--blue)" />
       <h3>Designs</h3>
       <p>
         Our designers create product designs tailored specifically to a
@@ -32,7 +32,7 @@
       </p>
     </div>
     <div class="service">
-      <Icon icon="conversation" />
+      <Icon icon="conversation" color="var(--blue)" />
       <h3>Iterative Feedback</h3>
       <p>
         Our project leads stay are consistently in touch with your nonprofit's

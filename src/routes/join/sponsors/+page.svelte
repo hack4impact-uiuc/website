@@ -151,7 +151,9 @@
     <div class="perks">
       {#each Object.values(Perk) as perk}
         <article>
-          <div class="icon-container"><Icon icon={perk.icon} /></div>
+          <div class="icon-container">
+            <Icon icon={perk.icon} />
+          </div>
           <div>
             <h2>{perk.name}</h2>
             <h3>
