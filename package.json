@@ -16,6 +16,9 @@
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
     "@contentful/rich-text-types": "^15.0.0",
+    "@iconify-icons/bx": "^1.2.6",
+    "@iconify-icons/bxs": "^1.2.6",
+    "@iconify/svelte": "^3.1.0",
     "@sveltejs/adapter-netlify": "^2.0.6",
     "@sveltejs/kit": "^1.11.0",
     "@types/ackee-tracker": "^5.0.1",
@@ -35,7 +38,6 @@
     "vite": "^4.0.1"
   },
   "dependencies": {
-    "@iconify/svelte": "^3.1.0",
     "ackee-tracker": "^5.1.0",
     "contentful": "^9.1.5",
     "svelte-animated-details": "^1.0.1"
