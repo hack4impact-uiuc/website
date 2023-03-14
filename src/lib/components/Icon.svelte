@@ -41,7 +41,7 @@
   export let icon: IconType;
   export let width: string | number = "100%";
   export let height: string | number = "100%";
-  export let color: string = "currentColor";
+  export let color = "currentColor";
 </script>
 
 <Icon icon={iconMap[icon]} {width} {height} {color} />
