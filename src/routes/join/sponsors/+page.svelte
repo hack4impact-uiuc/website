@@ -9,9 +9,8 @@
   import Testimonial from "$lib/components/Testimonial.svelte";
   import { listFormatter } from "$lib/utils/format";
   import { Perk, type PerkType } from "$lib/utils/schema";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 
   interface SponsorTier {
     name: string;
@@ -152,7 +151,9 @@
     <div class="perks">
       {#each Object.values(Perk) as perk}
         <article>
-          <div class="icon-container"><Icon icon={perk.icon} /></div>
+          <div class="icon-container">
+            <Icon icon={perk.icon} />
+          </div>
           <div>
             <h2>{perk.name}</h2>
             <h3>

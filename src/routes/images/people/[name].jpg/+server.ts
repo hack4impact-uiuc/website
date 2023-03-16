@@ -1,8 +1,7 @@
 import { setImageHeight, titleCase, type Member } from "$lib/utils/schema";
 import { error } from "@sveltejs/kit";
-import type { RequestHandler } from "./$types";
 
-export const GET: RequestHandler = async ({ params, fetch, url, locals }) => {
+export async function GET({ params, fetch, url, locals }) {
   const contentfulName = titleCase(params.name.replace("_", " "));
 
   const members: Member[] = await locals.contentWrapper.get("member", {
@@ -22,4 +21,4 @@ export const GET: RequestHandler = async ({ params, fetch, url, locals }) => {
   }
 
   return fetch(imageURL);
-};
+}

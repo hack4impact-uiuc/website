@@ -4,9 +4,8 @@
   import Section from "$lib/components/Section.svelte";
   import { semesterToId } from "$lib/utils/schema";
   import viewport from "$lib/utils/useViewportAction";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 
   let windowWidth: number | undefined;
 

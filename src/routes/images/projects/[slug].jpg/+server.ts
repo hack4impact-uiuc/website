@@ -1,8 +1,7 @@
 import { setImageHeight, type Project } from "$lib/utils/schema";
 import { error } from "@sveltejs/kit";
-import type { RequestHandler } from "./$types";
 
-export const GET: RequestHandler = async ({ params, fetch, url, locals }) => {
+export async function GET({ params, fetch, url, locals }) {
   const projects: Project[] = await locals.contentWrapper.get("project", {
     "fields.slug": params.slug,
   });
@@ -20,4 +19,4 @@ export const GET: RequestHandler = async ({ params, fetch, url, locals }) => {
   }
 
   return fetch(imageURL);
-};
+}

@@ -1,13 +1,12 @@
 import type { ContentWrapper } from "$lib/utils/api";
 import type { Member, TestimonialMember } from "$lib/utils/schema";
-import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = ({ locals }) => {
+export function load({ locals }) {
   return {
     title: "About Us",
     testimonialMember: getTestimonialMember(locals.contentWrapper),
   };
-};
+}
 
 async function getTestimonialMember(contentWrapper: ContentWrapper) {
   const members: Member[] = await contentWrapper.get("member");

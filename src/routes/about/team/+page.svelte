@@ -2,9 +2,8 @@
   import Button from "$lib/components/Button.svelte";
   import Member from "$lib/components/Member.svelte";
   import Section from "$lib/components/Section.svelte";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 
   let showAllAlumni = false;
 
