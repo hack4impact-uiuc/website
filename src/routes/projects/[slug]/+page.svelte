@@ -49,11 +49,12 @@
   <p>{data.project.nonprofitDescription}</p>
   <Button
     href={data.project.nonprofitUrl}
-    type="secondary-custom"
+    type="primary-custom"
     textColor={data.project.accentColor}
     size="small">Learn More &nearr;</Button
   >
 </Section>
+
 <Section
   id="project-description"
   longForm
