@@ -116,9 +116,12 @@
 
   <TestimonialCarousel
     testimonials={data.testimonials}
-    meetTheTeam
     --testimonial-background="white"
   />
+
+  <div class="action">
+    <Button href="/about/team" type="primary">Meet The Team</Button>
+  </div>
 </Section>
 
 <style>
@@ -172,5 +175,9 @@
   figure > img {
     width: 100%;
     border-radius: 4px;
+  }
+
+  :global(#testimonial) .action {
+    margin-top: 50px;
   }
 </style>

@@ -5,7 +5,6 @@
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
-  export let meetTheTeam = false;
 
   const dispatch = createEventDispatcher<{ carouselSpin: number }>();
 
@@ -65,7 +64,6 @@
               name={testimonial.sourceName}
               desc={testimonial.sourceDescription}
               imageSrc={testimonial.sourceImage?.src}
-              {meetTheTeam}
             />
           </div>
         {/each}
@@ -140,7 +138,8 @@
     align-items: center;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
+    --x-translate: 0;
+    transform: translate(var(--x-translate), -50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
     appearance: none;
@@ -153,6 +152,7 @@
 
   :where(.page-button.next) {
     left: unset;
+    transform: translate(calc(-1 * var(--x-translate)), -50%);
     right: 0;
   }
 
@@ -205,6 +205,12 @@
 
   .guide > button.active {
     background-color: black;
+  }
+
+  @media (max-width: 1200px) {
+    :where(.page-button) {
+      --x-translate: -75%;
+    }
   }
 
   @media (max-width: 900px) {

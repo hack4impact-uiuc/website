@@ -1,6 +1,5 @@
 <script lang="ts">
   import { setImageHeight } from "$lib/utils/schema";
-  import Button from "./Button.svelte";
   import Dialog from "./Dialog.svelte";
   import Row from "./Row.svelte";
 
@@ -9,7 +8,6 @@
   export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
-  export let meetTheTeam = false;
 
   let dialog: Dialog;
 
@@ -39,9 +37,6 @@
               <span class="desc">{desc}</span>
             </figcaption>
           </figure>
-          {#if meetTheTeam}
-            <Button type="primary" href="/about/team">Meet The Team</Button>
-          {/if}
         </div>
         <div class="right">
           <img src={setImageHeight(imageSrc, 400)} alt={name} />
@@ -166,7 +161,8 @@
     }
 
     .wrap {
-      padding: 40px 0;
+      padding-block: 0;
+      padding-bottom: 10px;
     }
   }
 </style>
