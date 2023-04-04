@@ -29,6 +29,8 @@
   import tagFill from "@iconify-icons/bxs/tag";
   import treeFill from "@iconify-icons/bxs/tree";
   import vectorFill from "@iconify-icons/bxs/vector";
+  import left_arrowFill from "@iconify-icons/bxs/left-arrow";
+  import right_arrowFill from "@iconify-icons/bxs/right-arrow";
   import Icon, { addIcon } from "@iconify/svelte/dist/OfflineIcon.svelte";
 
   const iconMap = {
@@ -62,6 +64,8 @@
     tree: { name: "tree", fill: treeFill },
     vector: { name: "vector", fill: vectorFill },
     volunteering: { name: "home-heart", fill: home_heartFill },
+    "left-arrow": { name: "left-arrow", fill: left_arrowFill },
+    "right-arrow": { name: "right-arrow", fill: right_arrowFill },
   } as const;
 
   for (const { name, fill } of Object.values(iconMap)) {
