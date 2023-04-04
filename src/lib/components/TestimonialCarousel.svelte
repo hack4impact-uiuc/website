@@ -140,7 +140,7 @@
     align-items: center;
     top: 50%;
     left: 0;
-    transform: translate(-75%, -50%);
+    transform: translateY(-50%);
     transition: opacity 150ms ease-in;
     z-index: 21;
     appearance: none;
@@ -153,7 +153,6 @@
 
   :where(.page-button.next) {
     left: unset;
-    transform: translate(75%, -50%);
     right: 0;
   }
 

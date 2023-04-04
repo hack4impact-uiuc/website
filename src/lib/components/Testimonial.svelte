@@ -77,7 +77,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 80px 0;
+    padding-block: 30px;
   }
 
   .testimonial {
