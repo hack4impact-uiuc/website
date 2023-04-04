@@ -5,9 +5,8 @@
   import Step from "$lib/components/Step.svelte";
   import TestimonialCarousel from "$lib/components/TestimonialCarousel.svelte";
   import { setImageHeight } from "$lib/utils/schema";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 </script>
 
 <Section id="intro" padding="60px">

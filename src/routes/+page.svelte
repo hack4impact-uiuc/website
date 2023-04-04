@@ -7,9 +7,8 @@
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import { setImageHeight } from "$lib/utils/schema";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 </script>
 
 <DoubleBanner

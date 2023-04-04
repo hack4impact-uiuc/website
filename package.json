@@ -16,8 +16,11 @@
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^15.0.0",
     "@contentful/rich-text-types": "^15.0.0",
-    "@sveltejs/adapter-netlify": "^1.0.0",
-    "@sveltejs/kit": "^1.0.0",
+    "@iconify-icons/bx": "^1.2.6",
+    "@iconify-icons/bxs": "^1.2.6",
+    "@iconify/svelte": "^3.1.0",
+    "@sveltejs/adapter-netlify": "^2.0.6",
+    "@sveltejs/kit": "^1.11.0",
     "@types/ackee-tracker": "^5.0.1",
     "@types/html-minifier-terser": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
@@ -29,14 +32,12 @@
     "prettier": "^2.8.3",
     "prettier-plugin-svelte": "^2.2.0",
     "svelte": "^3.55.0",
-    "svelte-check": "^3.0.1",
+    "svelte-check": "^3.1.2",
     "tslib": "^2.0.0",
     "typescript": "^4.9.0",
     "vite": "^4.0.1"
   },
   "dependencies": {
-    "@svicons/boxicons-regular": "^0.1.3",
-    "@svicons/boxicons-solid": "^0.1.3",
     "ackee-tracker": "^5.1.0",
     "contentful": "^9.1.5",
     "svelte-animated-details": "^1.0.1"

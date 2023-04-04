@@ -5,9 +5,8 @@
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
-  import type { PageData } from "./$types";
 
-  export let data: PageData;
+  export let data;
 </script>
 
 <Section id="intro" padding="40px">

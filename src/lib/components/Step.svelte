@@ -8,9 +8,9 @@
 
 <div class="step row-center">
   <span
-    ><div id="icon-container">
+    ><div class="icon-container">
       {#if icon !== undefined}
-        <Icon {icon} />
+        <Icon {icon} color="var(--blue-lighter)" height="50px" />
       {:else if index !== undefined}
         <span class="step-index">{index}</span>
       {/if}
@@ -33,7 +33,7 @@
     opacity: 80%;
   }
 
-  #icon-container {
+  .icon-container {
     width: 100px;
     height: 100px;
     border-radius: 100%;
@@ -42,11 +42,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  :global(.step #icon-container svg) {
-    height: 50px;
-    color: var(--blue-lighter);
   }
 
   .step {

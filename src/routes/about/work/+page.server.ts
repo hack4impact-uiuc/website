@@ -1,6 +1,4 @@
-import type { PageServerLoad } from "./$types";
-
-export const load: PageServerLoad = ({ locals }) => {
+export function load({ locals }) {
   return {
     title: "How We Work",
     faqs: locals.contentWrapper.get("faq", {
@@ -8,4 +6,4 @@ export const load: PageServerLoad = ({ locals }) => {
       "fields.category": "Work",
     }),
   };
-};
+}

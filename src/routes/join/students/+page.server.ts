@@ -1,7 +1,6 @@
 import type { ApplicationStep, FAQ, Role } from "$lib/utils/schema";
-import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = ({ locals }) => {
+export function load({ locals }) {
   return {
     title: "Students",
     faqs: locals.contentWrapper.get("faq", {
@@ -16,4 +15,4 @@ export const load: PageServerLoad = ({ locals }) => {
       order: "fields.startDate,fields.name",
     }) as Promise<ApplicationStep[]>,
   };
-};
+}

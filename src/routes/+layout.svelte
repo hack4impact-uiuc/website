@@ -4,12 +4,11 @@
   import { env } from "$env/dynamic/public";
   import Nav from "$lib/components/Nav.svelte";
   import Footer from "$lib/components/Footer.svelte";
-  import type { PageData } from "./$types";
   import Head from "$lib/components/Head.svelte";
   import { page } from "$app/stores";
   import SkipLink from "$lib/components/SkipLink.svelte";
 
-  export let data: PageData;
+  export let data;
 
   const baseTitle = "Hack4Impact UIUC";
   $: title = $page.data.title

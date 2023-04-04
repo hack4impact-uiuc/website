@@ -1,119 +1,81 @@
 <script context="module" lang="ts">
-  import Brain from "@svicons/boxicons-regular/brain.svelte";
-  import Code from "@svicons/boxicons-regular/code-alt.svelte";
-  import Edit from "@svicons/boxicons-regular/edit.svelte";
-  import Health from "@svicons/boxicons-regular/health.svelte";
-  import Question from "@svicons/boxicons-regular/question-mark.svelte";
-  import Search from "@svicons/boxicons-regular/search.svelte";
-  import Transfer from "@svicons/boxicons-regular/transfer-alt.svelte";
-  import Unlink from "@svicons/boxicons-regular/unlink.svelte";
-  import Dollar from "@svicons/boxicons-solid/badge-dollar.svelte";
-  import Book from "@svicons/boxicons-solid/book.svelte";
-  import Bulb from "@svicons/boxicons-solid/bulb.svelte";
-  import Calendar from "@svicons/boxicons-solid/calendar.svelte";
-  import Chalkboard from "@svicons/boxicons-solid/chalkboard.svelte";
-  import ChevronCompactRight from "@svicons/boxicons-solid/chevron-right.svelte";
-  import Coffee from "@svicons/boxicons-solid/coffee.svelte";
-  import Conversation from "@svicons/boxicons-solid/conversation.svelte";
-  import Devices from "@svicons/boxicons-solid/devices.svelte";
-  import DonateHeart from "@svicons/boxicons-solid/donate-heart.svelte";
-  import Graduation from "@svicons/boxicons-solid/graduation.svelte";
-  import Group from "@svicons/boxicons-solid/group.svelte";
-  import Heart from "@svicons/boxicons-solid/heart.svelte";
-  import MessageX from "@svicons/boxicons-solid/message-x.svelte";
-  import News from "@svicons/boxicons-solid/news.svelte";
-  import Plane from "@svicons/boxicons-solid/plane-alt.svelte";
-  import Shield from "@svicons/boxicons-solid/shield.svelte";
-  import Slideshow from "@svicons/boxicons-solid/slideshow.svelte";
-  import Tag from "@svicons/boxicons-solid/tag.svelte";
-  import Tree from "@svicons/boxicons-solid/tree.svelte";
-  import Vector from "@svicons/boxicons-solid/vector.svelte";
-  import HomeHeart from "@svicons/boxicons-solid/home-heart.svelte";
-  import RightArrow from "@svicons/boxicons-regular/right-arrow-alt.svelte";
-  import LeftArrow from "@svicons/boxicons-regular/left-arrow-alt.svelte";
-  import type { SVGAttributes } from "svelte/elements";
+  import brainFill from "@iconify-icons/bx/brain";
+  import code_altFill from "@iconify-icons/bx/code-alt";
+  import editFill from "@iconify-icons/bx/edit";
+  import healthFill from "@iconify-icons/bx/health";
+  import question_markFill from "@iconify-icons/bx/question-mark";
+  import searchFill from "@iconify-icons/bx/search";
+  import transfer_altFill from "@iconify-icons/bx/transfer-alt";
+  import unlinkFill from "@iconify-icons/bx/unlink";
+  import badge_dollarFill from "@iconify-icons/bxs/badge-dollar";
+  import bookFill from "@iconify-icons/bxs/book";
+  import bulbFill from "@iconify-icons/bxs/bulb";
+  import calendarFill from "@iconify-icons/bxs/calendar";
+  import chalkboardFill from "@iconify-icons/bxs/chalkboard";
+  import chevron_rightFill from "@iconify-icons/bxs/chevron-right";
+  import coffeeFill from "@iconify-icons/bxs/coffee";
+  import conversationFill from "@iconify-icons/bxs/conversation";
+  import devicesFill from "@iconify-icons/bxs/devices";
+  import donate_heartFill from "@iconify-icons/bxs/donate-heart";
+  import graduationFill from "@iconify-icons/bxs/graduation";
+  import groupFill from "@iconify-icons/bxs/group";
+  import heartFill from "@iconify-icons/bxs/heart";
+  import home_heartFill from "@iconify-icons/bxs/home-heart";
+  import message_xFill from "@iconify-icons/bxs/message-x";
+  import newsFill from "@iconify-icons/bxs/news";
+  import plane_altFill from "@iconify-icons/bxs/plane-alt";
+  import shieldFill from "@iconify-icons/bxs/shield";
+  import slideshowFill from "@iconify-icons/bxs/slideshow";
+  import tagFill from "@iconify-icons/bxs/tag";
+  import treeFill from "@iconify-icons/bxs/tree";
+  import vectorFill from "@iconify-icons/bxs/vector";
+  import Icon, { addIcon } from "@iconify/svelte/dist/OfflineIcon.svelte";
 
-  import type { ComponentType, SvelteComponentTyped } from "svelte";
+  const iconMap = {
+    brain: { name: "brain", fill: brainFill },
+    code: { name: "code-alt", fill: code_altFill },
+    edit: { name: "edit", fill: editFill },
+    health: { name: "health", fill: healthFill },
+    question: { name: "question-mark", fill: question_markFill },
+    search: { name: "search", fill: searchFill },
+    transfer: { name: "transfer-alt", fill: transfer_altFill },
+    unlink: { name: "unlink", fill: unlinkFill },
+    dollar: { name: "badge-dollar", fill: badge_dollarFill },
+    book: { name: "book", fill: bookFill },
+    bulb: { name: "bulb", fill: bulbFill },
+    calendar: { name: "calendar", fill: calendarFill },
+    chalkboard: { name: "chalkboard", fill: chalkboardFill },
+    "chevron-right": { name: "chevron-right", fill: chevron_rightFill },
+    coffee: { name: "coffee", fill: coffeeFill },
+    conversation: { name: "conversation", fill: conversationFill },
+    devices: { name: "devices", fill: devicesFill },
+    donate: { name: "donate-heart", fill: donate_heartFill },
+    education: { name: "graduation", fill: graduationFill },
+    group: { name: "group", fill: groupFill },
+    heart: { name: "heart", fill: heartFill },
+    hate: { name: "message-x", fill: message_xFill },
+    news: { name: "news", fill: newsFill },
+    plane: { name: "plane-alt", fill: plane_altFill },
+    shield: { name: "shield", fill: shieldFill },
+    slideshow: { name: "slideshow", fill: slideshowFill },
+    tag: { name: "tag", fill: tagFill },
+    tree: { name: "tree", fill: treeFill },
+    vector: { name: "vector", fill: vectorFill },
+    volunteering: { name: "home-heart", fill: home_heartFill },
+  } as const;
 
-  export type IconType =
-    | "brain"
-    | "bulb"
-    | "book"
-    | "calendar"
-    | "code"
-    | "coffee"
-    | "chalkboard"
-    | "conversation"
-    | "devices"
-    | "edit"
-    | "heart"
-    | "question"
-    | "group"
-    | "search"
-    | "slideshow"
-    | "transfer"
-    | "vector"
-    | "health"
-    | "education"
-    | "tag"
-    | "tree"
-    | "donate"
-    | "shield"
-    | "hate"
-    | "news"
-    | "dollar"
-    | "plane"
-    | "unlink"
-    | "chevron-right"
-    | "volunteering"
-    | "right-arrow"
-    | "left-arrow";
+  for (const { name, fill } of Object.values(iconMap)) {
+    addIcon(name, fill);
+  }
 
-  const iconMap: Record<
-    IconType,
-    ComponentType<SvelteComponentTyped<SVGAttributes<SVGSVGElement>>>
-  > = {
-    brain: Brain,
-    bulb: Bulb,
-    book: Book,
-    calendar: Calendar,
-    code: Code,
-    coffee: Coffee,
-    chalkboard: Chalkboard,
-    conversation: Conversation,
-    devices: Devices,
-    edit: Edit,
-    heart: Heart,
-    question: Question,
-    group: Group,
-    search: Search,
-    slideshow: Slideshow,
-    tag: Tag,
-    transfer: Transfer,
-    vector: Vector,
-    health: Health,
-    education: Graduation,
-    tree: Tree,
-    donate: DonateHeart,
-    shield: Shield,
-    hate: MessageX,
-    news: News,
-    dollar: Dollar,
-    plane: Plane,
-    unlink: Unlink,
-    "chevron-right": ChevronCompactRight,
-    volunteering: HomeHeart,
-    "right-arrow": RightArrow,
-    "left-arrow": LeftArrow,
-  };
+  export type IconType = keyof typeof iconMap;
 </script>
 
 <script lang="ts">
   export let icon: IconType;
-
-  interface $$Props extends SVGAttributes<SVGSVGElement> {
-    icon: IconType;
-  }
+  export let width: string | number = "100%";
+  export let height: string | number = "100%";
+  export let color = "currentColor";
 </script>
 
-<svelte:component this={iconMap[icon]} {...$$restProps} />
+<Icon icon={iconMap[icon].name} {width} {height} {color} />

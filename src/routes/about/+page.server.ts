@@ -1,14 +1,13 @@
 import type { ContentWrapper } from "$lib/utils/api";
 import { shuffleArray } from "$lib/utils/projects";
 import type { Testimonial } from "$lib/utils/schema";
-import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = ({ locals }) => {
+export function load({ locals }) {
   return {
     title: "About Us",
     testimonials: getTestimonials(locals.contentWrapper),
   };
-};
+}
 
 async function getTestimonials(contentWrapper: ContentWrapper) {
   const testimonials: Testimonial[] = await contentWrapper.get("testimonial");
