@@ -37,16 +37,13 @@
     return () => observer.disconnect();
   });
 
-  export async function scroll(
-    index: number,
-    behavior: ScrollBehavior = "smooth"
-  ) {
+  async function scroll(index: number) {
     if (index < 0) {
       index = testimonialElements.length + index;
     }
 
     testimonialElements[index % testimonialElements.length].scrollIntoView({
-      behavior,
+      behavior: "smooth",
       inline: "center",
       block: "nearest",
     });
