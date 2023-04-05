@@ -10,9 +10,12 @@
   }
 </script>
 
-<dialog bind:this={dialog}>
-  <button class="close" on:click={close}>✕</button>
-  <slot />
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<dialog bind:this={dialog} on:click={close}>
+  <div class="content" on:click|stopPropagation>
+    <button class="close" on:click={close}>✕</button>
+    <slot />
+  </div>
 </dialog>
 
 <style>
@@ -20,11 +23,10 @@
     width: 70ch;
     max-width: 95vw;
     max-height: 85vh;
-    padding: 2em;
-    padding-top: 4em;
     font-size: 1rem;
     border: 1px solid black;
     border-radius: 10px;
+    padding: 0;
     opacity: 0;
     transform: translateY(10%);
     overscroll-behavior: contain;
@@ -59,7 +61,7 @@
     }
   }
 
-  dialog > .close {
+  .content > .close {
     position: absolute;
     top: 0.5em;
     right: 0.5em;
@@ -73,7 +75,12 @@
     aspect-ratio: 1;
   }
 
-  dialog > .close:hover {
+  .content > .close:hover {
     background-color: var(--gray-lighter);
+  }
+
+  .content {
+    padding: 2em;
+    padding-top: 4em;
   }
 </style>

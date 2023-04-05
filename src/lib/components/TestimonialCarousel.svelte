@@ -137,11 +137,12 @@
     transition: opacity 150ms ease-in;
     z-index: 21;
     appearance: none;
-    border: 1px solid black;
+    border: 1px solid var(--blue);
     border-radius: 50%;
     aspect-ratio: 1;
     cursor: pointer;
     background-color: white;
+    color: var(--blue);
   }
 
   :where(.page-button.next) {
@@ -193,12 +194,12 @@
     cursor: pointer;
     appearance: none;
     border: none;
-    background-color: var(--gray-light);
+    background-color: var(--blue-lighter);
     transition: background-color 250ms ease;
   }
 
   .guide > button.active {
-    background-color: black;
+    background-color: var(--blue);
   }
 
   @media (max-width: 1200px) {

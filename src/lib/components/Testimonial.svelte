@@ -139,7 +139,7 @@
     cursor: pointer;
     color: var(--blue-light);
     padding: 0;
-    font-size: 0.75em;
+    font-size: 1rem;
     background-color: transparent;
     appearance: none;
     border: none;
