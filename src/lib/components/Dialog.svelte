@@ -61,6 +61,11 @@
     }
   }
 
+  .content {
+    padding: 2em;
+    padding-top: 4em;
+  }
+
   .content > .close {
     position: absolute;
     top: 0.5em;
@@ -77,10 +82,5 @@
 
   .content > .close:hover {
     background-color: var(--gray-lighter);
-  }
-
-  .content {
-    padding: 2em;
-    padding-top: 4em;
   }
 </style>
