@@ -11,7 +11,7 @@
 </script>
 
 <dialog bind:this={dialog}>
-  <button class="close" on:click={() => dialog.close()}>✕</button>
+  <button class="close" on:click={close}>✕</button>
   <slot />
 </dialog>
 

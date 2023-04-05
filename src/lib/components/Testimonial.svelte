@@ -11,10 +11,9 @@
 
   let dialog: Dialog;
 
-  $: slicedQuote = quote.slice(0, quote.indexOf("</p>")) + "</p>";
-  $: needsReadMore = quote.length > slicedQuote.length;
-  // End with two dots only since we slice after the first paragraph, which should end with a period.
-  $: text = !needsReadMore ? quote : slicedQuote.replace(/<\/?p>/gi, "") + "..";
+  $: firstParagraph = quote.slice(0, quote.indexOf("</p>")) + "</p>";
+  $: needsReadMore = quote.length > firstParagraph.length;
+  $: text = firstParagraph.replace(/<\/?p>/gi, "");
 </script>
 
 <div class="wrap">
@@ -24,7 +23,7 @@
         <div class="left">
           <figure>
             <blockquote>
-              {@html text}
+              {@html text}{needsReadMore ? ".." : ""}
 
               {#if needsReadMore}
                 <button class="readmore" on:click={dialog.open}>

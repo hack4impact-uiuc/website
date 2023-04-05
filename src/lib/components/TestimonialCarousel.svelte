@@ -1,12 +1,10 @@
 <script lang="ts">
   import type { Testimonial as TestimonialType } from "$lib/utils/schema";
-  import { createEventDispatcher, onMount } from "svelte";
+  import { onMount } from "svelte";
   import Icon from "./Icon.svelte";
   import Testimonial from "./Testimonial.svelte";
 
   export let testimonials: TestimonialType[];
-
-  const dispatch = createEventDispatcher<{ carouselSpin: number }>();
 
   let viewingIndex = 0;
   let scrollerChild: HTMLDivElement;
@@ -25,7 +23,6 @@
           viewingIndex = testimonialElements.findIndex(
             (elem) => entry.target === elem
           );
-          dispatch("carouselSpin", viewingIndex);
         }
       }
     }, observerOptions);
