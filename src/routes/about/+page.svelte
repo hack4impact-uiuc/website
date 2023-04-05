@@ -110,7 +110,7 @@
   </Row>
 </Section>
 
-<Section id="testimonial" color="white" padding="40px">
+<Section id="testimonial" padding="40px">
   <h2>Meet The Team</h2>
 
   <TestimonialCarousel
