@@ -2,7 +2,7 @@
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import ProjectMember from "$lib/components/projects/ProjectMember.svelte";
   import Section from "$lib/components/Section.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
+  import TestimonialCarousel from "$lib/components/TestimonialCarousel.svelte";
   import { pSBC } from "$lib/utils/color";
   import { setImageHeight } from "$lib/utils/schema";
 
@@ -57,16 +57,9 @@
   {@html data.project.fullDescription}
 </Section>
 
-{#if data.project.testimonial !== undefined && data.project.testimonialSourceName !== undefined && data.project.testimonialSourceDescription !== undefined}
-  <Section id="testimonial" longForm padding="40px" color="var(--gray-lighter)">
-    <div class="column-center">
-      <Testimonial
-        quote={data.project.testimonial}
-        name={data.project.testimonialSourceName}
-        desc={data.project.testimonialSourceDescription}
-        imageSrc={data.project.testimonialSourceImage?.src}
-      />
-    </div>
+{#if data.project.testimonials && data.project.testimonials.length > 0}
+  <Section id="project-testimonial" color="var(--gray-lighter)" padding="40px">
+    <TestimonialCarousel testimonials={data.project.testimonials} />
   </Section>
 {/if}
 
@@ -77,15 +70,18 @@
       {#if data.project.productManager}
         {#each data.project.productManager as member}
           <ProjectMember {member} role="Product Manager" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.techLead}
         {#each data.project.techLead as member}
           <ProjectMember {member} role="Tech Lead" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.productDesigner}
         {#each data.project.productDesigner as member}
           <ProjectMember {member} role="Product Designer" />
-        {/each}{/if}
+        {/each}
+      {/if}
       {#if data.project.softwareDevelopers}
         {#each data.project.softwareDevelopers as member}
           <ProjectMember {member} role="Software Developer" />

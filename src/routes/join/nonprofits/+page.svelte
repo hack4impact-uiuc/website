@@ -43,12 +43,12 @@
   </Row>
 </Section>
 
-<Section color="var(--gray-lighter)">
+<Section color="var(--gray-lighter)" padding="40px">
   <Testimonial
-    quote={data.testimonialNonprofit.testimonial}
-    name={data.testimonialNonprofit.testimonialSourceName}
-    desc={data.testimonialNonprofit.testimonialSourceDescription}
-    imageSrc={data.testimonialNonprofit.testimonialSourceImage?.src}
+    quote={data.testimonial.content}
+    name={data.testimonial.sourceName}
+    desc={data.testimonial.sourceDescription}
+    imageSrc={data.testimonial.sourceImage?.src}
   />
 </Section>
 

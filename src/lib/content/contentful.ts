@@ -1,20 +1,18 @@
 import type { ContentWrapper } from "$lib/utils/api";
-import type { NonprofitTestimonialProject, Project } from "$lib/utils/schema";
+import type { Testimonial } from "$lib/utils/schema";
 
-export async function getTestimonialNonprofit(
+export async function getNonprofitTestimonial(
   contentWrapper: ContentWrapper
-): Promise<NonprofitTestimonialProject> {
-  const projects: Project[] = await contentWrapper.get("project");
-  const testimonialProjects = projects.filter(
-    (project) =>
-      project.testimonial !== undefined &&
-      project.testimonialSourceName !== undefined &&
-      project.testimonialSourceDescription !== undefined &&
-      project.testimonialSourceType === "Nonprofit"
-  ) as NonprofitTestimonialProject[];
+): Promise<Testimonial> {
+  const testimonials: Testimonial[] = await contentWrapper.get("testimonial");
+  const nonprofitTestimonials = testimonials.filter(
+    (testimonial) => testimonial.sourceType === "Nonprofit"
+  );
 
-  const featuredTestimonialProject =
-    testimonialProjects[Math.floor(Math.random() * testimonialProjects.length)];
+  const featuredTestimonial =
+    nonprofitTestimonials[
+      Math.floor(Math.random() * nonprofitTestimonials.length)
+    ];
 
-  return featuredTestimonialProject;
+  return featuredTestimonial;
 }

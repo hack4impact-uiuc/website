@@ -1,6 +1,6 @@
 <script lang="ts">
   import { setImageHeight } from "$lib/utils/schema";
-  import Button from "./Button.svelte";
+  import Dialog from "./Dialog.svelte";
   import Row from "./Row.svelte";
 
   // title, content, and route (for button)
@@ -8,7 +8,12 @@
   export let imageSrc: string | undefined = undefined;
   export let name: string;
   export let desc: string;
-  export let meetTheTeam = false;
+
+  let dialog: Dialog;
+
+  $: firstParagraph = quote.slice(0, quote.indexOf("</p>")) + "</p>";
+  $: needsReadMore = quote.length > firstParagraph.length;
+  $: text = firstParagraph.replace(/<\/?p>/gi, "");
 </script>
 
 <div class="wrap">
@@ -17,15 +22,20 @@
       <Row>
         <div class="left">
           <figure>
-            <blockquote>{quote}</blockquote>
+            <blockquote>
+              {@html text}{needsReadMore ? ".." : ""}
+
+              {#if needsReadMore}
+                <button class="readmore" on:click={dialog.open}>
+                  Read more
+                </button>
+              {/if}
+            </blockquote>
             <figcaption>
               {name}<br />
               <span class="desc">{desc}</span>
             </figcaption>
           </figure>
-          {#if meetTheTeam}
-            <Button type="primary" href="/about/team">Meet The Team</Button>
-          {/if}
         </div>
         <div class="right">
           <img src={setImageHeight(imageSrc, 400)} alt={name} />
@@ -33,13 +43,25 @@
       </Row>
     {:else}
       <figure class="center">
-        <blockquote>{quote}</blockquote>
+        <blockquote>
+          {@html text}
+
+          {#if needsReadMore}
+            <button class="readmore" on:click={dialog.open}>Read more</button>
+          {/if}
+        </blockquote>
         <figcaption>
           {name}<br />
           <span class="desc">{desc}</span>
         </figcaption>
       </figure>
     {/if}
+
+    <Dialog bind:this={dialog}>
+      {@html quote}
+
+      <button class="readmore" on:click={dialog.close}>Read less</button>
+    </Dialog>
   </div>
 </div>
 
@@ -49,7 +71,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 80px 0;
+    padding-block: 30px;
   }
 
   .testimonial {
@@ -103,6 +125,7 @@
     flex: auto !important;
     max-width: 12rem;
     overflow: hidden;
+    align-self: flex-start;
   }
 
   .right > img {
@@ -110,6 +133,17 @@
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
+  }
+
+  .readmore {
+    cursor: pointer;
+    color: var(--blue-light);
+    padding: 0;
+    font-size: 1rem;
+    background-color: transparent;
+    appearance: none;
+    border: none;
+    margin-left: auto;
   }
 
   @media screen and (max-width: 900px) {
@@ -126,7 +160,8 @@
     }
 
     .wrap {
-      padding: 40px 0;
+      padding-block: 0;
+      padding-bottom: 10px;
     }
   }
 </style>

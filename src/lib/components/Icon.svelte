@@ -7,6 +7,8 @@
   import searchFill from "@iconify-icons/bx/search";
   import transfer_altFill from "@iconify-icons/bx/transfer-alt";
   import unlinkFill from "@iconify-icons/bx/unlink";
+  import left_arrow_altFill from "@iconify-icons/bx/left-arrow-alt";
+  import right_arrow_altFill from "@iconify-icons/bx/right-arrow-alt";
   import badge_dollarFill from "@iconify-icons/bxs/badge-dollar";
   import bookFill from "@iconify-icons/bxs/book";
   import bulbFill from "@iconify-icons/bxs/bulb";
@@ -62,6 +64,8 @@
     tree: { name: "tree", fill: treeFill },
     vector: { name: "vector", fill: vectorFill },
     volunteering: { name: "home-heart", fill: home_heartFill },
+    "left-arrow": { name: "left-arrow-alt", fill: left_arrow_altFill },
+    "right-arrow": { name: "right-arrow-alt", fill: right_arrow_altFill },
   } as const;
 
   for (const { name, fill } of Object.values(iconMap)) {

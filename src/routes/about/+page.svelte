@@ -3,7 +3,7 @@
   import Row from "$lib/components/Row.svelte";
   import Section from "$lib/components/Section.svelte";
   import Step from "$lib/components/Step.svelte";
-  import Testimonial from "$lib/components/Testimonial.svelte";
+  import TestimonialCarousel from "$lib/components/TestimonialCarousel.svelte";
   import { setImageHeight } from "$lib/utils/schema";
 
   export let data;
@@ -90,8 +90,8 @@
 </Section>
 
 <Section id="work" color="var(--blue)" padding="40px">
-  <Row gap={84} reverseOnMobile
-    ><div id="work-content">
+  <Row gap={84} reverseOnMobile>
+    <div id="work-content">
       <h2>How We Work</h2>
       <div class="row-center" />
       <p>
@@ -106,25 +106,21 @@
         src={data.info.homepagePartnerships.src}
         alt={data.info.homepagePartnerships.alt}
       />
-    </figure></Row
-  >
+    </figure>
+  </Row>
 </Section>
 
-<Section id="team" padding="40px">
+<Section id="testimonial" padding="40px">
   <h2>Meet The Team</h2>
 
-  <Testimonial
-    quote={data.testimonialMember.testimonial}
-    name={data.testimonialMember.name}
-    desc={`${
-      data.testimonialMember.active ||
-      data.testimonialMember.role === "Co-Founder"
-        ? ""
-        : "Former "
-    }${data.testimonialMember.role}`}
-    imageSrc={data.testimonialMember.picture.src}
-    meetTheTeam
+  <TestimonialCarousel
+    testimonials={data.testimonials}
+    --testimonial-background="white"
   />
+
+  <div class="action">
+    <Button href="/about/team" type="primary">Meet The Team</Button>
+  </div>
 </Section>
 
 <style>
@@ -178,5 +174,9 @@
   figure > img {
     width: 100%;
     border-radius: 4px;
+  }
+
+  :global(#testimonial) .action {
+    margin-top: 50px;
   }
 </style>
