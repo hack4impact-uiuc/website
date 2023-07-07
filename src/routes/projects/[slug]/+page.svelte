@@ -159,6 +159,18 @@
     border-radius: 4px;
   }
 
+  @media (max-width: 650px) {
+    :global(#project-description img) {
+      max-width: 100%;
+      border-radius: 0;
+    }
+
+    :global(#project-description .long-form-embed) {
+      width: calc(100% + 20vw);
+      margin-left: -10vw;
+    }
+  }
+
   :global(#project-description h1) {
     font-size: 1.6rem;
   }
