@@ -99,6 +99,34 @@
   </Row>
 </Section>
 
+<Section id="sponsorships" color="var(--blue)" padding="60px">
+  <Row gap={84} reverse
+    ><figure>
+      <img
+        src={data.info.homepageSponsorships.src}
+        alt={data.info.homepageSponsorships.alt}
+      />
+    </figure>
+    <div id="sponsorship-content">
+      <h2>
+        We
+        <Icon icon="heart" width="1em" height="1em" />
+        Our Sponsors
+      </h2>
+      <div class="row-center" />
+      <p>
+        Our drive to write impactful software for social good is made possible
+        by equally socially minded organizations. A sponsorship with Hack4Impact
+        is a lasting relationship that brings us to your commnunity and, in
+        turn, supports our work.
+      </p>
+      <div class="row-center gap">
+        <Button type="primary-white" href="/join/sponsors">For Sponsors</Button>
+      </div>
+    </div>
+  </Row>
+</Section>
+
 <style>
   a {
     text-decoration: none;
@@ -161,6 +189,11 @@
 
   #about-us-content {
     color: var(--blue-darker);
+  }
+
+  #sponsorship-content {
+    color: white;
+    vertical-align: top;
   }
 
   figure > img {

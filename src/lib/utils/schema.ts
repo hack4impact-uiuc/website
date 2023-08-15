@@ -64,6 +64,7 @@ export type Info = {
   applicationBlurb: string;
   homepageAbout: Image;
   homepagePartnerships: Image;
+  homepageSponsorships: Image;
   homepageBannerText: string;
   homepageBannerUrl: string;
 };
