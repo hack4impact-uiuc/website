@@ -110,7 +110,7 @@
     <div id="sponsorship-content">
       <h2>
         We
-        <Icon icon="heart" width="1em" height="1em" />
+        <Icon icon="heart" width="1em" height="1em" inline={true} />
         Our Sponsors
       </h2>
       <div class="row-center" />
@@ -193,7 +193,6 @@
 
   #sponsorship-content {
     color: white;
-    vertical-align: top;
   }
 
   figure > img {
