@@ -79,7 +79,7 @@
   export let icon: IconType;
   export let width: string | number = "100%";
   export let height: string | number = "100%";
-  export let inline: boolean | number = false;
+  export let inline = false;
   export let color = "currentColor";
 </script>
 

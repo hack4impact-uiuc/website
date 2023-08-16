@@ -110,18 +110,16 @@
     <div id="sponsorship-content">
       <h2>
         We
-        <Icon icon="heart" width="1em" height="1em" inline={true} />
+        <Icon icon="heart" width="1em" height="1em" inline />
         Our Sponsors
       </h2>
       <div class="row-center" />
       <p>
-        Our drive to write impactful software for social good is made possible
-        by equally socially minded organizations. A sponsorship with Hack4Impact
-        is a lasting relationship that brings us to your commnunity and, in
-        turn, supports our work.
+        A sponsorship with Hack4Impact is a lasting relationship that brings us
+        to your community and, in turn, supports our work.
       </p>
       <div class="row-center gap">
-        <Button type="primary-white" href="/join/sponsors">For Sponsors</Button>
+        <Button type="primary-white" href="/join/sponsors">Work With Us</Button>
       </div>
     </div>
   </Row>
