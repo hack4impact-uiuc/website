@@ -157,6 +157,7 @@
     object-fit: contain;
     max-height: 600px;
     border-radius: 4px;
+    border: 1px solid var(--accent-color);
   }
 
   :global(#project-description h1) {
