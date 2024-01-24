@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Button from "$lib/components/Button.svelte";
   import DoubleBanner from "$lib/components/DoubleBanner.svelte";
   import ProjectMember from "$lib/components/projects/ProjectMember.svelte";
   import Section from "$lib/components/Section.svelte";
@@ -46,6 +47,13 @@
 >
   <h2>Our Partner</h2>
   <p>{data.project.nonprofitDescription}</p>
+  <Button
+    href={data.project.nonprofitUrl}
+    type="primary-custom"
+    textColor="white"
+    backgroundColor={data.project.accentColor}
+    size="small">Learn More &nearr;</Button
+  >
 </Section>
 
 <Section
