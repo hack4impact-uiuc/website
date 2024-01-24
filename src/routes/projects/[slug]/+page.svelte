@@ -50,7 +50,8 @@
   <Button
     href={data.project.nonprofitUrl}
     type="primary-custom"
-    textColor={data.project.accentColor}
+    textColor="white"
+    backgroundColor={data.project.accentColor}
     size="small">Learn More &nearr;</Button
   >
 </Section>
