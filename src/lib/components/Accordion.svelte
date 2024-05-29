@@ -14,7 +14,7 @@
     <div class="heading">
       <slot name="title" />
     </div>
-    <div>
+    <div on:click|stopPropagation on:keydown|stopPropagation>
       <slot name="actions" />
     </div>
   </summary>
