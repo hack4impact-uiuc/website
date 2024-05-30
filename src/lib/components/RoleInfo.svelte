@@ -12,9 +12,7 @@
   </span>
   <svelte:fragment slot="actions">
     {#if role.open}
-      <a href="#process">
-        <Button type="primary-white">Apply</Button>
-      </a>
+      <Button href="#process" type="primary-white">Apply</Button>
     {/if}
   </svelte:fragment>
   <span slot="contents">{@html role.description}</span>
