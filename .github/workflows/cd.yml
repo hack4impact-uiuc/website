@@ -11,7 +11,7 @@ jobs:
     name: Format
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -30,7 +30,7 @@ jobs:
     name: Lint
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -49,7 +49,7 @@ jobs:
     name: Check
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -74,7 +74,7 @@ jobs:
     needs: [format, lint, check]
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node
         uses: actions/setup-node@v3
