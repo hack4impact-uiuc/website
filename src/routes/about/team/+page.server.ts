@@ -17,8 +17,9 @@ async function getMembers(contentWrapper: ContentWrapper) {
   const roles = [
     "Co-Founder",
     "Co-Director",
-    "Community Director",
+    "Outreach Director",
     "External Director",
+    "Community Director",
     "Tech Director",
     "Product Manager",
     "Product Research Lead",
