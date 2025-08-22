@@ -6,7 +6,7 @@ import {
   CONTENTFUL_PREVIEW_FLAG,
   CONTENTFUL_PREVIEW_KEY,
   CONTENTFUL_SPACE_ID,
-} from "$env/static/private";
+} from "$env/dynamic/private";
 import { ContentWrapper } from "$lib/utils/api";
 
 const contentfulPreviewSearchParam = "preview";
