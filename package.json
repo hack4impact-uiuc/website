@@ -43,4 +43,7 @@
     "svelte-animated-details": "^1.0.1"
   },
   "type": "module"
+  "engines": {
+    "node": "18.x"
+  }
 }
