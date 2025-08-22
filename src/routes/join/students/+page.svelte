@@ -41,7 +41,9 @@
   <h2 id="process">Application Process</h2>
   <p>
     Submit your application by 11:59 PM CDT on Sunday, August 31st! The
-    application can be found here: <a href="https://h4i.app/ly">https://h4i.app/ly</a>
+    application can be found here: <a href="https://h4i.app/ly"
+      >https://h4i.app/ly</a
+    >
   </p>
 </Section>
 
