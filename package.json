@@ -42,7 +42,7 @@
     "contentful": "^9.1.5",
     "svelte-animated-details": "^1.0.1"
   },
-  "type": "module"
+  "type": "module",
   "engines": {
     "node": "18.x"
   }
