@@ -39,7 +39,7 @@
 
 <Section color="var(--gray-lighter)" padding="40px">
   <h2 id="process">Application Process</h2>
-  <p>{@html data.info.applicationBlurb}</p>
+  <!-- <p>{@html data.info.applicationBlurb}</p>
   <div id="process-steps">
     {#each data.applicationSteps as step}
       <Step icon={iconMap[step.icon]}>
@@ -48,7 +48,11 @@
         <span slot="description">{@html step.description}</span>
       </Step>
     {/each}
-  </div>
+  </div> -->
+  <p>
+    Submit your application by 11:59 PM CDT on Sunday, August 31st! The
+    application can be found here: <a href="https://h4i.app/ly">https://h4i.app/ly</a>
+  </p>
 </Section>
 
 {#if data.faqs.length > 0}
