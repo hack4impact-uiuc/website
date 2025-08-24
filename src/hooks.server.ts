@@ -12,10 +12,10 @@ import { ContentWrapper } from "$lib/utils/api";
 
 const contentfulPreviewSearchParam = "preview";
 
-const CONTENTFUL_DELIVERY_KEY = env.CONTENTFUL_DELIVERY_KEY;
-const CONTENTFUL_PREVIEW_FLAG = env.CONTENTFUL_PREVIEW_FLAG;
-const CONTENTFUL_PREVIEW_KEY = env.CONTENTFUL_PREVIEW_KEY;
-const CONTENTFUL_SPACE_ID = env.CONTENTFUL_SPACE_ID; 
+const CONTENTFUL_DELIVERY_KEY: string | undefined = env.CONTENTFUL_DELIVERY_KEY;
+const CONTENTFUL_PREVIEW_FLAG: string | undefined = env.CONTENTFUL_PREVIEW_FLAG;
+const CONTENTFUL_PREVIEW_KEY: string | undefined = env.CONTENTFUL_PREVIEW_KEY;
+const CONTENTFUL_SPACE_ID: string | undefined = env.CONTENTFUL_SPACE_ID; 
 
 const isPreview = (url: URL) =>
   url.searchParams.get(contentfulPreviewSearchParam) ===
