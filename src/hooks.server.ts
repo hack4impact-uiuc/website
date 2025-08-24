@@ -1,15 +1,21 @@
 import { minify, type Options } from "html-minifier-terser";
 import { building } from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
-import {
-  CONTENTFUL_DELIVERY_KEY,
-  CONTENTFUL_PREVIEW_FLAG,
-  CONTENTFUL_PREVIEW_KEY,
-  CONTENTFUL_SPACE_ID,
-} from "$env/static/private";
+// import {
+//   CONTENTFUL_DELIVERY_KEY,
+//   CONTENTFUL_PREVIEW_FLAG,
+//   CONTENTFUL_PREVIEW_KEY,
+//   CONTENTFUL_SPACE_ID,
+// } from "$env/static/private";
+import { env } from "$env/dynamic/private";
 import { ContentWrapper } from "$lib/utils/api";
 
 const contentfulPreviewSearchParam = "preview";
+
+const CONTENTFUL_DELIVERY_KEY = env.CONTENTFUL_DELIVERY_KEY;
+const CONTENTFUL_PREVIEW_FLAG = env.CONTENTFUL_PREVIEW_FLAG;
+const CONTENTFUL_PREVIEW_KEY = env.CONTENTFUL_PREVIEW_KEY;
+const CONTENTFUL_SPACE_ID = env.CONTENTFUL_SPACE_ID; 
 
 const isPreview = (url: URL) =>
   url.searchParams.get(contentfulPreviewSearchParam) ===
