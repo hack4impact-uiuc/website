@@ -124,13 +124,20 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
+    // 1. SAFETY CHECK: Ignore completely empty links
+    if (!link || !link.sys) return undefined;
+
     switch (type) {
       case "Asset":
-        return link.src !== undefined // why do I need to do this?
-          ? link
-          : { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+        if (link.src !== undefined) return link;
+        // Safety check for deleted/unpublished assets
+        if (!link.fields || !link.fields.file) return undefined; 
+        return { src: `https:${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
+        // 2. SAFETY CHECK: If the entry is unpublished/unresolved, skip it
+        if (!link.sys.contentType) return undefined; 
+        
         return await this.serialize(
           link,
           await this.client.getContentType(link.sys.contentType.sys.id)
@@ -139,5 +146,21 @@ export class ContentWrapper {
       case undefined:
         return link;
     }
+    
+    // switch (type) {
+    //   case "Asset":
+    //     return link.src !== undefined // why do I need to do this?
+    //       ? link
+    //       : { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+
+    //   case "Entry":
+    //     return await this.serialize(
+    //       link,
+    //       await this.client.getContentType(link.sys.contentType.sys.id)
+    //     );
+
+    //   case undefined:
+    //     return link;
+    // }
   }
 }
