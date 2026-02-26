@@ -74,6 +74,11 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
+                    // Add this safety check: If the asset was deleted/unpublished, skip it.
+                    if (!node.data?.target?.fields) {
+                      return ""; 
+                    }
+                    
                     const { file, title, description } =
                       node.data.target.fields;
                     return `
