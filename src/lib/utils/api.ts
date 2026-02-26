@@ -143,6 +143,16 @@ export class ContentWrapper {
           await this.client.getContentType(link.sys.contentType.sys.id)
         );
 
+      case "Array":
+        const transformedArray = await Promise.all(
+          res[id].map((link: any) =>
+            this.transformLink(link, field.items!.linkType)
+          )
+        );
+        // Filter out any undefined items that were unpublished
+        res[id] = transformedArray.filter((item) => item !== undefined);
+        break;
+        
       case undefined:
         return link;
     }
