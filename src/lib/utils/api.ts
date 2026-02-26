@@ -10,7 +10,7 @@ type ContentWrapperGetOptions = {
   allowPreview: boolean;
 };
 
-export class ContentWrapper {
+export class ContentWrapper { 
   client: ContentfulClientApi;
   previewClient: ContentfulClientApi | undefined;
 
