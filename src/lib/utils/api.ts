@@ -124,7 +124,12 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
-    // 1. SAFETY CHECK: Ignore completely empty links
+    // Undefined type --> this is a primitive value  
+    // Just return the string directly!
+    if (!type) return link;
+
+    // Now we know it's supposed to be a Link (Asset or Entry).
+    // Ignore completely empty/broken links.
     if (!link || !link.sys) return undefined;
 
     switch (type) {
@@ -135,28 +140,53 @@ export class ContentWrapper {
         return { src: `https:${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
-        // 2. SAFETY CHECK: If the entry is unpublished/unresolved, skip it
+        // SAFETY CHECK: If the entry is unpublished/unresolved, skip it
         if (!link.sys.contentType) return undefined; 
         
         return await this.serialize(
           link,
           await this.client.getContentType(link.sys.contentType.sys.id)
         );
-
-      case "Array":
-        const transformedArray = await Promise.all(
-          res[id].map((link: any) =>
-            this.transformLink(link, field.items!.linkType)
-          )
-        );
-        // Filter out any undefined items that were unpublished
-        res[id] = transformedArray.filter((item) => item !== undefined);
-        break;
         
-      case undefined:
+      default:
         return link;
     }
     
+    // WEBSITE FIX ATTEMPT 1 
+    // Ignore completely empty links
+    // if (!link || !link.sys) return undefined;
+
+    // switch (type) {
+    //   case "Asset":
+    //     if (link.src !== undefined) return link;
+    //     // Safety check for deleted/unpublished assets
+    //     if (!link.fields || !link.fields.file) return undefined; 
+    //     return { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+
+    //   case "Entry":
+    //     // 2. SAFETY CHECK: If the entry is unpublished/unresolved, skip it
+    //     if (!link.sys.contentType) return undefined; 
+        
+    //     return await this.serialize(
+    //       link,
+    //       await this.client.getContentType(link.sys.contentType.sys.id)
+    //     );
+
+    //   case "Array":
+    //     const transformedArray = await Promise.all(
+    //       res[id].map((link: any) =>
+    //         this.transformLink(link, field.items!.linkType)
+    //       )
+    //     );
+    //     // Filter out any undefined items that were unpublished
+    //     res[id] = transformedArray.filter((item) => item !== undefined);
+    //     break;
+        
+    //   case undefined:
+    //     return link;
+    // }
+
+    // ORIGINAL 
     // switch (type) {
     //   case "Asset":
     //     return link.src !== undefined // why do I need to do this?
