@@ -34,6 +34,8 @@ export function generateProjectsInfo(projects: Project[]): ProjectsInfo {
 
     projects.forEach((project) =>
       project.semester.forEach((semester) => {
+        if (!semester) return; // skip empty/undefined semesters
+        
         if (projectArrayMap[semester] !== undefined) {
           projectArrayMap[semester].push(project);
         } else {
