@@ -2,7 +2,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import type { ContentfulClientApi, ContentType, Entry } from "contentful";
 import contentful from "contentful";
-
+ 
 type ContentWrapperGetOptions = {
   /**
    * Use draft data from the Contentful preview API if the ContentWrapper is authorized to do so.
