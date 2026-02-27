@@ -155,6 +155,8 @@ export function setImageHeight(src: string, height: number): string {
 }
 
 export function parseSemester(semester: string): Semester {
+  if (!semester) return { season: "", year: 0 }; // protect againt undefined semester 
+  
   const [season, yearString] = semester.split(" ");
 
   const year = parseInt(yearString);
@@ -163,6 +165,7 @@ export function parseSemester(semester: string): Semester {
 }
 
 export function semesterToId(semester: string): string {
+  if (!semester) return ""; // protect againt undefined semester 
   return semester.split(" ").join("-").toLowerCase();
 }
 
