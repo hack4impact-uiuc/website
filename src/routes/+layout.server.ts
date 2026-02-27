@@ -22,7 +22,10 @@ async function getSemesters(contentWrapper: ContentWrapper) {
     select: "fields.semester", 
   });
 
-  const { semesters } = generateProjectsInfo(projects);
+  // SAFETY CHECK: Ignore any projects that don't have a semester defined
+  const validProjects = projects.filter((project) => project && project.semester);
+
+  const { semesters } = generateProjectsInfo(validProjects);
 
   return semesters;
 }

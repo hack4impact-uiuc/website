@@ -2,7 +2,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import type { ContentfulClientApi, ContentType, Entry } from "contentful";
 import contentful from "contentful";
-
+ 
 type ContentWrapperGetOptions = {
   /**
    * Use draft data from the Contentful preview API if the ContentWrapper is authorized to do so.
@@ -10,7 +10,7 @@ type ContentWrapperGetOptions = {
   allowPreview: boolean;
 };
 
-export class ContentWrapper {
+export class ContentWrapper { 
   client: ContentfulClientApi;
   previewClient: ContentfulClientApi | undefined;
 
@@ -25,7 +25,7 @@ export class ContentWrapper {
       });
     }
   }
-
+ 
   async get(
     entity: string,
     contentfulOptions: any = {},
@@ -74,6 +74,11 @@ export class ContentWrapper {
               res[id] = documentToHtmlString(res[id], {
                 renderNode: {
                   [BLOCKS.EMBEDDED_ASSET]: (node) => {
+                    // Add this safety check: If the asset was deleted/unpublished, skip it.
+                    if (!node.data?.target?.fields) {
+                      return ""; 
+                    }
+                    
                     const { file, title, description } =
                       node.data.target.fields;
                     return `
@@ -119,20 +124,83 @@ export class ContentWrapper {
   }
 
   async transformLink(link: any, type: string | undefined): Promise<any> {
+    // Undefined type --> this is a primitive value  
+    // Just return the string directly!
+    if (!type) return link;
+
+    // Now we know it's supposed to be a Link (Asset or Entry).
+    // Ignore completely empty/broken links.
+    if (!link || !link.sys) return undefined;
+
     switch (type) {
       case "Asset":
-        return link.src !== undefined // why do I need to do this?
-          ? link
-          : { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+        if (link.src !== undefined) return link;
+        // Safety check for deleted/unpublished assets
+        if (!link.fields || !link.fields.file) return undefined; 
+        return { src: `https:${link.fields.file.url}`, alt: link.fields.title };
 
       case "Entry":
+        // SAFETY CHECK: If the entry is unpublished/unresolved, skip it
+        if (!link.sys.contentType) return undefined; 
+        
         return await this.serialize(
           link,
           await this.client.getContentType(link.sys.contentType.sys.id)
         );
-
-      case undefined:
+        
+      default:
         return link;
     }
+    
+    // WEBSITE FIX ATTEMPT 1 
+    // Ignore completely empty links
+    // if (!link || !link.sys) return undefined;
+
+    // switch (type) {
+    //   case "Asset":
+    //     if (link.src !== undefined) return link;
+    //     // Safety check for deleted/unpublished assets
+    //     if (!link.fields || !link.fields.file) return undefined; 
+    //     return { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+
+    //   case "Entry":
+    //     // 2. SAFETY CHECK: If the entry is unpublished/unresolved, skip it
+    //     if (!link.sys.contentType) return undefined; 
+        
+    //     return await this.serialize(
+    //       link,
+    //       await this.client.getContentType(link.sys.contentType.sys.id)
+    //     );
+
+    //   case "Array":
+    //     const transformedArray = await Promise.all(
+    //       res[id].map((link: any) =>
+    //         this.transformLink(link, field.items!.linkType)
+    //       )
+    //     );
+    //     // Filter out any undefined items that were unpublished
+    //     res[id] = transformedArray.filter((item) => item !== undefined);
+    //     break;
+        
+    //   case undefined:
+    //     return link;
+    // }
+
+    // ORIGINAL 
+    // switch (type) {
+    //   case "Asset":
+    //     return link.src !== undefined // why do I need to do this?
+    //       ? link
+    //       : { src: `https:${link.fields.file.url}`, alt: link.fields.title };
+
+    //   case "Entry":
+    //     return await this.serialize(
+    //       link,
+    //       await this.client.getContentType(link.sys.contentType.sys.id)
+    //     );
+
+    //   case undefined:
+    //     return link;
+    // }
   }
 }
