@@ -25,7 +25,7 @@ export class ContentWrapper {
       });
     }
   }
-
+ 
   async get(
     entity: string,
     contentfulOptions: any = {},
