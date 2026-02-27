@@ -19,7 +19,7 @@ async function getSemesters(contentWrapper: ContentWrapper) {
   // OPTIMIZATION: Only fetch the 'semester' field 
   // We use 'select' to filter out images, descriptions, and other heavy data 
   const projects: Project[] = await contentWrapper.get("project", {
-    select: "fields.semester,fields.slug", 
+    select: "fields.semester", 
   });
 
   // SAFETY CHECK: Ignore any projects that don't have a semester defined
