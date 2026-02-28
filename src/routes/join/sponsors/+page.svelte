@@ -66,12 +66,14 @@
   />
 </Section>
 
+<!-- 
 <Section color="var(--blue)" padding="60px">
   <span class="wrap" id="by-the-numbers">
     <h2>By the Numbers</h2>
     <Stats />
   </span>
 </Section>
+--> 
 
 <Section color="var(--gray-lighter)">
   <Testimonial
@@ -113,17 +115,18 @@
         </div>
         <div>
           <h4>Product Designer</h4>
-          1 per team
+          2 per team
         </div>
         <div>
           <h4>Software Developer</h4>
-          4-5 per team
+          5 per team
         </div>
       </div>
     </div></span
   >
 </Section>
 
+<!-- 
 <Section color="var(--blue)" padding="60px">
   <span class="light-text wrap sponsor-perks">
     <h2>Sponsorship Tiers</h2>
@@ -170,6 +173,7 @@
     </div>
   </span>
 </Section>
+--> 
 
 <Section padding="60px">
   <h2>Where We Work</h2>
