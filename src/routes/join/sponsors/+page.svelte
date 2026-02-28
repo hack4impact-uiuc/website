@@ -60,7 +60,7 @@
 
   <Info
     title="Check Out Our Work"
-    content="Read more about any of over 20 past products built as technical solutions spanning over 7 areas of impact and the domains of web engineering, mobile applications, and data science."
+    content="Read more about any of over 50 past products built as technical solutions spanning over 7 areas of impact and the domains of web engineering, mobile applications, AI, and data science."
     to="/projects"
     linkText="Learn More"
   />
