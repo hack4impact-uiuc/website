@@ -27,6 +27,8 @@ export async function load({ params, locals }) {
 
   return {
     title: project.name,
+    description: project.summary,
+    image: project.headerImage?.src ?? project.nonprofitLogo.src ?? project.logoWhite.src,
     project,
   };
 }
