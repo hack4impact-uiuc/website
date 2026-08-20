@@ -42,7 +42,7 @@
   <p>
     Submit your application by 11:59 PM CDT on Sunday, August 30st! The
     application can be found here: <a href="https://bit.ly/h4iapply"
-      >https://h4i.app/ly</a
+      >https://bit.ly/h4iapply</a
     >
   </p>
 </Section>
