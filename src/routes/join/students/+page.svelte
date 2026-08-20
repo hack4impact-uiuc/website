@@ -40,7 +40,7 @@
 <Section color="var(--gray-lighter)" padding="40px">
   <h2 id="process">Application Process</h2>
   <p>
-    Submit your application by 11:59 PM CDT on Sunday, August 30st! The
+    Submit your application by 11:59 PM CDT on Sunday, August 30th! The
     application can be found here: <a href="https://bit.ly/h4iapply"
       >https://bit.ly/h4iapply</a
     >
